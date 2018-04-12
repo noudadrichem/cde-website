@@ -25,11 +25,8 @@ export default {
 @import '~$styles/app';
 
 .home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  text-align: center;
 }
 </style>
