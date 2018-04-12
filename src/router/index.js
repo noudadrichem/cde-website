@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 // Pages
 import Home from '@/pages/Home';
+import Grid from '@/pages/Grid';
 
 // Components
 
@@ -14,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/grid',
+      name: 'grid',
+      component: Grid,
     },
   ],
 });
