@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<desc>Created with Sketch.</desc>
+<defs>
+<rect id="a" width="16" height="16"/>
+</defs>
+<g fill="none" fill-rule="evenodd">
+<mask id="b" fill="white">
+<use xlink:href="#a"/>
+</mask>
+<path d="m9.8846 9.8846l-0.29907-0.29907 0.49068-0.68904c0.59793-0.83964 0.92382-1.8423 0.92382-2.8965 0-2.7614-2.2386-5-5-5s-5 2.2386-5 5 2.2386 5 5 5c1.0542 0 2.0568-0.32589 2.8965-0.92382l0.68904-0.49068 0.29907 0.29907z" mask="url(#b)" stroke="#1072B8" stroke-width="2"/>
+</g>
+</svg>

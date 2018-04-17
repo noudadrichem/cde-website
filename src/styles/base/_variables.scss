@@ -1,37 +1,66 @@
 // Core styling
-$template-color: #000;
-$template-background: #0000ff;
+$template-color: #363542;
+$template-background: #fff;
 
-// General font styling
-$template-font-family: Verdana, sans-serif;
-$template-line-height: 1.6;
-$template-font-size: 14px;
-$template-font-size-m: 14px;
-$template-font-size-s: 14px;
+// Colors
+$template-color-blue-default: #1072B8;
+$template-color-blue-light: #5499CC;
+$template-color-blue-lighter: #9FC7E3;
+
+$template-color-red-default: #FC0D1B;
+$template-color-red-light: #FD4852;
+$template-color-red-lighter: #FE9EA4;
+
+$template-color-green-default: #2DC57D;
+$template-color-green-light: #57D197;
+$template-color-green-lighter: #81DCB1;
+
+$template-color-orange-default: #FD8E26;
+$template-color-orange-light: #FD9B40;
+$template-color-orange-lighter: #FEBB7D;
+
+$template-color-black-default: #363542;
+$template-color-black-light: #363542;
+$template-color-black-lighter: #9C9BA1;
+
+$template-color-white-default: #FFF;
+$template-color-white-light: #EBEBEB;
+$template-color-white-lighter: #F8F8F8;
+
+// Shadows
+$template-shadow-light: 0 4px 16px rgba($template-color-black-lighter, 0.24);
+$template-shadow-dark: 0 4px 16px rgba($template-color-black-lighter, 0.46);
+
+// Border
+$template-border-radius: 2px;
+
+// Body text
+$template-font-family: Open Sans, sans-serif;
+$template-line-height: 22px;
+$template-font-size: 15px;
+$template-font-size-m: 15px;
+$template-font-size-s: 15px;
 $template-font-weight: normal;
-$template-font-color: #828282;
+$template-font-color: $template-color-black-default;
 
+// Headings
 $template-font-size-h1: 30px;
 $template-font-size-h1-m: 24px;
 $template-font-size-h1-s: 22px;
-$template-font-family-h1: Verdana, sans-serif;
-$template-font-weight-h1: normal;
-$template-font-color-h1: #828282;
+$template-font-family-h1: Bitter, sans-serif;
+$template-font-weight-h1: bolder;
+$template-font-color-h1: $template-color-blue-default;
 
 $template-font-size-h2: 24px;
 $template-font-size-h2-m: 22px;
 $template-font-size-h2-s: 18px;
-$template-font-family-h2: Verdana, sans-serif;
-$template-font-weight-h2: normal;
-$template-font-color-h2: #828282;
+$template-font-family-h2: Bitter, sans-serif;
+$template-font-weight-h2: bolder;
+$template-font-color-h2: $template-color-blue-default;
 
 $template-font-size-h3: 22px;
 $template-font-size-h3-m: 20px;
 $template-font-size-h3-s: 18px;
-$template-font-family-h3: Verdana, sans-serif;
-$template-font-weight-h3: normal;
-$template-font-color-h3: #828282;
-
-// Link colors
-$template-link-color: #97bf0d;
-$template-link-color-hover: #97bf0d;
+$template-font-family-h3: Bitter, sans-serif;
+$template-font-weight-h3: bolder;
+$template-font-color-h3: $template-color-blue-default;
