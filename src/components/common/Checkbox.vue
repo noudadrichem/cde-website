@@ -1,7 +1,7 @@
 <template>
   <div class="checkbox-container">
-    <input v-model="checked" :id="id" type="checkbox">
-    <label :class="{checked}" class="checkbox" :for="id"></label>
+    <input :id="id" type="checkbox">
+    <label class="checkbox" :for="id"></label>
     <label v-show="labelText" :for="id" class="label">{{ labelText }}</label>
   </div>
 </template>
@@ -18,9 +18,6 @@ export default {
       required: true,
     }
   },
-  data: () => ({
-    checked: false,
-  }),
 };
 </script>
 
@@ -30,8 +27,15 @@ export default {
 .checkbox-container {
   display: inline-flex;
 
-  input {
+  input[type="checkbox"] {
     display: none;
+
+    &:checked + label {
+      background-image: url('/static/images/icons/check.svg');
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 
   .checkbox {
@@ -40,13 +44,6 @@ export default {
     display: inline-block;
     border: 1px solid $template-color-black-lighter;
     border-radius: $template-border-radius;
-
-    &.checked {
-      background-image: url('/static/images/icons/check.svg');
-      background-size: 12px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
   }
 
   .label {
