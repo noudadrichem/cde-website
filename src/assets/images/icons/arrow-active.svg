@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="8" viewBox="0 0 16 8">
+  <defs>
+    <rect id="arrow-active-a" width="16" height="16"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(0 -4)">
+    <mask id="arrow-active-b" fill="#fff">
+      <use xlink:href="#arrow-active-a"/>
+    </mask>
+    <g mask="url(#arrow-active-b)">
+      <g transform="rotate(90 5.25 10.25)">
+        <rect width="2" height="15" x="2" fill="#1072B8" rx="1"/>
+        <path stroke="#1072B8" stroke-linecap="round" stroke-width="2" d="M-3.55271368e-15,4.80266936 L2.16142855,1.4756868 C2.46230866,1.01255658 3.08166141,0.881026873 3.54479164,1.18190699 C3.66220533,1.25818671 3.76229172,1.3582731 3.83857145,1.4756868 L6,4.80266936"/>
+      </g>
+    </g>
+  </g>
+</svg>

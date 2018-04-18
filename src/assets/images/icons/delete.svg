@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <rect id="delete-a" width="16" height="16"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-2 -2)">
+    <mask id="delete-b" fill="#fff">
+      <use xlink:href="#delete-a"/>
+    </mask>
+    <path fill="#1072B8" d="M9,7 L15,7 C15.5522847,7 16,7.44771525 16,8 C16,8.55228475 15.5522847,9 15,9 L9,9 L9,15 C9,15.5522847 8.55228475,16 8,16 C7.44771525,16 7,15.5522847 7,15 L7,9 L1,9 C0.44771525,9 -4.4408921e-16,8.55228475 -4.4408921e-16,8 C-4.4408921e-16,7.44771525 0.44771525,7 1,7 L7,7 L7,1 C7,0.44771525 7.44771525,1.01453063e-16 8,0 C8.55228475,-1.01453063e-16 9,0.44771525 9,1 L9,7 Z" mask="url(#delete-b)" transform="rotate(45 8 8)"/>
+  </g>
+</svg>

@@ -1,20 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<defs>
-<rect id="a" width="16" height="16"/>
-</defs>
-<g fill="none" fill-rule="evenodd">
-<g transform="translate(-1368 -845)">
-<g transform="translate(16 647)">
-<g transform="translate(1234 42)">
-<g transform="translate(117 156)">
-<mask id="b" fill="white">
-<use xlink:href="#a"/>
-</mask>
-<path d="m2 7.4704l3.3854 6.5925c0.14532 0.28298 0.49253 0.39458 0.77551 0.24926 0.098034-0.050343 0.17957-0.12775 0.23493-0.22304l7.6041-13.089" mask="url(#b)" stroke="#000" stroke-linecap="round" stroke-width="2"/>
-</g>
-</g>
-</g>
-</g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="16" viewBox="0 0 14 16">
+  <defs>
+    <rect id="check-a" width="16" height="16"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-1)">
+    <mask id="check-b" fill="#fff">
+      <use xlink:href="#check-a"/>
+    </mask>
+    <path stroke="#2DC57D" stroke-linecap="round" stroke-width="2" d="M2,7.47036803 L5.38542399,14.0628672 C5.53074382,14.3458512 5.87795268,14.4574501 6.16093668,14.3121302 C6.25897041,14.2617873 6.34050437,14.1843777 6.39586384,14.0890868 L14,1" mask="url(#check-b)"/>
+  </g>
 </svg>
