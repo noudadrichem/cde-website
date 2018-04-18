@@ -7,15 +7,14 @@
 <script>
 export default {
   name: 'Icon',
-  props: ['width', 'height', 'name'],
   props: {
     width: {
       type: Number,
-      required: true
+      required: false
     },
     height: {
       type: Number,
-      required: true
+      required: false
     },
     name: {
       type: String,
