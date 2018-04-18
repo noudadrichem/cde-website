@@ -8,7 +8,17 @@
       <!-- Checkbox -->
       <div class="component">
         <div class="component-name">Checkbox</div>
-        <Checkbox labelText="Some label text" id="1"/>
+        <Checkbox labelText="Some label text" id="checkbox"/>
+      </div>
+
+      <!-- Radio button -->
+      <div class="component">
+        <div class="component-name">Radio button</div>
+        <form>
+          <RadioButton name="styleKitForm" labelText="Radio button text 1" id="radio-button-1"/>
+          <RadioButton name="styleKitForm" labelText="Radio button text 2" id="radio-button-2"/>
+          <RadioButton name="styleKitForm" labelText="Radio button text 3" id="radio-button-3"/>
+        </form>
       </div>
 
     <h2>Custom</h2>
@@ -18,12 +28,13 @@
 <script>
 // Components
 import Checkbox from '@/components/common/Checkbox';
+import RadioButton from '@/components/common/RadioButton';
 
 export default {
   name: 'Stylekit',
   components: {
     Checkbox,
-    Icon,
+    RadioButton,
   },
 };
 </script>
