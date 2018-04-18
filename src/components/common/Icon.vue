@@ -1,6 +1,9 @@
 <template>
-<div :class="`icon ${name}`" :style="{ width, height}">
-    <img :src="iconsUrl(name)"/>
+<div :class="`icon ${name}`" :style="{
+    width: `${width}px`,
+    height: `${height}px`,
+    }">
+  <img :src="iconsUrl(name)" />
 </div>
 </template>
 
@@ -10,15 +13,15 @@ export default {
   props: {
     width: {
       type: Number,
-      required: false
+      required: false,
     },
     height: {
       type: Number,
-      required: false
+      required: false,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     }
   },
   methods: {

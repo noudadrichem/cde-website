@@ -35,32 +35,41 @@ $template-shadow-dark: 0 4px 16px rgba($template-color-black-lighter, 0.46);
 $template-border-radius: 2px;
 
 // Body text
-$template-font-family: Open Sans, sans-serif;
+$template-font-family: 'Open Sans', sans-serif;
 $template-line-height: 22px;
 $template-font-size: 15px;
-$template-font-size-m: 15px;
-$template-font-size-s: 15px;
+$template-font-size-m: 14px;
+$template-font-size-s: 12px;
 $template-font-weight: normal;
 $template-font-color: $template-color-black-default;
 
 // Headings
-$template-font-size-h1: 30px;
+$template-font-size-h1: 32px;
 $template-font-size-h1-m: 24px;
-$template-font-size-h1-s: 22px;
-$template-font-family-h1: Bitter, sans-serif;
+$template-font-size-h1-s: 24px;
+$template-font-family-h1: 'Bitter', sans-serif;
 $template-font-weight-h1: bolder;
 $template-font-color-h1: $template-color-blue-default;
 
 $template-font-size-h2: 24px;
-$template-font-size-h2-m: 22px;
-$template-font-size-h2-s: 18px;
-$template-font-family-h2: Bitter, sans-serif;
+$template-font-size-h2-m: 20px;
+$template-font-size-h2-s: 16px;
+$template-font-family-h2: 'Bitter', sans-serif;
 $template-font-weight-h2: bolder;
 $template-font-color-h2: $template-color-blue-default;
 
-$template-font-size-h3: 22px;
-$template-font-size-h3-m: 20px;
-$template-font-size-h3-s: 18px;
-$template-font-family-h3: Bitter, sans-serif;
+$template-font-size-h3: 20px;
+$template-font-size-h3-m: 16px;
+$template-font-size-h3-s: 14px;
+$template-font-family-h3: 'Bitter', sans-serif;
 $template-font-weight-h3: bolder;
 $template-font-color-h3: $template-color-blue-default;
+
+// Config variables
+$breakpoints: 'xl','l','m','s','xs';
+
+$breakpoint-xl: '(min-width: 1440px)';
+$breakpoint-l: '(max-width: 1280px)';
+$breakpoint-m: '(max-width: 1024px)';
+$breakpoint-s: '(max-width: 767px)';
+$breakpoint-xs: '(max-width: 480px)';
