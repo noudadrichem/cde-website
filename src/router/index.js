@@ -4,6 +4,7 @@ import Router from 'vue-router';
 // Pages
 import Home from '@/pages/Home';
 import Grid from '@/pages/Grid';
+import Stylekit from '@/pages/Stylekit';
 
 // Components
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/grid',
       name: 'grid',
       component: Grid,
+    },
+    {
+      path: '/stylekit',
+      name: 'stylekit',
+      component: Stylekit,
     },
   ],
 });
