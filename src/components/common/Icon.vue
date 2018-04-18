@@ -13,15 +13,15 @@ export default {
   props: {
     width: {
       type: Number,
-      required: false
+      required: false,
     },
     height: {
       type: Number,
-      required: false
+      required: false,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     }
   },
   methods: {
