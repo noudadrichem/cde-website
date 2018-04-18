@@ -1,7 +1,7 @@
 <template>
   <div class="checkbox-container">
     <input v-model="checked" :id="id" type="checkbox">
-    <label v-bind:class="{checked : checked}" class="checkbox" :for="id"></label>
+    <label :class="{checked}" class="checkbox" :for="id"></label>
     <label v-show="labelText" :for="id" class="label">{{ labelText }}</label>
   </div>
 </template>
@@ -11,6 +11,7 @@ export default {
   props: {
     labelText: {
       type: String,
+      required: false,
     },
     id: {
       type: Number,
