@@ -7,17 +7,14 @@
 
 <script>
 import Logo from '@/components/Logo';
-import Checkbox from '@/components/common/Checkbox';
 
 export default {
   name: 'Home',
   data: () => ({
     msg: 'Crazy Dutch Experience!',
-    labelText: 'Some label text here',
   }),
   components: {
     Logo,
-    Checkbox,
   },
 };
 </script>
