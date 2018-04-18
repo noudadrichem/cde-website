@@ -8,6 +8,20 @@
 export default {
   name: 'Icon',
   props: ['width', 'height', 'name'],
+  props: {
+    width: {
+      type: Number,
+      required: true
+    },
+    height: {
+      type: Number,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
     iconsUrl(iconName) {
       return require(`@/assets/images/icons/${iconName}.svg`);
