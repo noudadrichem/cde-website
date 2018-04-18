@@ -1,6 +1,9 @@
 <template>
-<div :class="`icon ${name}`" :style="{ width, height}">
-    <img :src="iconsUrl(name)"/>
+<div :class="`icon ${name}`" :style="{
+    width: `${width}px`,
+    height: `${height}px`,
+    }">
+  <img :src="iconsUrl(name)" />
 </div>
 </template>
 
