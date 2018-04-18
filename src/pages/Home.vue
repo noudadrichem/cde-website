@@ -2,7 +2,6 @@
   <div class="home">
     <Logo/>
     <h1>{{ msg }}</h1>
-    <Checkbox :labelText="labelText" id="1"/>
   </div>
 </template>
 
