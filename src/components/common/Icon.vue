@@ -33,7 +33,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon img {
-  width: 100%;
+.icon {
+  display: flex;
+  align-items: center;
+  background: inherit;
+
+  img {
+    max-width: 100%;
+    object-fit: cover;
+    background: inherit;
+  }
 }
 </style>

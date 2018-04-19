@@ -11,6 +11,11 @@
         <Checkbox labelText="Some label text" id="1"/>
       </div>
 
+      <div class="component">
+        <div class="component-name">Input Text</div>
+        <InputText placeholder="mail@example.com"/>
+      </div>
+
     <h2>Custom</h2>
   </div>
 </template>
@@ -18,12 +23,13 @@
 <script>
 // Components
 import Checkbox from '@/components/common/Checkbox';
+import InputText from '@/components/common/InputText';
 
 export default {
   name: 'Stylekit',
   components: {
     Checkbox,
-    Icon,
+    InputText,
   },
 };
 </script>
