@@ -27,6 +27,11 @@
           <Button :onClick="buttonClick" type="button" styling="secondary"/>
       </div>
 
+      <div class="component">
+        <div class="component-name">Input Text</div>
+        <InputText placeholder="mail@example.com"/>
+      </div>
+
     <h2>Custom</h2>
   </div>
 </template>
@@ -34,6 +39,7 @@
 <script>
 // Components
 import Checkbox from '@/components/common/Checkbox';
+import InputText from '@/components/common/InputText';
 import RadioButton from '@/components/common/RadioButton';
 import Button from '@/components/common/Button';
 
@@ -41,6 +47,7 @@ export default {
   name: 'Stylekit',
   components: {
     Checkbox,
+    InputText,
     RadioButton,
     Button,
   },
