@@ -1,8 +1,8 @@
 <template>
-  <div class="form-control">
-    <Icon :width="16" :height="16" :name="`mail-${focused ? 'default' : 'active'}`"/>
+  <div :class="['form-control', { active: focused }]">
+    <Icon :width="16" :height="16" :name="`mail-${focused ? 'active' : 'default'}`"/>
     <input v-model="inputValue" type="text" :placeholder="placeholder" @focus="toggleFocus" @blur="toggleFocus">
-    <Icon :width="16" :height="16" :name="`arrow-${focused ? 'default' : 'active'}`"/>
+    <Icon :width="16" :height="16" :name="`arrow-${focused ? 'active' : 'default'}`"/>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   name: 'InputText',
   data: () => ({
     inputValue: null,
-    focused: true
+    focused: false
   }),
   methods: {
     toggleFocus() {
@@ -45,6 +45,11 @@ export default {
   margin: auto;
   padding: 0px 0 0px 16px;
   box-sizing: border-box;
+  transition: 200ms;
+
+  &.active {
+    box-shadow: 0 4px 14px 0 rgba(156,155,161,0.46);
+  }
 
   input[type='text'] {
     border: 0;
