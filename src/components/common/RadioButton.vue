@@ -1,7 +1,7 @@
 <template>
-  <div class="checkbox-container">
-    <input :id="id" type="checkbox">
-    <label class="checkbox" :for="id"></label>
+  <div class="radio-button-container">
+    <input :id="id" type="radio" :name="name">
+    <label class="radio-button" :for="id"></label>
     <label v-show="labelText" :for="id" class="label">{{ labelText }}</label>
   </div>
 </template>
@@ -16,6 +16,10 @@ export default {
     id: {
       type: Number,
       required: true,
+    },
+    name: {
+      type: String,
+      required: true,
     }
   },
 };
@@ -24,26 +28,26 @@ export default {
 <style lang="scss" scoped>
 @import '~$styles/app';
 
-.checkbox-container {
+.radio-button-container {
   display: inline-flex;
 
-  input[type="checkbox"] {
+  input[type="radio"] {
     display: none;
 
     &:checked + label {
-      background-image: url('/static/images/icons/check.svg');
+      background-image: url('/static/images/icons/oval.svg');
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: center;
     }
   }
 
-  .checkbox {
+  .radio-button {
     width: 20px;
     height: 20px;
     display: inline-block;
     border: 1px solid $template-color-black-lighter;
-    border-radius: $template-border-radius;
+    border-radius: 100%;
   }
 
   .label {
@@ -51,4 +55,5 @@ export default {
     margin: 0 0 0 8px;
   }
 }
+
 </style>
