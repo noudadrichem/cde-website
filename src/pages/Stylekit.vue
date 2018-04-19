@@ -21,6 +21,12 @@
         </form>
       </div>
 
+      <!-- Radio button -->
+      <div class="component">
+        <div class="component-name">Button</div>
+          <Button :onClick="buttonClick" type="button" styling="secondary"/>
+      </div>
+
     <h2>Custom</h2>
   </div>
 </template>
@@ -29,12 +35,19 @@
 // Components
 import Checkbox from '@/components/common/Checkbox';
 import RadioButton from '@/components/common/RadioButton';
+import Button from '@/components/common/Button';
 
 export default {
   name: 'Stylekit',
   components: {
     Checkbox,
     RadioButton,
+    Button,
+  },
+  methods: {
+    buttonClick() {
+      console.log('Button clicked');
+    },
   },
 };
 </script>
@@ -49,6 +62,15 @@ export default {
 
   h1 {
     margin: 16px 0;
+    font-size: 26px;
+    color: $template-color-blue-default;
+    font-family: 'Bitter', sans-serif;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-family: 'Bitter', sans-serif;
+    color: $template-color-orange-default;
   }
 
   .component {
