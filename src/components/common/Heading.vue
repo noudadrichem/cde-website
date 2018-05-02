@@ -25,9 +25,11 @@ export default {
 h1 {
   font-family: $template-font-family-h1;
   font-weight: $template-font-weight-h1;
-  line-height: $template-line-height;
+  line-height: $template-line-height-h1;
   font-size: $template-font-size-h1;
   color: $template-font-color-h1;
+
+  padding: 0 0 6px 0;
 
   @include breakpoint(m) {
     font-size: $template-font-size-h1-m;
@@ -41,8 +43,11 @@ h1 {
 h2 {
   font-family: $template-font-family-h2;
   font-weight: $template-font-weight-h2;
-  line-height: $template-line-height;
+  line-height: $template-line-height-h2;
   font-size: $template-font-size-h2;
+  color: $template-color-black-lighter;
+
+  padding: 0 0 16px 0;
 
   @include breakpoint(m) {
     font-size: $template-font-size-h2-m;
@@ -54,10 +59,13 @@ h2 {
 }
 
 h3 {
-  font-family: $template-font-family-h3;
+  font-family: $template-font-family;
   font-weight: $template-font-weight-h3;
-  line-height: $template-line-height;
+  line-height: $template-line-height-h3;
   font-size: $template-font-size-h3;
+  text-transform: uppercase;
+  color: rgba($template-color-black-lighter, 0.8);
+  letter-spacing: $template-font-letter-spacing-h3;
 
   @include breakpoint(m) {
     font-size: $template-font-size-h3-m;

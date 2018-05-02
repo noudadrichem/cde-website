@@ -44,26 +44,30 @@ $template-font-weight: normal;
 $template-font-color: $template-color-black-default;
 
 // Headings
-$template-font-size-h1: 32px;
-$template-font-size-h1-m: 24px;
-$template-font-size-h1-s: 24px;
+$template-font-size-h1: 28px;
+$template-font-size-h1-m: 28px;
+$template-font-size-h1-s: 28px;
+$template-line-height-h1: 33px;
 $template-font-family-h1: 'Bitter', sans-serif;
-$template-font-weight-h1: bolder;
+$template-font-weight-h1: normal;
 $template-font-color-h1: $template-color-blue-default;
 
-$template-font-size-h2: 24px;
+$template-font-size-h2: 20px;
 $template-font-size-h2-m: 20px;
-$template-font-size-h2-s: 16px;
-$template-font-family-h2: 'Bitter', sans-serif;
+$template-font-size-h2-s: 20px;
+$template-line-height-h2: 27px;
+$template-font-family-h2: 'Open Sans', sans-serif;
 $template-font-weight-h2: bolder;
 $template-font-color-h2: $template-color-blue-default;
 
-$template-font-size-h3: 20px;
-$template-font-size-h3-m: 16px;
-$template-font-size-h3-s: 14px;
-$template-font-family-h3: 'Bitter', sans-serif;
+$template-font-size-h3: 15px;
+$template-font-size-h3-m: 15px;
+$template-font-size-h3-s: 15px;
+$template-font-family-h3: 'Open Sans', sans-serif;
+$template-line-height-h3: 33px;
 $template-font-weight-h3: bolder;
 $template-font-color-h3: $template-color-blue-default;
+$template-font-letter-spacing-h3: 1px;
 
 // Config variables
 $breakpoints: 'xl','l','m','s','xs';

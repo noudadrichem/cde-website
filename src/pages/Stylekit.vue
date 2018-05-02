@@ -1,9 +1,9 @@
 <template>
   <div class="stylekit">
 
-    <h1>Stylekit page</h1>
+    <h1 class="stylekit-heading-1">Stylekit page</h1>
 
-    <h2>Common</h2>
+    <h2 class="stylekit-heading-2">Common</h2>
 
       <!-- Checkbox -->
       <div class="component">
@@ -34,14 +34,14 @@
 
       <div class="component">
         <div class="component-name">Icon</div>
-        <Icon :width="8" :height="8" name="delete"/>
+        <Icon :width="32" :height="32" name="info"/>
       </div>
 
       <div class="component">
         <div class="component-name">Heading</div>
-        <Heading tag="h1" text="moet je heading 1?"/>
-        <Heading tag="h2" text="moet je heading 2?"/>
-        <Heading tag="h3" text="moet je heading 3?"/>
+        <Heading tag="h1" text="Moet je heading 1?"/>
+        <Heading tag="h2" text="Moet je heading 2?"/>
+        <Heading tag="h3" text="Moet je heading 3?"/>
       </div>
 
       <div class="component">
@@ -49,7 +49,7 @@
         <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
       </div>
 
-    <h2>Custom</h2>
+    <h2 class="stylekit-heading-2">Custom</h2>
   </div>
 </template>
 
@@ -91,14 +91,14 @@ export default {
   width: 100%;
   text-align: center;
 
-  h1 {
+  h1.stylekit-heading-1 {
     margin: 16px 0;
     font-size: 26px;
     color: $template-color-blue-default;
     font-family: 'Bitter', sans-serif;
   }
 
-  h2 {
+  h2.stylekit-heading-2 {
     font-size: 24px;
     font-family: 'Bitter', sans-serif;
     color: $template-color-orange-default;
