@@ -135,7 +135,7 @@ export default {
       },
       {
         id: 2,
-        name: 'Alcohol',
+        name: 'Sterke drank',
         categoryItems: [
           'Bier',
           'Wijn',
@@ -146,7 +146,7 @@ export default {
       },
       {
         id: 3,
-        name: 'Frisdranken',
+        name: 'Frisdrank',
         categoryItems: [
           'Cola',
           'Fanta',
@@ -161,7 +161,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~$styles/app';
 
 .stylekit {
@@ -190,10 +190,10 @@ export default {
       margin: 32px 16px 16px 16px;
     }
 
-<<<<<<< HEAD
     &.dropdown {
       height: 50%;
-=======
+    }
+
     .icon {
       margin: 8px;
     }
@@ -212,7 +212,6 @@ export default {
     &-right {
       display: inline-block;
       width: 64px;
->>>>>>> master
     }
   }
 }

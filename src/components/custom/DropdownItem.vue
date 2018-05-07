@@ -1,13 +1,15 @@
 <template>
   <li :class="['category-item', { active: isActive }]">
     <div class="category-item-title" @click="isActive = !isActive">
-      <Icon name="chevron" :width="16" :height="16" />
+      <Icon :name="item.name.replace(/\s+/g,'-').toLowerCase()" :width="16" :height="16" :active="true"/>
       {{item.name}}
-      <Icon name="chevron" :width="16" :height="16" />
+      <Icon name="chevron" :width="16" :height="16" :active="true"/>
     </div>
     <transition name="fade">
       <ul v-if="isActive" class="category-item-list">
-        <li v-for="(item, index) in item.categoryItems" :key="index"><Checkbox :labelText="item" :id="item"/></li>
+        <li v-for="(item, index) in item.categoryItems" :key="index">
+          <Checkbox :labelText="item" :id="item.toLowerCase()"/>
+        </li>
       </ul>
     </transition>
   </li>
@@ -48,7 +50,7 @@ li.category-item {
       opacity: 1;
 
       .icon:last-child {
-        transform: rotate(180deg);
+        transform: rotate(90deg);
       }
     }
 
@@ -74,6 +76,7 @@ li.category-item {
 
     .icon:last-child {
       margin-left: auto;
+      transform: rotate(-90deg);
     }
   }
 
