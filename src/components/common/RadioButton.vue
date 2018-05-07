@@ -11,15 +11,15 @@ export default {
   props: {
     labelText: {
       type: String,
-      required: false,
+      required: false
     },
     id: {
       type: String,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
+      required: true
     }
   },
 };
@@ -35,7 +35,7 @@ export default {
     display: none;
 
     &:checked + label {
-      background-image: url('/static/images/icons/oval.svg');
+      background-image: url('/static/images/icons/oval-default.svg');
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: center;

@@ -31,7 +31,7 @@ export default {
     display: none;
 
     &:checked + label {
-      background-image: url('/static/images/icons/check.svg');
+      background-image: url('/static/images/icons/check-default.svg');
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: center;

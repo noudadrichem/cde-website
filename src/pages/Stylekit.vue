@@ -27,16 +27,19 @@
           <Button :onClick="buttonClick" type="button" styling="primary"/>
       </div>
 
+      <!-- Input text -->
       <div class="component">
         <div class="component-name">Input Text</div>
         <InputText placeholder="mail@example.com"/>
       </div>
 
+      <!-- Icon -->
       <div class="component">
         <div class="component-name">Icon</div>
         <!-- <Icon :width="32" :height="32" name="info"/> -->
       </div>
 
+      <!-- Heading -->
       <div class="component">
         <div class="component-name">Heading</div>
         <Heading tag="h1" text="Moet je heading 1?"/>
@@ -44,9 +47,10 @@
         <Heading tag="h3" text="Moet je heading 3?"/>
       </div>
 
+      <!-- Body text -->
       <div class="component">
-        <div class="component-name">BodyText</div>
-        <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <div class="component-name">Body text</div>
+        <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."/>
       </div>
 
       <div class="component">
@@ -79,19 +83,26 @@
       </div>
 
     <h2 class="stylekit-heading-2">Custom</h2>
+
+    <!-- Dropdown -->
+    <div class="component dropdown">
+      <div class="component-name">Dropdown</div>
+      <Dropdown :data="categories"/>
+    </div>
   </div>
 </template>
 
 <script>
 // Components
-import Checkbox from '@/components/common/Checkbox';
-import InputText from '@/components/common/InputText';
-import RadioButton from '@/components/common/RadioButton';
-import Button from '@/components/common/Button';
-import Logo from '@/components/Logo';
-import Icon from '@/components/common/Icon';
-import Heading from '@/components/common/Heading';
-import BodyText from '@/components/common/BodyText';
+import Checkbox from '@/components/common/Checkbox'
+import InputText from '@/components/common/InputText'
+import RadioButton from '@/components/common/RadioButton'
+import Button from '@/components/common/Button'
+import Icon from '@/components/common/Icon'
+import Heading from '@/components/common/Heading'
+import BodyText from '@/components/common/BodyText'
+
+import Dropdown from '@/components/custom/Dropdown'
 
 export default {
   name: 'Stylekit',
@@ -102,17 +113,55 @@ export default {
     Button,
     Icon,
     Heading,
-    BodyText
+    BodyText,
+    Dropdown,
   },
   methods: {
     buttonClick() {
-      console.log('Button clicked');
+      console.log('Button clicked')
     },
   },
-};
+  data: () => ({
+    categories: [
+      {
+        id: 1,
+        name: 'Fruit',
+        categoryItems: [
+          'Aarbei',
+          'Banaan',
+          'Mandarijn',
+          'Dingen'
+        ]
+      },
+      {
+        id: 2,
+        name: 'Sterke drank',
+        categoryItems: [
+          'Bier',
+          'Wijn',
+          'Witte rum',
+          'Rum',
+          'Jenever'
+        ]
+      },
+      {
+        id: 3,
+        name: 'Frisdrank',
+        categoryItems: [
+          'Cola',
+          'Fanta',
+          'Ginger beer',
+          'Sprite',
+          '7UP',
+          'Ice Tea'
+        ],
+      },
+    ],
+  })
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~$styles/app';
 
 .stylekit {
@@ -139,6 +188,10 @@ export default {
     .component-name {
       font-weight: bold;
       margin: 32px 16px 16px 16px;
+    }
+
+    &.dropdown {
+      height: 50%;
     }
 
     .icon {
