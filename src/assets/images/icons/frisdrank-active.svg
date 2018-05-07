@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="16" viewBox="0 0 12 16">
+  <defs>
+    <rect id="frisdrank-active-a" width="16" height="16"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-2)">
+    <mask id="frisdrank-active-b" fill="#fff">
+      <use xlink:href="#frisdrank-active-a"/>
+    </mask>
+    <path stroke="#5499CC" stroke-width="2" d="M5.23606798,1 C4.85729592,1 4.5110328,1.21400238 4.34164079,1.5527864 L3,4.23606798 L3,12.6972244 L4.23831722,14.5547002 C4.423783,14.8328989 4.73601433,15 5.07036752,15 L10.9296325,15 C11.2639857,15 11.576217,14.8328989 11.7616828,14.5547002 L13,12.6972244 L13,4.23606798 L11.6583592,1.5527864 C11.4889672,1.21400238 11.1427041,1 10.763932,1 L5.23606798,1 Z" mask="url(#frisdrank-active-b)"/>
+  </g>
+</svg>

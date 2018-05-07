@@ -8,16 +8,16 @@
       <!-- Checkbox -->
       <div class="component">
         <div class="component-name">Checkbox</div>
-        <Checkbox labelText="Some label text" id="checkbox"/>
+        <!-- <Checkbox labelText="Some label text" id="checkbox"/> -->
       </div>
 
       <!-- Radio button -->
       <div class="component">
         <div class="component-name">Radio button</div>
         <form>
-          <RadioButton name="styleKitForm" labelText="Radio button text 1" id="radio-button-1"/>
-          <RadioButton name="styleKitForm" labelText="Radio button text 2" id="radio-button-2"/>
-          <RadioButton name="styleKitForm" labelText="Radio button text 3" id="radio-button-3"/>
+          <!-- <RadioButton name="styleKitForm" labelText="Radio button text 1" id="radio-button-1"/> -->
+          <!-- <RadioButton name="styleKitForm" labelText="Radio button text 2" id="radio-button-2"/> -->
+          <!-- <RadioButton name="styleKitForm" labelText="Radio button text 3" id="radio-button-3"/> -->
         </form>
       </div>
 
@@ -36,7 +36,7 @@
       <!-- Icon -->
       <div class="component">
         <div class="component-name">Icon</div>
-        <Icon :width="32" :height="32" name="info"/>
+        <!-- <Icon :width="32" :height="32" name="info"/> -->
       </div>
 
       <!-- Heading -->
@@ -51,6 +51,35 @@
       <div class="component">
         <div class="component-name">Body text</div>
         <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."/>
+      </div>
+
+      <div class="component">
+        <div class="component-left">
+          <Icon :width="16" :height="16" name="arrow" :active="false"/>
+          <Icon :width="16" :height="16" name="frisdrank" :active="false"/>
+          <Icon :width="16" :height="16" name="fruit" :active="false"/>
+          <Icon :width="16" :height="16" name="groente" :active="false"/>
+          <Icon :width="16" :height="16" name="mail" :active="false"/>
+          <Icon :width="16" :height="16" name="search" :active="false"/>
+          <Icon :width="16" :height="16" name="sterke-drank" :active="false"/>
+        </div>
+
+        <div class="component-mid">
+          <Icon :width="16" :height="16" name="arrow" :active="true"/>
+          <Icon :width="16" :height="16" name="frisdrank" :active="true"/>
+          <Icon :width="16" :height="16" name="fruit" :active="true"/>
+          <Icon :width="16" :height="16" name="groente" :active="true"/>
+          <Icon :width="16" :height="16" name="mail" :active="true"/>
+          <Icon :width="16" :height="16" name="search" :active="true"/>
+          <Icon :width="16" :height="16" name="sterke-drank" :active="true"/>
+        </div>
+
+        <div class="component-right">
+          <Icon :width="16" :height="16" name="oval"/>
+          <Icon :width="16" :height="16" name="check" />
+          <Icon :width="16" :height="16" name="loading" />
+          <Icon :width="16" :height="16" name="error" />
+        </div>
       </div>
 
     <h2 class="stylekit-heading-2">Custom</h2>
@@ -161,8 +190,29 @@ export default {
       margin: 32px 16px 16px 16px;
     }
 
+<<<<<<< HEAD
     &.dropdown {
       height: 50%;
+=======
+    .icon {
+      margin: 8px;
+    }
+
+    // vies but works ⬇
+    &-left {
+      display: inline-block;
+      width: 64px;
+    }
+
+    &-mid {
+      display: inline-block;
+      width: 64px;
+    }
+
+    &-right {
+      display: inline-block;
+      width: 64px;
+>>>>>>> master
     }
   }
 }

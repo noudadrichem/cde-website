@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="16" viewBox="0 0 14 16">
+  <defs>
+    <rect id="fruit-active-a" width="16" height="16"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-1)">
+    <mask id="fruit-active-b" fill="#fff">
+      <use xlink:href="#fruit-active-a"/>
+    </mask>
+    <path stroke="#5499CC" stroke-width="2" d="M8,15 C11.3137085,15 14,12.3137085 14,9 C14,7.34314575 13.3284271,5.84314575 12.2426407,4.75735931 C11.1568542,3.67157288 9.65685425,5 8,5 C6.34314575,5 4.84314575,3.67157288 3.75735931,4.75735931 C2.67157288,5.84314575 2,7.34314575 2,9 C2,12.3137085 4.6862915,15 8,15 Z" mask="url(#fruit-active-b)"/>
+    <ellipse cx="8.866" cy="1.832" fill="#5499CC" mask="url(#fruit-active-b)" rx="1" ry="2" transform="rotate(30 8.866 1.832)"/>
+  </g>
+</svg>
