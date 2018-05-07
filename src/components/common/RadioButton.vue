@@ -14,7 +14,7 @@ export default {
       required: false,
     },
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
     name: {
