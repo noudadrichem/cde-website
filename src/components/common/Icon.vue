@@ -13,20 +13,24 @@ export default {
   props: {
     width: {
       type: Number,
-      required: false,
+      required: false
     },
     height: {
       type: Number,
-      required: false,
+      required: false
     },
     name: {
       type: String,
-      required: true,
+      required: true
+    },
+    active: {
+      type: Boolean,
+      required: false
     }
   },
   methods: {
     iconsUrl(iconName) {
-      return require(`@/assets/images/icons/${iconName}.svg`);
+      return require(`@/assets/images/icons/${iconName}-${this.active ? 'active' : 'default'}.svg`);
     },
   },
 }
@@ -40,7 +44,7 @@ export default {
 
   img {
     max-width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     background: inherit;
   }
 }
