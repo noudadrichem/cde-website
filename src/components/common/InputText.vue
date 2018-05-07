@@ -1,8 +1,8 @@
 <template>
   <div :class="['form-control', { active: focused }]">
-    <Icon :width="16" :height="16" :name="`mail-${focused ? 'active' : 'default'}`"/>
+    <!-- <Icon :width="16" :height="16" :name="`mail-${focused ? 'active' : 'default'}`"/> -->
     <input v-model="inputValue" type="text" :placeholder="placeholder" @focus="toggleFocus" @blur="toggleFocus">
-    <Icon :width="16" :height="16" :name="`arrow-${focused ? 'active' : 'default'}`"/>
+    <!-- <Icon :width="16" :height="16" :name="`arrow-${focused ? 'active' : 'default'}`"/> -->
   </div>
 </template>
 

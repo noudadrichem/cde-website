@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <rect id="sterke-drank-active-a" width="16" height="16"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="sterke-drank-active-b" fill="#fff">
+      <use xlink:href="#sterke-drank-active-a"/>
+    </mask>
+    <path stroke="#5499CC" stroke-width="2" d="M2.70791854,1 C2.60823378,1 2.50910929,1.01490512 2.41383269,1.04422099 C1.88597052,1.20664012 1.5897204,1.76622368 1.75213953,2.29408585 L3.77943561,8.88279812 C4.34954277,10.7356464 6.06142608,12 8,12 C9.93857392,12 11.6504572,10.7356464 12.2205644,8.88279812 L14.2478605,2.29408585 C14.2771763,2.19880925 14.2920815,2.09968476 14.2920815,2 C14.2920815,1.44771525 13.8443662,1 13.2920815,1 L2.70791854,1 Z" mask="url(#sterke-drank-active-b)"/>
+    <rect width="2" height="4" x="7" y="11" fill="#5499CC" mask="url(#sterke-drank-active-b)"/>
+    <rect width="8" height="2" x="4" y="14" fill="#5499CC" mask="url(#sterke-drank-active-b)" rx="1"/>
+  </g>
+</svg>
