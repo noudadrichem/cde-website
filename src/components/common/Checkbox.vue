@@ -26,6 +26,7 @@ export default {
 
 .checkbox-container {
   display: inline-flex;
+  cursor: pointer;
 
   input[type="checkbox"] {
     display: none;
@@ -44,11 +45,13 @@ export default {
     display: inline-block;
     border: 1px solid $template-color-black-lighter;
     border-radius: $template-border-radius;
+    cursor: pointer;
   }
 
   .label {
     display: inline-block;
     margin: 0 0 0 8px;
+    cursor: pointer;
   }
 }
 </style>
