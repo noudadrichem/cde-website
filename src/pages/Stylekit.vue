@@ -120,12 +120,8 @@ export default {
     Icon,
     Heading,
     BodyText,
-<<<<<<< HEAD
-    Dropdown
-=======
     Dropdown,
     RadioList
->>>>>>> remotes/origin/component/RadioList
   },
   methods: {
     buttonClick() {
@@ -212,18 +208,6 @@ export default {
       {
         id: 3,
         name: 'Frisdrank',
-<<<<<<< HEAD
-        categoryItems: [
-          'Cola',
-          'Fanta',
-          'Ginger beer',
-          'Sprite',
-          '7UP',
-          'Ice Tea'
-        ]
-      }
-    ]
-=======
         items: [
           {
             name: 'Cola',
@@ -264,7 +248,6 @@ export default {
         ],
       },
     ],
->>>>>>> remotes/origin/component/RadioList
   })
 }
 </script>
