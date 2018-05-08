@@ -88,7 +88,6 @@ import Checkbox from '@/components/common/Checkbox';
 import InputText from '@/components/common/InputText';
 import RadioButton from '@/components/common/RadioButton';
 import Button from '@/components/common/Button';
-import Logo from '@/components/Logo';
 import Icon from '@/components/common/Icon';
 import Heading from '@/components/common/Heading';
 import BodyText from '@/components/common/BodyText';

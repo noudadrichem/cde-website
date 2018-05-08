@@ -1,13 +1,19 @@
 <template>
   <div class="home">
-    <Logo/>
-    <Heading tag="h1" :text="msg"/>
+    <Heading/>
+    <Video/>
+    <InfoSection/>
+    <Drieluik/>
+    <Footing/>
   </div>
 </template>
 
 <script>
-import Logo from '@/components/Logo';
-import Heading from '@/components/common/Heading';
+import Heading from '@/components/custom/Heading';
+import Video from '@/components/custom/Video';
+import InfoSection from '@/components/custom/InfoSection';
+import Drieluik from '@/components/custom/Drieluik';
+import Footing from '@/components/custom/Footing';
 
 export default {
   name: 'Home',
@@ -15,8 +21,11 @@ export default {
     msg: 'Crazy Dutch Experience!',
   }),
   components: {
-    Logo,
-    Heading
+    Heading,
+    Video,
+    InfoSection,
+    Drieluik,
+    Footing
   }
 };
 </script>
@@ -24,9 +33,4 @@ export default {
 <style lang="scss">
 @import '~$styles/app';
 
-.home {
-  min-height: 100vh;
-  width: 100%;
-  text-align: center;
-}
 </style>

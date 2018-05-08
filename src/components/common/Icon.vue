@@ -1,5 +1,5 @@
 <template>
-<div :class="`icon ${name}`" :style="{
+<div :class="['icon', name, className]" :style="{
     width: `${width}px`,
     height: `${height}px`,
     }">
@@ -25,6 +25,10 @@ export default {
     },
     active: {
       type: Boolean,
+      required: false
+    },
+    className: {
+      type: String,
       required: false
     }
   },

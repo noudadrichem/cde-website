@@ -1,5 +1,5 @@
 <template>
-  <span :is="tag">{{ text }}</span>
+  <span :class="className" :is="tag">{{ text }}</span>
 </template>
 
 <script>
@@ -13,6 +13,10 @@ export default {
     text: {
       type: String,
       required: true,
+    },
+    className: {
+      type: String,
+      required: false
     }
   }
 }
@@ -28,8 +32,7 @@ h1 {
   line-height: $template-line-height-h1;
   font-size: $template-font-size-h1;
   color: $template-font-color-h1;
-
-  padding: 0 0 6px 0;
+  margin-bottom: 8px;
 
   @include breakpoint(m) {
     font-size: $template-font-size-h1-m;
@@ -46,8 +49,7 @@ h2 {
   line-height: $template-line-height-h2;
   font-size: $template-font-size-h2;
   color: $template-color-black-lighter;
-
-  padding: 0 0 16px 0;
+  margin-bottom: 16px;
 
   @include breakpoint(m) {
     font-size: $template-font-size-h2-m;
