@@ -114,12 +114,12 @@ export default {
     Icon,
     Heading,
     BodyText,
-    Dropdown,
+    Dropdown
   },
   methods: {
     buttonClick() {
       console.log('Button clicked')
-    },
+    }
   },
   data: () => ({
     categories: [
@@ -154,9 +154,9 @@ export default {
           'Sprite',
           '7UP',
           'Ice Tea'
-        ],
-      },
-    ],
+        ]
+      }
+    ]
   })
 }
 </script>

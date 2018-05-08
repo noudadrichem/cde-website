@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Checkbox from '@/components/common/Checkbox';
-import Icon from '@/components/common/Icon';
+import Checkbox from '@/components/common/Checkbox'
+import Icon from '@/components/common/Icon'
 
 export default {
   name: 'DropdownItem',

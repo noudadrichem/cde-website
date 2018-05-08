@@ -11,14 +11,14 @@ export default {
   props: {
     labelText: {
       type: String,
-      required: false,
+      required: false
     },
     id: {
       type: String,
-      required: true,
+      required: true
     }
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>

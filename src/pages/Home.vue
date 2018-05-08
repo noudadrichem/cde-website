@@ -6,19 +6,19 @@
 </template>
 
 <script>
-import Logo from '@/components/Logo';
-import Heading from '@/components/common/Heading';
+import Logo from '@/components/Logo'
+import Heading from '@/components/common/Heading'
 
 export default {
   name: 'Home',
   data: () => ({
-    msg: 'Crazy Dutch Experience!',
+    msg: 'Crazy Dutch Experience!'
   }),
   components: {
     Logo,
     Heading
   }
-};
+}
 </script>
 
 <style lang="scss">

@@ -11,22 +11,22 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      required: false,
+      required: false
     },
     type: {
       type: String,
-      required: true,
+      required: true
     },
     styling: {
       type: String,
-      required: true,
+      required: true
     },
     onClick: {
       type: Function,
-      required: false,
+      required: false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

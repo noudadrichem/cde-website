@@ -1,14 +1,14 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
 // Pages
-import Home from '@/pages/Home';
-import Grid from '@/pages/Grid';
-import Stylekit from '@/pages/Stylekit';
+import Home from '@/pages/Home'
+import Grid from '@/pages/Grid'
+import Stylekit from '@/pages/Stylekit'
 
 // Components
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',
@@ -16,17 +16,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: Home
     },
     {
       path: '/grid',
       name: 'grid',
-      component: Grid,
+      component: Grid
     },
     {
       path: '/stylekit',
       name: 'stylekit',
-      component: Stylekit,
-    },
-  ],
-});
+      component: Stylekit
+    }
+  ]
+})

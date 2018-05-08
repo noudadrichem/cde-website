@@ -30,9 +30,9 @@ export default {
   },
   methods: {
     iconsUrl(iconName) {
-      return require(`@/assets/images/icons/${iconName}-${this.active ? 'active' : 'default'}.svg`);
-    },
-  },
+      return require(`@/assets/images/icons/${iconName}-${this.active ? 'active' : 'default'}.svg`)
+    }
+  }
 }
 </script>
 

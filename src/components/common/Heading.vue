@@ -8,11 +8,11 @@ export default {
   props: {
     tag: {
       type: String,
-      required: true,
+      required: true
     },
     text: {
       type: String,
-      required: true,
+      required: true
     }
   }
 }
@@ -75,7 +75,4 @@ h3 {
     font-size: $template-font-size-h3-s;
   }
 }
-
-
-
 </style>

@@ -14,7 +14,8 @@ module.exports = {
   extends: ['plugin:vue/essential', 'airbnb-base'],
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'vue',
+    'html'
   ],
   // check if imports actually resolve
   settings: {
@@ -50,6 +51,7 @@ module.exports = {
     "semi": [2, "never"],
     "brace-style": [2, "1tbs", { "allowSingleLine": true }],
     "camelcase": 2,
+    "comma-dangle": ["error", "never"],
     "comma-style": [2, "last"],
     "curly": 2,
     "eqeqeq": 2,
