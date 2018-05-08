@@ -7,9 +7,9 @@
 
       <div class="nav-bar">
         <ul>
-          <li><a>Campagne</a></li>
-          <li><a>Producten</a></li>
-          <li><a>Contact</a></li>
+          <li v-for="(item, idx) in navbarItems" :key="idx">
+            <a :href="item.link">{{ item.text }}</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -18,15 +18,20 @@
     <div class="content-container">
       <div class="row align-center">
         <div class="col-5">
-          <Heading tag="h1" text="Crazy Dutch Dry Gin" className="heading-title"/>
-          <Heading tag="h2" text="De cocktail campagne" className="heading-sub-title"/>
-          <BodyText text="Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."/>
-          <Button type="button" styling="primary" text="Maak je eigen cocktail!" className="heading-cta-button"/>
-          <span class="tagline">Kom meer te weten over ons <Icon :height="16" :width="16" className="inline down" name="arrow" :active="true"/></span>
+
+          <Heading tag="h1" :text="title" className="heading-title"/>
+          <Heading tag="h2" :text="subTitle" className="heading-sub-title"/>
+          <BodyText :text="bodyText"/>
+
+          <Button type="button" styling="primary" :text="buttonText" className="heading-cta-button"/>
+
+          <span class="tagline">{{ infoText }} <Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
         </div>
 
-        <div class="col-5 align-right">
-          <img src="https://via.placeholder.com/420x320" alt="heading-image"/>
+        <div class="col-5 heading-image">
+          <div>
+            <img :src="require(`@/assets/images/${imageUrl}`)" alt="glas crazy dutch experience"/>
+          </div>
         </div>
       </div>
     </div>
@@ -40,6 +45,24 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 
 export default {
+  data: () => ({
+    title: 'Crazy Dutch Dry Gin',
+    subTitle: 'De cocktail campagne',
+    buttonText: 'Maak je eigen cocktail!',
+    bodyText: 'Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.',
+    infoText: 'Kom meer te weten over ons',
+    imageUrl: 'glas-logo.png',
+    navbarItems: [{
+      text: 'Campagne',
+      link: '#campagne'
+    }, {
+      text: 'Producten',
+      link: '#producten'
+    }, {
+      text: 'Contact',
+      link: '#contact'
+    }]
+  }),
   components: {
     Heading,
     BodyText,
@@ -84,6 +107,7 @@ export default {
         }
 
         a {
+          text-decoration: none;
           color: inherit;
           font-weight: 700;
           transition: 220ms ease-in-out;
@@ -122,6 +146,34 @@ export default {
         transform: rotate(90deg);
         margin-left: 8px;
     }
+  }
+
+  .heading-image {
+    img {
+      width: 50%;
+      float: right;
+      object-fit: contain
+    }
+  }
+}
+
+.animateArrow {
+  animation-duration: 2300ms;
+  animation-name: moveArrow;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes moveArrow {
+  0% {
+    transform: translateY(-4px) rotate(90deg);
+  }
+
+  50% {
+    transform: translateY(4px) rotate(90deg);
+  }
+
+  100% {
+    transform: translateY(-4px) rotate(90deg);
   }
 }
 </style>
