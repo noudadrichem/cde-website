@@ -7,8 +7,8 @@
     </div>
     <transition name="fade">
       <ul v-if="isActive" class="category-item-list">
-        <li v-for="(item, index) in item.categoryItems" :key="index">
-          <Checkbox :labelText="item" :id="item.toLowerCase()"/>
+        <li v-for="(item, index) in item.items" :key="index">
+          <Checkbox :labelText="item.name" :id="item.name.toLowerCase()"/>
         </li>
       </ul>
     </transition>
