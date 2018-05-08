@@ -3,14 +3,15 @@
     <div class="container-m">
       <div class="row top">
         <div class="col-4">
-          <Heading tag="h3" text="Volg ons!" className="footer-heading"/>
+          <Heading tag="h3" :text="volgOns.title" className="footer-heading"/>
 
-          <BodyText text="Blijf op de hoogte van de laatste nieuwsberichten en nieuwe producten." className="footer-body"/>
+          <BodyText :text="volgOns.text" className="footer-body"/>
 
           <div class="icons">
             <ul>
-              <li><img src="https://via.placeholder.com/32x32"/></li>
-              <li><img src="https://via.placeholder.com/32x32"/></li>
+              <li v-for="(value, key) in volgOns.socialIcons">
+                <a :href="value"><img :src="iconsUrl(key)"/></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -19,22 +20,11 @@
       <div class="ruler"></div>
 
       <div class="row bottom">
-        <div class="col-3">
-          <Heading tag="h3" text="Campagne" className="footer-heading"/>
+        <div class="col-3" v-for="(menu, key) in footerNavigations">
+          <Heading tag="h3" :text="key" className="footer-heading"/>
 
-          <ul class="footer-nav">
-            <li>Maak je eigen cocktail</li>
-            <li>Bekijk de top 10</li>
-            <li>Zie de gehele ranglijst</li>
-          </ul>
-        </div>
-
-        <div class="col-3">
-          <Heading tag="h3" text="Contact" className="footer-heading"/>
-
-          <ul class="footer-nav">
-            <li>info@crazydutchexperience.nl</li>
-            <li>+31 6 293 297 12</li>
+          <ul class="footer-nav" v-for="item in menu">
+            <li><a :href="item.link">{{ item.title }}</a></li>
           </ul>
         </div>
 
@@ -51,6 +41,40 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 export default {
+  data: () => ({
+    volgOns: {
+      title: 'Volg ons!',
+      text: 'Blijf op de hoogte van de laatste nieuwsberichten en nieuwe producten.',
+      socialIcons: {
+        facebook: '#facebook',
+        instagram: '#instagram'
+      }
+    },
+    footerNavigations: {
+      campagne: [{
+        title: 'Maak je eigen cocktail',
+        link: '#Maak+je+eigen+cocktail'
+      }, {
+        title: 'Bekijk de top 10',
+        link: '#Bekijk+de+top+10'
+      },{
+        title: 'Zie de gehele ranglijst',
+        link: '#Zie+de+gehele+ranglijst'
+      }],
+      contact: [{
+        title: 'info@crazydutchexperience.nl',
+        link: 'mailto:info@crazydutchexperience.nl'
+      }, {
+        title: '+31 6 293 297 12',
+        link: '#'
+      }]
+    }
+  }),
+  methods: {
+    iconsUrl(iconName) {
+      return require(`@/assets/images/icons/${iconName}.svg`);
+    },
+  },
   components: {
     Heading,
     BodyText
@@ -110,6 +134,10 @@ footer {
       display: inline-block;
       margin-bottom: 16px;
       border-bottom: 1px solid #363542;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 }
