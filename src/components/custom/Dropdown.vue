@@ -7,18 +7,17 @@
 </template>
 
 <script>
-import Checkbox from '@/components/custom/DropdownItem'
 import DropdownItem from '@/components/custom/DropdownItem'
 
 export default {
   name: 'Dropdown',
   components: {
-    DropdownItem,
+    DropdownItem
   },
   props: {
     data: {
       type: Array,
-      required: false,
+      required: false
     }
   }
 }

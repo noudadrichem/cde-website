@@ -94,8 +94,8 @@
 
 <script>
 export default {
-  name: 'Grid',
-};
+  name: 'Grid'
+}
 </script>
 
 <style lang="scss">
