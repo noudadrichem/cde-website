@@ -89,6 +89,12 @@
       <div class="component-name">Dropdown</div>
       <Dropdown :data="categories"/>
     </div>
+
+    <!-- Dropdown -->
+    <div class="component">
+      <div class="component-name">Recipe</div>
+      <Recipe/>
+    </div>
   </div>
 </template>
 
@@ -103,6 +109,7 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 import Dropdown from '@/components/custom/Dropdown'
+import Recipe from '@/components/custom/Recipe'
 
 export default {
   name: 'Stylekit',
@@ -114,7 +121,8 @@ export default {
     Icon,
     Heading,
     BodyText,
-    Dropdown
+    Dropdown,
+    Recipe
   },
   methods: {
     buttonClick() {
