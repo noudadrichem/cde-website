@@ -24,7 +24,7 @@
       <!-- Radio button -->
       <div class="component">
         <div class="component-name">Button</div>
-          <Button :onClick="buttonClick" type="button" styling="primary"/>
+          <Button :onClick="buttonClick" type="button" styling="primary" text="Button text"/>
       </div>
 
       <!-- Input text -->
