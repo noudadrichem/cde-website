@@ -43,7 +43,7 @@ export default {
     width: 20px;
     height: 20px;
     display: inline-block;
-    border: 1px solid $template-color-black-lighter;
+    border: 1px solid rgba($template-color-black-lighter, 0.3);
     border-radius: $template-border-radius;
     cursor: pointer;
   }
