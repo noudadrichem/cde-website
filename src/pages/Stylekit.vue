@@ -24,7 +24,7 @@
       <!-- Radio button -->
       <div class="component">
         <div class="component-name">Button</div>
-          <Button :onClick="buttonClick" type="button" styling="primary"/>
+          <Button :onClick="buttonClick" type="button" styling="primary" text="Button text"/>
       </div>
 
       <!-- Input text -->
@@ -85,12 +85,18 @@
     <h2 class="stylekit-heading-2">Custom</h2>
 
     <!-- Dropdown -->
-    <div class="component dropdown">
+    <div class="component">
       <div class="component-name">Dropdown</div>
       <Dropdown :data="categories"/>
     </div>
 
-    <!-- Dropdown -->
+    <!-- RadioList -->
+    <div class="component">
+      <div class="component-name">RadioList</div>
+      <RadioList :data="categories" />
+    </div>
+
+    <!-- Recipe -->
     <div class="component">
       <div class="component-name">Recipe</div>
       <Recipe counter="35"/>
@@ -109,7 +115,11 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 import Dropdown from '@/components/custom/Dropdown'
+<<<<<<< HEAD
 import Recipe from '@/components/custom/Recipe'
+=======
+import RadioList from '@/components/custom/RadioList'
+>>>>>>> master
 
 export default {
   name: 'Stylekit',
@@ -122,7 +132,11 @@ export default {
     Heading,
     BodyText,
     Dropdown,
+<<<<<<< HEAD
     Recipe
+=======
+    RadioList
+>>>>>>> master
   },
   methods: {
     buttonClick() {
@@ -134,37 +148,121 @@ export default {
       {
         id: 1,
         name: 'Fruit',
-        categoryItems: [
-          'Aarbei',
-          'Banaan',
-          'Mandarijn',
-          'Dingen'
+        items: [
+          {
+            name: 'Aarbei',
+            quantities: [
+              '25gr',
+              '50gr',
+              '100gr',
+              '150gr'
+            ]
+          },
+          {
+            name: 'Banaan',
+            quantities: [
+              'Heel',
+              'Half',
+              '1/4',
+              '1/8'
+            ]
+          },
+          {
+            name: 'Mandarijn',
+            quantities: [
+              'Heel',
+              'Half',
+              '1/4',
+              '1/8'
+            ]
+          },
         ]
       },
       {
         id: 2,
         name: 'Sterke drank',
-        categoryItems: [
-          'Bier',
-          'Wijn',
-          'Witte rum',
-          'Rum',
-          'Jenever'
+        items: [
+          {
+            name: 'Bier',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Wijn',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Rum',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Baleys',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
         ]
       },
       {
         id: 3,
         name: 'Frisdrank',
-        categoryItems: [
-          'Cola',
-          'Fanta',
-          'Ginger beer',
-          'Sprite',
-          '7UP',
-          'Ice Tea'
-        ]
-      }
-    ]
+        items: [
+          {
+            name: 'Cola',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Fanta',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Ginger ale',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Cherry Cola',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+        ],
+      },
+    ],
   })
 }
 </script>
@@ -196,10 +294,6 @@ export default {
     .component-name {
       font-weight: bold;
       margin: 32px 16px 16px 16px;
-    }
-
-    &.dropdown {
-      height: 50%;
     }
 
     .icon {

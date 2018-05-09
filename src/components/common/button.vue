@@ -1,7 +1,7 @@
 <template >
   <div class="button">
       <button :disabled="disabled" :type="type" :class="styling" @click="onClick" name="button">
-        Button
+        {{ text }}
       </button>
   </div>
 </template>
@@ -9,6 +9,10 @@
 <script>
 export default {
   props: {
+    text: {
+      type: String,
+      required: true
+    },
     disabled: {
       type: Boolean,
       required: false

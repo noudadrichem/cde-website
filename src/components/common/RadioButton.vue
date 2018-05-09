@@ -34,11 +34,15 @@ export default {
   input[type="radio"] {
     display: none;
 
-    &:checked + label {
+    &:checked + label{
       background-image: url('/static/images/icons/oval-default.svg');
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: center;
+
+      + .label {
+        color: $template-color-black-light;
+      }
     }
   }
 
@@ -46,14 +50,20 @@ export default {
     width: 20px;
     height: 20px;
     display: inline-block;
-    border: 1px solid $template-color-black-lighter;
+    border: 1px solid rgba($template-color-black-lighter, 0.3);
     border-radius: 100%;
+    background-image: url('/static/images/icons/oval-unselected.svg');
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
   }
 
   .label {
     display: inline-block;
     margin: 0 0 0 8px;
+    color: $template-color-black-lighter;
+    cursor: pointer;
   }
 }
-
 </style>
