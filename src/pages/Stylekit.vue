@@ -115,11 +115,8 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 import Dropdown from '@/components/custom/Dropdown'
-<<<<<<< HEAD
 import Recipe from '@/components/custom/Recipe'
-=======
 import RadioList from '@/components/custom/RadioList'
->>>>>>> master
 
 export default {
   name: 'Stylekit',
@@ -132,11 +129,8 @@ export default {
     Heading,
     BodyText,
     Dropdown,
-<<<<<<< HEAD
-    Recipe
-=======
+    Recipe,
     RadioList
->>>>>>> master
   },
   methods: {
     buttonClick() {
