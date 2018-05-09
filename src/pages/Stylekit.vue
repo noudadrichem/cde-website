@@ -93,7 +93,7 @@
     <!-- Dropdown -->
     <div class="component">
       <div class="component-name">Recipe</div>
-      <Recipe/>
+      <Recipe counter="35"/>
     </div>
   </div>
 </template>
