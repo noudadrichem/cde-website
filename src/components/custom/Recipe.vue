@@ -15,9 +15,12 @@
         </div>
       </div>
       <ul class="ingredients-list">
-        <li>35ml Crazy Dutch Dry Gin</li>
-        <li>50ml Appelsap</li>
+        <li>
+          35ml Crazy Dutch Dry Gin
+          <Icon :width="16" :height="16" name="trash"/>
+        </li>
       </ul>
+      <Button type="button" text="Voeg toe aan ranglijst" styling="primary" disabled="true"/>
     </div>
     <!-- todo: Add updated button component -->
   </div>
@@ -136,8 +139,29 @@ export default {
 
     .ingredients-list {
       width: 100%;
+      min-height: 228px;
       padding-left: 16px;
-      margin-top: 16px;
+      margin: 16px 0;
+
+      li {
+        position: relative;
+        user-select: none;
+
+        &:hover .icon {
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .icon {
+          position: absolute;
+          top: 3px;
+          right: 0;
+          visibility: hidden;
+          opacity: 0;
+          transition: all .05s linear;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
