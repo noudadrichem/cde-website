@@ -1,6 +1,6 @@
 <template >
   <div class="button">
-      <button :disabled="disabled" :type="type" :class="styling" @click="onClick" name="button">
+      <button :disabled="disabled" :type="type" :class="styling" name="button">
         {{ text }}
       </button>
   </div>

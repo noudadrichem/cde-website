@@ -24,7 +24,7 @@
       <!-- Radio button -->
       <div class="component">
         <div class="component-name">Button</div>
-          <Button :onClick="buttonClick" type="button" styling="primary" text="Button text"/>
+          <Button type="button" styling="primary" text="Button text"/>
       </div>
 
       <!-- Input text -->
@@ -82,6 +82,13 @@
         </div>
       </div>
 
+      <!-- Modal -->
+      <div class="component">
+        <div class="component-name">Modal</div>
+        <Modal v-show="showModal" @close="showModal = false"/>
+        <Button @click.native="showModal = true" type="button" styling="secondary" text="Toggle Modal"/>
+      </div>
+
     <h2 class="stylekit-heading-2">Custom</h2>
 
     <!-- Dropdown -->
@@ -106,6 +113,7 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
+import Modal from '@/components/common/Modal'
 
 import Dropdown from '@/components/custom/Dropdown'
 import RadioList from '@/components/custom/RadioList'
@@ -121,7 +129,8 @@ export default {
     Heading,
     BodyText,
     Dropdown,
-    RadioList
+    RadioList,
+    Modal
   },
   methods: {
     buttonClick() {
@@ -129,6 +138,7 @@ export default {
     }
   },
   data: () => ({
+    showModal: false,
     categories: [
       {
         id: 1,
