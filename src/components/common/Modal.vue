@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~$styles/app';
 
 .modal {
@@ -97,9 +97,15 @@ export default {
 
     .ranking-signup {
       margin: 36px 0 0 0;
+      z-index: 1;
 
       .form-control {
         margin-bottom: 24px;
+      }
+
+      .button button{
+        width: 250px;
+        padding: 16px 0;
       }
     }
   }
