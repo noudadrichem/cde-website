@@ -1,34 +1,37 @@
 <template >
-  <header class="container-l">
-    <nav class="nav-container">
-      <div class="logo">
-        <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
-      </div>
+  <header class="container-sm">
 
-      <div class="nav-bar">
-        <ul>
-          <li v-for="(item, idx) in navbarItems" :key="idx">
-            <a :href="item.link">{{ item.text }}</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div class="grid">
+      <nav class="nav-container">
+        <div class="logo">
+          <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
+        </div>
+
+        <div class="nav-bar hide-mobile">
+          <ul>
+            <li v-for="(item, idx) in navbarItems" :key="idx">
+              <a :href="item.link">{{ item.text }}</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
 
 
     <div class="content-container">
-      <div class="row align-center">
+      <div class="grid center">
         <div class="col-5">
 
           <Heading tag="h1" :text="title" className="heading-title"/>
           <Heading tag="h2" :text="subTitle" className="heading-sub-title"/>
           <BodyText :text="bodyText"/>
 
-          <Button type="button" styling="primary" :text="buttonText" className="heading-cta-button"/>
+          <Button type="button" styling="primary" @click="console.log('click cta')" :text="buttonText" className="heading-cta-button"/>
 
           <span class="tagline">{{ infoText }} <Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
         </div>
 
-        <div class="col-5 heading-image">
+        <div class="col-5 heading-image hide-mobile">
           <div>
             <img :src="require(`@/assets/images/${imageUrl}`)" alt="glas crazy dutch experience" class="animateGlass"/>
           </div>
@@ -73,13 +76,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~$styles/app';
+
+.container-sm {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .nav-container {
-  margin-top: 32px;
+  margin: 32px auto 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 80px;
-  padding-right: 80px;
 
   .logo {
     height: 77px;
@@ -123,7 +130,11 @@ export default {
 }
 
 .content-container {
-  margin-top: 104px;
+  margin: 104px auto 0;
+
+  @media screen and (max-width: $bp-mobile-lg) {
+    margin-top: 32px;
+  }
 
   .heading-title {
     margin-bottom: 16px;

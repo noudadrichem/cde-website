@@ -1,7 +1,6 @@
 <template>
-  <footer>
-    <div class="container-m">
-      <div class="row top">
+    <div class="container-sm footer">
+      <div class="grid">
         <div class="col-4">
           <Heading tag="h3" :text="volgOns.title" className="footer-heading"/>
 
@@ -19,7 +18,7 @@
 
       <div class="ruler"></div>
 
-      <div class="row bottom">
+      <div class="grid">
         <div class="col-3" v-for="(menu, key) in footerNavigations">
           <Heading tag="h3" :text="key" className="footer-heading"/>
 
@@ -33,7 +32,6 @@
         </div>
       </div>
     </div>
-  </footer>
 </template>
 
 <script>
@@ -83,8 +81,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-footer {
+@import '~$styles/app';
+
+.footer {
   padding-top: 300px;
+  box-sizing: border-box;
+
+  @media screen and (max-width: $bp-mobile-lg) {
+    padding-top: 64px;
+  }
 
   .footer-heading {
     margin-bottom: 16px;
@@ -104,8 +109,10 @@ footer {
     margin: 32px 0;
   }
 
-  .right {
-    margin-left: auto;
+  @media screen and (max-width: $bp-mobile-lg) {
+    .right {
+      margin-left: 0 !important;
+    }
   }
 
   .icons {
@@ -120,8 +127,11 @@ footer {
     }
   }
 
-  .logo img {
-    width: 100%;
+  .logo {
+    max-width: 100px;
+    img {
+      width: 100%;
+    }
   }
 
   .footer-nav {

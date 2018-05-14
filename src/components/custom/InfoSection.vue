@@ -1,6 +1,7 @@
 <template>
-  <div class="info-section container-l">
-    <div class="row align-center">
+<div>
+  <div class="info-section container-sm">
+    <div class="grid center">
       <div class="col-5">
         <Heading tag="h1" text="Crazy Dutch Dry Gin" className="heading-title"/>
         <Heading tag="h2" text="De cocktail campagne" className="heading-sub-title"/>
@@ -11,10 +12,12 @@
         <div class="quote-container">
           <div class="quote-text">"Met smaak valt te twisten"</div>
           <div class="quote-name">- Kees Koelewijn</div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="skewed-backdrop hide-mobile"></div>
+</div>
 </template>
 
 <script>
@@ -34,11 +37,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~$styles/app';
+
 .info-section {
-  margin-top: 180px;
+  margin: 180px auto 0;
+  position: relative;
+  z-index: 2;
+
+  @media screen and (max-width: $bp-mobile-lg) {
+    margin: 40px auto 0;
+  }
 
   .quote-container {
     text-align: center;
+
+    @media screen and (max-width: $bp-mobile-lg) {
+      margin-top: 32px;
+      text-align: left;
+    }
 
     .quote {
       &-text {
@@ -48,6 +64,10 @@ export default {
         display: block;
         flex-flow: row wrap;
         margin-bottom: 8px;
+
+        @media screen and (max-width: $bp-mobile-lg) {
+          font-size: 24px;
+        }
       }
 
       &-name {
@@ -57,5 +77,15 @@ export default {
       }
     }
   }
+}
+
+.skewed-backdrop {
+  background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.00) 99%);
+  height: 516px;
+  width: 100%;
+  transform: skewY(-16deg);
+  position: absolute;
+  top: 800px;
+  z-index: -1;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 <div class="drieluik" ref="drieluik">
-  <div class=" container-l">
-    <div class="row">
+  <div class=" container-md">
+    <div class="grid" :style="{ transform: `translateX(-${slideToRight}px)`}">
 
       <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in luiken" :key="idx">
         <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
@@ -19,10 +19,18 @@
           <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
         </div>
       </div>
-      {{btnText}}
     </div>
   </div>
-  <div class="skewed-backdrop"></div>
+
+  <div class="dots">
+    <ul>
+      <li v-for="(luik, idx) in luiken" :key="idx">
+        <span :class="['dot', activeSlide === idx ? 'active' : '']" @click="setSlideActive(idx)"></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="skewed-backdrop hide-mobile"></div>
 </div>
 </template>
 
@@ -34,6 +42,8 @@ export default {
   data: () => ({
     luikShown: [false, false, false],
     btnText: ['Lees meer', 'Lees meer', 'Lees meer'],
+    activeSlide: 0,
+    slideToRight: 0,
     luiken: [{
       imageName: 'food',
       heading: 'Food',
@@ -70,10 +80,7 @@ export default {
     },
     showLuikWhenInFold() {
       const drieluikIsInScreen = this.$refs.drieluik.getBoundingClientRect().y - (window.innerHeight - 100)
-      console.log({
-        message: 'showLuikWhenInFold',
-        drieluikIsInScreen,
-      });
+
       if(drieluikIsInScreen < 0) {
         this.$refs.luik.forEach((luikNode, idx) => {
           setTimeout(() => {
@@ -81,6 +88,12 @@ export default {
           },idx * 220)
         })
       }
+    },
+    setSlideActive(slideIndex) {
+      const windowScreen = window.innerWidth
+
+      this.$set(this, 'activeSlide', slideIndex)
+      this.$set(this, 'slideToRight', (slideIndex * windowScreen))
     }
   },
   mounted() {
@@ -94,17 +107,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~$styles/app';
+
 $animationTime: 420ms ease;
 
 .drieluik {
   margin-top: 180px;
   position: relative;
+  max-width: 100vw;
+
+  @media screen and (max-width: $bp-mobile-lg) {
+    overflow: hidden;
+
+    .container-md {
+      padding: 0 !important;
+    }
+
+    .grid {
+      width: 3 * 100vw !important;
+      display: block !important;
+      transition: $animationTime !important;
+    }
+  }
 
   .luik {
-    background: #C6D1E0;
     height: 500px;
     padding: 0;
     box-sizing: border-box;
+
+    @media screen and (max-width: $bp-mobile-lg) {
+      width: 100vw;
+      display: inline-block;
+    }
 
     img {
       width: 100%;
@@ -127,6 +161,10 @@ $animationTime: 420ms ease;
         margin: 0;
         padding: 32px 56px;
         transform: translateY(-50%);
+
+        @media screen and (max-width: $bp-mobile-lg) {
+          transform: translateY(-50%);
+        }
       }
 
       .read-more {
@@ -139,6 +177,39 @@ $animationTime: 420ms ease;
         text-decoration: none;
         display: inline-block;
         cursor: pointer;
+      }
+    }
+  }
+
+  .dots {
+    text-align: center;
+    display: none;
+
+    @media screen and (max-width: $bp-mobile-lg) {
+      display: block;
+    }
+
+    ul {
+      display: inline-block;
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        display: inline;
+
+        .dot {
+          margin-right: 5px;
+          height: 12px;
+          width: 12px;
+          background-color: #D0D0D0;
+          border-radius: 50%;
+          display: inline-block;
+          opacity: 0.5;
+
+          &.active {
+            opacity: 1;
+          }
+        }
       }
     }
   }

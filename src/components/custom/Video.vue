@@ -1,15 +1,15 @@
 <template>
-<div class="video hide-mobile">
-<div class="container-l">
-  <div class="row align-center">
+<div class="video">
+<div class="container-md no-pad">
+  <div class="grid center">
     <div class="col-10">
       <div class="video-container">
-        <vimeo-player ref="player" :video-id="videoID" @ready="onReady" :player-height="542" :player-width="1000"></vimeo-player>
+        <!-- <vimeo-player ref="player" :video-id="videoID" @ready="onReady" :player-height="542" :player-width="1000"></vimeo-player> -->
       </div>
     </div>
   </div>
 </div>
-<div class="skewed-backdrop"></div>
+
 </div>
 </template>
 
@@ -36,31 +36,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~$styles/app';
+
 .video {
   margin-top: 164px;
   z-index: 3;
   position: relative;
 
+  @media screen and (max-width: $bp-mobile-lg) {
+    margin-top: 40px;
+  }
+
   .video-container {
+    box-sizing: border-box;
     background: #fff;
     box-shadow: 0 6px 34px 0 rgba(0, 0, 0, .2);
     border-radius: 4px;
     padding: 16px;
+    min-height: 10px;
 
     .vimeo-player-1 iframe {
       width: 100% !important;
       height: auto !important;
     }
-  }
-
-  .skewed-backdrop {
-    background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.00) 99%);
-    height: 516px;
-    width: 100%;
-    transform: skewY(-16deg);
-    position: absolute;
-    top: 216px;
-    z-index: -1;
   }
 }
 </style>

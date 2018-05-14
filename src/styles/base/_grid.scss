@@ -180,20 +180,23 @@ $bu: 8px;
 // }
 //
 //
-// .hide-mobile {
-//   display: inherit;
-//
-//   @media screen and (max-width: $breakpoint-grid-s) {
-//     display: none;
-//   }
-// }
+.hide-mobile {
+  display: inherit;
 
+  @media screen and (max-width: $bp-mobile-lg) {
+    display: none !important;
+  }
+}
 
 
 div[class^='container'] {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+
+  &.no-pad {
+    padding: 0 !important;
+  }
 }
 
 div[class*='col'] {
