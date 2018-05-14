@@ -90,9 +90,16 @@
       <Dropdown :data="categories"/>
     </div>
 
+    <!-- RadioList -->
     <div class="component">
       <div class="component-name">RadioList</div>
       <RadioList :data="categories" />
+    </div>
+
+    <!-- RankingList -->
+    <div class="component">
+      <div class="component-name">RankingList</div>
+      <RankingList />
     </div>
   </div>
 </template>
@@ -109,6 +116,7 @@ import BodyText from '@/components/common/BodyText'
 
 import Dropdown from '@/components/custom/Dropdown'
 import RadioList from '@/components/custom/RadioList'
+import RankingList from '@/components/custom/RankingList'
 
 export default {
   name: 'Stylekit',
@@ -121,7 +129,8 @@ export default {
     Heading,
     BodyText,
     Dropdown,
-    RadioList
+    RadioList,
+    RankingList
   },
   methods: {
     buttonClick() {
