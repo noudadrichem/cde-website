@@ -1,5 +1,5 @@
 <template>
-<div class="video">
+<div class="video hide-mobile">
 <div class="container-l">
   <div class="row align-center">
     <div class="col-10">
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .video {
   margin-top: 164px;
   z-index: 3;
@@ -55,7 +55,7 @@ export default {
 
   .skewed-backdrop {
     background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.00) 99%);
-    height: 816px;
+    height: 516px;
     width: 100%;
     transform: skewY(-16deg);
     position: absolute;

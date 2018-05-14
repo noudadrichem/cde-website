@@ -105,8 +105,8 @@ $breakpoint-grid-xs: 480px;
   }
 
   &-l {
-    max-width: 1312px;
-    padding: 0 64px;
+    max-width: 1280px;
+    padding: 0 48px;
   }
 
   &-m {
@@ -161,5 +161,14 @@ $breakpoint-grid-xs: 480px;
     &-s {
       padding: 0 16px;
     }
+  }
+}
+
+
+.hide-mobile {
+  display: inherit;
+
+  @media screen and (max-width: $breakpoint-grid-s) {
+    display: none;
   }
 }

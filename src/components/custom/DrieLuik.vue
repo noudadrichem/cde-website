@@ -6,7 +6,7 @@
       <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in luiken" :key="idx">
         <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
 
-        <div :class="['content', {active: luikShown[idx]}]">
+        <div :class="['content', { active: luikShown[idx] }]">
           <Heading tag="h1" :text="luik.heading"/>
           <BodyText :text="luik.bodyText"/>
 
@@ -16,10 +16,10 @@
               <BodyText :text="luik.bodyText"/>
             </div>
           </transition/>
-          <a @click.prevent="setLuikActive(idx)" class="read-more">Lees meer</a>
+          <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
         </div>
       </div>
-
+      {{btnText}}
     </div>
   </div>
   <div class="skewed-backdrop"></div>
@@ -33,6 +33,7 @@ import BodyText from '@/components/common/BodyText'
 export default {
   data: () => ({
     luikShown: [false, false, false],
+    btnText: ['Lees meer', 'Lees meer', 'Lees meer'],
     luiken: [{
       imageName: 'food',
       heading: 'Food',
@@ -60,8 +61,10 @@ export default {
       this.luikShown.forEach((isShown, idx) => {
         if (idx === luikIndex) {
           this.$set(this.luikShown, luikIndex, toShowOrNotToShow)
+          this.$set(this.btnText, luikIndex, 'Lees minder')
         } else {
           this.$set(this.luikShown, idx, false)
+          this.$set(this.btnText, idx, 'Lees meer')
         }
       })
     },

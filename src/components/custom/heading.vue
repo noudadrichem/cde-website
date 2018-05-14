@@ -30,7 +30,7 @@
 
         <div class="col-5 heading-image">
           <div>
-            <img :src="require(`@/assets/images/${imageUrl}`)" alt="glas crazy dutch experience"/>
+            <img :src="require(`@/assets/images/${imageUrl}`)" alt="glas crazy dutch experience" class="animateGlass"/>
           </div>
         </div>
       </div>
@@ -150,6 +150,7 @@ export default {
 
   .heading-image {
     img {
+      opacity: 0;
       width: 50%;
       float: right;
       object-fit: contain
@@ -163,7 +164,7 @@ export default {
   animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes moveArrow {
+@keyframes moveArrow {
   0% {
     transform: translateY(-4px) rotate(90deg);
   }
@@ -176,4 +177,26 @@ export default {
     transform: translateY(-4px) rotate(90deg);
   }
 }
+
+.animateGlass {
+  animation-duration: 600ms;
+  animation-name: fadeInLeft;
+  animation-fill-mode: forwards;
+  animation-delay: 300ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0px)
+  }
+
+  from {
+    opacity: 0;
+    transform: translateX(80px)
+  }
+}
+
+
 </style>
