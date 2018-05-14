@@ -1,5 +1,5 @@
 <template>
-  <div class="stylekit">
+  <div class="stylekit" @keyup.esc="showModal = false">
 
     <h1 class="stylekit-heading-1">Stylekit page</h1>
 
@@ -85,7 +85,7 @@
       <!-- Modal -->
       <div class="component">
         <div class="component-name">Modal</div>
-        <Modal v-show="showModal" @close="showModal = false"/>
+        <Modal v-show="showModal" @close="showModal = false" />
         <Button @click.native="showModal = true" type="button" styling="secondary" text="Toggle Modal"/>
       </div>
 
