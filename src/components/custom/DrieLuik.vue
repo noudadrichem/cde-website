@@ -1,7 +1,6 @@
 <template>
 <div class="drieluik" ref="drieluik">
-  <div class=" container-md">
-    <!-- <div class="grid"> -->
+  <div class="container-md">
 
       <Slick ref="slick" :options="slickOptions" class="grid">
 
@@ -24,7 +23,6 @@
 
       </Slick>
 
-    <!-- </div> -->
   </div>
 
   <div class="skewed-backdrop hide-mobile"></div>
@@ -125,6 +123,11 @@ $animationTime: 420ms ease;
   margin-top: 180px;
   position: relative;
   max-width: 100vw;
+
+  .container-md {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   @media screen and (max-width: $bp-tablet-md) {
     overflow: hidden;

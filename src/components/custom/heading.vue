@@ -1,8 +1,7 @@
 <template >
   <header class="container-sm">
 
-    <nav class="nav-container">
-    <div class="grid">
+      <nav class="nav-container">
         <div class="logo">
           <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
         </div>
@@ -14,8 +13,7 @@
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
 
 
     <div class="content-container">
