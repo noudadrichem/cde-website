@@ -99,7 +99,7 @@
     <!-- RankingList -->
     <div class="component">
       <div class="component-name">RankingList</div>
-      <RankingList />
+      <RankingList :ranking="ranking" />
     </div>
   </div>
 </template>
@@ -257,6 +257,50 @@ export default {
         ],
       },
     ],
+    ranking: [
+      {
+        id: 1,
+        makerName: 'John Doe',
+        cocktailName: 'Bloody Hot Mary',
+        receiptUrl: 'https://crazydutchexperience.nl',
+        votes: 1
+      },
+      {
+        id: 2,
+        makerName: 'Keven de Koning',
+        cocktailName: 'Ibiza Sun Pepper',
+        receiptUrl: 'https://crazydutchexperience.nl',
+        votes: 2
+      },
+      {
+        id: 3,
+        makerName: 'Noud Adrichem',
+        cocktailName: 'Tropical Red',
+        receiptUrl: 'https://crazydutchexperience.nl',
+        votes: 3
+      },
+      {
+        id: 4,
+        makerName: 'Jiska Schutijser',
+        cocktailName: 'Lange Sjaak met Jus',
+        receiptUrl: 'https://crazydutchexperience.nl',
+        votes: 4
+      },
+      {
+        id: 5,
+        makerName: 'Donovan Roubos',
+        cocktailName: 'Zware Jongen',
+        receiptUrl: 'https://crazydutchexperience.nl',
+        votes: 5
+      },
+      {
+        id: 6,
+        makerName: 'Duco Drupsteen',
+        cocktailName: 'Blue Lagoon',
+        receiptUrl: 'https://crazydutchexperience.nl',
+        votes: 6
+      }
+    ]
   })
 }
 </script>

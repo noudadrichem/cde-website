@@ -7,37 +7,15 @@
           <th>Cocktail naam</th>
           <th>Maker</th>
           <th>Recept</th>
-          <th>Like/Dislike</th>
+          <th>Stem</th>
         </tr>
-        <tr>
-          <td>1.</td>
-          <td>Mauris hendrerit</td>
-          <td>Donec et</td>
-          <td>Bekijk het recept</td>
+        <tr v-for="(rank, index) in orderedRanking" :key="index">
+          <td>{{ index + 1 }}.</td>
+          <td>{{ rank.cocktailName }}</td>
+          <td>{{ rank.makerName }}</td>
+          <td><a :href="rank.receiptUrl" target="_blank">Bekijk het recept</a></td>
           <td><VoteButton type="vote"/></td>
         </tr>
-        <tr>
-          <td>2.</td>
-          <td>Mauris hendrerit</td>
-          <td>Donec et</td>
-          <td>Bekijk het recept</td>
-          <td><VoteButton type="vote"/></td>
-        </tr>
-        <tr>
-          <td>3.</td>
-          <td>Mauris hendrerit</td>
-          <td>Donec et</td>
-          <td>Bekijk het recept</td>
-          <td><VoteButton type="vote"/></td>
-        </tr>
-        <tr>
-          <td>4.</td>
-          <td>Mauris hendrerit</td>
-          <td>Donec et</td>
-          <td>Bekijk het recept</td>
-          <td><VoteButton type="vote"/></td>
-        </tr>
-
       </tbody>
     </table>
   </div>
@@ -47,6 +25,17 @@
 import VoteButton  from '@/components/custom/VoteButton'
 
 export default {
+  computed: {
+    orderedRanking() {
+      return this.ranking.sort((a,b) => a.votes < b.votes).slice(0, 10)
+    }
+  },
+  props: {
+    ranking: {
+      type: Array,
+      required: true
+    }
+  },
   components: {
     VoteButton
   }
@@ -105,6 +94,13 @@ export default {
 
         @include breakpoint(s) {
           padding: 8px;
+        }
+      }
+
+      td {
+        a {
+          color: $template-color-blue-default;
+          font-weight: 700;
         }
       }
 
