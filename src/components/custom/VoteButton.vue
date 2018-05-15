@@ -1,5 +1,5 @@
 <template>
-  <div class="vote-button" @click="isVoted = !isVoted">
+  <div :class="['vote-button', { voted: isVoted }]" @click="isVoted = !isVoted">
     <Icon name="vote" :active="isVoted" :width="16" :height="16" />
   </div>
 </template>
@@ -32,6 +32,11 @@ export default {
   height: 24px;
   background-color: $template-color-white-light;
   border-radius: 2px;
+  cursor: pointer;
+
+  &.voted {
+    cursor: default;
+  }
 
   display: flex;
   justify-content: center;

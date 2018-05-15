@@ -58,7 +58,7 @@ export default {
       transition: box-shadow .1s ease-in-out;
 
       &:not(:first-child):nth-child(odd) {
-        background-color: rgba($template-color-white-lighter, 0.9);
+        background-color: rgba($template-color-white-lighter, 0.5);
       }
 
       &:not(:first-child) {
