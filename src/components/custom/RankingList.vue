@@ -14,29 +14,42 @@
           <td>Mauris hendrerit</td>
           <td>Donec et</td>
           <td>Bekijk het recept</td>
-          <td><| |></td>
+          <td><VoteButton type="vote"/></td>
         </tr>
         <tr>
           <td>2.</td>
           <td>Mauris hendrerit</td>
           <td>Donec et</td>
           <td>Bekijk het recept</td>
-          <td><| |></td>
+          <td><VoteButton type="vote"/></td>
         </tr>
         <tr>
           <td>3.</td>
           <td>Mauris hendrerit</td>
           <td>Donec et</td>
           <td>Bekijk het recept</td>
-          <td><| |></td>
+          <td><VoteButton type="vote"/></td>
         </tr>
+        <tr>
+          <td>4.</td>
+          <td>Mauris hendrerit</td>
+          <td>Donec et</td>
+          <td>Bekijk het recept</td>
+          <td><VoteButton type="vote"/></td>
+        </tr>
+
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
+import VoteButton  from '@/components/custom/VoteButton'
+
 export default {
+  components: {
+    VoteButton
+  }
 }
 </script>
 
@@ -53,6 +66,8 @@ export default {
     max-width: 968px;
 
     tr {
+      transition: box-shadow .1s ease-in-out;
+
       &:not(:first-child):nth-child(odd) {
         background-color: $template-color-white-lighter;
       }
@@ -72,6 +87,13 @@ export default {
 
       &:nth-child(2) {
         border-top: 1px solid $template-color-white-light;
+      }
+
+      &:hover {
+        &:not(:first-child) {
+          box-shadow: 0px 2px 14px 1px rgba($template-color-black-lighter, 0.4);
+          border-radius: 2px;
+        }
       }
 
       td, th {
