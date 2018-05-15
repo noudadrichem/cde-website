@@ -18,7 +18,7 @@ import Footing from '@/components/custom/Footing';
 export default {
   name: 'Home',
   data: () => ({
-    msg: 'Crazy Dutch Experience!',
+    msg: 'Crazy Dutch Experience!'
   }),
   components: {
     Heading,
@@ -27,7 +27,7 @@ export default {
     Drieluik,
     Footing
   }
-};
+}
 </script>
 
 <style lang="scss">

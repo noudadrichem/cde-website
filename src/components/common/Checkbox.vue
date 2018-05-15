@@ -11,14 +11,14 @@ export default {
   props: {
     labelText: {
       type: String,
-      required: false,
+      required: false
     },
     id: {
       type: String,
-      required: true,
+      required: true
     }
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -26,12 +26,13 @@ export default {
 
 .checkbox-container {
   display: inline-flex;
+  cursor: pointer;
 
   input[type="checkbox"] {
     display: none;
 
     &:checked + label {
-      background-image: url('/static/images/icons/check.svg');
+      background-image: url('/static/images/icons/check-default.svg');
       background-size: 12px;
       background-repeat: no-repeat;
       background-position: center;
@@ -42,13 +43,15 @@ export default {
     width: 20px;
     height: 20px;
     display: inline-block;
-    border: 1px solid $template-color-black-lighter;
+    border: 1px solid rgba($template-color-black-lighter, 0.3);
     border-radius: $template-border-radius;
+    cursor: pointer;
   }
 
   .label {
     display: inline-block;
     margin: 0 0 0 8px;
+    cursor: pointer;
   }
 }
 </style>

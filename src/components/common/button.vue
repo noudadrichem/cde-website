@@ -9,17 +9,21 @@
 <script>
 export default {
   props: {
+    text: {
+      type: String,
+      required: true
+    },
     disabled: {
       type: Boolean,
-      required: false,
+      required: false
     },
     type: {
       type: String,
-      required: true,
+      required: true
     },
     styling: {
       type: String,
-      required: true,
+      required: true
     },
     onClick: {
       type: Function,
@@ -34,7 +38,7 @@ export default {
       required: false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

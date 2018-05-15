@@ -1,5 +1,5 @@
 <template>
-  <div class="stylekit">
+  <div class="stylekit" @keyup.esc="showModal = false">
 
     <h1 class="stylekit-heading-1">Stylekit page</h1>
 
@@ -24,19 +24,22 @@
       <!-- Radio button -->
       <div class="component">
         <div class="component-name">Button</div>
-          <Button :onClick="buttonClick" type="button" styling="primary"/>
+          <Button type="button" styling="primary" text="Button text"/>
       </div>
 
+      <!-- Input text -->
       <div class="component">
         <div class="component-name">Input Text</div>
         <InputText placeholder="mail@example.com"/>
       </div>
 
+      <!-- Icon -->
       <div class="component">
         <div class="component-name">Icon</div>
         <!-- <Icon :width="32" :height="32" name="info"/> -->
       </div>
 
+      <!-- Heading -->
       <div class="component">
         <div class="component-name">Heading</div>
         <Heading tag="h1" text="Moet je heading 1?"/>
@@ -44,9 +47,10 @@
         <Heading tag="h3" text="Moet je heading 3?"/>
       </div>
 
+      <!-- Body text -->
       <div class="component">
-        <div class="component-name">BodyText</div>
-        <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <div class="component-name">Body text</div>
+        <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."/>
       </div>
 
       <div class="component">
@@ -78,19 +82,49 @@
         </div>
       </div>
 
+      <!-- Modal -->
+      <div class="component">
+        <div class="component-name">Modal</div>
+        <Modal v-show="showModal" @close="showModal = false" />
+        <Button @click.native="showModal = true" type="button" styling="secondary" text="Toggle Modal"/>
+      </div>
+
     <h2 class="stylekit-heading-2">Custom</h2>
+
+    <!-- Dropdown -->
+    <div class="component">
+      <div class="component-name">Dropdown</div>
+      <Dropdown :data="categories"/>
+    </div>
+
+    <!-- RadioList -->
+    <div class="component">
+      <div class="component-name">RadioList</div>
+      <RadioList :data="categories" />
+    </div>
+
+    <!-- Recipe -->
+    <div class="component">
+      <div class="component-name">Recipe</div>
+      <Recipe counter="35"/>
+    </div>
   </div>
 </template>
 
 <script>
 // Components
-import Checkbox from '@/components/common/Checkbox';
-import InputText from '@/components/common/InputText';
-import RadioButton from '@/components/common/RadioButton';
-import Button from '@/components/common/Button';
-import Icon from '@/components/common/Icon';
-import Heading from '@/components/common/Heading';
-import BodyText from '@/components/common/BodyText';
+import Checkbox from '@/components/common/Checkbox'
+import InputText from '@/components/common/InputText'
+import RadioButton from '@/components/common/RadioButton'
+import Button from '@/components/common/Button'
+import Icon from '@/components/common/Icon'
+import Heading from '@/components/common/Heading'
+import BodyText from '@/components/common/BodyText'
+import Modal from '@/components/common/Modal'
+
+import Dropdown from '@/components/custom/Dropdown'
+import Recipe from '@/components/custom/Recipe'
+import RadioList from '@/components/custom/RadioList'
 
 export default {
   name: 'Stylekit',
@@ -101,17 +135,143 @@ export default {
     Button,
     Icon,
     Heading,
-    BodyText
+    BodyText,
+    Dropdown,
+    Recipe,
+    RadioList,
+    Modal
   },
   methods: {
     buttonClick() {
-      console.log('Button clicked');
-    },
+      console.log('Button clicked')
+    }
   },
-};
+  data: () => ({
+    showModal: false,
+    categories: [
+      {
+        id: 1,
+        name: 'Fruit',
+        items: [
+          {
+            name: 'Aarbei',
+            quantities: [
+              '25gr',
+              '50gr',
+              '100gr',
+              '150gr'
+            ]
+          },
+          {
+            name: 'Banaan',
+            quantities: [
+              'Heel',
+              'Half',
+              '1/4',
+              '1/8'
+            ]
+          },
+          {
+            name: 'Mandarijn',
+            quantities: [
+              'Heel',
+              'Half',
+              '1/4',
+              '1/8'
+            ]
+          },
+        ]
+      },
+      {
+        id: 2,
+        name: 'Sterke drank',
+        items: [
+          {
+            name: 'Bier',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Wijn',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Rum',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Baleys',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+        ]
+      },
+      {
+        id: 3,
+        name: 'Frisdrank',
+        items: [
+          {
+            name: 'Cola',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Fanta',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Ginger ale',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+          {
+            name: 'Cherry Cola',
+            quantities: [
+              '25ml',
+              '50ml',
+              '100ml',
+              '150ml'
+            ]
+          },
+        ],
+      },
+    ],
+  })
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~$styles/app';
 
 .stylekit {

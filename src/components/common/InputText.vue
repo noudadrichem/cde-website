@@ -23,11 +23,11 @@ export default {
   props: {
     placeholder: {
       required: true,
-      type: String,
+      type: String
     }
   },
   components: {
-    Icon,
+    Icon
   }
 }
 </script>

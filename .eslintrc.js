@@ -7,13 +7,15 @@ module.exports = {
   },
   env: {
     browser: true,
+    node: true
   },
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
   extends: ['plugin:vue/essential', 'airbnb-base'],
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'vue',
+    'html'
   ],
   // check if imports actually resolve
   settings: {
@@ -45,6 +47,26 @@ module.exports = {
       optionalDependencies: ['test/unit/index.js']
     }],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "semi": [2, "never"],
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+    "camelcase": 2,
+    "comma-dangle": ["error", "never"],
+    "comma-style": [2, "last"],
+    "curly": 2,
+    "eqeqeq": 2,
+    "func-names": 2,
+    "space-before-function-paren": ["error", "never"],
+    "guard-for-in": 2,
+    "wrap-iife": 2,
+    "no-undef": 2,
+    "no-use-before-define": [2, "nofunc"],
+    "new-cap": 2,
+    "quotes": [2, "single"],
+    "no-trailing-spaces": 2,
+    "max-len": [2, 150],
+    "no-underscore-dangle": 0,
+    "strict": 0,
+    "no-shadow": 0
   }
 }
