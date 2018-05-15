@@ -8,7 +8,7 @@
 
         <div class="nav-bar right hide-mobile">
           <ul>
-            <li v-for="(item, idx) in navbarItems" :key="idx">
+            <li v-for="(item, idx) in data.navbarItems" :key="idx">
               <a :href="item.link">{{ item.text }}</a>
             </li>
           </ul>
@@ -20,18 +20,18 @@
       <div class="grid center">
         <div class="col-5">
 
-          <Heading tag="h1" :text="title" className="heading-title"/>
-          <Heading tag="h2" :text="subTitle" className="heading-sub-title"/>
-          <BodyText :text="bodyText"/>
+          <Heading tag="h1" :text="data.title" className="heading-title"/>
+          <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
+          <BodyText :text="data.bodyText"/>
 
-          <Button type="button" styling="primary" @click="console.log('click cta')" :text="buttonText" className="heading-cta-button"/>
+          <Button type="button" styling="primary" @click="console.log('click cta')" :text="data.buttonText" className="heading-cta-button"/>
 
-          <span class="tagline">{{ infoText }} <Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
+          <span class="tagline">{{ data.infoText }} <Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
         </div>
 
         <div class="col-5 heading-image hide-mobile">
           <div>
-            <img :src="require(`@/assets/images/${imageUrl}`)" alt="glas crazy dutch experience" class="animateGlass"/>
+            <img src="@/assets/images/glas-logo.png" alt="glas crazy dutch experience" class="animateGlass"/>
           </div>
         </div>
       </div>
@@ -46,24 +46,7 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 
 export default {
-  data: () => ({
-    title: 'Crazy Dutch Dry Gin',
-    subTitle: 'De cocktail campagne',
-    buttonText: 'Maak je eigen cocktail!',
-    bodyText: 'Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.',
-    infoText: 'Kom meer te weten over ons',
-    imageUrl: 'glas-logo.png',
-    navbarItems: [{
-      text: 'Campagne',
-      link: '#campagne'
-    }, {
-      text: 'Producten',
-      link: '#producten'
-    }, {
-      text: 'Contact',
-      link: '#contact'
-    }]
-  }),
+  props: ['data'],
   components: {
     Heading,
     BodyText,

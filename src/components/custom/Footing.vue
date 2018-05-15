@@ -2,13 +2,13 @@
     <div class="container-sm footer">
       <div class="grid">
         <div class="col-4">
-          <Heading tag="h3" :text="volgOns.title" className="footer-heading"/>
+          <Heading tag="h3" :text="data.volgOns.title" className="footer-heading"/>
 
-          <BodyText :text="volgOns.text" className="footer-body"/>
+          <BodyText :text="data.volgOns.text" className="footer-body"/>
 
           <div class="icons">
             <ul>
-              <li v-for="(value, key) in volgOns.socialIcons">
+              <li v-for="(value, key) in data.volgOns.socialIcons">
                 <a :href="value"><img :src="iconsUrl(key)"/></a>
               </li>
             </ul>
@@ -19,7 +19,7 @@
       <div class="ruler"></div>
 
       <div class="grid">
-        <div class="col-3" v-for="(menu, key) in footerNavigations">
+        <div class="col-3" v-for="(menu, key) in data.footerNavigations">
           <Heading tag="h3" :text="key" className="footer-heading"/>
 
           <ul class="footer-nav" v-for="item in menu">
@@ -39,35 +39,7 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 export default {
-  data: () => ({
-    volgOns: {
-      title: 'Volg ons!',
-      text: 'Blijf op de hoogte van de laatste nieuwsberichten en nieuwe producten.',
-      socialIcons: {
-        facebook: '#facebook',
-        instagram: '#instagram'
-      }
-    },
-    footerNavigations: {
-      campagne: [{
-        title: 'Maak je eigen cocktail',
-        link: '#Maak+je+eigen+cocktail'
-      }, {
-        title: 'Bekijk de top 10',
-        link: '#Bekijk+de+top+10'
-      },{
-        title: 'Zie de gehele ranglijst',
-        link: '#Zie+de+gehele+ranglijst'
-      }],
-      contact: [{
-        title: 'info@crazydutchexperience.nl',
-        link: 'mailto:info@crazydutchexperience.nl'
-      }, {
-        title: '+31 6 293 297 12',
-        link: '#'
-      }]
-    }
-  }),
+  props: ['data'],
   methods: {
     iconsUrl(iconName) {
       return require(`@/assets/images/icons/${iconName}.svg`);

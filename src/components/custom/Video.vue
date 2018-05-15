@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  props: ['data'],
   data: () => ({
     // videoID: '251775381', the real ID nibbaa
     videoID: '145837856',

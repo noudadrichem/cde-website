@@ -3,15 +3,15 @@
   <div class="info-section container-sm">
     <div class="grid center">
       <div class="col-5">
-        <Heading tag="h1" text="Crazy Dutch Dry Gin" className="heading-title"/>
-        <Heading tag="h2" text="De cocktail campagne" className="heading-sub-title"/>
-        <BodyText text="Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."/>
+        <Heading tag="h1" :text="data.mainTitle" className="heading-title"/>
+        <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
+        <BodyText :text="data.text"/>
       </div>
 
       <div class="col-5 align-right align-self-middle">
         <div class="quote-container">
-          <div class="quote-text">"Met smaak valt te twisten"</div>
-          <div class="quote-name">- Kees Koelewijn</div>
+          <div class="quote-text">"{{ data.quoteText }}"</div>
+          <div class="quote-name">- {{ data.quoteAuthor }}</div>
         </div>
       </div>
     </div>
@@ -27,6 +27,7 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 
 export default {
+  props: ['data'],
   components: {
     Heading,
     BodyText,

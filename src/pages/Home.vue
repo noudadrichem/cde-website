@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
-    <Heading/>
-    <Video/>
-    <InfoSection/>
-    <Drieluik/>
-    <Footing/>
+  <div class="home" v-if="!loading">
+    <Heading :data="heading"/>
+    <Video :data="video"/>
+    <InfoSection :data="infoSection"/>
+    <Drieluik :data="drieluik"/>
+    <Footing :data="footer"/>
   </div>
 </template>
 
@@ -14,11 +14,17 @@ import Video from '@/components/custom/Video';
 import InfoSection from '@/components/custom/InfoSection';
 import Drieluik from '@/components/custom/Drieluik';
 import Footing from '@/components/custom/Footing';
+import conf from '@/config'
 
 export default {
   name: 'Home',
   data: () => ({
-    msg: 'Crazy Dutch Experience!'
+    loading: true,
+    heading: {},
+    video: {},
+    infoSection: {},
+    drieluik: {},
+    footer: {},
   }),
   components: {
     Heading,
@@ -26,6 +32,20 @@ export default {
     InfoSection,
     Drieluik,
     Footing
+  },
+  mounted() {
+    this.$http.get(conf.apiUrl + 'content/' + '5afac31a2ff1c646e58307e1' + '/sections')
+      .then(data => {
+        console.log(data.body);
+        const findSectionData = (sectionName) => data.body.sections.find(obj => obj.title === sectionName).contents
+
+        this.$set(this, 'heading', findSectionData('heading'))
+        this.$set(this, 'video', findSectionData('video'))
+        this.$set(this, 'infoSection', findSectionData('infoSection'))
+        this.$set(this, 'drieluik', findSectionData('drieluik'))
+        this.$set(this, 'footer', findSectionData('footer'))
+        this.$set(this, 'loading', false)
+      })
   }
 }
 </script>

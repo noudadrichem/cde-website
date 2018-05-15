@@ -4,7 +4,7 @@
 
       <Slick ref="slick" :options="slickOptions" class="grid">
 
-        <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in luiken" :key="idx">
+        <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in data.luiken" :key="idx">
           <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
 
           <div :class="['content', { active: luikShown[idx] }]">
@@ -35,6 +35,7 @@ import BodyText from '@/components/common/BodyText'
 import Slick from 'vue-slick';
 
 export default {
+  props: ['data'],
   data: () => ({
     luikShown: [false, false, false],
     btnText: ['Lees meer', 'Lees meer', 'Lees meer'],
@@ -46,23 +47,7 @@ export default {
       infinite: false,
       dots: true,
       arrows: false
-    },
-    luiken: [{
-      imageName: 'food',
-      heading: 'Food',
-      bodyText: 'Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.',
-      readMoreLink: '#food'
-    }, {
-      imageName: 'drinks',
-      heading: 'Drinks',
-      bodyText: 'Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.',
-      readMoreLink: '#drinks'
-    }, {
-      imageName: 'other-stuff',
-      heading: 'Other stuff',
-      bodyText: 'Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.',
-      readMoreLink: '#other-stuff'
-    }]
+    }
   }),
   methods: {
     luikUrl(imageName) {
