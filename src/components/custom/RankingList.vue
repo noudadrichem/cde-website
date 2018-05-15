@@ -58,7 +58,7 @@ export default {
       transition: box-shadow .1s ease-in-out;
 
       &:not(:first-child):nth-child(odd) {
-        background-color: $template-color-white-lighter;
+        background-color: rgba($template-color-white-lighter, 0.9);
       }
 
       &:not(:first-child) {
@@ -79,9 +79,10 @@ export default {
       }
 
       &:hover {
+        border-radius: 2px;
+
         &:not(:first-child) {
           box-shadow: 0px 2px 14px 1px rgba($template-color-black-lighter, 0.4);
-          border-radius: 2px;
         }
       }
 
