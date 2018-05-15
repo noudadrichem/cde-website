@@ -90,9 +90,16 @@
       <Dropdown :data="categories"/>
     </div>
 
+    <!-- RadioList -->
     <div class="component">
       <div class="component-name">RadioList</div>
       <RadioList :data="categories" />
+    </div>
+
+    <!-- Recipe -->
+    <div class="component">
+      <div class="component-name">Recipe</div>
+      <Recipe counter="35"/>
     </div>
   </div>
 </template>
@@ -108,6 +115,7 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 import Dropdown from '@/components/custom/Dropdown'
+import Recipe from '@/components/custom/Recipe'
 import RadioList from '@/components/custom/RadioList'
 
 export default {
@@ -121,6 +129,7 @@ export default {
     Heading,
     BodyText,
     Dropdown,
+    Recipe,
     RadioList
   },
   methods: {
