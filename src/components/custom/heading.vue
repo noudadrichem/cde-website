@@ -1,21 +1,21 @@
 <template >
   <header class="container-sm">
 
+    <nav class="nav-container">
     <div class="grid">
-      <nav class="nav-container">
         <div class="logo">
           <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
         </div>
 
-        <div class="nav-bar hide-mobile">
+        <div class="nav-bar right hide-mobile">
           <ul>
             <li v-for="(item, idx) in navbarItems" :key="idx">
               <a :href="item.link">{{ item.text }}</a>
             </li>
           </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
 
 
     <div class="content-container">

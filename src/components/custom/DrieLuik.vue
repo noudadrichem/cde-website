@@ -1,33 +1,30 @@
 <template>
 <div class="drieluik" ref="drieluik">
   <div class=" container-md">
-    <div class="grid" :style="{ transform: `translateX(-${slideToRight}px)`}">
+    <!-- <div class="grid"> -->
 
-      <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in luiken" :key="idx">
-        <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
+      <Slick ref="slick" :options="slickOptions" class="grid">
 
-        <div :class="['content', { active: luikShown[idx] }]">
-          <Heading tag="h1" :text="luik.heading"/>
-          <BodyText :text="luik.bodyText"/>
+        <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in luiken" :key="idx">
+          <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
 
-          <transition name="fade-height">
-            <div v-show="luikShown[idx]">
-              <br/>
-              <BodyText :text="luik.bodyText"/>
-            </div>
-          </transition/>
-          <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
+          <div :class="['content', { active: luikShown[idx] }]">
+            <Heading tag="h1" :text="luik.heading"/>
+            <BodyText :text="luik.bodyText"/>
+
+            <transition name="fade-height">
+              <div v-show="luikShown[idx]">
+                <br/>
+                <BodyText :text="luik.bodyText"/>
+              </div>
+            </transition/>
+            <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="dots">
-    <ul>
-      <li v-for="(luik, idx) in luiken" :key="idx">
-        <span :class="['dot', activeSlide === idx ? 'active' : '']" @click="setSlideActive(idx)"></span>
-      </li>
-    </ul>
+      </Slick>
+
+    <!-- </div> -->
   </div>
 
   <div class="skewed-backdrop hide-mobile"></div>
@@ -37,6 +34,7 @@
 <script>
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
+import Slick from 'vue-slick';
 
 export default {
   data: () => ({
@@ -44,6 +42,13 @@ export default {
     btnText: ['Lees meer', 'Lees meer', 'Lees meer'],
     activeSlide: 0,
     slideToRight: 0,
+    slickOptions: {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
+      dots: true,
+      arrows: false
+    },
     luiken: [{
       imageName: 'food',
       heading: 'Food',
@@ -94,19 +99,24 @@ export default {
 
       this.$set(this, 'activeSlide', slideIndex)
       this.$set(this, 'slideToRight', (slideIndex * windowScreen))
-    }
+    },
   },
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
+
+    if(window.innerWidth > 414) {
+      this.$refs.slick.destroy()
+    }
   },
   components: {
     Heading,
-    BodyText
+    BodyText,
+    Slick
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~$styles/app';
 
 $animationTime: 420ms ease;
@@ -116,7 +126,7 @@ $animationTime: 420ms ease;
   position: relative;
   max-width: 100vw;
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: $bp-tablet-md) {
     overflow: hidden;
 
     .container-md {
@@ -124,9 +134,13 @@ $animationTime: 420ms ease;
     }
 
     .grid {
-      width: 3 * 100vw !important;
+      width: 100vw !important;
       display: block !important;
       transition: $animationTime !important;
+
+      .slick-slide {
+        display: inline-block !important;
+      }
     }
   }
 
@@ -135,7 +149,12 @@ $animationTime: 420ms ease;
     padding: 0;
     box-sizing: border-box;
 
-    @media screen and (max-width: $bp-mobile-lg) {
+    @media screen and (min-width: $bp-mobile-lg) and (max-width: $bp-desktop-sm) {
+      width: 33% !important;
+      flex-basis: 33% !important;
+    }
+
+    @media screen and (max-width: $bp-tablet-md) {
       width: 100vw;
       display: inline-block;
     }
@@ -162,7 +181,7 @@ $animationTime: 420ms ease;
         padding: 32px 56px;
         transform: translateY(-50%);
 
-        @media screen and (max-width: $bp-mobile-lg) {
+        @media screen and (max-width: $bp-tablet-md) {
           transform: translateY(-50%);
         }
       }
@@ -181,23 +200,22 @@ $animationTime: 420ms ease;
     }
   }
 
-  .dots {
-    text-align: center;
-    display: none;
-
-    @media screen and (max-width: $bp-mobile-lg) {
-      display: block;
-    }
-
-    ul {
+    ul.slick-dots {
       display: inline-block;
       list-style-type: none;
       padding: 0;
+      width: 100%;
+      text-align: center;
 
       li {
         display: inline;
+        opacity: 0.5;
 
-        .dot {
+        &.slick-active {
+          opacity: 1;
+        }
+
+        button {
           margin-right: 5px;
           height: 12px;
           width: 12px;
@@ -205,6 +223,8 @@ $animationTime: 420ms ease;
           border-radius: 50%;
           display: inline-block;
           opacity: 0.5;
+          font-size: 0;
+          outline: none;
 
           &.active {
             opacity: 1;
@@ -212,7 +232,7 @@ $animationTime: 420ms ease;
         }
       }
     }
-  }
+  // }
 
   .skewed-backdrop {
     background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
