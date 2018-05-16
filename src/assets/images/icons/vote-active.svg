@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 4 + Rectangle 5 Mask</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="16"></rect>
+    </defs>
+    <g id="flow-cocktail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ranglijst" transform="translate(-1095.000000, -261.000000)">
+            <g transform="translate(236.000000, 205.000000)" id="Group-6">
+                <g transform="translate(0.000000, 25.000000)">
+                    <g id="Group-2" transform="translate(28.000000, 27.000000)">
+                        <g id="up" transform="translate(827.000000, 0.000000)">
+                            <g id="Rectangle-4-+-Rectangle-5-Mask" transform="translate(4.000000, 3.000000)">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="Mask"></g>
+                                <path d="M1,6 L3,6 C3.55228475,6 4,6.44771525 4,7 L4,15 C4,15.5522847 3.55228475,16 3,16 L1,16 C0.44771525,16 6.76353751e-17,15.5522847 0,15 L0,7 C-6.76353751e-17,6.44771525 0.44771525,6 1,6 Z" id="Rectangle-4" fill="#2DC57D" mask="url(#mask-2)"></path>
+                                <path d="M3,6 L5.96566632,1.84806715 C6.32571889,1.34399355 7.02623156,1.22724144 7.53030516,1.58729401 C7.82506457,1.79783644 8,2.1377691 8,2.5 L8,5.9 C8,5.95522847 8.04477153,6 8.1,6 L13.3119387,6 C14.4165082,6 15.3119387,6.8954305 15.3119387,8 C15.3119387,8.19464913 15.2835233,8.38825572 15.2275913,8.57469577 L13.4275913,14.5746958 C13.1738009,15.4206637 12.3951551,16 11.5119387,16 L3,16 L3,6 Z" id="Rectangle-5" fill="#57D197" mask="url(#mask-2)"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
