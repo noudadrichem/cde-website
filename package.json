@@ -12,9 +12,13 @@
     "generate-sprite": "gulp generate"
   },
   "dependencies": {
+    "jquery": "^3.3.1",
     "vue": "^2.5.2",
+    "vue-resource": "^1.5.0",
     "vue-router": "^3.0.1",
+    "vue-slick": "^1.1.12",
     "vue-svg-directive": "^1.0.0",
+    "vue-vimeo-player": "0.0.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

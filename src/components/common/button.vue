@@ -1,6 +1,6 @@
 <template >
-  <div class="button">
-      <button :disabled="disabled" :type="type" :class="styling" name="button">
+  <div :class="['button', className]">
+      <button :disabled="disabled" :type="type" :class="styling" @click="onClick" name="button">
         {{ text }}
       </button>
   </div>
@@ -27,6 +27,14 @@ export default {
     },
     onClick: {
       type: Function,
+      required: false,
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    className:{
+      type: String,
       required: false
     }
   }

@@ -1,22 +1,51 @@
 <template>
-  <div class="home">
-    <Logo/>
-    <Heading tag="h1" :text="msg"/>
+  <div class="home" v-if="!loading">
+    <Heading :data="heading"/>
+    <Video :data="video"/>
+    <InfoSection :data="infoSection"/>
+    <Drieluik :data="drieluik"/>
+    <Footing :data="footer"/>
   </div>
 </template>
 
 <script>
-import Logo from '@/components/Logo'
-import Heading from '@/components/common/Heading'
+import Heading from '@/components/custom/Heading';
+import Video from '@/components/custom/Video';
+import InfoSection from '@/components/custom/InfoSection';
+import Drieluik from '@/components/custom/Drieluik';
+import Footing from '@/components/custom/Footing';
+import conf from '@/config'
 
 export default {
   name: 'Home',
   data: () => ({
-    msg: 'Crazy Dutch Experience!'
+    loading: true,
+    heading: {},
+    video: {},
+    infoSection: {},
+    drieluik: {},
+    footer: {},
   }),
   components: {
-    Logo,
-    Heading
+    Heading,
+    Video,
+    InfoSection,
+    Drieluik,
+    Footing
+  },
+  mounted() {
+    this.$http.get(conf.apiUrl + 'content/' + '5afac31a2ff1c646e58307e1' + '/sections')
+      .then(data => {
+        console.log(data.body);
+        const findSectionData = (sectionName) => data.body.sections.find(obj => obj.title === sectionName).contents
+
+        this.$set(this, 'heading', findSectionData('heading'))
+        this.$set(this, 'video', findSectionData('video'))
+        this.$set(this, 'infoSection', findSectionData('infoSection'))
+        this.$set(this, 'drieluik', findSectionData('drieluik'))
+        this.$set(this, 'footer', findSectionData('footer'))
+        this.$set(this, 'loading', false)
+      })
   }
 }
 </script>
@@ -24,9 +53,4 @@ export default {
 <style lang="scss">
 @import '~$styles/app';
 
-.home {
-  min-height: 100vh;
-  width: 100%;
-  text-align: center;
-}
 </style>

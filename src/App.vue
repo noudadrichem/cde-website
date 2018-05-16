@@ -16,10 +16,6 @@ export default {
 #app {
   font-family:  -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: lightgrey;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  color: #363542;
 }
 </style>
