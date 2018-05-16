@@ -20,7 +20,7 @@
           <Icon :width="16" :height="16" name="trash"/>
         </li>
       </ul>
-      <Button type="button" text="Voeg toe aan ranglijst" styling="primary" disabled="true"/>
+      <Button type="button" text="Voeg toe aan ranglijst" styling="primary" :disabled="true"/>
     </div>
     <!-- todo: Add updated button component -->
   </div>
