@@ -27,7 +27,7 @@ import VoteButton  from '@/components/custom/VoteButton'
 export default {
   computed: {
     orderedRanking() {
-      return this.ranking.sort((a,b) => a.votes < b.votes).slice(0, 10)
+      return this.ranking.sort((firstRanking, secondRanking) => firstRanking.votes < secondRanking.votes).slice(0, 10)
     }
   },
   props: {
