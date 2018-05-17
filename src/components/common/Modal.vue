@@ -54,8 +54,7 @@ export default {
   display: flex;
 
   .modal-container {
-    max-width: 496px;
-    max-height: 389px;
+    max-width: 576px;
     width: 100%;
     height: auto;
     margin: 0 auto;
