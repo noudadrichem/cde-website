@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Grid from '@/pages/Grid'
 import Stylekit from '@/pages/Stylekit'
+import Campaign from '@/pages/Campaign'
 
 // Components
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/stylekit',
       name: 'stylekit',
       component: Stylekit
+    },
+    {
+      path: '/campaign',
+      name: 'campaign',
+      component: Campaign
     }
   ]
 })
