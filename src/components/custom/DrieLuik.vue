@@ -68,7 +68,6 @@ export default {
     },
     showLuikWhenInFold() {
       const drieluikIsInScreen = this.$refs.drieluik.getBoundingClientRect().y - (window.innerHeight - 100)
-      console.log({ drieluikIsInScreen });
 
       if(drieluikIsInScreen < 0) {
         this.$refs.luik.forEach((luikNode, idx) => {
