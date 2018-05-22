@@ -23,6 +23,12 @@
       <div v-for="confetti in confetties" class="confetti" :style="{ left: `${confetti.left}px`, top: `${confetti.top}px` }"></div>
     </div>
   </div>
+
+  <div :class="['campaign-popup', showPopup ? 'show' : '']">
+    <h2>Crazy Dutch Dry Gin</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+    <Button type="button" styling="primary" @click="console.log('click cta')" text="Begin meteen met maken"/>
+  </div>
 </div>
 </template>
 
@@ -32,6 +38,7 @@ import Video from '@/components/custom/Video';
 import InfoSection from '@/components/custom/InfoSection';
 import Drieluik from '@/components/custom/Drieluik';
 import Footing from '@/components/custom/Footing';
+import Button from '@/components/common/Button'
 import conf from '@/config'
 
 export default {
@@ -41,6 +48,7 @@ export default {
     showLogo: false,
     curtainsToLeft: false,
     introIsDone: false,
+    showPopup: false,
     pageId: '5afc46024a04c38c80d4fca0',
     heading: {},
     video: {},
@@ -109,14 +117,15 @@ export default {
     Video,
     InfoSection,
     Drieluik,
-    Footing
+    Footing,
+    Button
   },
   mounted() {
+    document.body.scrollTop = 0
 
     this.$http.get(`${conf.apiUrl}content/${this.pageId}/sections`)
       .then(data => {
         console.log(data.body);
-
         const findSectionData = (sectionName) => data.body.sections.find(obj => obj.title === sectionName).contents
 
         this.$set(this, 'heading', findSectionData('heading'))
@@ -128,9 +137,12 @@ export default {
         this.$set(this, 'windowHeight', window.innerHeight)
         this.$set(this, 'loading', false)
 
+        document.body.style.overflow = 'hidden'
+
         setTimeout(() => {
           this.$set(this, 'showLogo', true)
         }, 400)
+
         setTimeout(() => {
           this.confetties.forEach(partial => {
             partial.top = (Math.random() * window.innerHeight)
@@ -143,7 +155,12 @@ export default {
           this.$set(this, 'showLogo', false)
         }, 3100)
 
-        setTimeout(() => this.$set(this, 'introIsDone', true), 4500)
+        setTimeout(() => {
+          this.$set(this, 'introIsDone', true)
+          document.body.style.overflow = ''
+        }, 4500)
+
+        setTimeout(() => this.$set(this, 'showPopup', true), 7000)
 
       })
 
@@ -199,6 +216,8 @@ export default {
         }
     }
 
+
+
     .confetti-container {
         z-index: 15;
         position: absolute;
@@ -218,6 +237,32 @@ export default {
             transition: 400ms cubic-bezier(0, 1.01, 0.44, 1.42);
         }
     }
+}
+
+.campaign-popup {
+  background: #1072b8;
+  box-shadow: 0 0 24px 0 rgba(0,0,0,0.20);
+  border-radius: 4px;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  max-width: 367px;
+  padding: 16px;
+  z-index: 22;
+  transition: 400ms ease-out;
+  transform: translateX(200%);
+
+  &.show {
+    transform: translateX(0) !important;
+  }
+
+  h2, p {
+    color: white !important;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
 }
 
 .getIn-enter-active,
