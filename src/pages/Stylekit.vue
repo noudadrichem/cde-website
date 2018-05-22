@@ -327,7 +327,6 @@ export default {
 @import '~$styles/app';
 
 .stylekit {
-  min-height: 100vh;
   width: 100%;
   text-align: center;
 
@@ -345,7 +344,7 @@ export default {
   }
 
   .component {
-    margin: 32px;
+    margin: 32px auto 0;
 
     .component-name {
       font-weight: bold;

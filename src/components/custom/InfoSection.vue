@@ -8,7 +8,7 @@
         <BodyText :text="data.text"/>
       </div>
 
-      <div class="col-5 align-right align-self-middle">
+      <div class="col-5 align-right align-middle">
         <div class="quote-container">
           <div class="quote-text">"{{ data.quoteText }}"</div>
           <div class="quote-name">- {{ data.quoteAuthor }}</div>
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
 .info-section {
@@ -45,14 +45,14 @@ export default {
   position: relative;
   z-index: 2;
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: 414px) {
     margin: 40px auto 0;
   }
 
   .quote-container {
     text-align: center;
 
-    @media screen and (max-width: $bp-mobile-lg) {
+    @media screen and (max-width: 414px) {
       margin-top: 32px;
       text-align: left;
     }
@@ -66,7 +66,7 @@ export default {
         flex-flow: row wrap;
         margin-bottom: 8px;
 
-        @media screen and (max-width: $bp-mobile-lg) {
+        @media screen and (max-width: 414px) {
           font-size: 24px;
         }
       }

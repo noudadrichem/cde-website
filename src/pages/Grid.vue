@@ -98,14 +98,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.grid {
-  min-height: 100vh;
-  width: 100%;
-  color: #111;
-
-  .row {
-    background-color: rgba(0,0,0,0.05);
-  }
-}
+<style lang="scss" scoped>
 </style>

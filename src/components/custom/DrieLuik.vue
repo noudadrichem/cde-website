@@ -114,7 +114,7 @@ $animationTime: 420ms ease;
     margin-right: auto;
   }
 
-  @media screen and (max-width: $bp-tablet-md) {
+  @media screen and (max-width: 768px) {
     overflow: hidden;
 
     .container-md {
@@ -134,15 +134,15 @@ $animationTime: 420ms ease;
 
   .luik {
     height: 500px;
-    padding: 0;
+    padding: 0 !important;
     box-sizing: border-box;
 
-    @media screen and (min-width: $bp-mobile-lg) and (max-width: $bp-desktop-sm) {
+    @media screen and (min-width: 414px) and (max-width: 1120px) {
       width: 33% !important;
       flex-basis: 33% !important;
     }
 
-    @media screen and (max-width: $bp-tablet-md) {
+    @media screen and (max-width: 768px) {
       width: 100vw;
       display: inline-block;
     }
@@ -169,7 +169,7 @@ $animationTime: 420ms ease;
         padding: 32px 56px;
         transform: translateY(-50%);
 
-        @media screen and (max-width: $bp-tablet-md) {
+        @media screen and (max-width: 768px) {
           transform: translateY(-50%);
         }
       }
@@ -235,7 +235,7 @@ $animationTime: 420ms ease;
   .fade-height-enter-active,
   .fade-height-leave {
     transition: $animationTime;
-    opacity: 1;
+    opacity: 1 !important;
     max-height: 220px;
   }
   .fade-height-enter,

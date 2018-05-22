@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
 .ranking-list {
@@ -53,6 +53,7 @@ export default {
     width: 100%;
     text-align: left;
     max-width: 968px;
+    margin: 0 auto 128px;
 
     tr {
       transition: box-shadow .1s ease-in-out;
