@@ -1,41 +1,32 @@
 // Config
 @import './config';
-
 // Base
 @import './base/fonts';
 @import './base/mixins';
 @import './base/variables';
 @import './base/grid';
-
 // Layout
 @import './layout/core';
 @import './layout/reset';
 
 .to-animate {
   opacity: 0;
-  -webkit-transform: translate3d(0, 64px, 0);
   transform: translate3d(0, 64px, 0);
 }
 
 .fade-in-up {
-  -webkit-animation-duration: 600ms;
   animation-duration: 600ms;
-  -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards !important;
 }
-
-@-webkit-keyframes fadeInUp {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, 64px, 0);
     transform: translate3d(0, 64px, 0);
   }
 
   to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
+    opacity: 1 !important;
     transform: translate3d(0, 0, 0);
   }
 }

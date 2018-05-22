@@ -4,7 +4,7 @@
   <div class="grid center">
     <div class="col-10">
       <div class="video-container">
-        <video src="http://crazydutchexperience.com/assets/videos/Crazy-Dutch-HID181-Afl-04.mp4" controls></video>
+        <video src="http://206.189.5.59/assets/videos/Crazy-Dutch-HID181-Afl-04.mp4" controls></video>
       </div>
     </div>
   </div>

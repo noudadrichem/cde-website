@@ -68,11 +68,13 @@ export default {
     },
     showLuikWhenInFold() {
       const drieluikIsInScreen = this.$refs.drieluik.getBoundingClientRect().y - (window.innerHeight - 100)
+      console.log({ drieluikIsInScreen });
 
       if(drieluikIsInScreen < 0) {
         this.$refs.luik.forEach((luikNode, idx) => {
           setTimeout(() => {
             luikNode.classList.add('fade-in-up')
+            luikNode.classList.remove('to-animate')
           },idx * 220)
         })
       }
@@ -230,19 +232,6 @@ $animationTime: 420ms ease;
     position: absolute;
     top: 500px;
     z-index: -1;
-  }
-
-  .fade-height-enter-active,
-  .fade-height-leave {
-    transition: $animationTime;
-    opacity: 1 !important;
-    max-height: 220px;
-  }
-  .fade-height-enter,
-  .fade-height-leave-to {
-    transition: $animationTime;
-    opacity: 0;
-    max-height: 0;
   }
 }
 </style>
