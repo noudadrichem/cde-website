@@ -4,7 +4,7 @@
   <div class="grid center">
     <div class="col-10">
       <div class="video-container">
-        <!-- <vimeo-player ref="player" :video-id="videoID" @ready="onReady" :player-height="542" :player-width="1000"></vimeo-player> -->
+        <video src="http://crazydutchexperience.com/assets/videos/Crazy-Dutch-HID181-Afl-04.mp4" controls></video>
       </div>
     </div>
   </div>
@@ -17,26 +17,13 @@
 export default {
   props: ['data'],
   data: () => ({
-    // videoID: '251775381', the real ID nibbaa
-    videoID: '145837856',
     options: {},
     playerReady: false
-  }),
-  methods: {
-    onReady() {
-      this.playerReady = true
-    },
-    play() {
-      this.$refs.player.play()
-    },
-    stop() {
-      this.$refs.player.stop()
-    }
-  }
+  })
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
 .video {
@@ -44,7 +31,7 @@ export default {
   z-index: 3;
   position: relative;
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: 414px) {
     margin-top: 40px;
   }
 
@@ -55,6 +42,10 @@ export default {
     border-radius: 4px;
     padding: 16px;
     min-height: 10px;
+
+    video {
+      max-width: 100%;
+    }
 
     .vimeo-player-1 iframe {
       width: 100% !important;

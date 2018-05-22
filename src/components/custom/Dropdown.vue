@@ -23,12 +23,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
   .dropdown {
     width: 280px;
     text-align: left;
+    margin: 0 auto;
 
     ul.category-list {
       display: flex;

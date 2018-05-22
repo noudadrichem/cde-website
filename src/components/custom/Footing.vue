@@ -52,14 +52,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import '~$styles/app';
+<style lang="scss" >
 
 .footer {
   padding-top: 300px;
   box-sizing: border-box;
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: 414px) {
     padding-top: 64px;
   }
 
@@ -81,7 +80,7 @@ export default {
     margin: 32px 0;
   }
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: 414px) {
     .right {
       margin-left: 0 !important;
     }

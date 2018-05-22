@@ -34,7 +34,7 @@ export default {
     Footing
   },
   mounted() {
-    this.$http.get(conf.apiUrl + 'content/' + '5afac31a2ff1c646e58307e1' + '/sections')
+    this.$http.get(conf.apiUrl + 'content/' + '5afc46024a04c38c80d4fca0' + '/sections')
       .then(data => {
         console.log(data.body);
         const findSectionData = (sectionName) => data.body.sections.find(obj => obj.title === sectionName).contents
