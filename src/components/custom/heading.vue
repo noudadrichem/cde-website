@@ -30,9 +30,7 @@
         </div>
 
         <div class="col-5 heading-image hide-mobile">
-          <div>
-            <img src="@/assets/images/glas-logo.png" alt="glas crazy dutch experience" class="animateGlass"/>
-          </div>
+          <!-- <img src="@/assets/images/glas-logo.png" alt="glas crazy dutch experience" class="animateGlass"/> -->
         </div>
       </div>
     </div>

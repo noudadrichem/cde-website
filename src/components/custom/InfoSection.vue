@@ -45,14 +45,14 @@ export default {
   position: relative;
   z-index: 2;
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: 414px) {
     margin: 40px auto 0;
   }
 
   .quote-container {
     text-align: center;
 
-    @media screen and (max-width: $bp-mobile-lg) {
+    @media screen and (max-width: 414px) {
       margin-top: 32px;
       text-align: left;
     }
@@ -66,7 +66,7 @@ export default {
         flex-flow: row wrap;
         margin-bottom: 8px;
 
-        @media screen and (max-width: $bp-mobile-lg) {
+        @media screen and (max-width: 414px) {
           font-size: 24px;
         }
       }

@@ -31,7 +31,8 @@ div[class^='container'] {
 }
 
 div[class*='col'] {
-  min-height: 1px;
+  ght: 1px;
+  height: auto !important;
 
   &.no-pad {
     padding: 0 !important;

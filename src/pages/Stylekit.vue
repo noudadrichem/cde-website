@@ -327,7 +327,6 @@ export default {
 @import '~$styles/app';
 
 .stylekit {
-  min-height: 100vh;
   width: 100%;
   text-align: center;
 
