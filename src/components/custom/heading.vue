@@ -56,8 +56,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import '~$styles/app';
+<style lang="scss" >
 
 .container-sm {
   margin-left: auto;
@@ -113,7 +112,7 @@ export default {
 .content-container {
   margin: 104px auto 0;
 
-  @media screen and (max-width: $bp-mobile-lg) {
+  @media screen and (max-width: 414px) {
     margin-top: 32px;
   }
 

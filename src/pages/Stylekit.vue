@@ -345,7 +345,7 @@ export default {
   }
 
   .component {
-    margin: 32px;
+    margin: 32px auto 0;
 
     .component-name {
       font-weight: bold;

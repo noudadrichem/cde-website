@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
 .recipe {
@@ -54,6 +54,7 @@ export default {
   box-shadow: 0 14px 44px 10px rgba(#44515E, 0.16);
   max-width: 480px;
   text-align: left;
+  margin: 0 auto;
 
   .ingredients {
     display: flex;

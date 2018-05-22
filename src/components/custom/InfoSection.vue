@@ -8,7 +8,7 @@
         <BodyText :text="data.text"/>
       </div>
 
-      <div class="col-5 align-right align-self-middle">
+      <div class="col-5 align-right align-middle">
         <div class="quote-container">
           <div class="quote-text">"{{ data.quoteText }}"</div>
           <div class="quote-name">- {{ data.quoteAuthor }}</div>
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
 .info-section {

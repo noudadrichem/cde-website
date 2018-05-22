@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '~$styles/app';
 
   .radio-list {
@@ -34,6 +34,7 @@ export default {
     background-color: rgba($template-color-white-light, 0.4);
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 
     div {
       background: transparent;
