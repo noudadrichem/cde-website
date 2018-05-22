@@ -20,7 +20,7 @@
       <div class="grid center">
         <div class="col-7">
 
-          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 48px;"/>
+          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 48px; line-height: 56px;"/>
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
           <BodyText :text="data.bodyText"/>
 
