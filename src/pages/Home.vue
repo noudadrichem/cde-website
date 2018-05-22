@@ -56,8 +56,6 @@ export default {
     drieluik: {},
     footer: {},
     totalConfetties: 5,
-    windowWidth: null,
-    windowHeight: null,
     confetties: [{
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
@@ -133,8 +131,6 @@ export default {
         this.$set(this, 'infoSection', findSectionData('infoSection'))
         this.$set(this, 'drieluik', findSectionData('drieluik'))
         this.$set(this, 'footer', findSectionData('footer'))
-        this.$set(this, 'windowWidth', window.innerWidth)
-        this.$set(this, 'windowHeight', window.innerHeight)
         this.$set(this, 'loading', false)
 
         document.body.style.overflow = 'hidden'
