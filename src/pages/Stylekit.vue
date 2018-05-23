@@ -41,12 +41,6 @@
           </div>
       </div>
 
-      <!-- Icon -->
-      <div class="component">
-        <div class="component-name">Icon</div>
-        <!-- <Icon :width="32" :height="32" name="info"/> -->
-      </div>
-
       <!-- Heading -->
       <div class="component">
         <div class="component-name">Heading</div>
@@ -61,7 +55,9 @@
         <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."/>
       </div>
 
+      <!-- Icon -->
       <div class="component">
+        <div class="component-name">Icon</div>
         <div class="component-left">
           <Icon :width="16" :height="16" name="arrow" :active="false"/>
           <Icon :width="16" :height="16" name="frisdrank" :active="false"/>
