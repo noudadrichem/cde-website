@@ -27,6 +27,14 @@
           <Button type="button" styling="primary" text="Button text"/>
       </div>
 
+      <!-- Share button -->
+      <div class="component">
+        <div class="component-name">Share Button</div>
+          <ShareButton text="Kopieer link"/>
+          <ShareButton text="Deel op" iconName="facebook"/>
+          <ShareButton text="Deel op" iconName="twitter"/>
+      </div>
+
       <!-- Input text -->
       <div class="component">
         <div class="component-name">Input Text</div>
@@ -131,6 +139,7 @@ import Icon from '@/components/common/Icon'
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 import Modal from '@/components/common/Modal'
+import ShareButton from '@/components/common/ShareButton'
 
 import Dropdown from '@/components/custom/Dropdown'
 import Recipe from '@/components/custom/Recipe'
@@ -151,7 +160,8 @@ export default {
     Recipe,
     RadioList,
     Modal,
-    RankingList
+    RankingList,
+    ShareButton
   },
   methods: {
     buttonClick() {

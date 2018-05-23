@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>twitter-default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flow-cocktail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="FontAwesome" font-size="15" font-weight="normal">
+        <g id="3.4" transform="translate(-753.000000, -438.000000)" fill="#FFFFFF">
+            <g id="popup" transform="translate(432.000000, 264.000000)">
+                <g id="share" transform="translate(40.000000, 165.000000)">
+                    <g id="tw" transform="translate(221.000000, 0.000000)">
+                        <text id="twitter-default">
+                            <tspan x="60" y="21"></tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
