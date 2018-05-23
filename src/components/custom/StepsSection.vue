@@ -10,13 +10,14 @@
       <div class="step col-4 to-animate" v-for="(step, idx) in data.steps" ref="step">
         <span class="number">{{ idx + 1 }}</span>
 
-        <div>
+        <div :class="['content', { active: luikShown[idx] }]">
           <h3>{{ step.heading }}</h3>
 
-          <BodyText :text="step.bodyText.substring(0, 84)"/>
+          <BodyText :text="step.bodyText.substring(0, 84)" />
 
           <div v-show="luikShown[idx]">
-            <BodyText :text="step.bodyText.substring(50, Infinity)"/>
+            <br/>
+            <BodyText :text="step.bodyText.substring(50, Infinity)" />
           </div>
 
           <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
@@ -24,6 +25,7 @@
       </div>
     </div>
   </div>
+  <div class="skewed-backdrop hide-mobile"></div>
 </div>
 </template>
 
@@ -88,7 +90,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+$animationTime: 420ms ease;
+
 .steps {
     padding-bottom: 300px;
     margin-top: 128px;
@@ -114,25 +118,42 @@ export default {
             letter-spacing: 0;
         }
 
-        p {
-            font-size: 14px;
-            color: #363542;
-            letter-spacing: 0;
-            line-height: 24px;
-            max-width: 313px;
-        }
+        .content {
+            border-radius: 4px;
+            position: relative;
+            z-index: 3;
+            max-width: 333px;
+            padding: 24px;
+            transition: $animationTime;
 
-        .read-more {
-          margin-top: 8px;
-          font-size: 15px;
-          color: #9c9ba1;
-          font-weight: 700;
-          line-height: 22px;
-          border-bottom: 1px solid #9c9ba1;
-          text-decoration: none;
-          display: inline-block;
-          cursor: pointer;
+            &.active {
+                background: #fff;
+                box-shadow: 0 6px 34px 0 rgba(0,0,0,0.10);
+                margin: 0;
+              }}
+
+            .read-more {
+                margin-top: 8px;
+                font-size: 15px;
+                color: #9c9ba1;
+                font-weight: 700;
+                line-height: 22px;
+                border-bottom: 1px solid #9c9ba1;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+            }
         }
     }
-}
+
+    .skewed-backdrop {
+        background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
+        height: 816px;
+        width: 100%;
+        transform: skewY(-22deg);
+        position: absolute;
+        top: 1100px;
+        z-index: -1;
+        opacity: 0.4;
+    }
 </style>

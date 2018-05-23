@@ -2,12 +2,15 @@
 <div class="campaign" v-if="!loading">
   <Heading :data="heading" :campaign="true" />
   <StepsSection :data="steps" />
+
+  <Footing :data="footer"/>
 </div>
 </template>
 
 <script>
 import Heading from '@/components/custom/Heading'
 import StepsSection from '@/components/custom/StepsSection'
+import Footing from '@/components/custom/Footing'
 import conf from '@/config'
 
 export default {
@@ -54,11 +57,13 @@ export default {
           "readMoreLink": "#3"
         }
       ]
-    }
+    },
+    footer: {}
   }),
   components: {
     Heading,
-    StepsSection
+    StepsSection,
+    Footing
   },
   mounted() {
     this.$http.get(`${conf.apiUrl}content/${this.pageId}/sections`)
@@ -68,6 +73,7 @@ export default {
 
         // this.$set(this, 'heading', findSectionData('heading'))
         // this.$set(this, 'drieluik', findSectionData('drieluik'))
+        this.$set(this, 'footer', findSectionData('footer'))
         this.$set(this, 'loading', false)
       })
   }

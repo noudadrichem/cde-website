@@ -56,6 +56,7 @@ export default {
 
 .footer {
   padding-top: 0px;
+  padding-bottom: 64px;
   box-sizing: border-box;
 
   @media screen and (max-width: 414px) {
