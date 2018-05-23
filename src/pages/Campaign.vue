@@ -1,7 +1,7 @@
 <template>
 <div class="campaign" v-if="!loading">
   <Heading :data="heading" :campaign="true" />
-  <StepsSection :data="drieluik" />
+  <StepsSection :data="steps" />
 </div>
 </template>
 
@@ -21,7 +21,6 @@ export default {
       "buttonText": "Begin meteen met maken",
       "bodyText": "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. ",
       "infoText": "Meer over Crazy Dutch?",
-      "imageUrl": "glas-logo.png",
       "navbarItems": [{
           "text": "Campagne",
           "link": "#campagne"
@@ -37,23 +36,22 @@ export default {
       ]
     },
     "steps": {
+      "title": "Hoe maak jij zelf een cocktail?",
+      "subTitle": "Zo moeilijk is het echt niet!",
       "steps": [{
-          "imageName": "food",
-          "heading": "Food",
-          "bodyText": "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.",
-          "readMoreLink": "#food"
+          "heading": "Kies je smaken",
+          "bodyText": "Integer tincidunt. Cras dapibus. Vivamus elementum. Cras dapibus. Vivamus elementum. Cras. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.",
+          "readMoreLink": "#1"
         },
         {
-          "imageName": "drinks",
-          "heading": "Drinks",
+          "heading": "Mix je smaken",
           "bodyText": "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.",
-          "readMoreLink": "#drinks"
+          "readMoreLink": "#2"
         },
         {
-          "imageName": "other-stuff",
-          "heading": "Other stuff",
-          "bodyText": "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Nean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.",
-          "readMoreLink": "#other-stuff"
+          "heading": "Uploaden maar!",
+          "bodyText": "Mauris rutrum metus mi, ac condimentum lacus ultricies eget. In auctor felis ac dignissim scelerisque. Duis non malesuada lorem. Interdum et malesuada fames ac ante ipsum ",
+          "readMoreLink": "#3"
         }
       ]
     }
