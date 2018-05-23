@@ -21,18 +21,18 @@
       </div>
     </transition>
 
-    <!-- <transition name="getIn"> -->
-      <div class="confetti-container">
-        <div v-for="confetti in confetties" class="confetti" :style="{ left: `${confetti.left}px`, top: `${confetti.top}px` }"></div>
+    <div class="confetti-container" v-if="showConfetties">
+      <div v-for="(confetti, idx) in confetties" class="confetti" :key="idx"  :style="{ left: `${confetti.left}px`, top: `${confetti.top}px`, opacity: confetti.opacity }">
+        <img :src="`/static/${confetti.img}`" draggable="false">
       </div>
-    <!-- </transition> -->
+    </div>
   </div>
 
   <div :class="['campaign-popup', showPopup ? 'show' : '']">
     <h2>Crazy Dutch Dry Gin</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
-    <Button type="button" styling="primary" @click.native="console.log('click cta')" text="Begin meteen met maken"/>
-    <Icon :width="16" :height="16" name="close" @click.native="showPopup = false" style="position: absolute; top: 16px; right: 16px;"/>
+    <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Begin meteen met maken" />
+    <Icon :width="16" :height="16" name="close" @click.native="showPopup = false" style="position: absolute; top: 16px; right: 16px;" />
   </div>
 </div>
 </template>
@@ -52,6 +52,7 @@ export default {
   data: () => ({
     loading: true,
     showLogo: false,
+    showConfetties: false,
     curtainsOpen: false,
     introIsDone: false,
     showPopup: false,
@@ -65,55 +66,68 @@ export default {
     confetties: [{
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'klomp-grijs.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'fles-rood.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'peper-blauw.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'paraplu-oranje.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'klomp-grijs.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'peper-blauw.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'fles-rood.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'paraplu-oranje.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'peper-blauw.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'paraplu-oranje.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'fles-rood.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'fles-rood.svg',
+      opacity: 0,
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: ''
+      img: 'peper-blauw.svg',
+      opacity: 0,
     }],
   }),
   components: {
@@ -144,14 +158,16 @@ export default {
 
         setTimeout(() => {
           this.$set(this, 'showLogo', true)
+          this.$set(this, 'showConfetties', true)
         }, 400)
 
         setTimeout(() => {
           this.confetties.forEach(partial => {
             partial.top = (Math.random() * window.innerHeight)
             partial.left = (Math.random() * window.innerWidth)
+            partial.opacity = Math.random()
           })
-        }, 2400)
+        }, 1400)
 
         setTimeout(() => {
           this.$set(this, 'curtainsOpen', true)
@@ -163,7 +179,7 @@ export default {
           document.body.style.overflow = ''
         }, 4500)
 
-        setTimeout(() => this.$set(this, 'showPopup', true), 7000)
+        setTimeout(() => this.$set(this, 'showPopup', true), 9000)
 
       })
 
@@ -219,8 +235,6 @@ export default {
         }
     }
 
-
-
     .confetti-container {
         z-index: 15;
         position: absolute;
@@ -231,46 +245,47 @@ export default {
         .confetti {
             width: 32px;
             height: 32px;
-            background: red;
-            opacity: 0.4;
-            border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transition: 400ms cubic-bezier(0, 1.01, 0.44, 1.42);
+            img {
+              max-width: 100%;
+            }
         }
     }
 }
 
 .campaign-popup {
-  background: #1072b8;
-  box-shadow: 0 0 24px 0 rgba(0,0,0,0.20);
-  border-radius: 4px;
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  max-width: 367px;
-  padding: 16px;
-  z-index: 22;
-  transition: 400ms ease-out;
-  transform: translateX(200%);
+    background: #1072b8;
+    box-shadow: 0 0 24px 0 rgba(0,0,0,0.20);
+    border-radius: 4px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: 367px;
+    padding: 16px;
+    z-index: 22;
+    transition: 400ms ease-out;
+    transform: translateX(200%);
 
-  &.show {
-    transform: translateX(0) !important;
-  }
+    &.show {
+        transform: translateX(0) !important;
+    }
 
-  h2, p {
-    color: white !important;
-  }
+    h2,
+    p {
+        color: white !important;
+    }
 
-  p {
-    margin-bottom: 24px;
-  }
+    p {
+        margin-bottom: 24px;
+    }
 }
 
 .getIn-enter-active,
 .getIn-leave-active {
-    transition: 600ms ease-in;
+    transition: 600ms cubic-bezier(0, 1.01, 0.44, 1.42);
 }
 
 .getIn-enter,

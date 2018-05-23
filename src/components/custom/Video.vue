@@ -3,7 +3,7 @@
 <div class="container-md no-pad">
   <div class="grid center">
     <div class="col-10">
-      <div class="video-container">
+      <div class="video-container" ref="videoContainer">
         <!-- ff zo hoor Donnie <3 -->
         <video src="https://werk.noudadrichem.com/clients/crazydutchexperience/Crazy-Dutch-HID181-Afl-04.mp4" controls></video>
       </div>
@@ -20,7 +20,19 @@ export default {
   data: () => ({
     options: {},
     playerReady: false
-  })
+  }),
+  mounted() {
+    window.addEventListener('scroll', e => {
+      const windowTop = document.documentElement.scrollTop;
+      const viewPortHeight = window.innerHeight
+      const documentHeight = document.body.scrollHeight
+      const maxScroll = (documentHeight - viewPortHeight)
+      const scrollPercent = (windowTop / maxScroll) * 100
+
+      this.$refs.videoContainer.style.transform = `translate3d(0, -${scrollPercent * 5}px, 0)`
+
+    })
+  }
 }
 </script>
 

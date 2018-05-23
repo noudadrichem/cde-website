@@ -3,7 +3,7 @@
     width: `${width}px`,
     height: `${height}px`,
     }">
-  <img :src="iconsUrl(name)" />
+  <img :src="iconsUrl(name)" draggable="false"/>
 </div>
 </template>
 
