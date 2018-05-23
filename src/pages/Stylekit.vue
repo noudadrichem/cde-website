@@ -8,16 +8,16 @@
       <!-- Checkbox -->
       <div class="component">
         <div class="component-name">Checkbox</div>
-        <!-- <Checkbox labelText="Some label text" id="checkbox"/> -->
+        <Checkbox labelText="Some label text" id="checkbox"/>
       </div>
 
       <!-- Radio button -->
       <div class="component">
         <div class="component-name">Radio button</div>
         <form>
-          <!-- <RadioButton name="styleKitForm" labelText="Radio button text 1" id="radio-button-1"/> -->
-          <!-- <RadioButton name="styleKitForm" labelText="Radio button text 2" id="radio-button-2"/> -->
-          <!-- <RadioButton name="styleKitForm" labelText="Radio button text 3" id="radio-button-3"/> -->
+          <RadioButton name="styleKitForm" labelText="Radio button text 1" id="radio-button-1"/>
+          <RadioButton name="styleKitForm" labelText="Radio button text 2" id="radio-button-2"/>
+          <RadioButton name="styleKitForm" labelText="Radio button text 3" id="radio-button-3"/>
         </form>
       </div>
 
@@ -328,7 +328,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~$styles/app';
+@import '~$styles/base/variables';
 
 .stylekit {
   width: 100%;
