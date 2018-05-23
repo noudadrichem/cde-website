@@ -28,6 +28,7 @@ export default {
         const findSectionData = (sectionName) => data.body.sections.find(obj => obj.title === sectionName).contents
 
         this.$set(this, 'heading', findSectionData('heading'))
+        this.$set(this, 'drieluik', findSectionData('drieluik'))
         this.$set(this, 'loading', false)
       })
   }
