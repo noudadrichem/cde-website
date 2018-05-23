@@ -55,7 +55,7 @@ export default {
 <style lang="scss" >
 
 .footer {
-  padding-top: 300px;
+  padding-top: 128px;
   box-sizing: border-box;
 
   @media screen and (max-width: 414px) {
