@@ -10,8 +10,10 @@
     zIndex: '-1',
     position: 'absolute'
     } : {}">
-    <div :class="['curtain', 'left', curtainsToLeft ? 'done' : '']"></div>
-    <div :class="['curtain', 'right', curtainsToLeft ? 'done' : '']"></div>
+
+
+    <div :class="['curtain', 'left', curtainsOpen ? 'done' : '']" v-if="!introIsDone"></div>
+    <div :class="['curtain', 'right', curtainsOpen ? 'done' : '']" v-if="!introIsDone"></div>
 
     <transition name="getIn">
       <div class="logo toGetIn" v-if="showLogo">
@@ -19,11 +21,11 @@
       </div>
     </transition>
 
-    <transition name="getIn">
-      <div class="confetti-container" v-if="showLogo">
+    <!-- <transition name="getIn"> -->
+      <div class="confetti-container">
         <div v-for="confetti in confetties" class="confetti" :style="{ left: `${confetti.left}px`, top: `${confetti.top}px` }"></div>
       </div>
-    </transition>
+    <!-- </transition> -->
   </div>
 
   <div :class="['campaign-popup', showPopup ? 'show' : '']">
@@ -50,7 +52,7 @@ export default {
   data: () => ({
     loading: true,
     showLogo: false,
-    curtainsToLeft: false,
+    curtainsOpen: false,
     introIsDone: false,
     showPopup: false,
     pageId: '5afc46024a04c38c80d4fca0',
@@ -152,7 +154,7 @@ export default {
         }, 2400)
 
         setTimeout(() => {
-          this.$set(this, 'curtainsToLeft', true)
+          this.$set(this, 'curtainsOpen', true)
           this.$set(this, 'showLogo', false)
         }, 3100)
 
