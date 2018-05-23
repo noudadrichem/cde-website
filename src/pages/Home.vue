@@ -19,15 +19,18 @@
       </div>
     </transition>
 
-    <div class="confetti-container">
-      <div v-for="confetti in confetties" class="confetti" :style="{ left: `${confetti.left}px`, top: `${confetti.top}px` }"></div>
-    </div>
+    <transition name="getIn">
+      <div class="confetti-container" v-if="showLogo">
+        <div v-for="confetti in confetties" class="confetti" :style="{ left: `${confetti.left}px`, top: `${confetti.top}px` }"></div>
+      </div>
+    </transition>
   </div>
 
   <div :class="['campaign-popup', showPopup ? 'show' : '']">
     <h2>Crazy Dutch Dry Gin</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
-    <Button type="button" styling="primary" @click="console.log('click cta')" text="Begin meteen met maken"/>
+    <Button type="button" styling="primary" @click.native="console.log('click cta')" text="Begin meteen met maken"/>
+    <Icon :width="16" :height="16" name="close" @click.native="showPopup = false" style="position: absolute; top: 16px; right: 16px;"/>
   </div>
 </div>
 </template>
@@ -39,6 +42,7 @@ import InfoSection from '@/components/custom/InfoSection';
 import Drieluik from '@/components/custom/Drieluik';
 import Footing from '@/components/custom/Footing';
 import Button from '@/components/common/Button'
+import Icon from '@/components/common/Icon'
 import conf from '@/config'
 
 export default {
@@ -116,7 +120,8 @@ export default {
     InfoSection,
     Drieluik,
     Footing,
-    Button
+    Button,
+    Icon
   },
   mounted() {
     document.body.scrollTop = 0
