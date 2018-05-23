@@ -31,7 +31,6 @@ div[class^='container'] {
 }
 
 div[class*='col'] {
-  ght: 1px;
   height: auto !important;
 
   &.no-pad {
