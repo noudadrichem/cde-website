@@ -2,14 +2,14 @@
   <transition name="modal">
     <div class="modal">
       <div class="modal-container">
-        <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <div class="close-wrapper" @click="$emit('close')">
           Sluiten
           <Icon name="close" :width="12" :height="12" />
         </div>
+        <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Voordat jouw cocktail aan de ranglijst wordt toegevoegd, hebben wij wat meer informatie van jou nodig." />
         <form class="ranking-signup">
-          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="mail"/>
+          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="email"/>
           <InputText placeholder="Je volledige naam" type="text" iconType="name"/>
           <Button type="button" styling="primary" text="Voeg cocktail toe"/>
         </form>
@@ -70,8 +70,16 @@ export default {
     justify-content: space-between;
     transition: all .2s ease-in-out;
 
+    @media screen and (max-width: $bp-tablet-sm) {
+      padding: 20px;
+      margin: 8px;
+    }
+
     h2 {
       display: inline-block;
+      position: relative;
+      z-index: 1;
+      width: 100%;
     }
 
     .close-wrapper {
@@ -81,8 +89,17 @@ export default {
       text-transform: uppercase;
       font-size: 12px;
       color: $template-color-black-lighter;
-      margin: 0 0 16px 0;
+      margin: 4px 0 0 0;
       cursor: pointer;
+      position: absolute;
+      z-index: 1;
+      right: 40px;
+
+      @media screen and (max-width: $bp-tablet-sm) {
+        position: relative;
+        right: auto;
+        margin: 0 0 auto auto;
+      }
 
       .icon {
         margin-left: 4px;
@@ -98,7 +115,7 @@ export default {
       margin: 36px 0 0 0;
       z-index: 1;
 
-      .form-control {
+      .input-text {
         margin-bottom: 24px;
       }
 
@@ -116,6 +133,10 @@ export default {
     right: 0;
     bottom: 0;
     background-image: url('/static/images/ranking-background.svg');
+
+    @media screen and (max-width: $bp-tablet-sm) {
+      display: none;
+    }
   }
 }
 
