@@ -2,7 +2,7 @@
   <div :class="['input-text', { active: focused }]">
     <Icon :width="16" :height="16" :name="iconType" :active="focused"/>
     <input v-model="inputValue" :type="type" :placeholder="placeholder" @focus="toggleFocus" @blur="toggleFocus">
-    <Icon :v-if="iconType == 'name'" :width="16" :height="16" :name="iconType == 'name' ? '' : 'arrow'" :active="focused"/>
+    <Icon v-if="iconType !== 'name'" :width="16" :height="16" :name="iconType == 'name' ? '' : 'arrow'" :active="focused"/>
   </div>
 </template>
 
