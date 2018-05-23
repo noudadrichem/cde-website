@@ -16,13 +16,24 @@
         <div class="background"></div>
       </div>
 
-      <div v-if="addedToRanking" class="modal-container">
+      <div v-if="addedToRanking" class="modal-container added">
         <div class="close-wrapper" @click="$emit('close')">
           Sluiten
           <Icon name="close" :width="12" :height="12" />
         </div>
         <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Je cocktail is toegevoegd aan de ranglijst! Deel jouw unieke link met je vrienden om voor veel stemmen te zorgen!" />
+        <div class="social-shares">
+          <ShareButton text="Kopieer link"/>
+          <span>of</span>
+          <ShareButton text="Deel op" iconName="facebook"/>
+          <ShareButton text="Deel op" iconName="twitter"/>
+        </div>
+        <div class="see-ranking">
+            Zie de ranglijst hier
+            <Icon name="arrow" :width="16" :height="16" :active="true"/>
+        </div>
+        <div class="visual"></div>
         <div class="background"></div>
       </div>
     </div>
@@ -35,6 +46,7 @@ import BodyText from '@/components/common/BodyText'
 import Icon from '@/components/common/Icon'
 import InputText from '@/components/common/InputText'
 import Button from '@/components/common/Button'
+import ShareButton from '@/components/common/ShareButton'
 
 export default {
   data: () => ({
@@ -45,7 +57,8 @@ export default {
     BodyText,
     Icon,
     InputText,
-    Button
+    Button,
+    ShareButton
   }
 }
 </script>
@@ -87,6 +100,10 @@ export default {
     @media screen and (max-width: $bp-tablet-sm) {
       padding: 20px;
       margin: 16px;
+    }
+
+    &.added {
+      padding: 40px;
     }
 
     h2 {
@@ -152,6 +169,47 @@ export default {
     }
   }
 
+  .social-shares {
+    position: relative;
+    z-index: 1;
+    margin: 16px 0 24px 0;
+    width: 100%;
+
+    .share-button {
+      &:nth-child(3) {
+        margin-right: 16px;
+      }
+    }
+
+    span {
+      font-size: 12px;
+      color: $template-color-black-lighter;
+      margin: 0 8px;
+    }
+  }
+
+  .see-ranking {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    width: auto;
+    color: $template-color-blue-default;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 48px;
+
+    &:hover {
+      .icon {
+        margin-left: 20px;
+      }
+    }
+
+    .icon {
+      margin-left: 16px;
+      transition: margin .25s ease-in-out;
+    }
+  }
+
   .background {
     width: 306px;
     height: 342px;
@@ -163,6 +221,15 @@ export default {
     @media screen and (max-width: $bp-tablet-sm) {
       display: none;
     }
+  }
+
+  .visual {
+    width: 100%;
+    height: 168px;
+    position: relative;
+    background-image: url('/static/images/ranking-visual.svg');
+    background-position: left;
+    background-repeat: no-repeat;
   }
 }
 
