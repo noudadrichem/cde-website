@@ -168,11 +168,6 @@ $animationTime: 420ms ease;
       &.active {
         margin: 0;
         padding: 32px 56px;
-        transform: translateY(-50%);
-
-        @media screen and (max-width: 768px) {
-          transform: translateY(-50%);
-        }
       }
 
       .read-more {

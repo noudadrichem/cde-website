@@ -17,8 +17,8 @@
 
 
     <div class="content-container">
-      <div class="grid center">
-        <div class="col-7">
+      <div class="grid">
+        <div class="col-8">
 
           <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 48px; line-height: 56px;"/>
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
@@ -29,12 +29,16 @@
           <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
         </div>
 
-        <div class="col-5 heading-image hide-mobile">
-          <div>
-             <!-- <img src="@/assets/images/glas-logo.png" alt="glas crazy dutch experience" class="animateGlass"/> -->
+        <div class="col-4 hide-mobile" v-if="campaign">
+          <div class="">
+            <img src="@/assets/images/glas-fles@2x.png" alt="">
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="molen" v-if="campaign">
+      <img src="@/assets/images/molen.svg" alt="molen visual" draggable="false">
     </div>
   </header>
 </template>
@@ -46,7 +50,17 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 
 export default {
-  props: ['data'],
+  props: {
+    data: {
+      type: Object,
+      required: true
+    },
+    campaign: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
   components: {
     Heading,
     BodyText,
@@ -58,6 +72,17 @@ export default {
 
 <style lang="scss" >
 
+img {
+  object-fit: contain;
+  width: 100%;
+}
+
+
+.molen {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .container-sm {
   margin-left: auto;
   margin-right: auto;
@@ -71,11 +96,6 @@ export default {
   .logo {
     height: 77px;
     width: 81px;
-
-    img {
-      object-fit: contain;
-      width: 100%;
-    }
   }
 
   .nav-bar {
