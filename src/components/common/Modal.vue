@@ -9,8 +9,8 @@
         </div>
         <BodyText text="Voordat jouw cocktail aan de ranglijst wordt toegevoegd, hebben wij wat meer informatie van jou nodig." />
         <form class="ranking-signup">
-          <InputText placeholder="jouw@emailhier.nl"/>
-          <InputText placeholder="Je volledige naam"/>
+          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="mail"/>
+          <InputText placeholder="Je volledige naam" type="text" iconType="name"/>
           <Button type="button" styling="primary" text="Voeg cocktail toe"/>
         </form>
         <div class="background"></div>

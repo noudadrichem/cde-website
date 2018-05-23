@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>name-active</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="16"></rect>
+    </defs>
+    <g id="flow-cocktail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3.3" transform="translate(-488.000000, -543.000000)">
+            <g id="popup" transform="translate(432.000000, 264.000000)">
+                <g id="name" transform="translate(40.000000, 261.000000)">
+                    <g id="name-active" transform="translate(16.000000, 18.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <path d="M8,9 C5.27975187,9 3.27983266,10.4769924 1.89137061,13.5929819 C1.83428985,13.7210827 1.80479164,13.8597573 1.80479164,14 C1.80479164,14.5522902 2.25251129,15.0000098 2.80480051,15.0000098 L13.1952204,15 C13.3354574,15 13.4741264,14.9705032 13.6022221,14.913425 C14.1066807,14.6886434 14.33341,14.0974689 14.1086433,13.5930131 C12.7201808,10.4770023 10.720257,9 8,9 Z" id="Rectangle-8" stroke="#1072B8" stroke-width="2" mask="url(#mask-2)"></path>
+                        <circle id="Oval" stroke="#1072B8" stroke-width="2" mask="url(#mask-2)" cx="8" cy="5" r="4"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

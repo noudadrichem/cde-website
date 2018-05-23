@@ -30,13 +30,15 @@
       <!-- Input text -->
       <div class="component">
         <div class="component-name">Input Text</div>
-        <InputText placeholder="mail@example.com"/>
-      </div>
-
-      <!-- Icon -->
-      <div class="component">
-        <div class="component-name">Icon</div>
-        <!-- <Icon :width="32" :height="32" name="info"/> -->
+          <div class="input-text-container">
+            <InputText placeholder="mail@example.com" type="mail" iconType="mail"/>
+          </div>
+          <div class="input-text-container">
+            <InputText placeholder="John Doe" type="text" iconType="name"/>
+          </div>
+          <div class="input-text-container">
+            <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search"/>
+          </div>
       </div>
 
       <!-- Heading -->
@@ -53,7 +55,9 @@
         <BodyText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."/>
       </div>
 
+      <!-- Icon -->
       <div class="component">
+        <div class="component-name">Icon</div>
         <div class="component-left">
           <Icon :width="16" :height="16" name="arrow" :active="false"/>
           <Icon :width="16" :height="16" name="frisdrank" :active="false"/>
@@ -353,6 +357,10 @@ export default {
 
     .icon {
       margin: 8px;
+    }
+
+    .input-text-container {
+      margin: 8px auto;
     }
 
     // vies but works ⬇
