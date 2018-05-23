@@ -1,7 +1,7 @@
 <template>
   <transition name="modal">
     <div class="modal">
-      <div class="modal-container">
+      <div v-if="!addedToRanking" class="modal-container">
         <div class="close-wrapper" @click="$emit('close')">
           Sluiten
           <Icon name="close" :width="12" :height="12" />
@@ -9,10 +9,20 @@
         <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Voordat jouw cocktail aan de ranglijst wordt toegevoegd, hebben wij wat meer informatie van jou nodig." />
         <form class="ranking-signup">
-          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="email"/>
+          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="mail"/>
           <InputText placeholder="Je volledige naam" type="text" iconType="name"/>
-          <Button type="button" styling="primary" text="Voeg cocktail toe"/>
+          <Button type="button" styling="primary" text="Voeg cocktail toe" @click.native="addedToRanking = !addedToRanking"/>
         </form>
+        <div class="background"></div>
+      </div>
+
+      <div v-if="addedToRanking" class="modal-container">
+        <div class="close-wrapper" @click="$emit('close')">
+          Sluiten
+          <Icon name="close" :width="12" :height="12" />
+        </div>
+        <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
+        <BodyText text="Je cocktail is toegevoegd aan de ranglijst! Deel jouw unieke link met je vrienden om voor veel stemmen te zorgen!" />
         <div class="background"></div>
       </div>
     </div>
@@ -27,6 +37,9 @@ import InputText from '@/components/common/InputText'
 import Button from '@/components/common/Button'
 
 export default {
+  data: () => ({
+    addedToRanking: false
+  }),
   components: {
     Heading,
     BodyText,
@@ -69,6 +82,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     transition: all .2s ease-in-out;
+    overflow: hidden;
 
     @media screen and (max-width: $bp-tablet-sm) {
       padding: 20px;
@@ -92,13 +106,13 @@ export default {
       margin: 4px 0 0 0;
       cursor: pointer;
       position: absolute;
-      z-index: 1;
+      z-index: 2;
       right: 40px;
 
       @media screen and (max-width: $bp-tablet-sm) {
         position: relative;
         right: auto;
-        margin: 0 0 auto auto;
+        margin: 0 0 16px auto;
       }
 
       .icon {
@@ -109,11 +123,19 @@ export default {
     p {
       max-width: 360px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     .ranking-signup {
       margin: 36px 0 0 0;
       z-index: 1;
+
+      @media screen and (max-width: $bp-tablet-sm) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
 
       .input-text {
         margin-bottom: 24px;
@@ -122,6 +144,10 @@ export default {
       .button button{
         width: 250px;
         padding: 16px 0;
+
+        @media screen and (max-width: $bp-tablet-sm) {
+          width: 100%;
+        }
       }
     }
   }
