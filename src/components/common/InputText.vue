@@ -55,7 +55,7 @@ export default {
   box-sizing: border-box;
   transition: 200ms;
   justify-content: space-between;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
 
   &.active {
