@@ -1,30 +1,30 @@
 <template>
-<div class="steps" ref="steps">
-  <div class="container-md">
-
-      <Slick ref="slick" :options="slickOptions" class="grid">
-
-        <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in data.luiken" :key="idx">
-          <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
-
-          <div :class="['content', { active: luikShown[idx] }]">
-            <Heading tag="h1" :text="luik.heading"/>
-            <BodyText :text="luik.bodyText"/>
-
-            <transition name="fade-height">
-              <div v-show="luikShown[idx]">
-                <br/>
-                <BodyText :text="luik.bodyText"/>
-              </div>
-            </transition/>
-            <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
-          </div>
-        </div>
-
-      </Slick>
-
+<div class="steps">
+  <div class="container-sm">
+    <Heading tag="h1" :text="data.title" className="heading-title" />
+    <Heading tag="h2" :text="data.subTitle" className="heading-sub-title" />
   </div>
 
+  <div class="container-md">
+    <div class="steps grid between" ref="steps">
+      <div class="step col-4 to-animate" v-for="(step, idx) in data.steps" ref="step">
+        <span class="number">{{ idx + 1 }}</span>
+
+        <div :class="['content', { active: luikShown[idx] }]">
+          <h3>{{ step.heading }}</h3>
+
+          <BodyText :text="step.bodyText.substring(0, 84)" />
+
+          <div v-show="luikShown[idx]">
+            <br/>
+            <BodyText :text="step.bodyText.substring(50, Infinity)" />
+          </div>
+
+          <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="skewed-backdrop hide-mobile"></div>
 </div>
 </template>
@@ -32,22 +32,21 @@
 <script>
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
-import Slick from 'vue-slick';
 
 export default {
-  props: ['data'],
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
+  components: {
+    Heading,
+    BodyText
+  },
   data: () => ({
     luikShown: [false, false, false],
-    btnText: ['Lees meer', 'Lees meer', 'Lees meer'],
-    activeSlide: 0,
-    slideToRight: 0,
-    slickOptions: {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      infinite: false,
-      dots: true,
-      arrows: false
-    }
+    btnText: ['Lees meer', 'Lees meer', 'Lees meer']
   }),
   methods: {
     luikUrl(imageName) {
@@ -69,11 +68,12 @@ export default {
     showLuikWhenInFold() {
       const drieluikIsInScreen = this.$refs.steps.getBoundingClientRect().y - (window.innerHeight - 100)
 
-      if(drieluikIsInScreen < 0) {
-        this.$refs.luik.forEach((luikNode, idx) => {
+      if (drieluikIsInScreen < 0) {
+        this.$refs.step.forEach((luikNode, idx) => {
           setTimeout(() => {
             luikNode.classList.add('fade-in-up')
-          },idx * 220)
+            luikNode.classList.remove('to-animate')
+          }, idx * 220)
         })
       }
     },
@@ -86,163 +86,74 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
-
-    if(window.innerWidth > 414) {
-      this.$refs.slick.destroy()
-    }
   },
-  components: {
-    Heading,
-    BodyText,
-    Slick
-  }
 }
 </script>
 
 <style lang="scss">
-@import '~$styles/app';
-
 $animationTime: 420ms ease;
 
 .steps {
-  margin-top: 180px;
-  position: relative;
-  max-width: 100vw;
-
-  .container-md {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media screen and (max-width: 768px) {
-    overflow: hidden;
+    padding-bottom: 300px;
+    margin-top: 128px;
 
     .container-md {
-      padding: 0 !important;
+        margin: auto;
     }
 
-    .grid {
-      width: 100vw !important;
-      display: block !important;
-      transition: $animationTime !important;
+    .step {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
 
-      .slick-slide {
-        display: inline-block !important;
-      }
-    }
-  }
-
-  .luik {
-    height: 500px;
-    padding: 0 !important;
-    box-sizing: border-box;
-
-    @media screen and (min-width: 414px) and (max-width: 1120px) {
-      width: 33% !important;
-      flex-basis: 33% !important;
-    }
-
-    @media screen and (max-width: 768px) {
-      width: 100vw;
-      display: inline-block;
-    }
-
-    img {
-      width: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    .content {
-      background: #fff;
-      box-shadow: 0 6px 34px 0 rgba(0,0,0,0.10);
-      border-radius: 2px;
-      position: relative;
-      z-index: 3;
-      transform: translateY(-80px);
-      margin: 0 24px;
-      padding: 32px;
-      transition: $animationTime;
-
-      &.active {
-        margin: 0;
-        padding: 32px 56px;
-        transform: translateY(-50%);
-
-        @media screen and (max-width: 768px) {
-          transform: translateY(-50%);
-        }
-      }
-
-      .read-more {
-        margin-top: 8px;
-        font-size: 15px;
-        color: #9c9ba1;
-        font-weight: 700;
-        line-height: 22px;
-        border-bottom: 1px solid #9c9ba1;
-        text-decoration: none;
-        display: inline-block;
-        cursor: pointer;
-      }
-    }
-  }
-
-    ul.slick-dots {
-      display: inline-block;
-      list-style-type: none;
-      padding: 0;
-      width: 100%;
-      text-align: center;
-
-      li {
-        display: inline;
-        opacity: 0.5;
-
-        &.slick-active {
-          opacity: 1;
+        .number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.4;
+            font-weight: 1000;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 128px;
+            color: rgba(156,155,161,0.24);
+            letter-spacing: 0;
         }
 
-        button {
-          margin-right: 5px;
-          height: 12px;
-          width: 12px;
-          background-color: #D0D0D0;
-          border-radius: 50%;
-          display: inline-block;
-          opacity: 0.5;
-          font-size: 0;
-          outline: none;
+        .content {
+            border-radius: 4px;
+            position: relative;
+            z-index: 3;
+            max-width: 333px;
+            padding: 24px;
+            transition: $animationTime;
 
-          &.active {
-            opacity: 1;
-          }
+            &.active {
+                background: #fff;
+                box-shadow: 0 6px 34px 0 rgba(0,0,0,0.10);
+                margin: 0;
+              }}
+
+            .read-more {
+                margin-top: 8px;
+                font-size: 15px;
+                color: #9c9ba1;
+                font-weight: 700;
+                line-height: 22px;
+                border-bottom: 1px solid #9c9ba1;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+            }
         }
-      }
     }
-  // }
 
-  .skewed-backdrop {
-    background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
-    height: 816px;
-    width: 100%;
-    transform: skewY(14deg);
-    position: absolute;
-    top: 500px;
-    z-index: -1;
-  }
-
-  .fade-height-enter-active,
-  .fade-height-leave {
-    transition: $animationTime;
-    opacity: 1 !important;
-    max-height: 220px;
-  }
-  .fade-height-enter,
-  .fade-height-leave-to {
-    transition: $animationTime;
-    opacity: 0;
-    max-height: 0;
-  }
-}
+    .skewed-backdrop {
+        background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
+        height: 816px;
+        width: 100%;
+        transform: skewY(-22deg);
+        position: absolute;
+        top: 1100px;
+        z-index: -1;
+        opacity: 0.4;
+    }
 </style>
