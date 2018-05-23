@@ -86,7 +86,7 @@ export default {
 
     @media screen and (max-width: $bp-tablet-sm) {
       padding: 20px;
-      margin: 8px;
+      margin: 16px;
     }
 
     h2 {
