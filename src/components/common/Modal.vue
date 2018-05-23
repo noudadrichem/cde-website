@@ -104,6 +104,10 @@ export default {
 
     &.added {
       padding: 40px;
+
+      @media screen and (max-width: $bp-tablet-sm) {
+        padding: 20px;
+      }
     }
 
     h2 {
@@ -204,6 +208,10 @@ export default {
       }
     }
 
+    @media screen and (max-width: $bp-tablet-sm) {
+      margin-bottom: 16px;
+    }
+
     .icon {
       margin-left: 16px;
       transition: margin .25s ease-in-out;
@@ -230,6 +238,10 @@ export default {
     background-image: url('/static/images/ranking-visual.svg');
     background-position: left;
     background-repeat: no-repeat;
+
+    @media screen and (max-width: $bp-tablet-sm) {
+      display: none;
+    }
   }
 }
 
