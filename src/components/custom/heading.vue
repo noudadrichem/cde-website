@@ -18,19 +18,21 @@
 
     <div class="content-container">
       <div class="grid center">
-        <div class="col-5">
+        <div class="col-7">
 
-          <Heading tag="h1" :text="data.title" className="heading-title"/>
+          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 48px; line-height: 56px;"/>
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
           <BodyText :text="data.bodyText"/>
 
-          <Button type="button" styling="primary" @click="console.log('click cta')" :text="data.buttonText" className="heading-cta-button"/>
+          <Button type="button" styling="primary" @click="console.log('click cta')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
 
-          <span class="tagline">{{ data.infoText }} <Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
+          <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
         </div>
 
         <div class="col-5 heading-image hide-mobile">
-          <!-- <img src="@/assets/images/glas-logo.png" alt="glas crazy dutch experience" class="animateGlass"/> -->
+          <div>
+             <!-- <img src="@/assets/images/glas-logo.png" alt="glas crazy dutch experience" class="animateGlass"/> -->
+          </div>
         </div>
       </div>
     </div>
@@ -123,7 +125,7 @@ export default {
   }
 
   .tagline {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     font-size: 15px;
     font-weight: 600;
