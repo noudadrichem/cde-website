@@ -30,7 +30,15 @@
       <!-- Input text -->
       <div class="component">
         <div class="component-name">Input Text</div>
-        <InputText placeholder="mail@example.com"/>
+          <div class="input-text-container">
+            <InputText placeholder="mail@example.com" type="mail" iconType="mail"/>
+          </div>
+          <div class="input-text-container">
+            <InputText placeholder="John Doe" type="text" iconType="name"/>
+          </div>
+          <div class="input-text-container">
+            <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search"/>
+          </div>
       </div>
 
       <!-- Icon -->
@@ -353,6 +361,10 @@ export default {
 
     .icon {
       margin: 8px;
+    }
+
+    .input-text-container {
+      margin: 8px auto;
     }
 
     // vies but works ⬇
