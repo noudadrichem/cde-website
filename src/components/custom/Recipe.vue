@@ -7,8 +7,8 @@
       <div class="counter-container">
         <span class="counter">{{ counter }}ml</span>
         <span class="max-total">/ 700ml</span>
-        <div class="info-container">
-          <Icon :width="16" :height="16" name="info"/>
+        <div class="info-container" @mouseover="infoHover = true" @mouseleave="infoHover = false">
+          <Icon :width="16" :height="16" name="info" :active="infoHover"/>
           <div class="info-modal">
             Aantal mililiters die in het cocktail glas gaan.
           </div>
@@ -32,6 +32,9 @@ import Icon from '@/components/common/Icon'
 import Button from '@/components/common/Button'
 
 export default {
+  data: () => ({
+    infoHover: false
+  }),
   props: {
     counter: {
       type: String,
@@ -55,6 +58,10 @@ export default {
   max-width: 480px;
   text-align: left;
   margin: 0 auto;
+
+  @include breakpoint(s) {
+    margin: 16px;
+  }
 
   .ingredients {
     display: flex;
@@ -91,18 +98,18 @@ export default {
         position: relative;
 
         .info-modal {
-          width: 96px;
+          width: 112px;
           position: absolute;
           padding: 8px 12px;
           font-size: 10px;
           line-height: 14px;
           background: $template-color-white-default;
           box-shadow: 0 1px 8px 0 rgba(#CCD1DB, 0.7);
-          left: -52px;
+          left: -48px;
           top: -68px;
           opacity: 0;
           visibility: hidden;
-          transition: all .2s ease-in-out;
+          transition: opacity .2s ease-in-out, top .2s ease-in-out;
 
           &::after, &::before {
             content: '';
@@ -130,10 +137,12 @@ export default {
           }
         }
 
-        .icon:hover + .info-modal {
-          visibility: visible;
-          opacity: 1;
-          top: -72px;
+        .icon {
+          &:hover + .info-modal {
+            visibility: visible;
+            opacity: 1;
+            top: -72px;
+          }
         }
       }
     }
@@ -143,6 +152,10 @@ export default {
       min-height: 228px;
       padding-left: 16px;
       margin: 16px 0;
+
+      @include breakpoint(s) {
+        padding-left: 20px;
+      }
 
       li {
         position: relative;
@@ -161,6 +174,15 @@ export default {
           opacity: 0;
           transition: all .05s linear;
           cursor: pointer;
+
+          &:first-child {
+            display: none;
+          }
+
+          @include breakpoint(s) {
+            visibility: visible;
+            opacity: 1;
+          }
         }
       }
     }
