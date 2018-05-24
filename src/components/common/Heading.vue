@@ -40,6 +40,7 @@ h1 {
 
   @include breakpoint(s) {
     font-size: $template-font-size-h1-s;
+    line-height: $template-line-height-h1-s;
   }
 }
 
@@ -57,6 +58,7 @@ h2 {
 
   @include breakpoint(s) {
     font-size: $template-font-size-h2-s;
+    line-height: $template-line-height-h2-s;
   }
 }
 
