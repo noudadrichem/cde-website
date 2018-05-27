@@ -10,7 +10,6 @@ import Login from '@/pages/Login'
 import CmsHome from '@/pages/cmsHome'
 
 // Components
-
 Vue.use(Router)
 
 const router = new Router({
