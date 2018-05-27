@@ -26,7 +26,7 @@
 
           <Button type="button" styling="primary" @click.native="scrollToVideo" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
 
-          <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
+          <!-- <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span> -->
         </div>
 
         <div class="col-4 hide-mobile" v-if="campaign">
