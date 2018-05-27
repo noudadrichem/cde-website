@@ -41,7 +41,12 @@ import Button from '@/components/common/Button'
 import Slick from 'vue-slick';
 
 export default {
-  props: ['data'],
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
   data: () => ({
     luikShown: [false, false, false],
     btnText: ['Lees meer', 'Lees meer', 'Lees meer'],

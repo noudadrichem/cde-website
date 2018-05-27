@@ -39,7 +39,12 @@ import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
 export default {
-  props: ['data'],
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     iconsUrl(iconName) {
       return require(`@/assets/images/icons/${iconName}.svg`);
