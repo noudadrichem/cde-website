@@ -11,13 +11,13 @@
         <span class="number">{{ idx + 1 }}</span>
 
         <div :class="['content', { active: luikShown[idx] }]">
-          <h3>{{ step.heading }}</h3>
+          <h3>{{ step.title }}</h3>
 
-          <BodyText :text="step.bodyText.substring(0, 84)" />
+          <BodyText :text="step.text.substring(0, 84)" />
 
           <div v-show="luikShown[idx]">
             <br/>
-            <BodyText :text="step.bodyText.substring(50, Infinity)" />
+            <BodyText :text="step.text.substring(50, Infinity)" />
           </div>
 
           <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
