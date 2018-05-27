@@ -17,12 +17,17 @@
                 <BodyText :text="luik.bodyText"/>
               </div>
             </transition/>
-            <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
+
+            <div v-if="idx === 1">
+              <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Begin meteen met maken" style="margin-top: 16px;"/>
+            </div>
+            <div v-else>
+              <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
+            </div>
           </div>
         </div>
 
       </Slick>
-
   </div>
 
   <div class="skewed-backdrop hide-mobile"></div>
@@ -32,6 +37,7 @@
 <script>
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
+import Button from '@/components/common/Button'
 import Slick from 'vue-slick';
 
 export default {
@@ -95,7 +101,8 @@ export default {
   components: {
     Heading,
     BodyText,
-    Slick
+    Slick,
+    Button
   }
 }
 </script>
