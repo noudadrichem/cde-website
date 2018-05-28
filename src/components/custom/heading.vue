@@ -24,9 +24,9 @@
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
           <BodyText :text="data.bodyText"/>
 
-          <Button type="button" styling="primary" @click="console.log('click cta')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
+          <Button type="button" styling="primary" @click.native="scrollToVideo" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
 
-          <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span>
+          <!-- <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span> -->
         </div>
 
         <div class="col-4 hide-mobile" v-if="campaign">
@@ -66,6 +66,21 @@ export default {
     BodyText,
     Button,
     Icon
+  },
+  methods: {
+    scrollToVideo() {
+      const video = document.querySelector('.video')
+      const dividedWindow = (window.innerHeight / 4)
+      const videoY = video.getBoundingClientRect().y
+
+      video.querySelector('video').play()
+
+      window.scroll({
+        top: (videoY - dividedWindow),
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
   }
 }
 </script>

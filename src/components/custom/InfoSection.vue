@@ -27,7 +27,12 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 
 export default {
-  props: ['data'],
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
   components: {
     Heading,
     BodyText,

@@ -139,6 +139,11 @@ export default {
     Button,
     Icon
   },
+  methods: {
+    getRandomValue(value = 0.5) {
+      return value > 0.6 ? this.getRandomValue(Math.random()) : value
+    }
+  },
   mounted() {
     document.body.scrollTop = 0
 
@@ -165,7 +170,7 @@ export default {
           this.confetties.forEach(partial => {
             partial.top = (Math.random() * window.innerHeight)
             partial.left = (Math.random() * window.innerWidth)
-            partial.opacity = Math.random()
+            partial.opacity = this.getRandomValue(Math.random())
           })
         }, 1400)
 
