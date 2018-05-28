@@ -2,7 +2,7 @@
 <div class="campaign" v-if="!loading">
   <Heading :data="heading" :campaign="true" />
   <StepsSection :data="steps" />
-
+  <AppSection :data="app" />
   <Footing :data="footer"/>
 </div>
 </template>
@@ -10,6 +10,7 @@
 <script>
 import Heading from '@/components/custom/Heading'
 import StepsSection from '@/components/custom/StepsSection'
+import AppSection from '@/components/custom/AppSection'
 import Footing from '@/components/custom/Footing'
 import conf from '@/config'
 
@@ -58,11 +59,17 @@ export default {
         }
       ]
     },
+    "app": {
+      "title": "Maak je eigen cocktail!",
+      "subTitle": "Wij geven jou de mogelijkheid om je eigen cocktail te maken.",
+      "bodyText": "Mauris rutrum metus mi, ac condimentum lacus ultricies eget. In auctor felis ac dignissim scelerisque. Duis non malesuada lorem. Interdum et malesuada fames ac ante ipsum",
+    },
     footer: {}
   }),
   components: {
     Heading,
     StepsSection,
+    AppSection,
     Footing
   },
   mounted() {
