@@ -4,35 +4,89 @@
     <button v-for="pageId in pages" @click="choosePage(pageId)">Home page</button>
 
     <div v-if="isSet">
-      <section class="section" v-for="sectionKey in sectionKeys">
+      <section class="section heading">
+        <div class="">
+          <label>Heading title</label>
+          <input type="text" name="" v-model="heading.title">
+
+          <label>Heading sub title</label>
+          <input type="text" name="" v-model="heading.subTitle">
+
+          <label>Heading buttonText</label>
+          <input type="text" name="" v-model="heading.buttonText">
+
+          <label>Heading bodyText</label>
+          <textarea type="text" name="" v-model="heading.bodyText"/>
+
+          <label>Heading image URL</label>
+          <input type="text" name="" v-model="heading.imageUrl"/>
+
+          <label>Nav items</label>
+          <div class="nav-items">
+            <div v-for="navItem in heading.navbarItems" class="nav-item">
+              <input type="text" v-model="navItem.text">
+              <input type="text" v-model="navItem.link">
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section heading">
         <div>
-          <div v-for="(value, key, idx) in $data[sectionKey]">
 
-            <div v-if="typeof value === 'object'">
+          <label>Video</label>
+          <input type="text" name="" v-model="heading.subTitle">
 
-              <div v-for="(value, key, jdx) in value">
+        </div>
+      </section>
 
-                <div v-if="typeof value === 'object'">
-                  <div v-for="(value, key, jdx) in value">
-                    {{ key }} : {{ value }}
-                  </div>
-                </div>
+      <section class="section heading">
+        <div>
 
-                <div v-else>
-                  {{ key }} : {{ value }}
-                </div>
-              </div>
-            </div>
+          <label>Info section main title</label>
+          <input type="text" name="" v-model="infoSection.mainTitle">
 
-            <div v-else>
-              {{ key }} : {{ value }}
-            </div>
+          <label>Info section sub title</label>
+          <input type="text" name="" v-model="infoSection.subTitle">
+
+          <label>Info section quote author</label>
+          <input type="text" name="" v-model="infoSection.quoteAuthor">
+
+          <label>Info section quote text</label>
+          <input type="text" name="" v-model="infoSection.quoteText">
+
+          <label>Info section text</label>
+          <input type="text" name="" v-model="infoSection.text">
+
+        </div>
+      </section>
+
+      <section class="section drieluik">
+        <div>
+
+          <div v-for="(luik, idx) in drieluik.luiken">
+
+            <label>Heading</label>
+            <input type="text" name="" v-model="drieluik.luiken[idx].heading">
+
+            <label>Body text</label>
+            <input type="text" name="" v-model="drieluik.luiken[idx].bodyText">
+
+            <label>Read more link</label>
+            <input type="text" name="" v-model="drieluik.luiken[idx].readMoreLink">
+
+            <label>Image name</label>
+            <input type="text" name="" v-model="drieluik.luiken[idx].imageName">
 
           </div>
+
         </div>
-        <br><br>
       </section>
+
     </div>
+
+    <pre>{{ $data['drieluik'] }}</pre>
 
   </div>
 </div>
@@ -91,7 +145,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.section {
-    width: 100%;
+section {
+  background: #F8F8F8;
+
+  &:nth-child(odd) {
+    background-color: #EBEBEB;
+  }
+
+  label,
+  input {
+    display: block;
+  }
 }
 </style>
