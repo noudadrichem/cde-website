@@ -1,6 +1,6 @@
 <template>
   <div class="radio-list">
-    <RadioButton v-for="(quantity, index) in data[0].items[0].quantities" name="radiolist" :labelText="quantity" :id="index" :key="index" />
+    <RadioButton v-for="(amount, index) in data[0].items[0].messurement.amount" name="radiolist" :labelText="amount + ' ' + data[0].items[0].messurement.unit" :id="index" :key="index" />
   </div>
 </template>
 
@@ -34,7 +34,6 @@ export default {
     background-color: rgba($template-color-white-light, 0.4);
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
 
     div {
       background: transparent;

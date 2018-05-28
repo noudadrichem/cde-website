@@ -30,6 +30,8 @@ export default {
     width: 280px;
     text-align: left;
     margin: 0 auto;
+    max-height: 327px;
+    overflow-y: scroll;
 
     ul.category-list {
       display: flex;

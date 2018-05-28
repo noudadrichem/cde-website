@@ -2,7 +2,7 @@
 <div class="campaign" v-if="!loading">
   <Heading :data="heading" :campaign="true" />
   <StepsSection :data="howTo" />
-  <AppSection :data="app" />
+  <AppSection :data="app" :categories="categories" />
   <Footing :data="footer"/>
 </div>
 </template>
@@ -21,11 +21,12 @@ export default {
     loading: true,
     heading: {},
     howTo: {},
-    "app": {
+    app: {
       "title": "Maak je eigen cocktail!",
       "subTitle": "Wij geven jou de mogelijkheid om je eigen cocktail te maken.",
       "bodyText": "Mauris rutrum metus mi, ac condimentum lacus ultricies eget. In auctor felis ac dignissim scelerisque. Duis non malesuada lorem. Interdum et malesuada fames ac ante ipsum",
     },
+    categories: {},
     footer: {}
   }),
   components: {
@@ -37,7 +38,7 @@ export default {
   mounted() {
     this.$http.get(`${conf.apiUrl}content/${this.pageId}/sections`)
       .then(data => {
-        console.log(data.body);
+        console.log(data.body)
         const findSectionData = (sectionName, data) => data.body.sections.find(obj => obj.title === sectionName).contents
 
         this.$set(this, 'heading', findSectionData('heading', data))
@@ -50,7 +51,14 @@ export default {
 
             this.$set(this, 'loading', false)
           })
+      })
 
+    this.$http.get(`${conf.apiUrl}campaign/categories`)
+      .then(data => {
+        console.log(data.body)
+        this.$set(this, 'categories', data.body)
+
+        this.$set(this, 'loading', false)
       })
   }
 }
