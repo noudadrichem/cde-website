@@ -28,20 +28,22 @@
               <input type="text" v-model="navItem.link">
             </div>
           </div>
-
+          <button type="button" @click="updateSection('heading')">Heading opslaan</button>
         </div>
       </section>
 
-      <section class="section heading">
+      <section class="section video">
         <div>
 
           <label>Video</label>
-          <input type="text" name="" v-model="heading.subTitle">
+          <input type="text" name="" v-model="video.videoId">
 
         </div>
+
+        <button type="button" @click="updateSection('video')">Video opslaan</button>
       </section>
 
-      <section class="section heading">
+      <section class="section info-section">
         <div>
 
           <label>Info section main title</label>
@@ -60,6 +62,7 @@
           <input type="text" name="" v-model="infoSection.text">
 
         </div>
+        <button type="button" @click="updateSection('infoSection')">Info sectie opslaan</button>
       </section>
 
       <section class="section drieluik">
@@ -80,13 +83,33 @@
             <input type="text" name="" v-model="drieluik.luiken[idx].imageName">
 
           </div>
+          <button type="button" @click="updateSection('drieluik')">Drieluik opslaan</button>
 
         </div>
       </section>
 
+            <section class="section footer">
+              <div>
+
+                <div v-for="(menuArray) in footer.footerNavigations">
+
+                  <div v-for="(menu, menuIndx) in menuArray">
+                    <label>Btn text</label>
+                    <input type="text" v-model="menu.title">
+
+                    <label>Link</label>
+                    <input type="text" v-model="menu.link">
+                  </div>
+                </div>
+
+                <button type="button" @click="updateSection('footer')">footer opslaan</button>
+
+              </div>
+            </section>
+
     </div>
 
-    <pre>{{ $data['drieluik'] }}</pre>
+    <pre>{{ $data['footer'] }}</pre>
 
   </div>
 </div>
@@ -105,7 +128,12 @@ export default {
     infoSection: {},
     drieluik: {},
     footer: {},
-    isSet: false
+    isSet: false,
+    headingId: '',
+    videoId: '',
+    infoSectionId: '',
+    drieluikId: '',
+    footerId: '',
   }),
   methods: {
     choosePage(pageId) {
@@ -116,24 +144,38 @@ export default {
         .then(pages => {
           console.log(pages);
         })
+    },
+    updateSection(section) {
+      const sectionId = this.$data[`${section}Id`]
+      console.log(sectionId);
+      this.$http.put(`${conf.apiUrl}content/update/${sectionId}`, this.$data[section])
+        .then(res => {
+          console.log(res);
+        })
     }
   },
   watch: {
     selectedPageId(pageId) {
       this.$http.get(`${conf.apiUrl}content/${pageId}/sections`)
         .then(res => {
-          const sectionObjects = res.body.sections.map(({
-            title
-          }) => title)
+          const sectionObjects = res.body.sections.map(({ title }) => title)
           this.$set(this, 'sectionKeys', sectionObjects)
 
           const findSectionData = (sectionName, data) => data.body.sections.find(obj => obj.title === sectionName).contents
+          const findSectionId = (sectionName, data) => data.body.sections.find(obj => obj.title === sectionName)._id
 
           this.$set(this, 'heading', findSectionData('heading', res))
           this.$set(this, 'video', findSectionData('video', res))
           this.$set(this, 'infoSection', findSectionData('infoSection', res))
           this.$set(this, 'drieluik', findSectionData('drieluik', res))
           this.$set(this, 'footer', findSectionData('footer', res))
+
+          this.$set(this, 'headingId', findSectionId('heading', res))
+          this.$set(this, 'videoId', findSectionId('video', res))
+          this.$set(this, 'infoSectionId', findSectionId('infoSection', res))
+          this.$set(this, 'drieluikId', findSectionId('drieluik', res))
+          this.$set(this, 'footerId', findSectionId('footer', res))
+
           this.$set(this, 'isSet', true)
         })
     }
@@ -145,8 +187,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~$styles/app';
+
 section {
   background: #F8F8F8;
+  padding: 64px 0;
 
   &:nth-child(odd) {
     background-color: #EBEBEB;

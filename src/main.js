@@ -1,12 +1,9 @@
 import Vue from 'vue'
-import vueVimeoPlayer from 'vue-vimeo-player'
 import resource from 'vue-resource'
 import App from './App'
 import router from './router'
 
-Vue.use(vueVimeoPlayer)
 Vue.use(resource)
-Vue.config.productionTip = false
 
 if (localStorage.getItem('token')) {
   Vue.http.interceptors.push((request, next) => {
@@ -16,6 +13,7 @@ if (localStorage.getItem('token')) {
   })
 }
 
+Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
