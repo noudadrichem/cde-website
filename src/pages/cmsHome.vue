@@ -2,6 +2,7 @@
 <div class="container">
   <div class="choose-page">
     <button v-for="pageId in pages" @click="choosePage(pageId)">Home page</button>
+  </div>
 
     <div v-if="isSet">
       <section class="section heading">
@@ -109,9 +110,6 @@
 
     </div>
 
-    <pre>{{ $data['footer'] }}</pre>
-
-  </div>
 </div>
 </template>
 
@@ -188,6 +186,12 @@ export default {
 
 <style lang="scss" scoped>
 @import '~$styles/app';
+
+.choose-page {
+  height: 100px;
+  background: #fff;
+  box-shadow: 0 0 14px 0 rgba(156, 155, 161, .46);
+}
 
 section {
   background: #F8F8F8;
