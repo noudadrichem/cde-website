@@ -5,9 +5,10 @@ import router from './router'
 
 Vue.use(resource)
 
-if (localStorage.getItem('token')) {
+const token = localStorage.getItem('token')
+if (token) {
   Vue.http.interceptors.push((request, next) => {
-    request.headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+    request.headers.set('Authorization', `Bearer ${token}`)
     request.headers.set('Accept', 'application/json')
     next()
   })
