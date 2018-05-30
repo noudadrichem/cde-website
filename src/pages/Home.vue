@@ -146,6 +146,24 @@ export default {
       img: 'peper.svg',
       opacity: 0,
       rotation: 0
+    }, {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+      img: 'lompklomp.svg',
+      opacity: 0,
+      rotation: 0
+    }, {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+      img: 'fles.svg',
+      opacity: 0,
+      rotation: 0
+    }, {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+      img: 'peper.svg',
+      opacity: 0,
+      rotation: 0
     }],
   }),
   components: {
@@ -172,6 +190,7 @@ export default {
   watch: {
     introIsDone(val) {
       if (val) {
+
         const confettiOffsetValues = [...this.$refs.confetti].map((confetti, idx) => ({ top: confetti.offsetTop, left: confetti.offsetLeft }))
 
         document.body.onmousemove = (e) => {
