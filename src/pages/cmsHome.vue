@@ -19,8 +19,8 @@
           <label>Heading bodyText</label>
           <textarea type="text" name="" v-model="heading.bodyText"/>
 
-          <label>Heading image URL</label>
-          <input type="text" name="" v-model="heading.imageUrl"/>
+          <!-- <label>Heading image URL</label>
+          <input type="file"/> -->
 
           <label>Nav items</label>
           <div class="nav-items">
@@ -36,7 +36,7 @@
       <section class="section video">
         <div>
 
-          <label>Video</label>
+          <label>Source link naar video</label>
           <input type="text" name="" v-model="video.videoId">
 
         </div>
@@ -79,9 +79,14 @@
 
             <label>Read more link</label>
             <input type="text" name="" v-model="drieluik.luiken[idx].readMoreLink">
-
+<!-- ____ -->
             <label>Image name</label>
-            <input type="text" name="" v-model="drieluik.luiken[idx].imageName">
+            <!-- <input type="text" name="" v-model="drieluik.luiken[idx].imageName"> -->
+            <input type="file" @change="convertInputImageToBase64(idx)">
+
+            <br>
+            <br>
+            <br>
 
           </div>
           <button type="button" @click="updateSection('drieluik')">Drieluik opslaan</button>
@@ -109,6 +114,8 @@
             </section>
 
     </div>
+
+    <pre>{{ $data['drieluik'] }}</pre>
 
 </div>
 </template>
@@ -145,11 +152,31 @@ export default {
     },
     updateSection(section) {
       const sectionId = this.$data[`${section}Id`]
-      console.log(sectionId);
+      console.log({ sectionId });
       this.$http.put(`${conf.apiUrl}content/update/${sectionId}`, this.$data[section])
         .then(res => {
           console.log(res);
         })
+    },
+    convertInputImageToBase64(idx) {
+      console.log('event: ', event.target.files);
+      const imageFile = event.target.files[0]
+      const imgTypeReg = /gif|png|jpg|jpeg/
+      const isImage = imgTypeReg.test(imageFile.name.split('.').pop())
+      const FR = new FileReader();
+
+      if(isImage) {
+        FR.addEventListener("load", (e) => {
+          console.log('e.target.result', e.target.result);
+
+          this.drieluik.luiken[idx].imageName = e.target.result
+          const message = 'succesfully uploaded and converted image'
+          console.info({ message });
+        });
+
+        FR.readAsDataURL(imageFile);
+      }
+
     }
   },
   watch: {
