@@ -13,8 +13,9 @@
           <div class="item-selection grid">
             <div class="dropdown-section">
               <Heading tag="h3" text="Welke ingrediënten?"/>
-              <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="search"/>
-              <Dropdown :data="categories"/>
+              <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
+              <Dropdown :data="categories" v-if="!searchQuery"/>
+              <DropdownItems :items="filteredItems" v-else="searchQuery"/>
             </div>
             <div class="radio-list-section">
               <Heading tag="h3" text="Hoeveel?"/>
@@ -39,6 +40,7 @@ import Dropdown from '@/components/custom/Dropdown'
 import RadioList from '@/components/custom/RadioList'
 import Recipe from '@/components/custom/Recipe'
 import Button from '@/components/common/Button'
+import DropdownItems from '@/components/custom/DropdownItems'
 
 export default {
   props: {
@@ -52,8 +54,9 @@ export default {
     }
   },
   data: () => ({
-    search: '',
-    catgories: []
+    searchQuery: '',
+    categoryItems: [],
+    filteredItems: []
   }),
   components: {
     Heading,
@@ -62,7 +65,23 @@ export default {
     Dropdown,
     RadioList,
     Recipe,
-    Button
+    Button,
+    DropdownItems
+  },
+  mounted() {
+    this.categoryItems = this.categories
+  },
+  methods: {
+    getCategoryItems() {
+      const allItemsInArray = this.categories.reduce(function(accu, item) {
+         accu.push(...item.items)
+         return accu
+      }, [])
+      const filteredCategoryItems = allItemsInArray.filter( (item) => {
+        return JSON.stringify(item).toLowerCase().indexOf(this.searchQuery.toLowerCase()) !== -1
+      })
+      this.filteredItems = filteredCategoryItems
+    }
   }
 }
 </script>
