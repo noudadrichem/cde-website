@@ -79,9 +79,8 @@
 
             <label>Read more link</label>
             <input type="text" name="" v-model="drieluik.luiken[idx].readMoreLink">
-<!-- ____ -->
+
             <label>Image name</label>
-            <!-- <input type="text" name="" v-model="drieluik.luiken[idx].imageName"> -->
             <input type="file" @change="convertInputImageToBase64(idx)">
 
             <br>
@@ -94,28 +93,26 @@
         </div>
       </section>
 
-            <section class="section footer">
-              <div>
+      <section class="section footer">
+        <div>
 
-                <div v-for="(menuArray) in footer.footerNavigations">
+          <div v-for="(menuArray) in footer.footerNavigations">
 
-                  <div v-for="(menu, menuIndx) in menuArray">
-                    <label>Btn text</label>
-                    <input type="text" v-model="menu.title">
+            <div v-for="(menu, menuIndx) in menuArray">
+              <label>Btn text</label>
+              <input type="text" v-model="menu.title">
 
-                    <label>Link</label>
-                    <input type="text" v-model="menu.link">
-                  </div>
-                </div>
+              <label>Link</label>
+              <input type="text" v-model="menu.link">
+            </div>
+          </div>
 
-                <button type="button" @click="updateSection('footer')">footer opslaan</button>
+          <button type="button" @click="updateSection('footer')">footer opslaan</button>
 
-              </div>
-            </section>
+        </div>
+      </section>
 
     </div>
-
-    <pre>{{ $data['drieluik'] }}</pre>
 
 </div>
 </template>
@@ -152,7 +149,6 @@ export default {
     },
     updateSection(section) {
       const sectionId = this.$data[`${section}Id`]
-      console.log({ sectionId });
       this.$http.put(`${conf.apiUrl}content/update/${sectionId}`, this.$data[section])
         .then(res => {
           console.log(res);
@@ -167,8 +163,6 @@ export default {
 
       if(isImage) {
         FR.addEventListener("load", (e) => {
-          console.log('e.target.result', e.target.result);
-
           this.drieluik.luiken[idx].imageName = e.target.result
           const message = 'succesfully uploaded and converted image'
           console.info({ message });
@@ -176,7 +170,6 @@ export default {
 
         FR.readAsDataURL(imageFile);
       }
-
     }
   },
   watch: {
