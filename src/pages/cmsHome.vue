@@ -25,7 +25,7 @@
     <div v-if="isSet">
       <section class="section heading">
         <div class="container-lg">
-          <div class="section-container">
+          <div class="section-container heading">
             <div class="section-title">Heading</div>
               <div class="input">
                 <label>Titel</label>
@@ -260,6 +260,7 @@ export default {
   padding: 24px;
   display: inline-flex;
   align-items: center;
+  cursor: default;
 
   .icon {
     margin-right: 8px;
@@ -270,6 +271,8 @@ export default {
   height: 100px;
   background: #fff;
   box-shadow: 0 0 14px 0 rgba(156, 155, 161, .46);
+  position: fixed;
+  width: 100%;
 
   .navigation {
     height: 100%;
@@ -322,6 +325,10 @@ section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    &.heading {
+      margin-top: 100px;
+    }
 
     .section-title {
       font-size: 24px;
@@ -453,7 +460,7 @@ section {
   bottom: 16px;
 }
 
-.popup-enter-active, .popuo-leave-active {
-  transition: all .2s;
+.popup-enter-active, .popup-leave-active {
+  transition: all .2s ease-in-out;
 }
 </style>
