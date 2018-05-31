@@ -94,7 +94,7 @@ export default {
 $animationTime: 420ms ease;
 
 .steps {
-    padding-bottom: 300px;
+    padding-bottom: 80px;
     margin-top: 128px;
 
     .container-md {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>specerijen-active</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="16"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="spices-active" transform="translate(0.000000, -1.000000)">
+            <g id="specerijen-active">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask"></g>
+                <path d="M3.44635936,10 L5.16064507,13 L10.8393549,13 L12.5536406,10 L3.44635936,10 Z M1.72317968,8 L14.2768203,8 C14.8291051,8 15.2768203,8.44771525 15.2768203,9 C15.2768203,9.17402694 15.231405,9.34504124 15.1450635,9.49613894 L12.2879206,14.4961389 C12.1098778,14.8077139 11.7785343,15 11.4196775,15 L4.58032254,15 C4.22146569,15 3.89012225,14.8077139 3.71207939,14.4961389 L0.854936536,9.49613894 C0.580926567,9.01662149 0.747523293,8.40576683 1.22704074,8.13175686 C1.37813844,8.04541532 1.54915274,8 1.72317968,8 Z M13.0703675,1 L14,1 C14.5911477,1 15.0703675,1.47921986 15.0703675,2.07036752 C15.0703675,2.28168481 15.0078174,2.48827397 14.8905996,2.66410059 L12,7 L8,7 L11.4062669,1.89059961 C11.7771985,1.33420227 12.4016611,1 13.0703675,1 Z" id="Combined-Shape" fill="#5499CC" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

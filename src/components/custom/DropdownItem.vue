@@ -2,13 +2,13 @@
   <li :class="['category-item', { active: isActive }]">
     <div class="category-item-title" @click="isActive = !isActive">
       <Icon :name="item.name.replace(/\s+/g,'-').toLowerCase()" :width="16" :height="16" :active="true"/>
-      {{item.name}}
+      {{ firstCharUppercase(item.name) }}
       <Icon name="chevron" :width="16" :height="16" :active="true"/>
     </div>
     <transition name="fade">
       <ul v-if="isActive" class="category-item-list">
         <li v-for="(item, index) in item.items" :key="index">
-          <Checkbox :labelText="item.name" :id="item.name.toLowerCase()"/>
+          <Checkbox :labelText="firstCharUppercase(item.name)" :id="item.name.toLowerCase()"/>
         </li>
       </ul>
     </transition>
@@ -33,11 +33,16 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    firstCharUppercase(value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 @import '~$styles/app';
 
 li.category-item {
@@ -99,21 +104,17 @@ li.category-item {
   }
 }
 
-.fade-enter-active {
+.fade-enter-active, .fade-leave-active {
   transition: all .25s;
-  top: 0px;
 }
 
-.fade-leave-active {
-  transition: all 0s;
+.fade-enter {
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 .fade-leave-to {
-  top: 0px;
-}
-
-.fade-enter{
-  opacity: 0;
-  top: 8px;
+  transform: translateY(0px);
+  transition: all .0s;
 }
 </style>

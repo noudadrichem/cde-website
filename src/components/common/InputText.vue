@@ -13,12 +13,17 @@ import Icon from './Icon'
 export default {
   name: 'InputText',
   data: () => ({
-    inputValue: null,
+    inputValue: this.value,
     focused: false
   }),
   methods: {
     toggleFocus() {
       this.$set(this, 'focused', !this.focused)
+    }
+  },
+  watch: {
+    inputValue(val) {
+      this.$emit('input', val);
     }
   },
   props: {

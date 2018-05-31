@@ -59,10 +59,6 @@ export default {
   text-align: left;
   margin: 0 auto;
 
-  @include breakpoint(s) {
-    margin: 16px;
-  }
-
   .ingredients {
     display: flex;
     flex-wrap: wrap;
