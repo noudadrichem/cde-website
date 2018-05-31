@@ -54,7 +54,7 @@
           </div>
 
           <div class="input">
-            <label>Sub titel</label>
+            <label>Subtitel</label>
             <input type="text" name="" v-model="infoSection.subTitle">
           </div>
 
@@ -108,7 +108,7 @@
           <div class="footer-container" v-for="(menuArray) in footer.footerNavigations">
 
             <div class="input" v-for="(menu, menuIndx) in menuArray">
-              <label>Btn text</label>
+              <label>Button tekst</label>
               <input type="text" v-model="menu.title">
 
               <label>Link</label>
