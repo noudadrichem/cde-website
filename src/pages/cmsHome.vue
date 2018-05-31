@@ -234,6 +234,20 @@ section {
     background-color: #EBEBEB;
   }
 
+  @include breakpoint(m) {
+    padding: 32px;
+  }
+
+  @include breakpoint(s) {
+    padding: 0;
+  }
+
+  .container-lg {
+    @include breakpoint(s) {
+      padding: 24px 0;
+    }
+  }
+
   .section-container {
     display: flex;
     flex-direction: row;
