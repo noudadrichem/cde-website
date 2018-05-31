@@ -1,5 +1,12 @@
 <template>
 <div class="container">
+
+  <transition name="popup">
+    <div class="update-popup" v-show="showUpdatePopup">
+      <Icon :width="16" :height="16" name="check" /> Opgeslagen!
+    </div>
+  </transition>
+
   <div class="choose-page">
     <div class="container-lg navigation">
         <div class="name">
@@ -144,6 +151,8 @@
 <script>
 import conf from '@/config'
 
+import Icon from '@/components/common/Icon'
+
 export default {
   data: () => ({
     pages: ['5afc46024a04c38c80d4fca0'],
@@ -159,7 +168,8 @@ export default {
     videoId: '',
     infoSectionId: '',
     drieluikId: '',
-    footerId: ''
+    footerId: '',
+    showUpdatePopup: false
   }),
   methods: {
     choosePage(pageId) {
@@ -176,8 +186,14 @@ export default {
       console.log({ sectionId });
       this.$http.put(`${conf.apiUrl}content/update/${sectionId}`, this.$data[section])
         .then(res => {
-          console.log(res);
+          console.log(res)
+          this.showUpdatePopup = true;
+          this.$set(this, 'showUpdatePopup', true)
+          setTimeout(() => {
+              this.$set(this, 'showUpdatePopup', false)
+          }, 3000)
         })
+
     },
     convertInputImageToBase64(idx) {
       const imageFile = event.target.files[0]
@@ -224,12 +240,31 @@ export default {
   },
   mounted() {
     setTimeout(() => this.$set(this, 'selectedPageId', '5afc46024a04c38c80d4fca0'), 50)
+  },
+  components: {
+    Icon
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~$styles/app';
+
+.update-popup {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: lighten($template-color-green-lighter, 15%);
+  font-size: 18px;
+  color: darken($template-color-green-default, 20%);
+  padding: 24px;
+  display: inline-flex;
+  align-items: center;
+
+  .icon {
+    margin-right: 8px;
+  }
+}
 
 .choose-page {
   height: 100px;
@@ -316,6 +351,7 @@ section {
           font-weight: 400;
           font-family: $template-font-family;
           padding: 16px 16px 16px 42px;
+          cursor: pointer;
         }
 
         input {
@@ -405,5 +441,19 @@ section {
       background: $template-color-orange-default;
     }
   }
+}
+
+.popup-enter, .popup-leave-to {
+  opacity: 0;
+  bottom: 0;
+}
+
+.popup-enter-to, .popup-leave {
+  opacity: 1;
+  bottom: 16px;
+}
+
+.popup-enter-active, .popuo-leave-active {
+  transition: all .2s;
 }
 </style>
