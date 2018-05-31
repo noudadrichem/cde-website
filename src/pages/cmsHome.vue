@@ -1,7 +1,18 @@
 <template>
 <div class="container">
   <div class="choose-page">
-    <button v-for="pageId in pages" @click="choosePage(pageId)">Home page</button>
+    <div class="container-lg navigation">
+        <div class="name">
+          <router-link tag="div" to="/">
+            <a>CMS <span>CDE</span></a>
+          </router-link>
+        </div>
+        <div class="logout">
+          <router-link tag="div" to="/logout">
+            <a>Uitloggen</a>
+          </router-link>
+        </div>
+    </div>
   </div>
 
     <div v-if="isSet">
@@ -224,6 +235,30 @@ export default {
   height: 100px;
   background: #fff;
   box-shadow: 0 0 14px 0 rgba(156, 155, 161, .46);
+
+  .navigation {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .name {
+      a {
+        text-decoration: none;
+        font-size: 24px;
+
+        span {
+          font-size: 24px;
+          color: $template-color-black-lighter;
+          font-weight: 700;
+        }
+      }
+    }
+
+    a {
+      color: $template-color-black-lighter;
+    }
+  }
 }
 
 section {
