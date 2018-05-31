@@ -5,7 +5,7 @@
       <div class="col-10">
         <div class="video-container" ref="videoContainer">
           <!-- ff zo hoor Donnie <3 -->
-          <video src="https://werk.noudadrichem.com/clients/crazydutchexperience/Crazy-Dutch-HID181-Afl-04.mp4" controls></video>
+          <video :src="data.videoId" controls></video>
         </div>
       </div>
     </div>
