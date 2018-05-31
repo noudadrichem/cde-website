@@ -79,8 +79,9 @@
 
             <label>Read more link</label>
             <input type="text" name="" v-model="drieluik.luiken[idx].readMoreLink">
-
+<!-- ____ -->
             <label>Image name</label>
+            <!-- <input type="text" name="" v-model="drieluik.luiken[idx].imageName"> -->
             <input type="file" @change="convertInputImageToBase64(idx)">
 
             <br>
@@ -113,6 +114,8 @@
       </section>
 
     </div>
+
+    <pre>{{ $data['drieluik'] }}</pre>
 
 </div>
 </template>
@@ -149,13 +152,13 @@ export default {
     },
     updateSection(section) {
       const sectionId = this.$data[`${section}Id`]
+      console.log({ sectionId });
       this.$http.put(`${conf.apiUrl}content/update/${sectionId}`, this.$data[section])
         .then(res => {
           console.log(res);
         })
     },
     convertInputImageToBase64(idx) {
-      console.log('event: ', event.target.files);
       const imageFile = event.target.files[0]
       const imgTypeReg = /gif|png|jpg|jpeg/
       const isImage = imgTypeReg.test(imageFile.name.split('.').pop())
