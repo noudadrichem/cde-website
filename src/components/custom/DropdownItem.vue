@@ -104,21 +104,17 @@ li.category-item {
   }
 }
 
-.fade-enter-active {
+.fade-enter-active, .fade-leave-active {
   transition: all .25s;
-  top: 0px;
 }
 
-.fade-leave-active {
-  transition: all 0s;
+.fade-enter {
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 .fade-leave-to {
-  top: 0px;
-}
-
-.fade-enter{
-  opacity: 0;
-  top: 8px;
+  transform: translateY(0px);
+  transition: all .0s;
 }
 </style>

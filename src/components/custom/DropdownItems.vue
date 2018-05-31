@@ -1,13 +1,13 @@
 <template>
-  <transition name="fade">
     <div class="dropdown-items">
         <ul class="category-items">
+          <transition-group name="fade">
             <li v-for="(item, index) in items" :key="index">
-              <Checkbox :labelText="firstCharUppercase(item.name)" :id="item.name.toLowerCase()"/>
+              <Checkbox :labelText="firstCharUppercase(item.name)" disabled="true" :id="item.name.toLowerCase()"/>
             </li>
+          </transition-group>
         </ul>
     </div>
-  </transition>
 </template>
 
 <script>
@@ -55,25 +55,23 @@ export default {
       padding: 16px;
       border-bottom: 1px solid $template-color-white-light;
       user-select: none;
+
+      &:last-child {
+        border: none;
+      }
     }
   }
 }
 
-.fade-enter-active {
+.fade-enter-active, .fade-leave-active {
   transition: all .25s;
-  top: 0px;
+}
+.fade-enter {
+  transition: none;
 }
 
-.fade-leave-active {
-  transition: all 0s;
-}
-
-.fade-leave-to {
-  top: 0px;
-}
-
-.fade-enter{
+.fade-enter, .fade-leave-to {
   opacity: 0;
-  top: 8px;
+  transform: translateY(8px);
 }
 </style>

@@ -32,14 +32,14 @@ export default {
     margin: 0 auto;
     max-height: 327px;
     overflow-y: scroll;
+    border: 1px solid $template-color-white-light;
+    border-radius: $template-border-radius;
 
     ul.category-list {
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
       padding: 0;
-      border: 1px solid $template-color-white-light;
-      border-radius: $template-border-radius;
     }
   }
 </style>

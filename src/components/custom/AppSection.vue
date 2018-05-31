@@ -14,8 +14,10 @@
             <div class="dropdown-section">
               <Heading tag="h3" text="Welke ingrediënten?"/>
               <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
-              <Dropdown :data="categories" v-if="!searchQuery"/>
-              <DropdownItems :items="filteredItems" v-else="searchQuery"/>
+
+                <Dropdown v-if="!searchQuery" :data="categories"/>
+                <DropdownItems v-else="searchQuery" :items="filteredItems"/>
+
             </div>
             <div class="radio-list-section">
               <Heading tag="h3" text="Hoeveel?"/>
@@ -95,6 +97,7 @@ export default {
 
     .dropdown-section {
       max-width: 280px;
+      max-height: 411px;
 
       .input-text {
         z-index: 1;
@@ -118,5 +121,17 @@ export default {
     top: -136px;
     position: relative;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: none;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  transition: none;
 }
 </style>
