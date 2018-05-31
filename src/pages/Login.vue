@@ -1,11 +1,18 @@
 <template>
-  <div class="login">
-    <input type="text" v-model="email">
-    <input type="password" v-model="password">
+  <div class="login-container">
 
-    <button @click="login">login</button>
+    <div class="login">
+      <p class="intro">U wordt zometeen doorverwezen naar het CMS van de Crazy Dutch Experience website,
+        nadat u heeft ingelogd, kunt u hier de content van de website veranderen.</p>
+      <p class="warning"><strong>Let op:</strong> u kunt alleen de content veranderen, de structuur en elementen staan vast.</p>
+      <p class="label">Email</p>
+      <input type="text" v-model="email">
+      <p class="label">Wachtwoord</p>
+      <input type="password" v-model="password">
 
-    {{ $data }}
+      <button @click="login">login</button>
+    </div>
+
   </div>
 </template>
 
@@ -35,13 +42,69 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
 .login {
-  margin: auto;
-  width: 200px;
+  width: 574px;
+  height: auto;
+  background: #fff;
+  border-color: #EBEBEB;
+  border-radius: 2px;
+  border-width: 1px;
 
   input {
     display: block;
-    margin: 16px;
+    margin-left: 40px;
+    margin-bottom: 16px;
+    padding: 16px;
+    width: 460px;
+    height: auto;
+    border-style: solid;
+    border-color: #EBEBEB;
+    border-radius: 2px;
+    border-width: 1px;
+    font-size: 15px;
+    outline: none;
   }
+}
+
+.intro {
+  padding-left: 40px;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  width: 494px;
+  height: auto;
+  line-height: 22px;
+}
+
+.warning {
+  padding-left: 40px;
+  padding-bottom: 16px;
+  width: 494px;
+  height: auto;
+  line-height: 22px;
+}
+
+.label {
+  font-weight: 800;
+  padding-left: 40px;
+}
+
+button {
+  width: 494px;
+  height: auto;
+  margin-top: 24px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  display: block;
+  text-align: center;
+  padding: 16px;
 }
 </style>
