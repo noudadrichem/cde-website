@@ -6,100 +6,108 @@
 
     <div v-if="isSet">
       <section class="section heading">
-        <div class="">
-          <label>Heading title</label>
-          <input type="text" name="" v-model="heading.title">
+        <div class="section-container">
+          <div class="section-title">Heading</div>
+          <div class="input">
+            <label>Titel</label>
+            <input type="text" name="" v-model="heading.title">
+          </div>
 
-          <label>Heading sub title</label>
-          <input type="text" name="" v-model="heading.subTitle">
+          <div class="input">
+            <label>Subtitel</label>
+            <input type="text" name="" v-model="heading.subTitle">
+          </div>
 
-          <label>Heading buttonText</label>
-          <input type="text" name="" v-model="heading.buttonText">
+          <div class="input">
+            <label>Button tekst</label>
+            <input type="text" name="" v-model="heading.buttonText">
+          </div>
 
-          <label>Heading bodyText</label>
-          <textarea type="text" name="" v-model="heading.bodyText"/>
+          <div class="input">
+            <label>Paragraaf</label>
+            <textarea type="text" name="" v-model="heading.bodyText"/>
+          </div>
 
           <!-- <label>Heading image URL</label>
           <input type="file"/> -->
-
-          <label>Nav items</label>
-          <div class="nav-items">
-            <div v-for="navItem in heading.navbarItems" class="nav-item">
-              <input type="text" v-model="navItem.text">
-              <input type="text" v-model="navItem.link">
-            </div>
-          </div>
-          <button type="button" @click="updateSection('heading')">Heading opslaan</button>
         </div>
+        <button type="button" @click="updateSection('heading')">Heading opslaan</button>
       </section>
 
       <section class="section video">
-        <div>
-
-          <label>Source link naar video</label>
-          <input type="text" name="" v-model="video.videoId">
-
+        <div class="section-container">
+          <div class="section-title">Sectie 1</div>
+          <div class="input">
+            <label>Link naar video</label>
+            <input type="text" name="" v-model="video.videoId">
+          </div>
         </div>
-
-        <button type="button" @click="updateSection('video')">Video opslaan</button>
+        <button type="button" @click="updateSection('video')">Sectie 1 opslaan</button>
       </section>
 
       <section class="section info-section">
-        <div>
+        <div class="section-container">
+          <div class="section-title">Sectie 2</div>
+          <div class="input">
+            <label>Titel</label>
+            <input type="text" name="" v-model="infoSection.mainTitle">
+          </div>
 
-          <label>Info section main title</label>
-          <input type="text" name="" v-model="infoSection.mainTitle">
+          <div class="input">
+            <label>Sub titel</label>
+            <input type="text" name="" v-model="infoSection.subTitle">
+          </div>
 
-          <label>Info section sub title</label>
-          <input type="text" name="" v-model="infoSection.subTitle">
+          <div class="input">
+            <label>Autheur tekst</label>
+            <input type="text" name="" v-model="infoSection.quoteAuthor">
+          </div>
 
-          <label>Info section quote author</label>
-          <input type="text" name="" v-model="infoSection.quoteAuthor">
+          <div class="input">
+            <label>Quote tekst</label>
+            <input type="text" name="" v-model="infoSection.quoteText">
+          </div>
 
-          <label>Info section quote text</label>
-          <input type="text" name="" v-model="infoSection.quoteText">
-
-          <label>Info section text</label>
-          <input type="text" name="" v-model="infoSection.text">
-
+          <div class="convertInputImageToBase64">
+            <label>Paragraaf</label>
+            <textarea type="text" name="" v-model="infoSection.text"/>
+          </div>
         </div>
-        <button type="button" @click="updateSection('infoSection')">Info sectie opslaan</button>
+        <button type="button" @click="updateSection('infoSection')">Sectie 2 opslaan</button>
       </section>
 
       <section class="section drieluik">
-        <div>
-
+        <div class="section-container">
+          <div class="section-title">Sectie 3</div>
           <div v-for="(luik, idx) in drieluik.luiken">
+            <div class="section-title">
+              {{ luik.heading}}
+            </div>
 
-            <label>Heading</label>
-            <input type="text" name="" v-model="drieluik.luiken[idx].heading">
+            <div class="input file">
+              <label>Afbeelding upload</label>
+              <label :for="luik.heading.toLowerCase()">
+                Geen afbeelding
+              </label>
+              <input type="file" :id="luik.heading.toLowerCase()" @change="convertInputImageToBase64(idx)">
+            </div>
 
-            <label>Body text</label>
-            <input type="text" name="" v-model="drieluik.luiken[idx].bodyText">
-
-            <label>Read more link</label>
-            <input type="text" name="" v-model="drieluik.luiken[idx].readMoreLink">
-<!-- ____ -->
-            <label>Image name</label>
-            <!-- <input type="text" name="" v-model="drieluik.luiken[idx].imageName"> -->
-            <input type="file" @change="convertInputImageToBase64(idx)">
-
-            <br>
-            <br>
-            <br>
+            <div class="input">
+              <label>Paragraaf</label>
+              <textarea type="text" name="" v-model="drieluik.luiken[idx].bodyText"/>
+            </div>
 
           </div>
-          <button type="button" @click="updateSection('drieluik')">Drieluik opslaan</button>
-
         </div>
+        <button type="button" @click="updateSection('drieluik')">Sectie 3 opslaan</button>
       </section>
 
       <section class="section footer">
-        <div>
+        <div class="section-container">
+          <div class="section-title">Footer</div>
+          <div class="footer-container" v-for="(menuArray) in footer.footerNavigations">
 
-          <div v-for="(menuArray) in footer.footerNavigations">
-
-            <div v-for="(menu, menuIndx) in menuArray">
+            <div class="input" v-for="(menu, menuIndx) in menuArray">
               <label>Btn text</label>
               <input type="text" v-model="menu.title">
 
@@ -107,16 +115,10 @@
               <input type="text" v-model="menu.link">
             </div>
           </div>
-
-          <button type="button" @click="updateSection('footer')">footer opslaan</button>
-
         </div>
+        <button type="button" @click="updateSection('footer')">Footer opslaan</button>
       </section>
-
     </div>
-
-    <pre>{{ $data['drieluik'] }}</pre>
-
 </div>
 </template>
 
@@ -138,7 +140,7 @@ export default {
     videoId: '',
     infoSectionId: '',
     drieluikId: '',
-    footerId: '',
+    footerId: ''
   }),
   methods: {
     choosePage(pageId) {
@@ -218,7 +220,63 @@ export default {
 
 section {
   background: #F8F8F8;
-  padding: 64px 0;
+  padding: 64px;
+
+  .section-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: $template-color;
+      text-transform: uppercase;
+      width: 100%;
+      margin: 0 0 32px 0;
+    }
+
+    .input {
+      margin-bottom: 24px;
+
+      &.file {
+        label:nth-child(2) {
+          width: 100%;
+          max-width: 280px;
+          border: 1px solid rgba($template-color-black-lighter, .4);
+          color: $template-color-black-lighter;
+          background-color: #fff;
+          background-image: url('/static/bestand.svg');
+          background-repeat: no-repeat;
+          background-size: 20px;
+          background-position: 16px;
+          border-radius: 2px;
+          font-size: 15px;
+          font-weight: 400;
+          font-family: $template-font-family;
+          padding: 16px 16px 16px 42px;
+        }
+
+        input {
+          display: none;
+        }
+      }
+    }
+
+    .footer-container {
+      display: flex;
+
+      &:not(&:last-child) {
+        margin-right: 64px;
+      }
+
+      .input {
+        input {
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
 
   &:nth-child(odd) {
     background-color: #EBEBEB;
@@ -227,6 +285,68 @@ section {
   label,
   input {
     display: block;
+  }
+
+  label {
+    font-size: 18px;
+    color: $template-font-color;
+    font-weight: 700;
+    padding-bottom: 8px;
+  }
+
+  input, textarea {
+    padding: 16px;
+    min-width: 280px;
+    color: $template-color-black-lighter;
+    outline: none;
+    border: 1px solid rgba($template-color-black-lighter, .4);
+    background-color: #fff;
+    border-radius: 2px;
+    font-size: 15px;
+    font-family: $template-font-family;
+    margin-right: 16px;
+
+    &:placeholder {
+      color: $template-font-color;
+    }
+
+    &:focus {
+      color: $template-font-color;
+    }
+  }
+
+  textarea {
+    width: 476px;
+    min-height: 186px;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-family: $template-font-family;
+    font-weight: 700;
+    text-align: center;
+    font-size: $template-font-size;
+    border-radius: $template-border-radius;
+    box-shadow: 0 2px 6px rgba($template-color-black-lighter, 0.4);
+    cursor: pointer;
+    display: inline-block;
+    transition: all .25s ease-in-out;
+    background-color: $template-color-orange-default;
+    color: $template-color-white-default;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba($template-color-black-lighter, 0.4);
+      color: $template-color-white-default;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      box-shadow: 0 0 2px 0 rgba(156,155,161,0.46);
+      transform: translateY(1px);
+      background: $template-color-orange-default;
+    }
   }
 }
 </style>
