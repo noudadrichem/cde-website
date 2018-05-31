@@ -1,17 +1,26 @@
 import Vue from 'vue'
-import vueVimeoPlayer from 'vue-vimeo-player'
 import resource from 'vue-resource'
 import App from './App'
 import router from './router'
 
-Vue.use(vueVimeoPlayer)
 Vue.use(resource)
-Vue.config.productionTip = false
 
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.http.interceptors.push((request, next) => {
+    request.headers.set('Authorization', `Bearer ${token}`)
+    request.headers.set('Accept', 'application/json')
+    next()
+  })
+}
+
+Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })

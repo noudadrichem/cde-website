@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="info-section-container">
   <div class="info-section container-sm">
     <div class="grid center">
       <div class="col-5">
@@ -88,10 +88,10 @@ export default {
 .skewed-backdrop {
   background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.00) 99%);
   height: 516px;
-  width: 100%;
   transform: skewY(-16deg);
   position: absolute;
   top: 800px;
+  left: 0;
   z-index: -1;
 }
 </style>

@@ -22,7 +22,12 @@
     </transition>
 
     <div class="confetti-container" v-if="showConfetties">
-      <div v-for="(confetti, idx) in confetties" class="confetti" :key="idx"  :style="{ left: `${confetti.left}px`, top: `${confetti.top}px`, opacity: confetti.opacity }">
+      <div v-for="(confetti, idx) in confetties" class="confetti" :key="idx" ref="confetti" :style="{
+        left: `${confetti.left}px`,
+        top: `${confetti.top}px`,
+        opacity: confetti.opacity,
+        transform: `rotate(${confetti.rotation}deg)`
+        }">
         <img :src="`/static/${confetti.img}`" draggable="false">
       </div>
     </div>
@@ -66,68 +71,99 @@ export default {
     confetties: [{
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'klomp-grijs.svg',
+      img: 'peper.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'fles-rood.svg',
+      img: 'paraplu.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'peper-blauw.svg',
+      img: 'lompklomp.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'paraplu-oranje.svg',
+      img: 'fles.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'klomp-grijs.svg',
+      img: 'peper.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'peper-blauw.svg',
+      img: 'paraplu.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'fles-rood.svg',
+      img: 'lompklomp.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'paraplu-oranje.svg',
+      img: 'fles.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'peper-blauw.svg',
+      img: 'peper.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'paraplu-oranje.svg',
+      img: 'paraplu.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'fles-rood.svg',
+      img: 'lompklomp.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'fles-rood.svg',
+      img: 'fles.svg',
       opacity: 0,
+      rotation: 0
     }, {
       left: window.innerWidth / 2,
       top: window.innerHeight / 2,
-      img: 'peper-blauw.svg',
+      img: 'peper.svg',
       opacity: 0,
+      rotation: 0
+    }, {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+      img: 'lompklomp.svg',
+      opacity: 0,
+      rotation: 0
+    }, {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+      img: 'fles.svg',
+      opacity: 0,
+      rotation: 0
+    }, {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+      img: 'peper.svg',
+      opacity: 0,
+      rotation: 0
     }],
   }),
   components: {
@@ -142,6 +178,37 @@ export default {
   methods: {
     getRandomValue(value = 0.5) {
       return value > 0.6 ? this.getRandomValue(Math.random()) : value
+    },
+    mouseParallax({ obj, left, top, mouseX, mouseY, speed }) {
+      const parentObj = obj.parentNode
+      const containerWidth = parseInt(parentObj.offsetWidth)
+      const containerHeight = parseInt(parentObj.offsetHeight)
+      obj.style.left = left - (((mouseX - (parseInt(obj.offsetWidth) / 2 + left)) / containerWidth) * speed) + 'px';
+      obj.style.top = top - (((mouseY - (parseInt(obj.offsetHeight) / 2 + top)) / containerHeight) * speed) + 'px';
+    }
+  },
+  watch: {
+    introIsDone(val) {
+      if (val) {
+
+        const confettiOffsetValues = [...this.$refs.confetti].map((confetti, idx) => ({ top: confetti.offsetTop, left: confetti.offsetLeft }))
+
+        document.body.onmousemove = (e) => {
+          const x = e.clientX
+          const y = e.clientY
+
+          this.$refs.confetti.forEach((confetti, idx) => {
+            this.mouseParallax({
+              obj: confetti,
+              left: confettiOffsetValues[idx].left,
+              top: confettiOffsetValues[idx].top,
+              mouseX: (idx % 2 ) == 1 ? -x : x,
+              mouseY: (idx % 2 ) == 1 ? y : -y,
+              speed: 20
+            })
+          })
+        }
+      }
     }
   },
   mounted() {
@@ -171,6 +238,7 @@ export default {
             partial.top = (Math.random() * window.innerHeight)
             partial.left = (Math.random() * window.innerWidth)
             partial.opacity = this.getRandomValue(Math.random())
+            partial.rotation = Math.floor(Math.random() * 360) + 1
           })
         }, 1400)
 
@@ -187,7 +255,6 @@ export default {
         setTimeout(() => this.$set(this, 'showPopup', true), 9000)
 
       })
-
   }
 }
 </script>
@@ -248,14 +315,14 @@ export default {
         height: 100vh;
 
         .confetti {
-            width: 32px;
-            height: 32px;
+            width: 22px;
+            height: 22px;
             position: absolute;
             top: 50%;
             left: 50%;
             transition: 400ms cubic-bezier(0, 1.01, 0.44, 1.42);
             img {
-              max-width: 100%;
+                max-width: 100%;
             }
         }
     }

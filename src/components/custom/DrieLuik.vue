@@ -5,9 +5,12 @@
       <Slick ref="slick" :options="slickOptions" class="grid">
 
         <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in data.luiken" :key="idx">
-          <img :src="luikUrl(luik.imageName)" alt="luik image" draggable="false">
+          <div class="img-overlay-container">
+            <img :src="luik.imageName" alt="luik image" draggable="false">
+            <div class="img-overlay" v-if="idx !== 1"></div>
+          </div>
 
-          <div :class="['content', { active: luikShown[idx] }]">
+          <div :class="['content', { active: luikShown[idx] }, [ idx === 1 ? 'middle' : '' ]]">
             <Heading tag="h1" :text="luik.heading"/>
             <BodyText :text="luik.bodyText"/>
 
@@ -149,6 +152,28 @@ $animationTime: 420ms ease;
     height: 500px;
     padding: 0 !important;
     box-sizing: border-box;
+    position: relative;
+
+    &:first-child {
+      .img-overlay-container .img-overlay {
+        background: rgba(227,159,159,0.60);
+      }
+    }
+
+    .img-overlay-container {
+      position: relative;
+      object-fit: cover;
+      line-height: 0;
+
+      .img-overlay {
+        background: rgba(159,199,227,0.60);
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     @media screen and (min-width: 414px) and (max-width: 1120px) {
       width: 33% !important;
@@ -176,6 +201,10 @@ $animationTime: 420ms ease;
       margin: 0 24px;
       padding: 32px;
       transition: $animationTime;
+
+      &.middle {
+        margin: 0;
+      }
 
       &.active {
         margin: 0;
