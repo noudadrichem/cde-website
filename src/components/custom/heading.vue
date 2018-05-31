@@ -31,7 +31,7 @@
 
         <div class="col-4 hide-mobile" v-if="campaign">
           <div class="">
-            <img src="@/assets/images/glas-fles@2x.png" alt="">
+            <img src="@/assets/images/glas-fles-nice.png" alt="">
           </div>
         </div>
       </div>

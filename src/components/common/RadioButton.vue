@@ -1,6 +1,6 @@
 <template>
   <div class="radio-button-container">
-    <input :id="id" type="radio" :name="name">
+    <input :id="id" type="radio" :name="name" @change="$eventBus.$emit('giveQuantityValue', amount)">
     <label class="radio-button" :for="id"></label>
     <label v-show="labelText" :for="id" class="label">{{ labelText }}</label>
   </div>
@@ -18,6 +18,10 @@ export default {
       required: true
     },
     name: {
+      type: String,
+      required: true
+    },
+    amount: {
       type: String,
       required: true
     }

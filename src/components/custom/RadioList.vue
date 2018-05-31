@@ -1,6 +1,12 @@
 <template>
   <div class="radio-list">
-    <RadioButton v-for="(amount, index) in data[0].items[0].messurement.amount" name="radiolist" :labelText="amount + ' ' + data[0].items[0].messurement.unit" :id="index" :key="index" />
+    <RadioButton
+      v-for="(amount, index) in data.messurement.amount"
+      name="radiolist"
+      :labelText="amount + ' ' + data.messurement.unit"
+      :amount="`${amount} ${data.messurement.unit}`"
+      :id="index"
+      :key="index" />
   </div>
 </template>
 
@@ -14,7 +20,7 @@ export default {
   },
   props: {
     data: {
-      type: Array,
+      type: Object,
       required: false,
     }
   }

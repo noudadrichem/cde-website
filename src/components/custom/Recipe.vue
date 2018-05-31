@@ -15,8 +15,8 @@
         </div>
       </div>
       <ul class="ingredients-list">
-        <li>
-          35ml Crazy Dutch Dry Gin
+        <li v-for="chosen in choosenIngredients">
+          {{ chosen.name }}
           <Icon :width="16" :height="16" name="trash"/>
         </li>
       </ul>
@@ -39,6 +39,10 @@ export default {
     counter: {
       type: String,
       required: true
+    },
+    choosenIngredients: {
+      type: Array,
+      required: false
     }
   },
   components: {

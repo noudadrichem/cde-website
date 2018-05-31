@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" id="app-section">
     <div class="container-md">
       <div class="grid">
         <div class="col-12-full">
@@ -16,18 +16,18 @@
               <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
 
                 <Dropdown v-if="!searchQuery" :data="categories"/>
-                <DropdownItems v-else="searchQuery" :items="filteredItems"/>
+                <DropdownItems v-else :items="filteredItems"/>
 
             </div>
             <div class="radio-list-section">
               <Heading tag="h3" text="Hoeveel?"/>
-              <RadioList :data="categories"/>
-              <Button type="button" styling="secondary" disabled text="Button text"/>
+              <RadioList :data="selectedIngredient"/>
+              <Button @click.native="setQuantityValue(currentSelectedQuantity)" type="button" styling="secondary" :disabled="quantityIsDisabled" text="Kies hoeveelheid"/>
             </div>
           </div>
         </div>
         <div class="col-6">
-          <Recipe counter="35"/>
+          <Recipe :choosenIngredients="choosenIngredients" counter="35"/>
         </div>
       </div>
     </div>
@@ -58,7 +58,12 @@ export default {
   data: () => ({
     searchQuery: '',
     categoryItems: [],
-    filteredItems: []
+    filteredItems: [],
+    selectedIngredient: {},
+    quantityIsDisabled: true,
+    currentSelectedQuantity: '',
+    currentReceipt: {},
+    choosenIngredients: [],
   }),
   components: {
     Heading,
@@ -71,18 +76,56 @@ export default {
     DropdownItems
   },
   mounted() {
-    this.categoryItems = this.categories
+    this.$set(this, 'categoryItems', this.categories)
+  },
+  created() {
+    this.$eventBus.$on('getSelectedValue', this.selectIngredient)
+
+    this.$eventBus.$on('giveQuantityValue', this.getQuantityValue)
   },
   methods: {
     getCategoryItems() {
-      const allItemsInArray = this.categories.reduce(function(accu, item) {
+      const allItemsInArray = this.categories.reduce((accu, item) => {
          accu.push(...item.items)
          return accu
       }, [])
-      const filteredCategoryItems = allItemsInArray.filter( (item) => {
+
+      const filteredCategoryItems = allItemsInArray.filter((item) => {
         return JSON.stringify(item).toLowerCase().indexOf(this.searchQuery.toLowerCase()) !== -1
       })
-      this.filteredItems = filteredCategoryItems
+
+      this.$set(this, 'filteredItems', filteredCategoryItems)
+    },
+
+    selectIngredient(itemName) {
+      const selectedIngredient = this.categoryItems.reduce((accu, { items }) => {
+        accu.push(...items)
+        return accu
+      }, [])
+      .find(item => item.name.toLowerCase() === itemName)
+
+      this.$set(this, 'selectedIngredient', selectedIngredient)
+      this.$set(this.currentReceipt, 'name', selectedIngredient.name)
+    },
+    getQuantityValue(quantityValue) {
+      this.$set(this, 'quantityIsDisabled', false)
+
+      this.$set(this, 'currentSelectedQuantity', quantityValue)
+    },
+    setQuantityValue(quantityValue) {
+      this.$set(this.currentReceipt, 'quantity', quantityValue)
+
+      const copyChoosen = [...this.choosenIngredients, this.currentReceipt]
+      this.$set(this, 'choosenIngredients', copyChoosen),
+
+      this.resetReceipt()
+
+    },
+    resetReceipt() {
+      this.$set(this, 'quantityIsDisabled', true)
+      this.$set(this, 'selectedIngredient', '')
+      this.$set(this, 'currentSelectedQuantity', '')
+      this.$set(this, 'currentReceipt', {})
     }
   }
 }

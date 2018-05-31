@@ -1,6 +1,6 @@
 <template>
   <div class="checkbox-container">
-    <input :id="id" type="checkbox">
+    <input :id="id" type="checkbox" @change="$eventBus.$emit('getSelectedValue', id)">
     <label class="checkbox" :for="id"></label>
     <label v-show="labelText" :for="id" class="label">{{ labelText }}</label>
   </div>
