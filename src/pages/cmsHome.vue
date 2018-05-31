@@ -6,117 +6,125 @@
 
     <div v-if="isSet">
       <section class="section heading">
-        <div class="section-container">
-          <div class="section-title">Heading</div>
-          <div class="input">
-            <label>Titel</label>
-            <input type="text" name="" v-model="heading.title">
-          </div>
+        <div class="container-lg">
+          <div class="section-container">
+            <div class="section-title">Heading</div>
+              <div class="input">
+                <label>Titel</label>
+                <input type="text" name="" v-model="heading.title">
+              </div>
 
-          <div class="input">
-            <label>Subtitel</label>
-            <input type="text" name="" v-model="heading.subTitle">
-          </div>
+              <div class="input">
+                <label>Subtitel</label>
+                <input type="text" name="" v-model="heading.subTitle">
+              </div>
 
-          <div class="input">
-            <label>Button tekst</label>
-            <input type="text" name="" v-model="heading.buttonText">
-          </div>
+              <div class="input">
+                <label>Button tekst</label>
+                <input type="text" name="" v-model="heading.buttonText">
+              </div>
 
-          <div class="input">
-            <label>Paragraaf</label>
-            <textarea type="text" name="" v-model="heading.bodyText"/>
+              <div class="input">
+                <label>Paragraaf</label>
+                <textarea type="text" name="" v-model="heading.bodyText"/>
+              </div>
+            <!-- <label>Heading image URL</label>
+            <input type="file"/> -->
           </div>
-
-          <!-- <label>Heading image URL</label>
-          <input type="file"/> -->
+          <button type="button" @click="updateSection('heading')">Heading opslaan</button>
         </div>
-        <button type="button" @click="updateSection('heading')">Heading opslaan</button>
       </section>
 
       <section class="section video">
-        <div class="section-container">
-          <div class="section-title">Sectie 1</div>
-          <div class="input">
-            <label>Link naar video</label>
-            <input type="text" name="" v-model="video.videoId">
+        <div class="container-lg">
+          <div class="section-container">
+              <div class="section-title">Sectie 1</div>
+              <div class="input">
+                <label>Link naar video</label>
+                <input type="text" name="" v-model="video.videoId">
+              </div>
           </div>
         </div>
-        <button type="button" @click="updateSection('video')">Sectie 1 opslaan</button>
       </section>
 
       <section class="section info-section">
-        <div class="section-container">
-          <div class="section-title">Sectie 2</div>
-          <div class="input">
-            <label>Titel</label>
-            <input type="text" name="" v-model="infoSection.mainTitle">
-          </div>
-
-          <div class="input">
-            <label>Subtitel</label>
-            <input type="text" name="" v-model="infoSection.subTitle">
-          </div>
-
-          <div class="input">
-            <label>Autheur tekst</label>
-            <input type="text" name="" v-model="infoSection.quoteAuthor">
-          </div>
-
-          <div class="input">
-            <label>Quote tekst</label>
-            <input type="text" name="" v-model="infoSection.quoteText">
-          </div>
-
-          <div class="convertInputImageToBase64">
-            <label>Paragraaf</label>
-            <textarea type="text" name="" v-model="infoSection.text"/>
-          </div>
-        </div>
-        <button type="button" @click="updateSection('infoSection')">Sectie 2 opslaan</button>
-      </section>
-
-      <section class="section drieluik">
-        <div class="section-container">
-          <div class="section-title">Sectie 3</div>
-          <div v-for="(luik, idx) in drieluik.luiken">
-            <div class="section-title">
-              {{ luik.heading}}
+        <div class="container-lg">
+          <div class="section-container">
+            <div class="section-title">Sectie 2</div>
+            <div class="input">
+              <label>Titel</label>
+              <input type="text" name="" v-model="infoSection.mainTitle">
             </div>
 
-            <div class="input file">
-              <label>Afbeelding upload</label>
-              <label :for="luik.heading.toLowerCase()">
-                Geen afbeelding
-              </label>
-              <input type="file" :id="luik.heading.toLowerCase()" @change="convertInputImageToBase64(idx)">
+            <div class="input">
+              <label>Subtitel</label>
+              <input type="text" name="" v-model="infoSection.subTitle">
+            </div>
+
+            <div class="input">
+              <label>Autheur tekst</label>
+              <input type="text" name="" v-model="infoSection.quoteAuthor">
+            </div>
+
+            <div class="input">
+              <label>Quote tekst</label>
+              <input type="text" name="" v-model="infoSection.quoteText">
             </div>
 
             <div class="input">
               <label>Paragraaf</label>
-              <textarea type="text" name="" v-model="drieluik.luiken[idx].bodyText"/>
+              <textarea type="text" name="" v-model="infoSection.text"/>
             </div>
-
           </div>
+          <button type="button" @click="updateSection('infoSection')">Sectie 2 opslaan</button>
         </div>
-        <button type="button" @click="updateSection('drieluik')">Sectie 3 opslaan</button>
+      </section>
+
+      <section class="section drieluik">
+        <div class="container-lg">
+          <div class="section-container">
+            <div class="section-title">Sectie 3</div>
+            <div v-for="(luik, idx) in drieluik.luiken">
+              <div class="section-title">
+                {{ luik.heading}}
+              </div>
+
+              <div class="input file">
+                <label>Afbeelding upload</label>
+                <label :for="luik.heading.toLowerCase()">
+                  Geen afbeelding
+                </label>
+                <input type="file" :id="luik.heading.toLowerCase()" @change="convertInputImageToBase64(idx)">
+              </div>
+
+              <div class="input">
+                <label>Paragraaf</label>
+                <textarea type="text" name="" v-model="drieluik.luiken[idx].bodyText"/>
+              </div>
+
+            </div>
+          </div>
+          <button type="button" @click="updateSection('drieluik')">Sectie 3 opslaan</button>
+        </div>
       </section>
 
       <section class="section footer">
-        <div class="section-container">
-          <div class="section-title">Footer</div>
-          <div class="footer-container" v-for="(menuArray) in footer.footerNavigations">
+        <div class="container-lg">
+          <div class="section-container">
+            <div class="section-title">Footer</div>
+            <div class="footer-container" v-for="(menuArray) in footer.footerNavigations">
 
-            <div class="input" v-for="(menu, menuIndx) in menuArray">
-              <label>Button tekst</label>
-              <input type="text" v-model="menu.title">
+              <div class="input" v-for="(menu, menuIndx) in menuArray">
+                <label>Button tekst</label>
+                <input type="text" v-model="menu.title">
 
-              <label>Link</label>
-              <input type="text" v-model="menu.link">
+                <label>Link</label>
+                <input type="text" v-model="menu.link">
+              </div>
             </div>
           </div>
+          <button type="button" @click="updateSection('footer')">Footer opslaan</button>
         </div>
-        <button type="button" @click="updateSection('footer')">Footer opslaan</button>
       </section>
     </div>
 </div>
@@ -222,6 +230,10 @@ section {
   background: #F8F8F8;
   padding: 64px;
 
+  &:nth-child(odd) {
+    background-color: #EBEBEB;
+  }
+
   .section-container {
     display: flex;
     flex-direction: row;
@@ -276,10 +288,6 @@ section {
         }
       }
     }
-  }
-
-  &:nth-child(odd) {
-    background-color: #EBEBEB;
   }
 
   label,
