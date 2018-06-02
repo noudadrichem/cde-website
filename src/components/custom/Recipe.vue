@@ -1,6 +1,6 @@
 <template>
   <div class="recipe">
-    <Heading tag="h1" text="Apple juice with pears" />
+    <input type="text" name="" placeholder="Type hier jou cocktail naam">
     <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." />
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>

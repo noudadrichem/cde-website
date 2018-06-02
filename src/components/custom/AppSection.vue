@@ -26,8 +26,12 @@
             </div>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 recipe-column">
           <Recipe :choosenIngredients="completeRecipe.ingredients" counter="35"/>
+          <div class="about-the-cocktail">
+            <Heading tag="h3" text="vertel iets over deze cocktail"/>
+            <textarea v-model="completeRecipe.body" placeholder="Klik hier om wat te vertellen over jou zelf gemaakte cocktail."></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -45,6 +49,7 @@ import Recipe from '@/components/custom/Recipe'
 import Button from '@/components/common/Button'
 import DropdownItems from '@/components/custom/DropdownItems'
 import Modal from '@/components/custom/Modal'
+import conf from '@/config'
 
 export default {
   props: {
@@ -71,7 +76,9 @@ export default {
       name: 'Recipe name',
       body: 'write a fun story in a non exciisting component',
       upvotes: 0,
-      ingredients: []
+      ingredients: [],
+      userName: '',
+      email: ''
     }
   }),
   components: {
@@ -92,6 +99,7 @@ export default {
     this.$eventBus.$on('getSelectedValue', this.selectIngredient)
     this.$eventBus.$on('giveQuantityValue', this.getQuantityValue)
     this.$eventBus.$on('openAddToModal', this.showAddToRankingModal)
+    this.$eventBus.$on('participentInfo', this.addRecipeToRanglist)
   },
   methods: {
     getCategoryItems() {
@@ -142,9 +150,21 @@ export default {
     showAddToRankingModal(val) {
       this.$set(this, 'isAddingToRanking', val)
     },
-    addRecipeToRanglist() {
-      // this.$http.post(`${conf.apiUrl}/campaign/recipes/create`, {})
-      console.log(this.$data);
+    setParticipentInfo({ name, email }) {
+      return new Promise(resolve => {
+        this.$set(this.completeRecipe, 'userName', name)
+        this.$set(this.completeRecipe, 'email', email)
+        resolve()
+      })
+    },
+    addRecipeToRanglist(eventPayload) {
+      this.setParticipentInfo(eventPayload)
+        .then(() => {
+          this.$http.post(`${conf.apiUrl}/campaign/recipes/create`, this.completeRecipe)
+            .then(res => {
+              console.log('post req to recipe with particpent: ', res)
+            })
+        })
     }
   }
 }
@@ -179,9 +199,28 @@ export default {
     }
   }
 
-  .recipe {
-    top: -136px;
+  .recipe-column {
     position: relative;
+    top: -136px;
+
+    .about-the-cocktail {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px;
+      border: 2px solid #F0F2F7;
+      border-radius: 2px;
+      margin-top: 32px;
+
+      textarea {
+        border: none;
+        outline: none;
+        font-size: 15px;
+        color: #363542;
+        line-height: 22px;
+        resize: none;
+        width: 100%;
+      }
+    }
   }
 }
 

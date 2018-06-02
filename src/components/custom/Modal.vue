@@ -24,10 +24,10 @@
         <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Je cocktail is toegevoegd aan de ranglijst! Deel jouw unieke link met je vrienden om voor veel stemmen te zorgen!" />
         <div class="social-shares">
-          <ShareButton text="Kopieer link" action="copy"/>
+          <ShareButton text="Kopieer link" action="copy" :socialUrl="socialUrl"/>
           <span>of</span>
-          <ShareButton text="Deel op" iconName="facebook" action="facebook"/>
-          <ShareButton text="Deel op" iconName="twitter" action="twitter"/>
+          <ShareButton text="Deel op" iconName="facebook" action="facebook" :socialUrl="socialUrl"/>
+          <ShareButton text="Deel op" iconName="twitter" action="twitter" :socialUrl="socialUrl"/>
         </div>
         <div class="see-ranking">
             Zie de ranglijst hier
@@ -54,7 +54,8 @@ export default {
   data: () => ({
     addedToRanking: false,
     email: '',
-    name: ''
+    name: '',
+    socialUrl: 'https://noudadrichem.com/'
   }),
   components: {
     Heading,
