@@ -1,7 +1,7 @@
 <template>
   <div class="recipe">
-    <input type="text" name="" placeholder="Type hier jou cocktail naam">
-    <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." />
+    <textarea @keyup="autoHeightTextArea" class="recipe-heading" type="text" placeholder="Type hier jouw cocktail naam" min="1" max="40"/>
+    <!-- <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." /> -->
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
       <div class="counter-container">
@@ -48,12 +48,22 @@ export default {
     Heading,
     Icon,
     Button
+  },
+  methods: {
+    autoHeightTextArea() {
+      event.target.style.height = 0
+      event.target.style.height = (event.target.scrollHeight) + 'px'
+
+      this.$eventBus.$emit('cocktailNameInput', event.target.value)
+    }
   }
 }
 </script>
 
 <style lang="scss" >
 @import '~$styles/app';
+@import '~$styles/base/variables';
+@import '~$styles/base/mixins';
 
 .recipe {
   padding: 24px;
@@ -61,6 +71,21 @@ export default {
   max-width: 480px;
   text-align: left;
   margin: 0 auto;
+
+  .recipe-heading {
+    font-family: $template-font-family-h1;
+    font-weight: $template-font-weight-h1;
+    line-height: $template-line-height-h1;
+    font-size: $template-font-size-h1-s;
+    color: $template-font-color-h1;
+    width: 100%;
+    margin-bottom: 8px;
+    outline: none;
+    border: 0;
+    resize: none;
+    // background: red;
+    min-height: 32px;
+  }
 
   .ingredients {
     display: flex;

@@ -74,7 +74,7 @@ export default {
     isAddingToRanking: false,
     completeRecipe: {
       name: 'Recipe name',
-      body: 'write a fun story in a non exciisting component',
+      body: '',
       upvotes: 0,
       ingredients: [],
       userName: '',
@@ -100,6 +100,7 @@ export default {
     this.$eventBus.$on('giveQuantityValue', this.getQuantityValue)
     this.$eventBus.$on('openAddToModal', this.showAddToRankingModal)
     this.$eventBus.$on('participentInfo', this.addRecipeToRanglist)
+    this.$eventBus.$on('cocktailNameInput', this.setCocktailNameValue)
   },
   methods: {
     getCategoryItems() {
@@ -165,6 +166,9 @@ export default {
               console.log('post req to recipe with particpent: ', res)
             })
         })
+    },
+    setCocktailNameValue(nameValue) {
+      this.$set(this.completeRecipe, 'name', nameValue)
     }
   }
 }
