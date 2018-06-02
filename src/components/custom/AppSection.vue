@@ -22,7 +22,7 @@
             <div class="radio-list-section">
               <Heading tag="h3" text="Hoeveel?"/>
               <RadioList :data="selectedIngredient"/>
-              <Button @click.native="setQuantityValue(currentSelectedQuantity)" type="button" styling="secondary" :disabled="quantityIsDisabled" text="Kies hoeveelheid"/>
+              <Button @click.native="setQuantityValue(currentSelectedQuantity)" type="button" styling="secondary" :disabled="quantityIsDisabled" text="Voeg toe"/>
             </div>
           </div>
         </div>
@@ -98,6 +98,7 @@ export default {
     },
 
     selectIngredient(itemName) {
+      console.log({ itemName });
       const selectedIngredient = this.categoryItems.reduce((accu, { items }) => {
         accu.push(...items)
         return accu
@@ -122,10 +123,12 @@ export default {
 
     },
     resetReceipt() {
+      this.$set(this, 'searchQuery', '')
       this.$set(this, 'quantityIsDisabled', true)
-      this.$set(this, 'selectedIngredient', '')
+      this.$set(this, 'selectedIngredient', {})
       this.$set(this, 'currentSelectedQuantity', '')
       this.$set(this, 'currentReceipt', {})
+      this.$eventBus.$emit('reset')
     }
   }
 }

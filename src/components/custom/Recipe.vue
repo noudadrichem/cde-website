@@ -16,7 +16,7 @@
       </div>
       <ul class="ingredients-list">
         <li v-for="chosen in choosenIngredients">
-          {{ chosen.name }}
+          {{ chosen }}
           <Icon :width="16" :height="16" name="trash"/>
         </li>
       </ul>

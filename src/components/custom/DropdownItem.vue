@@ -38,6 +38,9 @@ export default {
     firstCharUppercase(value) {
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
+  },
+  created() {
+    this.$eventBus.$on('reset', () => this.$set(this, 'isActive', false))
   }
 }
 </script>

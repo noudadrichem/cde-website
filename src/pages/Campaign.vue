@@ -3,6 +3,7 @@
   <Heading :data="heading" :campaign="true" />
   <StepsSection :data="howTo" />
   <AppSection :data="app" :categories="categories" />
+  <!-- <RankingList/> -->
   <Footing :data="footer"/>
 </div>
 </template>
@@ -11,6 +12,7 @@
 import Heading from '@/components/custom/Heading'
 import StepsSection from '@/components/custom/StepsSection'
 import AppSection from '@/components/custom/AppSection'
+import RankingList from '@/components/custom/RankingList'
 import Footing from '@/components/custom/Footing'
 import conf from '@/config'
 
@@ -33,11 +35,13 @@ export default {
     Heading,
     StepsSection,
     AppSection,
-    Footing
+    Footing,
+    RankingList
   },
   mounted() {
     this.$http.get(`${conf.apiUrl}content/${this.pageId}/sections`)
       .then(data => {
+        console.log(`${conf.apiUrl}content/${this.pageId}/sections`);
         console.log(data.body)
         const findSectionData = (sectionName, data) => data.body.sections.find(obj => obj.title === sectionName).contents
 

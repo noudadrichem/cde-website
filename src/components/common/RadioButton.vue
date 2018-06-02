@@ -15,15 +15,15 @@ export default {
     },
     id: {
       type: [String, Number],
-      required: true
+      required: false
     },
     name: {
       type: String,
-      required: true
+      required: false
     },
     amount: {
       type: String,
-      required: true
+      required: false
     }
   }
 }
