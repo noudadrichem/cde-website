@@ -9,9 +9,9 @@
         <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Voordat jouw cocktail aan de ranglijst wordt toegevoegd, hebben wij wat meer informatie van jou nodig." />
         <form class="ranking-signup">
-          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="mail"/>
-          <InputText placeholder="Je volledige naam" type="text" iconType="name"/>
-          <Button type="button" styling="primary" text="Voeg cocktail toe" @click.native="addedToRanking = !addedToRanking"/>
+          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="mail" v-model="email" />
+          <InputText placeholder="Je volledige naam" type="text" iconType="name" v-model="name" />
+          <Button type="button" styling="primary" text="Voeg cocktail toe" @click.native="emitParticipentValues"/>
         </form>
         <div class="background"></div>
       </div>
@@ -24,10 +24,10 @@
         <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Je cocktail is toegevoegd aan de ranglijst! Deel jouw unieke link met je vrienden om voor veel stemmen te zorgen!" />
         <div class="social-shares">
-          <ShareButton text="Kopieer link"/>
+          <ShareButton text="Kopieer link" action="copy"/>
           <span>of</span>
-          <ShareButton text="Deel op" iconName="facebook"/>
-          <ShareButton text="Deel op" iconName="twitter"/>
+          <ShareButton text="Deel op" iconName="facebook" action="facebook"/>
+          <ShareButton text="Deel op" iconName="twitter" action="twitter"/>
         </div>
         <div class="see-ranking">
             Zie de ranglijst hier
@@ -36,6 +36,7 @@
         <div class="visual"></div>
         <div class="background"></div>
       </div>
+
     </div>
   </transition>
 </template>
@@ -47,10 +48,13 @@ import Icon from '@/components/common/Icon'
 import InputText from '@/components/common/InputText'
 import Button from '@/components/common/Button'
 import ShareButton from '@/components/common/ShareButton'
+import conf from '@/config'
 
 export default {
   data: () => ({
-    addedToRanking: false
+    addedToRanking: false,
+    email: '',
+    name: ''
   }),
   components: {
     Heading,
@@ -59,6 +63,15 @@ export default {
     InputText,
     Button,
     ShareButton
+  },
+  methods: {
+    emitParticipentValues() {
+      this.$eventBus.$emit('participentInfo', {
+        email: this.email,
+        name: this.name
+      })
+      this.$set(this, 'addedToRanking', !this.addedToRanking)
+    }
   }
 }
 </script>

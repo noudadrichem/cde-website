@@ -138,13 +138,13 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
-import Modal from '@/components/common/Modal'
 import ShareButton from '@/components/common/ShareButton'
 
 import Dropdown from '@/components/custom/Dropdown'
 import Recipe from '@/components/custom/Recipe'
 import RadioList from '@/components/custom/RadioList'
 import RankingList from '@/components/custom/RankingList'
+import Modal from '@/components/custom/Modal'
 
 export default {
   name: 'Stylekit',

@@ -27,10 +27,11 @@
           </div>
         </div>
         <div class="col-6">
-          <Recipe :choosenIngredients="choosenIngredients" counter="35"/>
+          <Recipe :choosenIngredients="completeRecipe.ingredients" counter="35"/>
         </div>
       </div>
     </div>
+    <Modal v-show="isAddingToRanking" @close="$eventBus.$emit('openAddToModal', false)" />
   </div>
 </template>
 
@@ -43,6 +44,7 @@ import RadioList from '@/components/custom/RadioList'
 import Recipe from '@/components/custom/Recipe'
 import Button from '@/components/common/Button'
 import DropdownItems from '@/components/custom/DropdownItems'
+import Modal from '@/components/custom/Modal'
 
 export default {
   props: {
@@ -64,6 +66,13 @@ export default {
     currentSelectedQuantity: '',
     currentReceipt: {},
     choosenIngredients: [],
+    isAddingToRanking: false,
+    completeRecipe: {
+      name: 'Recipe name',
+      body: 'write a fun story in a non exciisting component',
+      upvotes: 0,
+      ingredients: []
+    }
   }),
   components: {
     Heading,
@@ -73,15 +82,16 @@ export default {
     RadioList,
     Recipe,
     Button,
-    DropdownItems
+    DropdownItems,
+    Modal
   },
   mounted() {
     this.$set(this, 'categoryItems', this.categories)
   },
   created() {
     this.$eventBus.$on('getSelectedValue', this.selectIngredient)
-
     this.$eventBus.$on('giveQuantityValue', this.getQuantityValue)
+    this.$eventBus.$on('openAddToModal', this.showAddToRankingModal)
   },
   methods: {
     getCategoryItems() {
@@ -96,7 +106,6 @@ export default {
 
       this.$set(this, 'filteredItems', filteredCategoryItems)
     },
-
     selectIngredient(itemName) {
       console.log({ itemName });
       const selectedIngredient = this.categoryItems.reduce((accu, { items }) => {
@@ -116,8 +125,8 @@ export default {
     setQuantityValue(quantityValue) {
       this.$set(this.currentReceipt, 'quantity', quantityValue)
 
-      const copyChoosen = [...this.choosenIngredients, this.currentReceipt]
-      this.$set(this, 'choosenIngredients', copyChoosen),
+      const copyChoosen = [...this.completeRecipe.ingredients, this.currentReceipt]
+      this.$set(this.completeRecipe, 'ingredients', copyChoosen),
 
       this.resetReceipt()
 
@@ -129,6 +138,13 @@ export default {
       this.$set(this, 'currentSelectedQuantity', '')
       this.$set(this, 'currentReceipt', {})
       this.$eventBus.$emit('reset')
+    },
+    showAddToRankingModal(val) {
+      this.$set(this, 'isAddingToRanking', val)
+    },
+    addRecipeToRanglist() {
+      // this.$http.post(`${conf.apiUrl}/campaign/recipes/create`, {})
+      console.log(this.$data);
     }
   }
 }

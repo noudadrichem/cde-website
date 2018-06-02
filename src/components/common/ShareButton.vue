@@ -1,5 +1,5 @@
 <template>
-  <div :class="['share-button', { facebook: iconName == 'facebook', twitter: iconName == 'twitter' }]">
+  <div @click="envokeAction" :class="['share-button', { facebook: iconName == 'facebook', twitter: iconName == 'twitter' }]">
     {{ text }}
     <Icon v-if="iconName" :width="16" :height="16" :name="iconName"/>
   </div>
@@ -17,10 +17,32 @@ export default {
     iconName: {
       required: false,
       type: String
+    },
+    action: {
+      type: String,
+      required: false
+    },
+    socialUrl: {
+      type: String,
+      required: false
     }
   },
   components: {
     Icon
+  },
+  methods: {
+    envokeAction() {
+      switch (this.action) {
+          case 'facebook':
+            window.open(`https://www.facebook.com/sharer.php?u=${socialUrl}`)
+            break
+          case 'twitter':
+            window.open(`https://twitter.com/intent/tweet?url=${socialUrl}`)
+            break
+          case 'copy':
+
+        }
+    }
   }
 }
 </script>

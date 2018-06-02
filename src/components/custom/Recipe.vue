@@ -15,14 +15,13 @@
         </div>
       </div>
       <ul class="ingredients-list">
-        <li v-for="chosen in choosenIngredients">
-          {{ chosen }}
+        <li v-for="({ quantity, name}) in choosenIngredients">
+          {{ quantity }} {{ name }}
           <Icon :width="16" :height="16" name="trash"/>
         </li>
       </ul>
-      <Button type="button" text="Voeg toe aan ranglijst" styling="primary" :disabled="true"/>
+      <Button @click.native="$eventBus.$emit('openAddToModal', true)" type="button" text="Voeg deze cocktail toe aan de ranglijst" styling="primary" :disabled="(choosenIngredients.length === 0)"/>
     </div>
-    <!-- todo: Add updated button component -->
   </div>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
 <div class="campaign" v-if="!loading">
-  <Heading :data="heading" :campaign="true" />
-  <StepsSection :data="howTo" />
+  <!-- <Heading :data="heading" :campaign="true" />
+  <StepsSection :data="howTo" /> -->
   <AppSection :data="app" :categories="categories" />
   <!-- <RankingList/> -->
-  <Footing :data="footer"/>
+  <!-- <Footing :data="footer"/> -->
 </div>
 </template>
 
