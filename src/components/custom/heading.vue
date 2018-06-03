@@ -93,7 +93,7 @@ export default {
 
       if (window.pageYOffset >= sticky) {
         navbar.classList.add('stickey')
-        document.body.style.paddingTop = '157px'
+        document.body.style.paddingTop = '109px'
 
         if(pageYOffset >= sticky + 300) {
           navbar.style.top = 0
