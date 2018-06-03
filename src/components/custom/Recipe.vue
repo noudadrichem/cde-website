@@ -71,6 +71,7 @@ export default {
   max-width: 480px;
   text-align: left;
   margin: 0 auto;
+  background: white;
 
   .recipe-heading {
     font-family: $template-font-family-h1;

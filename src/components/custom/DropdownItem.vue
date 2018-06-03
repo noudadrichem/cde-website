@@ -56,6 +56,7 @@ li.category-item {
   &.active {
     .category-item-title {
       opacity: 1;
+      background: #ebebeb;
 
       .icon:last-child {
         transform: rotate(90deg);
@@ -70,7 +71,8 @@ li.category-item {
   .category-item-title {
     padding: 16px;
     background-color: $template-color-white-light;
-    opacity: 0.4;
+    opacity: 1;
+    background: #f6f6f6;
     user-select: none;
     cursor: pointer;
     position: relative;

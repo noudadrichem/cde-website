@@ -177,6 +177,10 @@ export default {
 <style lang="scss">
 .app {
   padding-bottom: 80px;
+  background-image: url('../../assets/images/confetti@2x.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
 
   .item-selection {
     margin-top: 48px;
@@ -208,6 +212,7 @@ export default {
     top: -136px;
 
     .about-the-cocktail {
+      background: white;
       max-width: 480px;
       margin: 0 auto;
       padding: 24px;
