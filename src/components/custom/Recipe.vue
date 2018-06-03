@@ -1,6 +1,6 @@
 <template>
   <div class="recipe">
-    <textarea @keyup="autoHeightTextArea" class="recipe-heading" type="text" placeholder="Type hier jouw cocktail naam" min="1" max="40"/>
+    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Type hier jouw cocktail naam" min="1" max="40"/>
     <!-- <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." /> -->
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
@@ -83,8 +83,7 @@ export default {
     outline: none;
     border: 0;
     resize: none;
-    // background: red;
-    min-height: 32px;
+    height: $template-line-height-h1;
   }
 
   .ingredients {

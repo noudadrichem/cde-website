@@ -3,7 +3,7 @@
 
       <nav class="nav-container">
         <div class="logo">
-          <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
+          <router-link to="/"><img src="@/assets/images/logo.png" alt="Crazy Dutch Experience"></router-link>
         </div>
 
         <div class="nav-bar right hide-mobile">
