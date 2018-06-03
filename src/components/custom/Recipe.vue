@@ -15,12 +15,18 @@
         </div>
       </div>
       <ul class="ingredients-list">
-        <li v-for="({ quantity, name}) in choosenIngredients">
-          {{ quantity }} {{ name }}
+        <li v-for="(ingredient) in choosenIngredients">
+          <!-- {{ quantity }} {{ name }} -->
+          {{ ingredient }}
           <Icon :width="16" :height="16" name="trash"/>
         </li>
       </ul>
-      <Button @click.native="$eventBus.$emit('openAddToModal', true)" type="button" text="Voeg deze cocktail toe aan de ranglijst" styling="primary" :disabled="(choosenIngredients.length === 0)"/>
+      <Button
+        @click.native="$eventBus.$emit('openAddToModal', true)"
+        type="button"
+        text="Voeg deze cocktail toe aan de ranglijst"
+        styling="primary"
+        :disabled="(choosenIngredients.length !== 0) && (!cocktailNameInput)"/>
     </div>
   </div>
 </template>
@@ -32,7 +38,8 @@ import Button from '@/components/common/Button'
 
 export default {
   data: () => ({
-    infoHover: false
+    infoHover: false,
+    cocktailNameInput: ''
   }),
   props: {
     counter: {
@@ -53,7 +60,7 @@ export default {
     autoHeightTextArea() {
       event.target.style.height = 0
       event.target.style.height = (event.target.scrollHeight) + 'px'
-
+      this.$set(this, 'cocktailNameInput', event.target.value)
       this.$eventBus.$emit('cocktailNameInput', event.target.value)
     }
   }

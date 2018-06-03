@@ -14,10 +14,10 @@
             <div class="dropdown-section">
               <Heading tag="h3" text="Welke ingrediënten?"/>
               <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
-
+              <div :class="{ dropdown: true, active: currentReceipt.name }">
                 <Dropdown v-if="!searchQuery" :data="categories"/>
                 <DropdownItems v-else :items="filteredItems"/>
-
+              </div>
             </div>
             <div class="radio-list-section">
               <Heading tag="h3" text="Hoeveel?"/>
@@ -116,7 +116,6 @@ export default {
       this.$set(this, 'filteredItems', filteredCategoryItems)
     },
     selectIngredient(itemName) {
-      console.log({ itemName });
       const selectedIngredient = this.categoryItems.reduce((accu, { items }) => {
         accu.push(...items)
         return accu
@@ -134,7 +133,9 @@ export default {
     setQuantityValue(quantityValue) {
       this.$set(this.currentReceipt, 'quantity', quantityValue)
 
-      const copyChoosen = [...this.completeRecipe.ingredients, this.currentReceipt]
+      const recipeString = `${this.currentReceipt.quantity} ${this.currentReceipt.name}`
+      console.log('recipeString: ', recipeString);
+      const copyChoosen = [...this.completeRecipe.ingredients, recipeString]
       this.$set(this.completeRecipe, 'ingredients', copyChoosen),
 
       this.resetReceipt()
@@ -189,6 +190,10 @@ export default {
       max-width: 280px;
       max-height: 411px;
 
+      .dropdown.active {
+        opacity: 0.6;
+      }
+
       .input-text {
         z-index: 1;
       }
@@ -210,6 +215,10 @@ export default {
   .recipe-column {
     position: relative;
     top: -136px;
+
+    @media screen and (max-width: 1066px) {
+      top: 0;
+    }
 
     .about-the-cocktail {
       background: white;

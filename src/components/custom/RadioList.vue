@@ -1,5 +1,5 @@
 <template>
-  <div class="radio-list" v-if="Object.keys(data).length > 0">
+  <div :class="['radio-list', data ? 'active' : '']" v-if="Object.keys(data).length > 0">
     <RadioButton
       v-for="(amount, index) in data.messurement.amount"
       name="radiolist"
@@ -49,9 +49,13 @@ export default {
     border: 1px solid $template-color-white-light;
     border-radius: $template-border-radius;
     padding: 16px;
-    background-color: rgba($template-color-white-light, 0.4);
+    background-color: rgba(#F8F8F8, 0.3);
     display: flex;
     flex-direction: column;
+
+    &.active {
+      background-color: rgba(#F8F8F8, 1);
+    }
 
     div {
       background: transparent;

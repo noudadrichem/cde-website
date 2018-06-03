@@ -3,7 +3,7 @@
   <Heading :data="heading" :campaign="true" />
   <StepsSection :data="howTo" />
   <AppSection :data="app" :categories="categories" />
-  <RankingList/>
+  <!-- <RankingList/> -->
   <Footing :data="footer"/>
 </div>
 </template>
