@@ -90,24 +90,25 @@ export default {
   },
   mounted() {
     // snel en lelijk 👍👍
-    window.onscroll = e => {
-      const navbar = this.$refs.nav;
-      const sticky = navbar.offsetTop + 109;
+    if(window.innerWidth > 500) {
+      window.onscroll = e => {
+        const navbar = this.$refs.nav;
+        const sticky = navbar.offsetTop + 109;
 
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add('stickey')
-        document.body.style.paddingTop = '109px'
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add('stickey')
+          document.body.style.paddingTop = '109px'
 
-        if(pageYOffset >= sticky + 300) {
-          navbar.style.top = 0
-          navbar.style.background =  'rgba(255,255,255, 0.7)'
+          if(pageYOffset >= sticky + 300) {
+            navbar.style.top = 0
+            navbar.style.background =  'rgba(255,255,255, 0.7)'
+          }
+        } else {
+          navbar.classList.remove('stickey')
+          document.body.style.paddingTop = 0
+          navbar.style.background =  ''
         }
-      } else {
-        navbar.classList.remove('stickey')
-        document.body.style.paddingTop = 0
-        navbar.style.background =  ''
       }
-
     }
   }
 }
