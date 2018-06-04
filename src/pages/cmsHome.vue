@@ -53,7 +53,7 @@
         </div>
       </section>
 
-      <section class="section video">
+      <section class="section video-section">
         <div class="container-lg">
           <div class="section-container">
               <div class="section-title">Sectie 1</div>
@@ -126,7 +126,7 @@
         </div>
       </section>
 
-      <section class="section footer">
+      <section class="section footer-section">
         <div class="container-lg">
           <div class="section-container">
             <div class="section-title">Footer</div>
@@ -309,24 +309,12 @@ section {
     background-color: #EBEBEB;
   }
 
-  &.footer {
-    padding: 64px;
-  }
-
   @include breakpoint(m) {
     padding: 32px;
-
-    &.footer {
-      padding: 32px;
-    }
   }
 
   @include breakpoint(s) {
     padding: 0;
-
-    &.footer {
-      padding: 0;
-    }
   }
 
   .container-lg {
