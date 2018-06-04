@@ -273,6 +273,8 @@ export default {
   box-shadow: 0 0 14px 0 rgba(156, 155, 161, .46);
   position: fixed;
   width: 100%;
+  top: 0;
+  z-index: 99;
 
   .navigation {
     height: 100%;
@@ -307,12 +309,24 @@ section {
     background-color: #EBEBEB;
   }
 
+  &.footer {
+    padding: 64px;
+  }
+
   @include breakpoint(m) {
     padding: 32px;
+
+    &.footer {
+      padding: 32px;
+    }
   }
 
   @include breakpoint(s) {
     padding: 0;
+
+    &.footer {
+      padding: 0;
+    }
   }
 
   .container-lg {
@@ -411,7 +425,7 @@ section {
     }
 
     &:focus {
-      color: $template-font-color;
+      color: $template-font-color!important;
     }
   }
 
