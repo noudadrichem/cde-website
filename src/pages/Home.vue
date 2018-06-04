@@ -353,6 +353,10 @@ export default {
     p {
         margin-bottom: 24px;
     }
+
+    .icon:hover {
+      cursor: pointer;
+    }
 }
 
 .getIn-enter-active,
