@@ -101,7 +101,6 @@ export default {
 
           if(pageYOffset >= sticky + 300) {
             navbar.style.top = 0
-            navbar.style.background =  'rgba(255,255,255, 0.7)'
           }
         } else {
           navbar.classList.remove('stickey')
@@ -114,13 +113,11 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-
+<style lang="scss">
 img {
   object-fit: contain;
   width: 100%;
 }
-
 
 .molen {
   position: absolute;
@@ -146,6 +143,7 @@ img {
     padding: 32px 0 16px;
     top: -125px;
     left: 0;
+    background: linear-gradient(top, rgba(255,255,255,.9) 0%, rgba(255,255,255,.6) 100%);
 
     .nav-container {
       margin-top: 0;
