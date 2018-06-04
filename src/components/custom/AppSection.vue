@@ -76,7 +76,7 @@ export default {
       name: 'Recipe name',
       body: '',
       upvotes: 0,
-      ingredients: [],
+      ingredients: ['35ml Crazy Dutch Dry Gin'],
       userName: '',
       email: ''
     }
@@ -181,7 +181,7 @@ export default {
   background-image: url('../../assets/images/confetti@2x.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: top left;
+  background-position: center center;
 
   .item-selection {
     margin-top: 48px;

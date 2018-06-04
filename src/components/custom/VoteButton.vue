@@ -1,5 +1,5 @@
 <template>
-  <div :class="['vote-button', { voted: isVoted }]" @click="isVoted = !isVoted">
+  <div :class="['vote-button', { voted: isVoted }]" @click="voteOnRecipe">
     <Icon name="vote" :active="isVoted" :width="16" :height="16" />
   </div>
 </template>
@@ -16,10 +16,20 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   components: {
     Icon
+  },
+  methods: {
+    voteOnRecipe() {
+      this.$set(this, 'isVoted', !this.isVoted)
+      console.log('id: ', this.id);
+    }
   }
 }
 </script>

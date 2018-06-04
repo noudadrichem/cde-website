@@ -35,6 +35,11 @@ const router = new Router({
     component: Campaign
   },
   {
+    path: '/campaign/:recipeName',
+    name: 'campaignRecipe',
+    component: Campaign
+  },
+  {
     path: '/login',
     name: 'login',
     component: Login

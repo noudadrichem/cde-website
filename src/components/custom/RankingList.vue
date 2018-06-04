@@ -1,5 +1,9 @@
 <template>
   <div class="ranking-list">
+    <div class="ranking-heading">
+      <Heading tag="h1" text="De Crazy Dutch Cocktail ranglijst"/>
+      <Heading tag="h2" text="Hieronder bevindt zich de gehele ranglijst van wie de top 10 beste cocktail smaak heeft bedacht."/>
+    </div>
     <table class="table">
       <tbody class="normal">
         <tr>
@@ -11,10 +15,10 @@
         </tr>
         <tr v-for="(rank, index) in orderedRanking" :key="index">
           <td>{{ index + 1 }}.</td>
-          <td>{{ rank.cocktailName }}</td>
-          <td>{{ rank.makerName }}</td>
-          <td><a :href="rank.receiptUrl" target="_blank">Bekijk het recept</a></td>
-          <td><VoteButton type="vote"/></td>
+          <td>{{ rank.name }}</td>
+          <td>{{ rank.particepent.fullName }}</td>
+          <td><a :href="rank.receiptUrl" @click="$eventBus.$emit('showRanking', rank._id)" target="_blank">Bekijk het recept</a></td>
+          <td><VoteButton type="vote" :id="rank._id"/></td>
         </tr>
       </tbody>
 
@@ -26,7 +30,7 @@
             <span>{{ rank.makerName }}</span>
             <span><a :href="rank.receiptUrl" target="_blank">Bekijk het recept</a></span>
           </td>
-          <VoteButton type="vote"/>
+          <VoteButton type="vote" :id="rank._id"/>
         </tr>
       </tbody>
     </table>
@@ -35,6 +39,7 @@
 
 <script>
 import VoteButton  from '@/components/custom/VoteButton'
+import Heading from '@/components/common/Heading'
 
 export default {
   computed: {
@@ -49,13 +54,20 @@ export default {
     }
   },
   components: {
-    VoteButton
+    VoteButton,
+    Heading
   }
 }
 </script>
 
 <style lang="scss" >
 @import '~$styles/app';
+
+.ranking-heading {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 64px;
+}
 
 .ranking-list {
   margin: 0 auto;
@@ -138,7 +150,7 @@ export default {
     }
 
     .normal {
-      display: block;
+      // display: block;
 
       @media screen and (max-width: $bp-tablet-md) {
         display: none;
