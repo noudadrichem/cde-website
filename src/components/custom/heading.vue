@@ -8,9 +8,12 @@
 
       <div class="nav-bar right hide-mobile">
         <ul>
-          <li v-for="(item, idx) in data.navbarItems" :key="idx">
+          <!-- <li v-for="(item, idx) in data.navbarItems" :key="idx">
             <a :href="item.link">{{ item.text }}</a>
-          </li>
+          </li> -->
+          <li> <a href="/campaign">Campagne</a> </li>
+          <li> <a href="/#producten">Producten</a> </li>
+          <li> <a href="/#contact">Contact</a> </li>
         </ul>
       </div>
     </nav>
@@ -97,10 +100,12 @@ export default {
 
         if(pageYOffset >= sticky + 300) {
           navbar.style.top = 0
+          navbar.style.background =  'rgba(255,255,255, 0.7)'
         }
       } else {
         navbar.classList.remove('stickey')
         document.body.style.paddingTop = 0
+        navbar.style.background =  ''
       }
 
     }
@@ -120,6 +125,7 @@ img {
   position: absolute;
   right: 0;
   top: 0;
+  z-index: -1;
 }
 .container-sm {
   margin-left: auto;
@@ -128,7 +134,8 @@ img {
 
 .nav-target {
   transition: 300ms ease;
-  background: rgba(white, 0.7);;
+  background: rgba(white, 0);
+  position: relative;
 
   &.stickey {
     position: fixed;
@@ -138,7 +145,6 @@ img {
     padding: 32px 0 16px;
     top: -125px;
     left: 0;
-    background: white;
 
     .nav-container {
       margin-top: 0;
