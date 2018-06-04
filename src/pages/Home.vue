@@ -260,6 +260,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~$styles/app';
+
 .intro-animation {
     display: flex;
     justify-content: center;
@@ -313,6 +315,7 @@ export default {
         left: 0;
         right: 0;
         height: 100vh;
+        overflow: hidden;
 
         .confetti {
             width: 22px;
@@ -340,6 +343,12 @@ export default {
     z-index: 22;
     transition: 400ms ease-out;
     transform: translateX(200%);
+
+    @include breakpoint(s) {
+      bottom: 8px;
+      right: 8px;
+      left: 8px;
+    }
 
     &.show {
         transform: translateX(0) !important;
