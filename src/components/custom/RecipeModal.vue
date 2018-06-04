@@ -15,7 +15,7 @@
           <div class="ingredients">
             <span class="title">De ingrediënten:</span>
             <div class="counter-container">
-              <span class="counter">{{ counter }}ml</span>
+              <span class="counter">150ml</span>
               <span class="max-total">/ 700ml</span>
 
               <div class="info-container" @mouseover="infoHover = true" @mouseleave="infoHover = false">
@@ -52,6 +52,9 @@
         required: true
       }
     },
+    data: () => ({
+      infoHover: false
+    }),
     components: {
       Icon,
       Heading,

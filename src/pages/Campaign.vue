@@ -5,7 +5,7 @@
   <AppSection :data="app" :categories="categories" />
   <RankingList :ranking="recipes"/>
   <Footing :data="footer"/>
-  <RecipeModal v-show="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" @close="showUrlRecipeModal = false"/>
+  <RecipeModal v-show="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" @close="closeRecipeModal"/>
 </div>
 </template>
 
@@ -44,6 +44,32 @@ export default {
     RankingList,
     RecipeModal
   },
+  created() {
+    this.$eventBus.$on('showRanking', this.selectRanking)
+  },
+  methods: {
+    selectRanking(id) {
+      this.$router.push({ path: `/campaign/${id}` })
+    },
+    setSelectedRecipeToModal(urlRecipeId) {
+      this.$http.get(`${conf.apiUrl}campaign/recipes/${urlRecipeId}`)
+        .then(({ body: recipeFromUrl }) => {
+          this.$set(this, 'currentlySelectRankingRecipe', recipeFromUrl)
+          this.$set(this, 'showUrlRecipeModal', true)
+        })
+    },
+    closeRecipeModal() {
+      // this.$router.push({ path: `/campaign/` })
+      this.$set(this, 'currentlySelectRankingRecipe', {})
+      this.$set(this, 'showUrlRecipeModal', false)
+    }
+  },
+  watch: {
+    $route({ params: { recipeName }}, from ) {
+      console.log('ROUTE CHANGED', recipeName);
+      this.setSelectedRecipeToModal(recipeName)
+    }
+  },
   mounted() {
     this.$http.get(`${conf.apiUrl}content/${this.pageId}/sections`)
       .then(data => {
@@ -76,11 +102,7 @@ export default {
 
     const { recipeName: urlRecipeId } = this.$route.params
     if(urlRecipeId) {
-      this.$http.get(`${conf.apiUrl}campaign/recipes/${urlRecipeId}`)
-        .then(({ body: recipeFromUrl }) => {
-          this.$set(this, 'currentlySelectRankingRecipe', recipeFromUrl)
-          this.$set(this, 'showUrlRecipeModal', true)
-        })
+      this.setSelectedRecipeToModal(urlRecipeId)
     }
 
   }

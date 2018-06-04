@@ -13,7 +13,7 @@
           <td>{{ index + 1 }}.</td>
           <td>{{ rank.name }}</td>
           <td>{{ rank.particepent.fullName }}</td>
-          <td><a :href="rank.receiptUrl" target="_blank">Bekijk het recept</a></td>
+          <td><a :href="rank.receiptUrl" @click="$eventBus.$emit('showRanking', rank._id)" target="_blank">Bekijk het recept</a></td>
           <td><VoteButton type="vote"/></td>
         </tr>
       </tbody>
