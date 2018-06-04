@@ -50,6 +50,8 @@ export default {
   methods: {
     selectRanking(id) {
       this.$router.push({ path: `/campaign/${id}` })
+      const recipeObject = this.recipes.find(({ _id }) => _id === id)
+      console.log({ recipeObject});
     },
     setSelectedRecipeToModal(urlRecipeId) {
       this.$http.get(`${conf.apiUrl}campaign/recipes/${urlRecipeId}`)
@@ -59,9 +61,8 @@ export default {
         })
     },
     closeRecipeModal() {
-      // this.$router.push({ path: `/campaign/` })
-      this.$set(this, 'currentlySelectRankingRecipe', {})
       this.$set(this, 'showUrlRecipeModal', false)
+      // this.$set(this, 'currentlySelectRankingRecipe', {})
     }
   },
   watch: {

@@ -33,6 +33,11 @@
             </ul>
           </div>
         </div>
+
+        <div class="recipe body">
+          {{ choosenRecipe.body }}
+        </div>
+
       </div>
 
     </div>
@@ -65,20 +70,27 @@
 
 <style lang="scss" scoped>
   .modal-container {
-    width: 480px;
+    width: 550px;
     padding-top: 40px;
     position: relative !important;
+    background: transparent;
 
     .close-wrapper {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 56px;
+      right: 56px;
     }
 
-    .recipe.maked {
-      margin: 0 !important;
-      box-shadow: none;
-      padding: 0 !important;
+    .recipe{
+      &.maked {
+        width: 100%;
+        margin: 0 !important;
+        box-shadow: none;
+      }
+      &.body {
+        margin-top: 32px;
+        width: 100%;
+      }
     }
   }
 </style>
