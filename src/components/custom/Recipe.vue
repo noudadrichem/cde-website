@@ -1,7 +1,7 @@
 <template>
   <div class="recipe">
-    <Heading tag="h1" text="Apple juice with pears" />
-    <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." />
+    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Type hier jouw cocktail naam" min="1" max="40"/>
+    <!-- <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." /> -->
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
       <div class="counter-container">
@@ -15,14 +15,19 @@
         </div>
       </div>
       <ul class="ingredients-list">
-        <li>
-          35ml Crazy Dutch Dry Gin
+        <li v-for="(ingredient) in choosenIngredients">
+          <!-- {{ quantity }} {{ name }} -->
+          {{ ingredient }}
           <Icon :width="16" :height="16" name="trash"/>
         </li>
       </ul>
-      <Button type="button" text="Voeg toe aan ranglijst" styling="primary" :disabled="true"/>
+      <Button
+        @click.native="$eventBus.$emit('openAddToModal', true)"
+        type="button"
+        text="Voeg deze cocktail toe aan de ranglijst"
+        styling="primary"
+        :disabled="(choosenIngredients.length !== 0) && (!cocktailNameInput)"/>
     </div>
-    <!-- todo: Add updated button component -->
   </div>
 </template>
 
@@ -33,24 +38,39 @@ import Button from '@/components/common/Button'
 
 export default {
   data: () => ({
-    infoHover: false
+    infoHover: false,
+    cocktailNameInput: ''
   }),
   props: {
     counter: {
       type: String,
       required: true
+    },
+    choosenIngredients: {
+      type: Array,
+      required: false
     }
   },
   components: {
     Heading,
     Icon,
     Button
+  },
+  methods: {
+    autoHeightTextArea() {
+      event.target.style.height = 0
+      event.target.style.height = (event.target.scrollHeight) + 'px'
+      this.$set(this, 'cocktailNameInput', event.target.value)
+      this.$eventBus.$emit('cocktailNameInput', event.target.value)
+    }
   }
 }
 </script>
 
 <style lang="scss" >
 @import '~$styles/app';
+@import '~$styles/base/variables';
+@import '~$styles/base/mixins';
 
 .recipe {
   padding: 24px;
@@ -58,6 +78,21 @@ export default {
   max-width: 480px;
   text-align: left;
   margin: 0 auto;
+  background: white;
+
+  .recipe-heading {
+    font-family: $template-font-family-h1;
+    font-weight: $template-font-weight-h1;
+    line-height: $template-line-height-h1;
+    font-size: $template-font-size-h1-s;
+    color: $template-font-color-h1;
+    width: 100%;
+    margin-bottom: 8px;
+    outline: none;
+    border: 0;
+    resize: none;
+    height: $template-line-height-h1;
+  }
 
   .ingredients {
     display: flex;

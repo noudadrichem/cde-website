@@ -7,7 +7,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Icon from './Icon'
 
 export default {
@@ -38,6 +37,10 @@ export default {
     iconType: {
       required: false,
       type: String
+    },
+    value : {
+      type: String,
+      required: true
     }
   },
   components: {

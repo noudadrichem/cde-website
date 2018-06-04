@@ -35,8 +35,8 @@
 
   <div :class="['campaign-popup', showPopup ? 'show' : '']">
     <h2>Crazy Dutch Dry Gin</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
-    <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Begin meteen met maken" />
+    <p>Ben jij in voor een moeilijke uitdaging om de karakteristieke Crazy Dutch dry gin te vermengen met een ander drankje? <br/>Pak dan nu je kans en win een net zo’n unieke belevenis als ons product.  </p>
+    <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Creëer je eigen cocktail"/>
     <Icon :width="16" :height="16" name="close" @click.native="showPopup = false" style="position: absolute; top: 16px; right: 16px;" />
   </div>
 </div>

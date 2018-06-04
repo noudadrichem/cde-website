@@ -1,20 +1,22 @@
 <template >
+<div>
+  <div class="nav-target" ref="nav">
+    <nav class="nav-container container-sm">
+      <div class="logo">
+        <router-link to="/"><img src="@/assets/images/logo.png" alt="Crazy Dutch Experience"></router-link>
+      </div>
+
+      <div class="nav-bar right hide-mobile">
+        <ul>
+          <li v-for="(item, idx) in data.navbarItems" :key="idx">
+            <a :href="item.link">{{ item.text }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
   <header class="container-sm">
-
-      <nav class="nav-container">
-        <div class="logo">
-          <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
-        </div>
-
-        <div class="nav-bar right hide-mobile">
-          <ul>
-            <li v-for="(item, idx) in data.navbarItems" :key="idx">
-              <a :href="item.link">{{ item.text }}</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
 
     <div class="content-container">
       <div class="grid">
@@ -31,7 +33,7 @@
 
         <div class="col-4 hide-mobile" v-if="campaign">
           <div class="">
-            <img src="@/assets/images/glas-fles@2x.png" alt="">
+            <img src="@/assets/images/glas-fles-nice.png" alt="">
           </div>
         </div>
       </div>
@@ -41,6 +43,7 @@
       <img src="@/assets/images/molen.svg" alt="molen visual" draggable="false">
     </div>
   </header>
+</div>
 </template>
 
 <script>
@@ -81,6 +84,26 @@ export default {
         behavior: 'smooth'
       });
     }
+  },
+  mounted() {
+    // snel en lelijk 👍👍
+    window.onscroll = e => {
+      const navbar = this.$refs.nav;
+      const sticky = navbar.offsetTop + 109;
+
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add('stickey')
+        document.body.style.paddingTop = '109px'
+
+        if(pageYOffset >= sticky + 300) {
+          navbar.style.top = 0
+        }
+      } else {
+        navbar.classList.remove('stickey')
+        document.body.style.paddingTop = 0
+      }
+
+    }
   }
 }
 </script>
@@ -101,6 +124,26 @@ img {
 .container-sm {
   margin-left: auto;
   margin-right: auto;
+}
+
+.nav-target {
+  transition: 300ms ease;
+  background: rgba(white, 0.7);;
+
+  &.stickey {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    margin-top: 0;
+    padding: 32px 0 16px;
+    top: -125px;
+    left: 0;
+    background: white;
+
+    .nav-container {
+      margin-top: 0;
+    }
+  }
 }
 
 .nav-container {

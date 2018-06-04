@@ -1,6 +1,6 @@
 <template>
 <div class="info-section-container">
-  <div class="info-section container-sm">
+  <div class="info-section container-md">
     <div class="grid center">
       <div class="col-5">
         <Heading tag="h1" :text="data.mainTitle" className="heading-title"/>
@@ -46,7 +46,7 @@ export default {
 @import '~$styles/app';
 
 .info-section {
-  margin: 180px auto 0;
+  margin: 0px auto 0;
   position: relative;
   z-index: 2;
 
