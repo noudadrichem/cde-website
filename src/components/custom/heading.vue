@@ -11,8 +11,12 @@
           <!-- <li v-for="(item, idx) in data.navbarItems" :key="idx">
             <a :href="item.link">{{ item.text }}</a>
           </li> -->
-          <li> <a href="/campaign">Campagne</a> </li>
-          <li> <a href="/#producten">Producten</a> </li>
+          <router-link tag="li" to="/" exact>
+            <a>De experience</a>
+          </router-link>
+          <router-link tag="li" to="/campaign" exact>
+            <a>Creëer je eigen cocktail</a>
+          </router-link>
           <li> <a href="/#contact">Contact</a> </li>
         </ul>
       </div>
@@ -171,6 +175,12 @@ img {
         display: inline-block;
         font-size: 15px;
         margin-left: 48px;
+
+        &.router-link-active {
+          a {
+            color: #fd8e26;
+          }
+        }
 
         &:first-child {
           margin-left: 0;
