@@ -76,7 +76,7 @@ export default {
       name: 'Recipe name',
       body: '',
       upvotes: 0,
-      ingredients: [],
+      ingredients: ['35ml Crazy Dutch Dry Gin'],
       userName: '',
       email: ''
     }
