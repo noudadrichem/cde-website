@@ -1,6 +1,6 @@
 <template>
   <div class="recipe">
-    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Type hier jouw cocktail naam" min="1" max="40"/>
+    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Geef je cocktail een naam" min="1" max="40"/>
     <!-- <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." /> -->
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
@@ -16,7 +16,6 @@
       </div>
       <ul class="ingredients-list">
         <li v-for="(ingredient) in choosenIngredients">
-          <!-- {{ quantity }} {{ name }} -->
           {{ ingredient }}
           <Icon :width="16" :height="16" name="trash"/>
         </li>
@@ -134,11 +133,12 @@ export default {
           padding: 8px 12px;
           font-size: 10px;
           line-height: 14px;
-          background: $template-color-white-default;
+          background: $template-color-white-default !important;
           box-shadow: 0 1px 8px 0 rgba(#CCD1DB, 0.7);
           left: -48px;
           top: -68px;
           opacity: 0;
+          z-index: 2;
           visibility: hidden;
           transition: opacity .2s ease-in-out, top .2s ease-in-out;
 
