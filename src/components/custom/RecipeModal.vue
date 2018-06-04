@@ -31,15 +31,16 @@
                 <Icon :width="16" :height="16" name="trash"/>
               </li>
             </ul>
+
+            <VoteButton type="vote" :id="choosenRecipe._id"/>
           </div>
         </div>
 
-        <div class="recipe body">
+        <div class="recipe body" v-if="choosenRecipe.body">
           {{ choosenRecipe.body }}
         </div>
 
       </div>
-
     </div>
   </transition>
 </template>
@@ -48,6 +49,7 @@
   import Icon from '@/components/common/Icon'
   import Heading from '@/components/common/Heading'
   import BodyText from '@/components/common/BodyText'
+  import VoteButton from '@/components/custom/VoteButton'
 
   export default {
     name: 'recipeModal',
@@ -63,7 +65,8 @@
     components: {
       Icon,
       Heading,
-      BodyText
+      BodyText,
+      VoteButton
     }
   }
 </script>
@@ -74,6 +77,7 @@
     padding-top: 40px;
     position: relative !important;
     background: transparent;
+    box-shadow: none;
 
     .close-wrapper {
       position: absolute;
@@ -86,7 +90,9 @@
         width: 100%;
         margin: 0 !important;
         box-shadow: none;
+        padding-top: 56px;
       }
+
       &.body {
         margin-top: 32px;
         width: 100%;
