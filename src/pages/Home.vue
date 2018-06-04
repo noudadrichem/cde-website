@@ -348,6 +348,7 @@ export default {
       bottom: 8px;
       right: 8px;
       left: 8px;
+      max-width: 100%;
     }
 
     &.show {
