@@ -1,5 +1,5 @@
 <template>
-<div class="drieluik" ref="drieluik">
+<div class="drieluik" ref="drieluik" id="producten">
   <div class="container-md">
 
       <Slick ref="slick" :options="slickOptions" class="grid">
@@ -156,7 +156,7 @@ $animationTime: 420ms ease;
 
     &:first-child {
       .img-overlay-container .img-overlay {
-        background: rgba(227,159,159,0.60);
+        // background: rgba(227,159,159,0.60);
       }
     }
 
@@ -164,9 +164,10 @@ $animationTime: 420ms ease;
       position: relative;
       object-fit: cover;
       line-height: 0;
+      height: 430px;
 
       .img-overlay {
-        background: rgba(159,199,227,0.60);
+        // background: rgba(159,199,227,0.60);
         top: 0;
         left: 0;
         position: absolute;
@@ -186,7 +187,11 @@ $animationTime: 420ms ease;
     }
 
     img {
-      width: 100%;
+      width: 70%;
+      margin: auto;
+      display: block;
+      // position: absolute;
+      // top: 0;
       object-fit: cover;
       z-index: 1;
     }

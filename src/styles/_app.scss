@@ -9,6 +9,10 @@
 @import './layout/core';
 @import './layout/reset';
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 .to-animate {
   opacity: 0;
   transform: translate3d(0, 64px, 0);
