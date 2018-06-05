@@ -99,7 +99,8 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
 
-    if(document.innerWidth > 767) {
+    if(window.innerWidth > 767) {
+      console.log('GROTER!!!');
       this.$refs.slick.destroy()
     }
   },
