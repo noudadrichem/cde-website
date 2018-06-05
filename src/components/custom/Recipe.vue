@@ -1,7 +1,11 @@
 <template>
   <div class="recipe">
+    <div class="not-filled-in-tooltip" v-show="nameIsntFilledIn">
+      Vergeet je cocktail geen naam te geven.
+    </div>
+
     <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Geef je cocktail een naam" min="1" max="40"/>
-    <!-- <Heading tag="h2" text="Deze cocktail is gemaakt door John Doe." /> -->
+
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
       <div class="counter-container">
@@ -21,11 +25,10 @@
         </li>
       </ul>
       <Button
-        @click.native="$eventBus.$emit('openAddToModal', true)"
+        @click.native="openRecipeSubmitModal"
         type="button"
         text="Voeg deze cocktail toe aan de ranglijst"
-        styling="primary"
-        :disabled="(choosenIngredients.length !== 0) && (!cocktailNameInput)"/>
+        styling="primary"/>
     </div>
   </div>
 </template>
@@ -38,7 +41,8 @@ import Button from '@/components/common/Button'
 export default {
   data: () => ({
     infoHover: false,
-    cocktailNameInput: ''
+    cocktailNameInput: '',
+    nameIsntFilledIn: false,
   }),
   props: {
     counter: {
@@ -61,6 +65,16 @@ export default {
       event.target.style.height = (event.target.scrollHeight) + 'px'
       this.$set(this, 'cocktailNameInput', event.target.value)
       this.$eventBus.$emit('cocktailNameInput', event.target.value)
+    },
+    openRecipeSubmitModal() {
+      console.log('open recipe modal');
+
+      if(this.cocktailNameInput.length > 0) {
+        this.$set(this, 'nameIsntFilledIn', false)
+        this.$eventBus.$emit('openAddToModal', true)
+      } else {
+        this.$set(this, 'nameIsntFilledIn', true)
+      }
     }
   }
 }
@@ -78,6 +92,25 @@ export default {
   text-align: left;
   margin: 0 auto;
   background: white;
+  position: relative;
+
+  .not-filled-in-tooltip {
+    position: absolute;
+    top: -56px;;
+    left: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #9FC7E3;
+    border: 1px solid #1072B8;
+    border-radius: 2px;
+    font-size: 16px;
+    color: #1072B8;
+    letter-spacing: 0;
+    text-align: center;
+  }
 
   .recipe-heading {
     font-family: $template-font-family-h1;

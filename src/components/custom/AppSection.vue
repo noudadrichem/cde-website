@@ -194,8 +194,8 @@ export default {
   padding-bottom: 80px;
   background-image: url('../../assets/images/confetti@2x.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
+  background-size: cover;
+  background-position: top center;
 
   .item-selection {
     margin-top: 48px;
@@ -203,7 +203,7 @@ export default {
     .ingredient-block {
       overflow: hidden;
       border-radius: 2px;
-      border: 1px solid rgba(#1072B8, 0.3);
+      border: 1px solid rgba(#EBEBEB, 1);
       pointer-events:none;
 
       &.active {
