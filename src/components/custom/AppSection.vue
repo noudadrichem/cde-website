@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-6 recipe-column">
-          <Recipe :choosenIngredients="completeRecipe.ingredients" counter="35"/>
+          <Recipe :choosenIngredients="completeRecipe.ingredients" :counter="getTotalMililiters(completeRecipe)"/>
           <div class="about-the-cocktail">
             <Heading tag="h3" text="vertel iets over deze cocktail"/>
             <textarea v-model="completeRecipe.body" placeholder="Klik hier om wat te vertellen over jou zelf gemaakte cocktail."></textarea>
@@ -60,6 +60,10 @@ export default {
     categories: {
       type: Array,
       required: false
+    },
+    getTotalMililiters: {
+      type: Function,
+      required: false
     }
   },
   data: () => ({
@@ -76,7 +80,7 @@ export default {
       name: 'Recipe name',
       body: '',
       upvotes: 0,
-      ingredients: ['35ml Crazy Dutch Dry Gin'],
+      ingredients: ['35 ml Crazy Dutch Dry Gin'],
       userName: '',
       email: ''
     }

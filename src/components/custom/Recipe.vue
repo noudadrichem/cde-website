@@ -42,7 +42,7 @@ export default {
   }),
   props: {
     counter: {
-      type: String,
+      type: Number,
       required: true
     },
     choosenIngredients: {

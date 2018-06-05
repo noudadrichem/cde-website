@@ -2,7 +2,7 @@
 <div class="campaign" v-if="!loading">
   <Heading :data="heading" :campaign="true" />
   <StepsSection :data="howTo" />
-  <AppSection :data="app" :categories="categories" />
+  <AppSection :data="app" :categories="categories" :getTotalMililiters="getTotalMililiters" />
   <RankingList :ranking="recipes"/>
   <Footing :data="footer"/>
   <RecipeModal v-show="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" @close="closeRecipeModal"/>
@@ -62,6 +62,18 @@ export default {
       this.$set(this, 'showUrlRecipeModal', false)
       // this.$set(this, 'currentlySelectRankingRecipe', {})
       this.$router.push({ path: '/campaign' })
+    },
+    getTotalMililiters({ ingredients }) {
+      const total = ingredients.reduce((acuu, ing) => {
+        const splittedIng = ing.split(' ')
+        if(splittedIng[1] == 'ml') {
+          acuu = acuu + parseInt(splittedIng[0])
+        }
+
+        return acuu
+      }, 0)
+      console.log({ total });
+      return total
     }
   },
   watch: {
@@ -88,7 +100,6 @@ export default {
 
         this.$http.get(`${conf.apiUrl}campaign/recipes`)
           .then(({ body: recipes }) => {
-            console.log({ recipes });
             this.$set(this, 'recipes', recipes)
           })
       })
@@ -100,13 +111,10 @@ export default {
         this.$set(this, 'loading', false)
       })
 
-
-
     const { recipeName: urlRecipeId } = this.$route.params
     if(urlRecipeId) {
       this.setSelectedRecipeToModal(urlRecipeId)
     }
-
   }
 }
 </script>
