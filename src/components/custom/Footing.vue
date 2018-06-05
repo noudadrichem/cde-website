@@ -101,6 +101,11 @@ export default {
       li {
         display: inline-block;
         margin-right: 24px;
+
+        img {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }
