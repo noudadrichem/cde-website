@@ -102,6 +102,12 @@ export default {
         transform: translateY(0px);
       }
     }
+
+    &.full {
+      width: 100%;
+      display: block;
+
+    }
   }
 }
 </style>

@@ -10,7 +10,7 @@
       <p class="label">Wachtwoord</p>
       <input type="password" v-model="password">
 
-      <button @click="login">login</button>
+      <Button styling="primary full" @click.native="login" text="Login"/>
     </div>
 
   </div>
@@ -18,13 +18,15 @@
 
 <script>
 import conf from '@/config'
+import Button from '@/components/common/Button'
 
 export default {
   name: 'Login',
   data: () => ({
-    email: 'info@noudadrichem.com',
-    password: 'test1234'
+    email: '',
+    password: ''
   }),
+  components: { Button },
   methods: {
     login() {
       this.$http.post(`${conf.apiUrl}users/login`, {
