@@ -55,9 +55,19 @@ export default {
     addedToRanking: false,
     email: '',
     name: '',
-    socialUrl: 'https://noudadrichem.com/',
     mailIconType: 'mail'
   }),
+  computed: {
+    socialUrl() {
+      return `${window.location.href}/${this.newRecipeId}`
+    },
+  },
+  props: {
+    newRecipeId: {
+      type: String,
+      required: false
+    }
+  },
   components: {
     Heading,
     BodyText,
@@ -79,6 +89,7 @@ export default {
           email: this.email,
           name: this.name
         })
+
         this.$set(this, 'addedToRanking', !this.addedToRanking)
       }
     }

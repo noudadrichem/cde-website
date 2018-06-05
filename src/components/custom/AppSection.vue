@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <Modal v-show="isAddingToRanking" @close="$eventBus.$emit('openAddToModal', false)" />
+    <Modal v-show="isAddingToRanking" :newRecipeId="newRecipeId" @close="$eventBus.$emit('openAddToModal', false)" />
   </div>
 </template>
 
@@ -75,7 +75,7 @@ export default {
     currentSelectedQuantity: '',
     currentReceipt: {},
     choosenIngredients: [],
-    isAddingToRanking: true,
+    isAddingToRanking: false,
     completeRecipe: {
       name: 'Recipe name',
       body: '',
@@ -83,7 +83,8 @@ export default {
       ingredients: ['35 ml Crazy Dutch Dry Gin'],
       userName: '',
       email: ''
-    }
+    },
+    newRecipeId: ''
   }),
   components: {
     Heading,
@@ -168,7 +169,10 @@ export default {
         .then(() => {
           this.$http.post(`${conf.apiUrl}/campaign/recipes/create`, this.completeRecipe)
             .then(res => {
-              console.log('post req to recipe with particpent: ', res)
+              console.log(res);
+              const newRecipeId = res.body.newRecipe._id
+              this.$set(this, 'newRecipeId', newRecipeId)
+              console.log(newRecipeId);
             })
         })
     },
