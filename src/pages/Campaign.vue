@@ -60,7 +60,7 @@ export default {
     },
     closeRecipeModal() {
       this.$set(this, 'showUrlRecipeModal', false)
-      // this.$set(this, 'currentlySelectRankingRecipe', {})
+      this.$set(this, 'currentlySelectRankingRecipe', {})
       this.$router.push({ path: '/campaign' })
     },
     getTotalMililiters({ ingredients }) {
@@ -72,7 +72,7 @@ export default {
 
         return acuu
       }, 0)
-      console.log({ total });
+
       return total
     }
   },
