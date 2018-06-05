@@ -75,7 +75,7 @@ export default {
     currentSelectedQuantity: '',
     currentReceipt: {},
     choosenIngredients: [],
-    isAddingToRanking: false,
+    isAddingToRanking: true,
     completeRecipe: {
       name: 'Recipe name',
       body: '',

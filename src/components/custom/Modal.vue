@@ -9,7 +9,7 @@
         <Heading tag="h2" text="Cocktail toevoegen aan de ranglijst." />
         <BodyText text="Voordat jouw cocktail aan de ranglijst wordt toegevoegd, hebben wij wat meer informatie van jou nodig." />
         <form class="ranking-signup">
-          <InputText placeholder="jouw@emailhier.nl" type="email" iconType="mail" v-model="email" />
+          <InputText placeholder="jouw@emailhier.nl" type="email" :iconType="mailIconType" v-model="email" />
           <InputText placeholder="Je volledige naam" type="text" iconType="name" v-model="name" />
           <Button type="button" styling="primary" text="Voeg cocktail toe" @click.native="emitParticipentValues"/>
         </form>
@@ -55,7 +55,8 @@ export default {
     addedToRanking: false,
     email: '',
     name: '',
-    socialUrl: 'https://noudadrichem.com/'
+    socialUrl: 'https://noudadrichem.com/',
+    mailIconType: 'mail'
   }),
   components: {
     Heading,
@@ -67,11 +68,19 @@ export default {
   },
   methods: {
     emitParticipentValues() {
-      this.$eventBus.$emit('participentInfo', {
-        email: this.email,
-        name: this.name
-      })
-      this.$set(this, 'addedToRanking', !this.addedToRanking)
+      const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      this.$set(this, 'mailIconType', 'error')
+
+      if(emailReg.test(this.email)) {
+        this.$set(this, 'mailIconType', 'mail')
+
+
+        this.$eventBus.$emit('participentInfo', {
+          email: this.email,
+          name: this.name
+        })
+        this.$set(this, 'addedToRanking', !this.addedToRanking)
+      }
     }
   }
 }
