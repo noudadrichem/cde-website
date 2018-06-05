@@ -1,9 +1,7 @@
 <template>
 <div class="drieluik" ref="drieluik" id="producten">
   <div class="container-md">
-
       <Slick ref="slick" :options="slickOptions" class="grid">
-
         <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in data.luiken" :key="idx">
           <div class="img-overlay-container">
             <img :src="luik.imageName" alt="luik image" draggable="false">
@@ -29,11 +27,10 @@
             </div>
           </div>
         </div>
-
       </Slick>
   </div>
 
-  <div class="skewed-backdrop hide-mobile"></div>
+  <div class="skewed-backdrop"></div>
 </div>
 </template>
 
@@ -102,7 +99,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
 
-    if(window.innerWidth > 414) {
+    if(document.innerWidth > 767) {
       this.$refs.slick.destroy()
     }
   },
@@ -124,14 +121,16 @@ $animationTime: 420ms ease;
   margin-top: 180px;
   position: relative;
   max-width: 100vw;
+  overflow: hidden;
 
   .container-md {
     margin-left: auto;
     margin-right: auto;
   }
 
-  @media screen and (max-width: 768px) {
+  @include breakpoint(s) {
     overflow: hidden;
+    margin-top: 80px;
 
     .container-md {
       padding: 0 !important;
@@ -144,8 +143,14 @@ $animationTime: 420ms ease;
 
       .slick-slide {
         display: inline-block !important;
+        vertical-align: middle;
+        float:none;
       }
     }
+  }
+
+  @include breakpoint(xs) {
+    margin-top: 40px;
   }
 
   .luik {
@@ -153,11 +158,20 @@ $animationTime: 420ms ease;
     padding: 0 !important;
     box-sizing: border-box;
     position: relative;
+    flex-basis: 33.33333333% !important;
+    width: 33.33333333%!important;
+    max-width: 33.33333333%!important;
 
-    &:first-child {
-      .img-overlay-container .img-overlay {
-        // background: rgba(227,159,159,0.60);
-      }
+    @include breakpoint(m) {
+      flex-basis: 33.33333333% !important;
+      width: 33.33333333%!important;
+      max-width: 33.33333333%!important;
+    }
+
+    @include breakpoint(s) {
+      flex-basis: 100% !important;
+      width: 100%!important;
+      max-width: 100%!important;
     }
 
     .img-overlay-container {
@@ -166,8 +180,19 @@ $animationTime: 420ms ease;
       line-height: 0;
       height: 430px;
 
+      @include breakpoint(s) {
+        width: 90%;
+        margin: 0 auto;
+        height: 200px
+      }
+
+      @include breakpoint(xs) {
+        width: 90%;
+        margin: 0 auto;
+        height: 200px;
+      }
+
       .img-overlay {
-        // background: rgba(159,199,227,0.60);
         top: 0;
         left: 0;
         position: absolute;
@@ -176,24 +201,24 @@ $animationTime: 420ms ease;
       }
     }
 
-    @media screen and (min-width: 414px) and (max-width: 1120px) {
-      width: 33% !important;
-      flex-basis: 33% !important;
-    }
-
-    @media screen and (max-width: 768px) {
-      width: 100vw;
-      display: inline-block;
-    }
-
     img {
       width: 70%;
       margin: auto;
       display: block;
-      // position: absolute;
-      // top: 0;
       object-fit: cover;
       z-index: 1;
+
+      @include breakpoint(s) {
+        margin: 0 auto;
+        width: auto;
+        height: 100%;
+      }
+
+      @include breakpoint(xs) {
+        margin: 0 auto;
+        width: auto;
+        height: 100%;
+      }
     }
 
     .content {
@@ -207,8 +232,16 @@ $animationTime: 420ms ease;
       padding: 32px;
       transition: $animationTime;
 
+      @include breakpoint(s) {
+        transform: none;
+      }
+
       &.middle {
         margin: 0;
+
+        @include breakpoint(xs) {
+          margin: 0 24px;
+        }
       }
 
       &.active {
@@ -230,39 +263,46 @@ $animationTime: 420ms ease;
     }
   }
 
-    ul.slick-dots {
-      display: inline-block;
-      list-style-type: none;
-      padding: 0;
-      width: 100%;
-      text-align: center;
+  ul.slick-dots {
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
 
-      li {
-        display: inline;
+    @include breakpoint(s) {
+      margin-top: 32px;
+    }
+
+    @include breakpoint(xs) {
+      margin-top: 24px;
+    }
+
+    li {
+      display: inline;
+      opacity: 0.5;
+
+      &.slick-active {
+        opacity: 1;
+      }
+
+      button {
+        margin-right: 5px;
+        height: 12px;
+        width: 12px;
+        background-color: #D0D0D0;
+        border-radius: 50%;
+        display: inline-block;
         opacity: 0.5;
+        font-size: 0;
+        outline: none;
 
-        &.slick-active {
+        &.active {
           opacity: 1;
-        }
-
-        button {
-          margin-right: 5px;
-          height: 12px;
-          width: 12px;
-          background-color: #D0D0D0;
-          border-radius: 50%;
-          display: inline-block;
-          opacity: 0.5;
-          font-size: 0;
-          outline: none;
-
-          &.active {
-            opacity: 1;
-          }
         }
       }
     }
-  // }
+  }
 
   .skewed-backdrop {
     background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
@@ -272,6 +312,10 @@ $animationTime: 420ms ease;
     position: absolute;
     top: 500px;
     z-index: -1;
+
+    @include breakpoint(s) {
+      display: none;
+    }
   }
 }
 </style>
