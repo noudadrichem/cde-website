@@ -1,6 +1,6 @@
 <template>
 <div class="home" v-if="!loading">
-  <Heading :data="heading" />
+  <Heading :data="heading" :navigationData="footer.volgOns"/>
   <Video :data="video" />
   <InfoSection :data="infoSection" />
   <Drieluik :data="drieluik" />

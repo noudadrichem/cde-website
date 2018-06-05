@@ -1,6 +1,6 @@
 <template>
 <div class="campaign" v-if="!loading">
-  <Heading :data="heading" :campaign="true" />
+  <Heading :data="heading" :campaign="true" :navigationData="footer.volgOns"/>
   <StepsSection :data="howTo" />
   <AppSection :data="app" :categories="categories" />
   <RankingList :ranking="recipes"/>
