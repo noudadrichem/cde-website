@@ -6,16 +6,51 @@
         <router-link to="/"><img src="@/assets/images/logo.png" alt="Crazy Dutch Experience"></router-link>
       </div>
 
-      <div class="nav-bar right hide-mobile">
+      <div class="nav-bar">
         <ul>
           <!-- <li v-for="(item, idx) in data.navbarItems" :key="idx">
             <a :href="item.link">{{ item.text }}</a>
           </li> -->
-          <li> <a href="/campaign">Campagne</a> </li>
-          <li> <a href="/#producten">Producten</a> </li>
+          <router-link tag="li" to="/" exact>
+            <a>De experience</a>
+          </router-link>
+          <router-link tag="li" to="/campaign" exact>
+            <a>Creëer je eigen cocktail</a>
+          </router-link>
           <li> <a href="/#contact">Contact</a> </li>
         </ul>
       </div>
+
+      <div class="nav-bar-toggler" @click="toggleMobileNav()">
+        <div :class="['nav-icon', { active: mobileNavShow }]"></div>
+      </div>
+
+      <transition name="menu">
+        <div class="nav-bar-mobile" v-show="mobileNavShow">
+          <ul>
+            <router-link tag="li" to="/" exact>
+              <a>De experience</a>
+            </router-link>
+            <router-link tag="li" to="/campaign" exact>
+              <a>Creëer je eigen cocktail</a>
+            </router-link>
+            <li> <a href="/#contact">Contact</a> </li>
+          </ul>
+
+          <div class="social">
+            <div class="info-container">
+              <span class="info-title">{{navigationData.title}}</span>
+              <p>{{navigationData.text}}</p>
+            </div>
+            <div class="icons-container">
+              <span v-for="(value, key) in navigationData.socialIcons">
+                <a :href="value"><img :src="iconsUrl(key)"/></a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </transition>
+
     </nav>
   </div>
 
@@ -56,6 +91,9 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 
 export default {
+  data: () => ({
+    mobileNavShow: false,
+  }),
   props: {
     data: {
       type: Object,
@@ -65,6 +103,10 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    navigationData: {
+      type: Object,
+      required: true
     }
   },
   components: {
@@ -85,42 +127,58 @@ export default {
         top: (videoY - dividedWindow),
         left: 0,
         behavior: 'smooth'
-      });
+      })
+    },
+    toggleMobileNav() {
+      this.mobileNavShow = !this.mobileNavShow
+
+      this.toggleBodyFixed()
+    },
+    toggleBodyFixed() {
+      const body = document.body
+
+      if(this.mobileNavShow == true) {
+        body.classList.add('fixed')
+      } else {
+        body.classList.remove('fixed')
+      }
+    },
+    iconsUrl(iconName) {
+      return require(`@/assets/images/icons/${iconName}.svg`);
     }
   },
   mounted() {
     // snel en lelijk 👍👍
-    if(window.innerWidth > 500) {
-      window.onscroll = e => {
-        const navbar = this.$refs.nav;
-        const sticky = navbar.offsetTop + 109;
+    window.onscroll = e => {
+      const navbar = this.$refs.nav;
+      const sticky = navbar.offsetTop + 109;
 
-        if (window.pageYOffset >= sticky) {
-          navbar.classList.add('stickey')
-          document.body.style.paddingTop = '109px'
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add('stickey')
+        document.body.style.paddingTop = '109px'
 
-          if(pageYOffset >= sticky + 300) {
-            navbar.style.top = 0
-            navbar.style.background =  'rgba(255,255,255, 0.7)'
-          }
-        } else {
-          navbar.classList.remove('stickey')
-          document.body.style.paddingTop = 0
-          navbar.style.background =  ''
+        if(pageYOffset >= sticky + 300) {
+          navbar.style.top = 0
         }
+      } else {
+        navbar.classList.remove('stickey')
+        document.body.style.paddingTop = 0
+        navbar.style.background =  ''
       }
     }
+
+    this.toggleBodyFixed()
   }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
+@import '~$styles/app';
 
 img {
   object-fit: contain;
   width: 100%;
 }
-
 
 .molen {
   position: absolute;
@@ -143,12 +201,20 @@ img {
     z-index: 100;
     width: 100%;
     margin-top: 0;
-    padding: 32px 0 16px;
+    padding: 16px 0;
     top: -125px;
     left: 0;
+    background: linear-gradient(top, rgba(255,255,255,.9) 0%, rgba(255,255,255,.6) 100%);
 
     .nav-container {
       margin-top: 0;
+
+      .logo {
+        @include breakpoint(s) {
+          height: 50px;
+          width: 53px;
+        }
+      }
     }
   }
 }
@@ -161,10 +227,16 @@ img {
   .logo {
     height: 77px;
     width: 81px;
+    z-index: 15;
   }
 
   .nav-bar {
     margin-left: auto;
+
+    @include breakpoint(s) {
+      display: none;
+    }
+
     ul {
       list-style: none;
 
@@ -173,6 +245,12 @@ img {
         display: inline-block;
         font-size: 15px;
         margin-left: 48px;
+
+        &.router-link-active {
+          a {
+            color: #fd8e26;
+          }
+        }
 
         &:first-child {
           margin-left: 0;
@@ -188,6 +266,159 @@ img {
           &:hover {
             color: #fd8e26;
           }
+        }
+      }
+    }
+  }
+
+  .nav-bar-toggler {
+    display: none;
+    margin-left: auto;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid $template-color-blue-default;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+
+    @include breakpoint(s) {
+      display: flex;
+    }
+
+    .nav-icon {
+      width: 24px;
+      height: 2px;
+      background: $template-color-blue-default;
+      display: inline-block;
+      border-radius: 1px;
+      transition: all .15s ease-in-out;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: $template-color-blue-default;
+        border-radius: 1px;
+        position: relative;
+        top: 5px;
+        transform-origin: center;
+        transition: all .15s ease-in-out;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: $template-color-blue-default;
+        border-radius: 1px;
+        position: relative;
+        bottom: 7px;
+        transform-origin: center;
+        transition: all .2s ease-in-out;
+      }
+
+      &.active {
+        opacity: 1;
+        background: transparent;
+
+        &::after {
+          transform: rotate(45deg);
+          bottom: 1px;
+        }
+
+        &::before {
+          transform: rotate(-45deg);
+          top: 1px;
+        }
+      }
+    }
+  }
+
+  .nav-bar-mobile {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    z-index: 14;
+
+    ul {
+      list-style: none;
+      margin-top: 144px;
+      padding: 0 16px 16px 16px;
+
+      @media screen and (max-height: 480px) {
+        margin-top: 80px;
+      }
+
+      li {
+        display: block;
+        margin: 0 0 16px 0;
+
+
+        &:last-child {
+          padding-bottom: 24px;
+          border-bottom: 2px solid rgba($template-color-black-lighter, 0.24);
+        }
+
+        &.router-link-exact-active a{
+          color: $template-color-orange-default;
+        }
+
+        a {
+          color: #9c9ba1;
+          display: block;
+          font-size: 28px;
+          text-decoration: none;
+          line-height: 38px;
+        }
+      }
+    }
+
+    .social {
+      padding: 0 16px 16px 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .info-container {
+        max-width: 248px;
+
+        .info-title {
+          color: #9c9ba1;
+          font-size: 28px;
+          line-height: 38px;
+        }
+
+        p {
+          max-width: 243px;
+          margin-top: 16px;
+        }
+      }
+
+      .icons-container {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+
+        span {
+          cursor: pointer;
+
+          &:last-child {
+            margin-top: 16px;
+          }
+        }
+        img {
+          width: 48px;
+          height: 48px;
         }
       }
     }
@@ -274,5 +505,12 @@ img {
   }
 }
 
-
+.menu-enter-active, .menu-leave-active {
+  transition: all .25s;
+  transform: scale(1.0);
+}
+.menu-enter, .menu-leave-to {
+  opacity: 0;
+  transform: scale(.9);
+}
 </style>

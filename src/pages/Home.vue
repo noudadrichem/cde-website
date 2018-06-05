@@ -1,6 +1,6 @@
 <template>
 <div class="home" v-if="!loading">
-  <Heading :data="heading" />
+  <Heading :data="heading" :navigationData="footer.volgOns"/>
   <Video :data="video" />
   <InfoSection :data="infoSection" />
   <Drieluik :data="drieluik" />
@@ -260,6 +260,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~$styles/app';
+
 .intro-animation {
     display: flex;
     justify-content: center;
@@ -313,6 +315,7 @@ export default {
         left: 0;
         right: 0;
         height: 100vh;
+        overflow: hidden;
 
         .confetti {
             width: 22px;
@@ -341,6 +344,13 @@ export default {
     transition: 400ms ease-out;
     transform: translateX(200%);
 
+    @include breakpoint(s) {
+      bottom: 8px;
+      right: 8px;
+      left: 8px;
+      max-width: 100%;
+    }
+
     &.show {
         transform: translateX(0) !important;
     }
@@ -352,6 +362,10 @@ export default {
 
     p {
         margin-bottom: 24px;
+    }
+
+    .icon:hover {
+      cursor: pointer;
     }
 }
 

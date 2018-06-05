@@ -57,7 +57,8 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
+@import '~$styles/app';
 
 .footer {
   padding-top: 0px;
@@ -100,6 +101,11 @@ export default {
       li {
         display: inline-block;
         margin-right: 24px;
+
+        img {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }
@@ -120,10 +126,29 @@ export default {
     li {
       display: inline-block;
       margin-bottom: 16px;
-      border-bottom: 1px solid #363542;
 
       a {
         text-decoration: none;
+        position: relative;
+        transition: all .15s ease-in-out;
+
+        &:hover {
+          color: $template-color-orange-default;
+
+          &:after {
+            background: $template-color-orange-default;
+          }
+        }
+
+        &:after {
+          content: '';
+          width: 100%;
+          height: 1px;
+          display: block;
+          margin-top: 1px;
+          background: $template-font-color;
+          transition: all .15s ease-in-out;
+        }
       }
     }
   }
