@@ -16,7 +16,7 @@
             <span class="title">De ingrediënten:</span>
             <div class="counter-container">
               <span class="counter"></span>
-              <span class="max-total">/ 700ml</span>
+              <span class="max-total">{{ getTotalMililiters(choosenRecipe) }}/ 700ml</span>
 
               <div class="info-container" @mouseover="infoHover = true" @mouseleave="infoHover = false">
                 <Icon :width="16" :height="16" name="info" :active="infoHover"/>
@@ -57,6 +57,10 @@
       choosenRecipe: {
         type: Object,
         required: true
+      },
+      getTotalMililiters: {
+        type: Function,
+        required: false
       }
     },
     data: () => ({
