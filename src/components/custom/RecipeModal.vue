@@ -10,12 +10,12 @@
 
         <div class="maked recipe">
           <Heading tag="h1" text="Cocktail titel die wat langer is dan normaal" />
-          <Heading tag="h2" :text="`Deze cocktail is gemaakt door Noudo `" />
+          <Heading tag="h2" :text="`Deze cocktail is gemaakt door ${choosenRecipe.particepent.name}`" />
 
           <div class="ingredients">
             <span class="title">De ingrediënten:</span>
             <div class="counter-container">
-              <span class="counter">150ml</span>
+              <span class="counter"></span>
               <span class="max-total">/ 700ml</span>
 
               <div class="info-container" @mouseover="infoHover = true" @mouseleave="infoHover = false">

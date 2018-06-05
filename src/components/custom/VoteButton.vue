@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div :class="['vote-button', { voted: isVoted }]" @click="voteOnRecipe">
     <Icon name="vote" :active="isVoted" :width="16" :height="16" />
   </div>
@@ -6,6 +6,7 @@
 
 <script>
 import Icon from '@/components/common/Icon'
+import conf from '@/config'
 
 export default {
   name: 'VoteButton',
@@ -15,11 +16,11 @@ export default {
   props: {
     type: {
       type: String,
-      required: true
+      required: false
     },
     id: {
       type: String,
-      required: true
+      required: false
     }
   },
   components: {
@@ -27,8 +28,13 @@ export default {
   },
   methods: {
     voteOnRecipe() {
-      this.$set(this, 'isVoted', !this.isVoted)
-      console.log('id: ', this.id);
+      if(this.id !== undefined) {
+        this.$set(this, 'isVoted', !this.isVoted)
+
+        this.$http.put(`${conf.apiUrl}campaign/recipes/like/${this.id}`)
+          .then(res => {console.log(res);})
+
+      }
     }
   }
 }
