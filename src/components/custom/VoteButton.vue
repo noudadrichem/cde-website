@@ -29,12 +29,23 @@ export default {
   methods: {
     voteOnRecipe() {
       if(this.id !== undefined) {
-        this.$set(this, 'isVoted', !this.isVoted)
+        if(localStorage.getItem('isVoted')) {
+          console.log('HAS VOTED ALREADY');
+        } else {
+          this.$set(this, 'isVoted', !this.isVoted)
+          localStorage.setItem('isVoted', this.id)
 
-        this.$http.put(`${conf.apiUrl}campaign/recipes/like/${this.id}`)
-          .then(res => {console.log(res);})
-
+          this.$http.put(`${conf.apiUrl}campaign/recipes/like/${this.id}`)
+            .then(res => {console.log(res);})
+        }
       }
+    }
+  },
+  mounted() {
+    const hasVoted = localStorage.getItem('isVoted')
+    if(hasVoted && hasVoted === this.id) {
+      console.log('HOOOIII');
+      this.$set(this, 'isVoted', true)
     }
   }
 }
