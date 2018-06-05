@@ -30,7 +30,6 @@ export default {
     voteOnRecipe() {
       if(this.id !== undefined) {
         if(localStorage.getItem('isVoted')) {
-          console.log('HAS VOTED ALREADY');
         } else {
           this.$set(this, 'isVoted', !this.isVoted)
           localStorage.setItem('isVoted', this.id)
@@ -39,14 +38,17 @@ export default {
             .then(res => {console.log(res);})
         }
       }
+    },
+    checkIfVoted() {
+      const hasVoted = localStorage.getItem('isVoted')
+
+      if(hasVoted && hasVoted === this.id) {
+        this.$set(this, 'isVoted', true)
+      }
     }
   },
   mounted() {
-    const hasVoted = localStorage.getItem('isVoted')
-    if(hasVoted && hasVoted === this.id) {
-      console.log('HOOOIII');
-      this.$set(this, 'isVoted', true)
-    }
+    this.checkIfVoted()
   }
 }
 </script>

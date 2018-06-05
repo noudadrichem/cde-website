@@ -9,7 +9,7 @@
         </div>
 
         <div class="maked recipe">
-          <Heading tag="h1" text="Cocktail titel die wat langer is dan normaal" />
+          <Heading tag="h1" :text="choosenRecipe.name" />
           <Heading tag="h2" :text="`Deze cocktail is gemaakt door ${choosenRecipe.particepent.name}`" />
 
           <div class="ingredients">
@@ -26,7 +26,7 @@
               </div>
             </div>
             <ul class="ingredients-list">
-              <li v-for="(ingredient) in choosenRecipe.ingredients">
+              <li v-for="(ingredient, idx) in choosenRecipe.ingredients" :key="idx">
                 {{ ingredient }}
                 <Icon :width="16" :height="16" name="trash"/>
               </li>

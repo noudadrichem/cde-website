@@ -106,7 +106,7 @@ export default {
     },
     navigationData: {
       type: Object,
-      required: true
+      required: false
     }
   },
   components: {

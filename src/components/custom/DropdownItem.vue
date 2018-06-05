@@ -1,6 +1,6 @@
 <template>
   <li :class="['category-item', { active: isActive }]">
-    <div class="category-item-title" @click="isActive = !isActive">
+    <div class="category-item-title" @click.prevent="isActive = !isActive">
       <Icon :name="item.name.replace(/\s+/g,'-').toLowerCase()" :width="16" :height="16" :active="true"/>
       {{ firstCharUppercase(item.name) }}
       <Icon name="chevron" :width="16" :height="16" :active="true"/>
@@ -52,14 +52,19 @@ li.category-item {
   list-style-type: none;
   overflow: hidden;
   position: relative;
+  background: white;
 
   &.active {
     .category-item-title {
       opacity: 1;
       background: #ebebeb;
 
-      .icon:last-child {
-        transform: rotate(90deg);
+      // .icon:last-child {
+      //   transform: rotate(90deg);
+      // }
+
+      .icon.chevron {
+        transform: rotate(-90deg) !important;
       }
     }
 
@@ -87,6 +92,10 @@ li.category-item {
     .icon:last-child {
       margin-left: auto;
       transform: rotate(-90deg);
+    }
+
+    .icon.chevron {
+      transform: rotate(90deg);
     }
   }
 
