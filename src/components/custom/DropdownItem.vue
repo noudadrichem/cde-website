@@ -59,8 +59,12 @@ li.category-item {
       opacity: 1;
       background: #ebebeb;
 
-      .icon:last-child {
-        transform: rotate(90deg);
+      // .icon:last-child {
+      //   transform: rotate(90deg);
+      // }
+
+      .icon.chevron {
+        transform: rotate(-90deg) !important;
       }
     }
 
@@ -88,6 +92,10 @@ li.category-item {
     .icon:last-child {
       margin-left: auto;
       transform: rotate(-90deg);
+    }
+
+    .icon.chevron {
+      transform: rotate(90deg);
     }
   }
 
