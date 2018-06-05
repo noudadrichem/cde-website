@@ -41,6 +41,7 @@ export default {
   height: 327px;
   border: 1px solid $template-color-white-light;
   overflow-y: scroll;
+  background: white;
 
   ul.category-items {
     display: flex;

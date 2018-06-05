@@ -32,7 +32,7 @@ export default {
     margin: 0 auto;
     max-height: 327px;
     overflow-y: scroll;
-    border: 1px solid $template-color-white-light;
+    background: white;
     border-radius: $template-border-radius;
 
     ul.category-list {

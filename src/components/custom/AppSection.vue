@@ -13,10 +13,12 @@
           <div class="item-selection grid">
             <div class="dropdown-section">
               <Heading tag="h3" text="Welke ingrediënten?"/>
-              <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
-              <div :class="{ dropdown: true, active: currentReceipt.name }">
-                <Dropdown v-if="!searchQuery" :data="categories"/>
-                <DropdownItems v-else :items="filteredItems"/>
+              <div :class="['ingredient-block', hasChosenRecipe ? '' : 'active']">
+                <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
+                <div :class="{ dropdown: true, active: currentReceipt.name }">
+                  <Dropdown v-if="!searchQuery" :data="categories"/>
+                  <DropdownItems v-else :items="filteredItems"/>
+                </div>
               </div>
             </div>
             <div class="radio-list-section">
@@ -84,7 +86,8 @@ export default {
       userName: '',
       email: ''
     },
-    newRecipeId: ''
+    newRecipeId: '',
+    hasChosenRecipe: false
   }),
   components: {
     Heading,
@@ -129,6 +132,8 @@ export default {
 
       this.$set(this, 'selectedIngredient', selectedIngredient)
       this.$set(this.currentReceipt, 'name', selectedIngredient.name)
+
+      this.$set(this, 'hasChosenRecipe', true)
     },
     getQuantityValue(quantityValue) {
       this.$set(this, 'quantityIsDisabled', false)
@@ -149,6 +154,7 @@ export default {
     resetReceipt() {
       this.$set(this, 'searchQuery', '')
       this.$set(this, 'quantityIsDisabled', true)
+      this.$set(this, 'hasChosenRecipe', false)
       this.$set(this, 'selectedIngredient', {})
       this.$set(this, 'currentSelectedQuantity', '')
       this.$set(this, 'currentReceipt', {})
@@ -194,12 +200,28 @@ export default {
   .item-selection {
     margin-top: 48px;
 
+    .ingredient-block {
+      overflow: hidden;
+      border-radius: 2px;
+      border: 1px solid rgba(#1072B8, 0.3);
+      pointer-events:none;
+
+      &.active {
+        border-color: #1072B8;
+        pointer-events: all;
+      }
+    }
+
     .dropdown-section {
       max-width: 280px;
       max-height: 411px;
 
       .dropdown.active {
         opacity: 0.6;
+
+        * {
+          user-select: none !important;
+        }
       }
 
       .input-text {
