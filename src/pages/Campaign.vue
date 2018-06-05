@@ -5,7 +5,7 @@
   <AppSection :data="app" :categories="categories" :getTotalMililiters="getTotalMililiters" />
   <RankingList :ranking="recipes"/>
   <Footing :data="footer"/>
-  <RecipeModal v-show="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
+  <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
 </div>
 </template>
 

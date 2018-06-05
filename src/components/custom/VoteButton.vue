@@ -39,14 +39,18 @@ export default {
             .then(res => {console.log(res);})
         }
       }
+    },
+    checkIfVoted() {
+      const hasVoted = localStorage.getItem('isVoted')
+
+      if(hasVoted && hasVoted === this.id) {
+        console.log('HOOOIII');
+        this.$set(this, 'isVoted', true)
+      }
     }
   },
   mounted() {
-    const hasVoted = localStorage.getItem('isVoted')
-    if(hasVoted && hasVoted === this.id) {
-      console.log('HOOOIII');
-      this.$set(this, 'isVoted', true)
-    }
+    this.checkIfVoted()
   }
 }
 </script>
