@@ -50,17 +50,21 @@ export default {
   position: relative;
   z-index: 2;
 
-  @media screen and (max-width: 414px) {
+  @include breakpoint(xs) {
     margin: 40px auto 0;
   }
 
   .quote-container {
     text-align: center;
 
-    @media screen and (max-width: 414px) {
+    @include breakpoint(s) {
       margin-top: 32px;
+    }
+
+    @include breakpoint(xs) {
       text-align: left;
     }
+
 
     .quote {
       &-text {
