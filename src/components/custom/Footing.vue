@@ -1,5 +1,5 @@
 <template>
-    <div class="container-sm footer" id="contact">
+    <div class="container-md footer" id="contact">
       <div class="grid">
         <div class="col-4">
           <Heading tag="h3" :text="data.volgOns.title" className="footer-heading"/>
@@ -116,12 +116,12 @@ export default {
   }
 
   .logo {
-    max-width: 100px;
     position: absolute;
     right: 0;
 
     img {
       width: 100%;
+      max-width: 80px;
     }
   }
 

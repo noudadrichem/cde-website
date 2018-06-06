@@ -1,7 +1,7 @@
 <template >
 <div>
   <div class="nav-target" ref="nav">
-    <nav class="nav-container container-sm">
+    <nav class="nav-container container-md">
       <div class="logo">
         <router-link to="/"><img src="@/assets/images/logo.png" alt="Crazy Dutch Experience"></router-link>
       </div>
@@ -54,22 +54,23 @@
     </nav>
   </div>
 
-  <header class="container-sm">
+  <header class="header container-md">
 
     <div class="content-container">
       <div class="grid">
         <div class="col-8">
 
-          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 48px; line-height: 56px;"/>
+          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 32px; line-height: 38px;"/>
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
           <BodyText :text="data.bodyText"/>
 
-          <Button type="button" styling="primary" @click.native="scrollToVideo" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
+          <Button v-if="campaign" type="button" styling="primary" @click.native="scrollTo('app')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
+          <Button v-else type="button" styling="primary" @click.native="scrollTo('video')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
 
           <!-- <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span> -->
         </div>
 
-        <div class="col-4 hide-mobile" v-if="campaign">
+        <div class="col-4 bottle-with-glass" v-if="campaign">
           <div class="">
             <img src="@/assets/images/glas-fles-nice.png" alt="">
           </div>
@@ -97,7 +98,7 @@ export default {
   props: {
     data: {
       type: Object,
-      required: true
+      required: false
     },
     campaign: {
       type: Boolean,
@@ -116,15 +117,19 @@ export default {
     Icon
   },
   methods: {
-    scrollToVideo() {
-      const video = document.querySelector('.video')
+    scrollTo(item) {
+      const selector = document.querySelector('.' + item)
       const dividedWindow = (window.innerHeight / 4)
-      const videoY = video.getBoundingClientRect().y
+      const selectorY = selector.getBoundingClientRect().y
 
-      video.querySelector('video').play()
+      console.log(selector)
+
+      if(item == 'video') {
+        selector.querySelector('video').play()
+      }
 
       window.scroll({
-        top: (videoY - dividedWindow),
+        top: (selectorY - dividedWindow),
         left: 0,
         behavior: 'smooth'
       })
@@ -145,13 +150,10 @@ export default {
     },
     iconsUrl(iconName) {
       return require(`@/assets/images/icons/${iconName}.svg`);
-    }
-  },
-  mounted() {
-    // snel en lelijk 👍👍
-    window.onscroll = e => {
-      const navbar = this.$refs.nav;
-      const sticky = navbar.offsetTop + 109;
+    },
+    toggleStickyNav() {
+      const navbar = this.$refs.nav
+      const sticky = navbar.offsetTop + 109
 
       if (window.pageYOffset >= sticky) {
         navbar.classList.add('stickey')
@@ -165,6 +167,16 @@ export default {
         document.body.style.paddingTop = 0
         navbar.style.background =  ''
       }
+
+      // if(!window.pageYOffset >= sticky) {
+      //   document.body.style.paddingTop = 0
+      // }
+    }
+  },
+  mounted() {
+
+    window.onscroll = e => {
+      this.toggleStickyNav();
     }
 
     this.toggleBodyFixed()
@@ -204,7 +216,7 @@ img {
     padding: 16px 0;
     top: -125px;
     left: 0;
-    background: linear-gradient(top, rgba(255,255,255,.9) 0%, rgba(255,255,255,.6) 100%);
+    background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
 
     .nav-container {
       margin-top: 0;
@@ -425,6 +437,10 @@ img {
   }
 }
 
+.header {
+  margin: 0 auto;
+}
+
 .content-container {
   margin: 104px auto 0;
 
@@ -461,6 +477,16 @@ img {
       width: 50%;
       float: right;
       object-fit: contain
+    }
+  }
+
+  .bottle-with-glass {
+    @include breakpoint(s) {
+      display: none;
+    }
+
+    img {
+      max-height: 490px;
     }
   }
 }
