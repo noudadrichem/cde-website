@@ -123,13 +123,7 @@ $animationTime: 420ms ease;
   position: relative;
   max-width: 100vw;
 
-  .container-md {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   @include breakpoint(s) {
-    overflow: hidden;
     margin-top: 80px;
 
     .container-md {
@@ -151,6 +145,15 @@ $animationTime: 420ms ease;
 
   @include breakpoint(xs) {
     margin-top: 40px;
+  }
+
+  .slick-slider {
+    overflow: hidden;
+  }
+
+  .container-md {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .luik {
@@ -306,15 +309,16 @@ $animationTime: 420ms ease;
 
   .skewed-backdrop {
     background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
-    height: 816px;
+    height: 400px;
     width: 100%;
     transform: skewY(14deg);
     position: absolute;
-    top: 500px;
+    top: 600px;
     z-index: -1;
 
     @include breakpoint(s) {
-      display: none;
+      top: 248px;
+      height: 400px;
     }
   }
 }
