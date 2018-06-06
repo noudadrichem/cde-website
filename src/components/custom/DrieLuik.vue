@@ -119,7 +119,7 @@ export default {
 $animationTime: 420ms ease;
 
 .drieluik {
-  margin-top: 180px;
+  margin-top: 160px;
   position: relative;
   max-width: 100vw;
 

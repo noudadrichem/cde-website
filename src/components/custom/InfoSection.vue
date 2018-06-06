@@ -45,6 +45,14 @@ export default {
 <style lang="scss" >
 @import '~$styles/app';
 
+.info-section-container {
+    margin-top: 140px;
+
+    @include breakpoint(s) {
+      margin-top: 80px;
+    }
+}
+
 .info-section {
   margin: 0px auto 0;
   position: relative;
