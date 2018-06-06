@@ -64,7 +64,8 @@
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
           <BodyText :text="data.bodyText"/>
 
-          <Button type="button" styling="primary" @click.native="scrollToVideo" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
+          <Button v-if="campaign" type="button" styling="primary" @click.native="scrollTo('app')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
+          <Button v-else type="button" styling="primary" @click.native="scrollTo('video')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
 
           <!-- <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span> -->
         </div>
@@ -116,15 +117,19 @@ export default {
     Icon
   },
   methods: {
-    scrollToVideo() {
-      const video = document.querySelector('.video')
+    scrollTo(item) {
+      const selector = document.querySelector('.' + item)
       const dividedWindow = (window.innerHeight / 4)
-      const videoY = video.getBoundingClientRect().y
+      const selectorY = selector.getBoundingClientRect().y
 
-      video.querySelector('video').play()
+      console.log(selector)
+
+      if(item == 'video') {
+        selector.querySelector('video').play()
+      }
 
       window.scroll({
-        top: (videoY - dividedWindow),
+        top: (selectorY - dividedWindow),
         left: 0,
         behavior: 'smooth'
       })
