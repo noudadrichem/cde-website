@@ -1,5 +1,5 @@
 <template>
-<div class="steps">
+<div class="steps-container">
   <div class="container-md">
     <div class="grid">
       <div class="col-12">
@@ -90,19 +90,39 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
+
+    this.showLuikWhenInFold()
   },
 }
 </script>
 
 <style lang="scss">
+@import '~$styles/app';
 $animationTime: 420ms ease;
 
-.steps {
+.steps-container {
     padding-bottom: 80px;
     margin-top: 128px;
 
+    @include breakpoint(s) {
+      margin-top: 96px;
+    }
+
+    .col-12 {
+      max-width: 100%!important;
+      flex-basis: 100%!important;
+    }
+
     .container-md {
         margin: auto;
+    }
+
+    .steps {
+      margin-top: 80px;
+
+      @include breakpoint(s) {
+        margin-top: 40px;
+      }
     }
 
     .step {
@@ -110,9 +130,14 @@ $animationTime: 420ms ease;
         display: flex;
         justify-content: flex-end;
 
+        @include breakpoint(s) {
+          flex-basis: 100%!important;
+          max-width: 100%!important;
+        }
+
         .number {
             position: absolute;
-            top: 0;
+            top: 40px;
             left: 0;
             opacity: 0.4;
             font-weight: 1000;
@@ -120,15 +145,29 @@ $animationTime: 420ms ease;
             font-size: 128px;
             color: rgba(156,155,161,0.24);
             letter-spacing: 0;
+
+            @include breakpoint(s) {
+              font-size: 80px;
+            }
         }
 
         .content {
             border-radius: 4px;
             position: relative;
             z-index: 3;
-            max-width: 333px;
+            max-width: 400px;
+            height: 222px;
             padding: 24px;
             transition: $animationTime;
+
+            @include breakpoint(1120, 767) {
+              height: 200px;
+              max-width: 90%;
+            }
+
+            @media screen and (max-width: 767px) {
+              height: 222px;
+            }
 
             &.active {
                 background: #fff;
