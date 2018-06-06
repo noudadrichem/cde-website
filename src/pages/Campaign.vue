@@ -8,7 +8,7 @@
   <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
 
   <div class="already-voted-tooltip" v-show="hasVoted">
-    Je hebt helaas al een keer eerder gestemd.
+    {{ infoMessage }}
   </div>
 </div>
 </template>
@@ -39,7 +39,8 @@ export default {
     recipes: [],
     currentlySelectRankingRecipe: {},
     showUrlRecipeModal: false,
-    hasVoted: false
+    hasVoted: false,
+    infoMessage: ''
   }),
   components: {
     Heading,
@@ -52,6 +53,7 @@ export default {
   created() {
     this.$eventBus.$on('showRanking', this.selectRanking)
     this.$eventBus.$on('voted', (id) => {
+      this.$set(this, 'infoMessage', 'Je hebt helaas al een keer eerder gestemd.')
       this.$set(this, 'hasVoted', true)
 
       setTimeout(() => {
