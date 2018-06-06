@@ -188,7 +188,6 @@ export default {
       this.$set(this.completeRecipe, 'name', nameValue)
     },
     deleteIngredient(indexToDelete) {
-      console.log('delete', indexToDelete);
       const copy = [...this.completeRecipe.ingredients]
       copy.splice(indexToDelete, 1)
       this.$set(this.completeRecipe, 'ingredients', copy)
