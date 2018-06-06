@@ -106,6 +106,7 @@ $animationTime: 420ms ease;
 
   @include breakpoint(s) {
     margin-top: 96px;
+    padding-bottom: 32px;
   }
 
   .col-12 {
@@ -140,7 +141,7 @@ $animationTime: 420ms ease;
       top: 40px;
       left: 0;
       opacity: 0.4;
-      font-weight: 1000;
+      font-weight: 700;
       font-family: 'Open Sans', sans-serif;
       font-size: 128px;
       color: rgba(156,155,161,0.24);
