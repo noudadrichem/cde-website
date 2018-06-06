@@ -1,8 +1,12 @@
 <template>
 <div class="steps">
-  <div class="container-sm">
-    <Heading tag="h1" :text="data.title" className="heading-title" />
-    <Heading tag="h2" :text="data.subTitle" className="heading-sub-title" />
+  <div class="container-md">
+    <div class="grid">
+      <div class="col-12">
+        <Heading tag="h1" :text="data.title" className="heading-title" />
+        <Heading tag="h2" :text="data.subTitle" className="heading-sub-title" />
+      </div>
+    </div>
   </div>
 
   <div class="container-md">
