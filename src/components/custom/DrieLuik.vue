@@ -10,14 +10,12 @@
 
           <div :class="['content', { active: luikShown[idx] }, [ idx === 1 ? 'middle' : '' ]]">
             <Heading tag="h1" :text="luik.heading"/>
-            <BodyText :text="luik.bodyText"/>
 
-            <transition name="fade-height">
-              <div v-show="luikShown[idx]">
-                <br/>
-                <BodyText :text="luik.bodyText"/>
-              </div>
-            </transition/>
+
+            <transition name="height">
+              <BodyText v-if="luikShown[idx]" :text="luik.bodyText"/>
+              <BodyText v-else :text="idx != 1 ? truncateStr(luik.bodyText, 22) : luik.bodyText"/>
+            </transition>
 
             <div v-if="idx === 1">
               <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Begin meteen met maken" style="margin-top: 16px;"/>
@@ -95,14 +93,18 @@ export default {
       this.$set(this, 'activeSlide', slideIndex)
       this.$set(this, 'slideToRight', (slideIndex * windowScreen))
     },
+    truncateStr(str, maxWords) {
+      return str.split(' ').splice(0,maxWords).join(' ') + '...';
+    }
   },
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
 
     if(window.innerWidth > 767) {
-      console.log('GROTER!!!');
       this.$refs.slick.destroy()
     }
+
+    this.showLuikWhenInFold()
   },
   components: {
     Heading,
