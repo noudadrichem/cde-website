@@ -4,7 +4,7 @@
       Vergeet je cocktail geen naam te geven.
     </div>
 
-    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Geef je cocktail een naam" min="1" max="40"/>
+    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Naam cocktail" min="1" max="40"/>
 
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
