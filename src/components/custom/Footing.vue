@@ -18,7 +18,7 @@
 
       <div class="ruler"></div>
 
-      <div class="grid">
+      <div class="grid container">
         <div class="col-3" v-for="(menu, key) in data.footerNavigations">
           <Heading tag="h3" :text="key" className="footer-heading"/>
 
@@ -87,6 +87,10 @@ export default {
     margin: 32px 0;
   }
 
+  .container {
+    position: relative;
+  }
+
   @media screen and (max-width: 414px) {
     .right {
       margin-left: 0 !important;
@@ -112,6 +116,9 @@ export default {
 
   .logo {
     max-width: 100px;
+    position: absolute;
+    right: 0;
+
     img {
       width: 100%;
     }
