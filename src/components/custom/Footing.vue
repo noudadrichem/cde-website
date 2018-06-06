@@ -61,12 +61,13 @@ export default {
 @import '~$styles/app';
 
 .footer {
-  padding-top: 0px;
   padding-bottom: 64px;
   box-sizing: border-box;
+  margin-top: 80px;
 
-  @media screen and (max-width: 414px) {
-    padding-top: 64px;
+  @include breakpoint(s) {
+    margin-top: 40px;
+    padding-bottom: 32px;
   }
 
   .footer-heading {
