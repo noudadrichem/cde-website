@@ -110,7 +110,7 @@
               <div class="input file">
                 <label>Afbeelding upload</label>
                 <label :for="luik.heading.toLowerCase()">
-                  Geen afbeelding
+                  {{ $data[`fileName${idx}`] }}
                 </label>
                 <input type="file" :id="luik.heading.toLowerCase()" @change="convertInputImageToBase64(idx)">
               </div>
@@ -169,7 +169,10 @@ export default {
     infoSectionId: '',
     drieluikId: '',
     footerId: '',
-    showUpdatePopup: false
+    showUpdatePopup: false,
+    fileName0: 'Upload hier je afbeeling',
+    fileName1: 'Upload hier je afbeeling',
+    fileName2: 'Upload hier je afbeeling'
   }),
   methods: {
     choosePage(pageId) {
@@ -193,7 +196,6 @@ export default {
               this.$set(this, 'showUpdatePopup', false)
           }, 3000)
         })
-
     },
     convertInputImageToBase64(idx) {
       const imageFile = event.target.files[0]
@@ -204,9 +206,12 @@ export default {
       if(isImage) {
         FR.addEventListener("load", (e) => {
           this.drieluik.luiken[idx].imageName = e.target.result
+
           const message = 'succesfully uploaded and converted image'
-          console.info({ message });
+          console.info({ message })
         });
+
+        this.$set(this, `fileName${idx}`, imageFile.name)
 
         FR.readAsDataURL(imageFile);
       }
