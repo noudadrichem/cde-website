@@ -1,7 +1,7 @@
 <template>
 <div class="drieluik" ref="drieluik" id="producten">
   <div class="container-md">
-      <Slick ref="slick" :options="slickOptions" class="grid">
+      <Slick ref="slick" :options="slickOptions" class="grid slick">
         <div class="col-4 luik to-animate" ref="luik" v-for="(luik, idx) in data.luiken" :key="idx">
           <div class="img-overlay-container">
             <img :src="luik.imageName" alt="luik image" draggable="false">
@@ -10,20 +10,20 @@
 
           <div :class="['content', { active: luikShown[idx] }, [ idx === 1 ? 'middle' : '' ]]">
             <Heading tag="h1" :text="luik.heading"/>
-            <BodyText :text="luik.bodyText"/>
 
-            <transition name="fade-height">
-              <div v-show="luikShown[idx]">
-                <br/>
-                <BodyText :text="luik.bodyText"/>
-              </div>
-            </transition/>
+
+            <transition name="height">
+              <BodyText v-if="luikShown[idx]" :text="luik.bodyText"/>
+              <BodyText v-else-if="notMobile" :text="luik.bodyText"/>
+              <BodyText v-else-if="!notMobile" :text="truncateStr(luik.bodyText, 22)"/>
+            </transition>
 
             <div v-if="idx === 1">
+              <a v-if="!notMobile" @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
               <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Begin meteen met maken" style="margin-top: 16px;"/>
             </div>
             <div v-else>
-              <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
+              <a v-if="!notMobile" @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
             </div>
           </div>
         </div>
@@ -58,7 +58,8 @@ export default {
       infinite: false,
       dots: true,
       arrows: false
-    }
+    },
+    notMobile: true
   }),
   methods: {
     luikUrl(imageName) {
@@ -70,10 +71,14 @@ export default {
       this.luikShown.forEach((isShown, idx) => {
         if (idx === luikIndex) {
           this.$set(this.luikShown, luikIndex, toShowOrNotToShow)
-          this.$set(this.btnText, luikIndex, 'Lees minder')
         } else {
           this.$set(this.luikShown, idx, false)
+        }
+
+        if(isShown == true) {
           this.$set(this.btnText, idx, 'Lees meer')
+        } else {
+          this.$set(this.btnText, luikIndex, 'Lees minder')
         }
       })
     },
@@ -95,14 +100,29 @@ export default {
       this.$set(this, 'activeSlide', slideIndex)
       this.$set(this, 'slideToRight', (slideIndex * windowScreen))
     },
+    truncateStr(str, maxWords) {
+      return str.split(' ').splice(0,maxWords).join(' ') + '...';
+    },
+    checkIfNotMobile() {
+      const windowWidth = window.innerWidth
+
+      if(windowWidth > 767) {
+        this.$set(this, 'notMobile', true)
+      }else {
+        this.$set(this, 'notMobile', false)
+      }
+    }
   },
   mounted() {
     window.addEventListener('scroll', this.showLuikWhenInFold)
+    window.addEventListener('resize', this.checkIfNotMobile)
 
     if(window.innerWidth > 767) {
-      console.log('GROTER!!!');
       this.$refs.slick.destroy()
     }
+
+    this.showLuikWhenInFold()
+    this.checkIfNotMobile()
   },
   components: {
     Heading,
@@ -242,14 +262,13 @@ $animationTime: 420ms ease;
       &.middle {
         margin: 0;
 
-        @include breakpoint(xs) {
+        @include breakpoint(s) {
           margin: 0 24px;
         }
       }
 
       &.active {
         margin: 0;
-        padding: 32px 56px;
       }
 
       .read-more {
@@ -262,6 +281,7 @@ $animationTime: 420ms ease;
         text-decoration: none;
         display: inline-block;
         cursor: pointer;
+        outline: none;
       }
     }
   }
