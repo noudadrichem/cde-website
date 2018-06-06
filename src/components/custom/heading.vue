@@ -216,7 +216,7 @@ img {
     padding: 16px 0;
     top: -125px;
     left: 0;
-    background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+    background: linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
 
     .nav-container {
       margin-top: 0;
