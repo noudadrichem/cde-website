@@ -68,10 +68,14 @@ export default {
       this.luikShown.forEach((isShown, idx) => {
         if (idx === luikIndex) {
           this.$set(this.luikShown, luikIndex, toShowOrNotToShow)
-          this.$set(this.btnText, luikIndex, 'Lees minder')
         } else {
           this.$set(this.luikShown, idx, false)
+        }
+
+        if(isShown == true) {
           this.$set(this.btnText, idx, 'Lees meer')
+        } else {
+          this.$set(this.btnText, luikIndex, 'Lees minder')
         }
       })
     },
@@ -264,6 +268,7 @@ $animationTime: 420ms ease;
         text-decoration: none;
         display: inline-block;
         cursor: pointer;
+        outline: none;
       }
     }
   }
