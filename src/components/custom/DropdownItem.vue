@@ -1,7 +1,7 @@
 <template>
   <li :class="['category-item', { active: isActive }]">
     <div class="category-item-title" @click.prevent="isActive = !isActive">
-      <Icon :name="item.name.replace(/\s+/g,'-').toLowerCase()" :width="16" :height="16" :active="true"/>
+      <Icon :name="item.name.replace(/\s+/g,'-').split('-')[0].toLowerCase()" :width="16" :height="16" :active="true"/>
       {{ firstCharUppercase(item.name) }}
       <Icon name="chevron" :width="16" :height="16" :active="true"/>
     </div>
