@@ -10,7 +10,7 @@
 
         <div class="maked recipe">
           <Heading tag="h1" :text="choosenRecipe.name" />
-          <Heading tag="h2" :text="`Deze cocktail is gemaakt door ${choosenRecipe.particepent.name}`" />
+          <Heading tag="h2" :text="`Deze cocktail is gemaakt door ${choosenRecipe.particepent.fullName}`" />
 
           <div class="ingredients">
             <span class="title">De ingrediënten:</span>
