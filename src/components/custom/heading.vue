@@ -1,7 +1,7 @@
 <template >
 <div>
   <div class="nav-target" ref="nav">
-    <nav class="nav-container container-sm">
+    <nav class="nav-container container-md">
       <div class="logo">
         <router-link to="/"><img src="@/assets/images/logo.png" alt="Crazy Dutch Experience"></router-link>
       </div>
@@ -54,13 +54,13 @@
     </nav>
   </div>
 
-  <header class="container-sm">
+  <header class="header container-md">
 
     <div class="content-container">
       <div class="grid">
         <div class="col-8">
 
-          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 48px; line-height: 56px;"/>
+          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 32px; line-height: 38px;"/>
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
           <BodyText :text="data.bodyText"/>
 
@@ -69,7 +69,7 @@
           <!-- <span class="tagline"><Icon :height="16" :width="16" className="inline down animateArrow" name="arrow" :active="true"/></span> -->
         </div>
 
-        <div class="col-4 hide-mobile" v-if="campaign">
+        <div class="col-4 bottle-with-glass" v-if="campaign">
           <div class="">
             <img src="@/assets/images/glas-fles-nice.png" alt="">
           </div>
@@ -425,6 +425,10 @@ img {
   }
 }
 
+.header {
+  margin: 0 auto;
+}
+
 .content-container {
   margin: 104px auto 0;
 
@@ -461,6 +465,16 @@ img {
       width: 50%;
       float: right;
       object-fit: contain
+    }
+  }
+
+  .bottle-with-glass {
+    @include breakpoint(s) {
+      display: none;
+    }
+
+    img {
+      max-height: 490px;
     }
   }
 }
