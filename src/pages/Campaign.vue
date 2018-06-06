@@ -26,9 +26,9 @@ export default {
     heading: {},
     howTo: {},
     app: {
-      "title": "Maak je eigen cocktail!",
-      "subTitle": "Wij geven jou de mogelijkheid om je eigen cocktail te maken.",
-      "bodyText": "Mauris rutrum metus mi, ac condimentum lacus ultricies eget. In auctor felis ac dignissim scelerisque. Duis non malesuada lorem. Interdum et malesuada fames ac ante ipsum",
+      "title": "Maak nu je eigen Crazy Dutch Cocktail",
+      "subTitle": "Wij geven jou de mogelijkheid om een Crazy Dutch Experience te krijgen!",
+      "bodyText": "Bitter, zoet, umami, of tropisch fruitig? Heb je al een keuze kunnen maken? Crazy Dutch Dry Gin is je basisdrank. Daarna komt jouw creatieve brein met de zelfbedachte mix",
     },
     categories: {},
     footer: {},
