@@ -7,7 +7,7 @@ export default {
   name: 'BodyText',
   props: {
     text: {
-      type: String,
+      type: [String, Function],
       required: true
     }
   }
