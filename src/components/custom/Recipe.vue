@@ -19,9 +19,9 @@
         </div>
       </div>
       <ul class="ingredients-list">
-        <li v-for="(ingredient) in choosenIngredients">
+        <li v-for="(ingredient, idx) in choosenIngredients">
           {{ ingredient }}
-          <Icon :width="16" :height="16" name="trash"/>
+          <Icon :width="16" :height="16" name="trash" @click.native="$eventBus.$emit('deleteIngredient', idx)"/>
         </li>
       </ul>
       <Button
@@ -226,8 +226,8 @@ export default {
         user-select: none;
 
         &:hover .icon {
-          visibility: visible;
-          opacity: 1;
+          visibility: visible !important;
+          opacity: 1 !important;
         }
 
         .icon {
@@ -238,10 +238,6 @@ export default {
           opacity: 0;
           transition: all .05s linear;
           cursor: pointer;
-
-          &:first-child {
-            display: none;
-          }
 
           @include breakpoint(s) {
             visibility: visible;

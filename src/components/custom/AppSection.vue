@@ -33,7 +33,8 @@
           <div class="about-the-cocktail">
             <Heading tag="h3" text="vertel iets over deze cocktail"/>
             <textarea v-model="completeRecipe.body" placeholder="Klik hier om wat te vertellen over jou zelf gemaakte cocktail."></textarea>
-          </div>
+	  </div>
+
         </div>
       </div>
     </div>
@@ -109,6 +110,7 @@ export default {
     this.$eventBus.$on('openAddToModal', this.showAddToRankingModal)
     this.$eventBus.$on('participentInfo', this.addRecipeToRanglist)
     this.$eventBus.$on('cocktailNameInput', this.setCocktailNameValue)
+    this.$eventBus.$on('deleteIngredient', this.deleteIngredient)
   },
   methods: {
     getCategoryItems() {
@@ -184,6 +186,12 @@ export default {
     },
     setCocktailNameValue(nameValue) {
       this.$set(this.completeRecipe, 'name', nameValue)
+    },
+    deleteIngredient(indexToDelete) {
+      console.log('delete', indexToDelete);
+      const copy = [...this.completeRecipe.ingredients]
+      copy.splice(indexToDelete, 1)
+      this.$set(this.completeRecipe, 'ingredients', copy)
     }
   }
 }
