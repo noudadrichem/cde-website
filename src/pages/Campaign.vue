@@ -6,6 +6,10 @@
   <RankingList :ranking="recipes"/>
   <Footing :data="footer"/>
   <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
+
+  <div class="already-voted-tooltip" v-show="hasVoted">
+    Je hebt helaas al een keer eerder gestemd.
+  </div>
 </div>
 </template>
 
@@ -34,7 +38,8 @@ export default {
     footer: {},
     recipes: [],
     currentlySelectRankingRecipe: {},
-    showUrlRecipeModal: false
+    showUrlRecipeModal: false,
+    hasVoted: false
   }),
   components: {
     Heading,
@@ -46,6 +51,13 @@ export default {
   },
   created() {
     this.$eventBus.$on('showRanking', this.selectRanking)
+    this.$eventBus.$on('voted', (id) => {
+      this.$set(this, 'hasVoted', true)
+
+      setTimeout(() => {
+        this.$set(this, 'hasVoted', false)
+      }, 5000)
+    })
   },
   methods: {
     selectRanking(id) {
@@ -123,6 +135,27 @@ export default {
 @import '~$styles/app';
 
 .campaign {
-    width: 100%;
+  width: 100%;
+}
+
+.already-voted-tooltip {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #9FC7E3;
+  border: 1px solid #1072B8;
+  border-radius: 2px;
+  font-size: 16px;
+  color: #1072B8;
+  letter-spacing: 0;
+  text-align: center;
+  z-index: 999;
+  max-width: 375px;
 }
 </style>
