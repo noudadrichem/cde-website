@@ -145,13 +145,10 @@ export default {
     },
     iconsUrl(iconName) {
       return require(`@/assets/images/icons/${iconName}.svg`);
-    }
-  },
-  mounted() {
-    // snel en lelijk 👍👍
-    window.onscroll = e => {
-      const navbar = this.$refs.nav;
-      const sticky = navbar.offsetTop + 109;
+    },
+    toggleStickyNav() {
+      const navbar = this.$refs.nav
+      const sticky = navbar.offsetTop + 109
 
       if (window.pageYOffset >= sticky) {
         navbar.classList.add('stickey')
@@ -165,6 +162,16 @@ export default {
         document.body.style.paddingTop = 0
         navbar.style.background =  ''
       }
+
+      // if(!window.pageYOffset >= sticky) {
+      //   document.body.style.paddingTop = 0
+      // }
+    }
+  },
+  mounted() {
+
+    window.onscroll = e => {
+      this.toggleStickyNav();
     }
 
     this.toggleBodyFixed()
@@ -204,7 +211,7 @@ img {
     padding: 16px 0;
     top: -125px;
     left: 0;
-    background: linear-gradient(top, rgba(255,255,255,.9) 0%, rgba(255,255,255,.6) 100%);
+    background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
 
     .nav-container {
       margin-top: 0;
