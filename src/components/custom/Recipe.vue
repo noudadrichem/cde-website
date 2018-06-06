@@ -14,7 +14,7 @@
         <div class="info-container" @mouseover="infoHover = true" @mouseleave="infoHover = false">
           <Icon :width="16" :height="16" name="info" :active="infoHover"/>
           <div class="info-modal">
-            Aantal mililiters die in het cocktail glas gaan.
+            Aantal mililiters die in de shakebeker gaan.
           </div>
         </div>
       </div>
