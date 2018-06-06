@@ -122,7 +122,6 @@ $animationTime: 420ms ease;
   margin-top: 180px;
   position: relative;
   max-width: 100vw;
-  overflow: hidden;
 
   .container-md {
     margin-left: auto;
