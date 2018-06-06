@@ -21,7 +21,7 @@
       <ul class="ingredients-list">
         <li v-for="(ingredient, idx) in choosenIngredients">
           {{ ingredient }}
-          <Icon :width="16" :height="16" name="trash" @click.native="$eventBus.$emit('deleteIngredient', idx)"/>
+          <Icon :width="16" :height="16" name="trash" @click.native="idx !== 0 ? $eventBus.$emit('deleteIngredient', idx) : $eventBus.$emit('infoMessage', 'Je kan de Dry Gin niet verwijderen.')"/>
         </li>
       </ul>
       <Button
