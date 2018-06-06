@@ -18,7 +18,7 @@
 
       <div class="ruler"></div>
 
-      <div class="grid">
+      <div class="grid container">
         <div class="col-3" v-for="(menu, key) in data.footerNavigations">
           <Heading tag="h3" :text="key" className="footer-heading"/>
 
@@ -61,12 +61,13 @@ export default {
 @import '~$styles/app';
 
 .footer {
-  padding-top: 0px;
   padding-bottom: 64px;
   box-sizing: border-box;
+  margin-top: 80px;
 
-  @media screen and (max-width: 414px) {
-    padding-top: 64px;
+  @include breakpoint(s) {
+    margin-top: 40px;
+    padding-bottom: 32px;
   }
 
   .footer-heading {
@@ -85,6 +86,10 @@ export default {
     width: 100%;
     height: 2px;
     margin: 32px 0;
+  }
+
+  .container {
+    position: relative;
   }
 
   @media screen and (max-width: 414px) {
@@ -112,6 +117,9 @@ export default {
 
   .logo {
     max-width: 100px;
+    position: absolute;
+    right: 0;
+
     img {
       width: 100%;
     }

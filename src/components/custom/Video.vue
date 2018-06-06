@@ -31,7 +31,7 @@ export default {
       const viewPortHeight = window.innerHeight
       const documentHeight = document.body.scrollHeight
       const maxScroll = (documentHeight - viewPortHeight)
-      const scrollPercent = (windowTop / maxScroll) * 100
+      const scrollPercent = (windowTop / maxScroll) * 50
 
       this.$refs.videoContainer.style.transform = `translate3d(0, -${scrollPercent * 5}px, 0)`
 
@@ -44,12 +44,12 @@ export default {
 @import '~$styles/app';
 
 .video {
-  margin-top: 164px;
+  margin-top: 160px;
   z-index: 3;
   position: relative;
 
-  @media screen and (max-width: 414px) {
-    margin-top: 40px;
+  @include breakpoint(s) {
+    margin-top: 80px;
   }
 
   .video-container {

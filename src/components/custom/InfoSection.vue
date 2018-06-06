@@ -45,22 +45,34 @@ export default {
 <style lang="scss" >
 @import '~$styles/app';
 
+.info-section-container {
+    margin-top: 140px;
+
+    @include breakpoint(s) {
+      margin-top: 80px;
+    }
+}
+
 .info-section {
   margin: 0px auto 0;
   position: relative;
   z-index: 2;
 
-  @media screen and (max-width: 414px) {
+  @include breakpoint(xs) {
     margin: 40px auto 0;
   }
 
   .quote-container {
     text-align: center;
 
-    @media screen and (max-width: 414px) {
+    @include breakpoint(s) {
       margin-top: 32px;
+    }
+
+    @include breakpoint(xs) {
       text-align: left;
     }
+
 
     .quote {
       &-text {
