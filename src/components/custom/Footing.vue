@@ -116,12 +116,12 @@ export default {
   }
 
   .logo {
-    max-width: 100px;
     position: absolute;
     right: 0;
 
     img {
       width: 100%;
+      max-width: 80px;
     }
   }
 
