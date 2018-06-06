@@ -8,6 +8,7 @@ import Stylekit from '@/pages/Stylekit'
 import Campaign from '@/pages/Campaign'
 import Login from '@/pages/Login'
 import CmsHome from '@/pages/cmsHome'
+import Ranking from '@/pages/Ranking'
 
 // Components
 Vue.use(Router)
@@ -38,6 +39,11 @@ const router = new Router({
     path: '/campaign/:recipeName',
     name: 'campaignRecipe',
     component: Campaign
+  },
+  {
+    path: '/ranking/:recipeName?',
+    name: 'Ranking',
+    component: Ranking
   },
   {
     path: '/login',

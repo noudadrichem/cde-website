@@ -44,13 +44,19 @@ import Heading from '@/components/common/Heading'
 export default {
   computed: {
     orderedRanking() {
-      return this.ranking.sort((firstRanking, secondRanking) => firstRanking.votes < secondRanking.votes).slice(0, 10)
+      return this.all
+      ? this.ranking
+      : this.ranking.sort((firstRanking, secondRanking) => firstRanking.votes < secondRanking.votes).slice(0, 10)
     }
   },
   props: {
     ranking: {
       type: Array,
       required: true
+    },
+    all: {
+      type: Boolean,
+      required: false
     }
   },
   components: {
