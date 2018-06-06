@@ -12,7 +12,7 @@
   <div class="container-md">
     <div class="steps grid between" ref="steps">
       <div class="step col-4 to-animate" v-for="(step, idx) in data.steps" ref="step">
-        <span class="number">{{ idx + 1 }}</span>
+        <span :class="['number', { active: luikShown[idx] }]">{{ idx + 1 }}</span>
 
         <div :class="['content', { active: luikShown[idx] }]">
           <h3>{{ step.title }}</h3>
@@ -101,102 +101,109 @@ export default {
 $animationTime: 420ms ease;
 
 .steps-container {
-    padding-bottom: 80px;
-    margin-top: 128px;
+  padding-bottom: 80px;
+  margin-top: 128px;
+
+  @include breakpoint(s) {
+    margin-top: 96px;
+  }
+
+  .col-12 {
+    max-width: 100%!important;
+    flex-basis: 100%!important;
+  }
+
+  .container-md {
+      margin: auto;
+  }
+
+  .steps {
+    margin-top: 80px;
 
     @include breakpoint(s) {
-      margin-top: 96px;
+      margin-top: 40px;
     }
+  }
 
-    .col-12 {
-      max-width: 100%!important;
+  .step {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+
+    @include breakpoint(s) {
       flex-basis: 100%!important;
+      max-width: 100%!important;
     }
 
-    .container-md {
-        margin: auto;
-    }
-
-    .steps {
-      margin-top: 80px;
+    .number {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      opacity: 0.4;
+      font-weight: 1000;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 128px;
+      color: rgba(156,155,161,0.24);
+      letter-spacing: 0;
 
       @include breakpoint(s) {
-        margin-top: 40px;
+        font-size: 80px;
       }
     }
 
-    .step {
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
+    .content {
+      border-radius: 4px;
+      position: relative;
+      z-index: 3;
+      max-width: 400px;
+      height: 222px;
+      padding: 24px;
+      transition: $animationTime;
+      margin: 0 auto 0 0;
 
-        @include breakpoint(s) {
-          flex-basis: 100%!important;
-          max-width: 100%!important;
-        }
+      @include breakpoint(m) {
+        height: 200px;
+        max-width: 95%;
+      }
 
-        .number {
-            position: absolute;
-            top: 40px;
-            left: 0;
-            opacity: 0.4;
-            font-weight: 1000;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 128px;
-            color: rgba(156,155,161,0.24);
-            letter-spacing: 0;
+      @include breakpoint(s) {
+        height: 222px;
+        max-width: 80%;
+      }
 
-            @include breakpoint(s) {
-              font-size: 80px;
-            }
-        }
+      @include breakpoint(xs) {
+        height: 222px;
+        max-width: 100%;
+      }
 
-        .content {
-            border-radius: 4px;
-            position: relative;
-            z-index: 3;
-            max-width: 400px;
-            height: 222px;
-            padding: 24px;
-            transition: $animationTime;
-
-            @include breakpoint(1120, 767) {
-              height: 200px;
-              max-width: 90%;
-            }
-
-            @media screen and (max-width: 767px) {
-              height: 222px;
-            }
-
-            &.active {
-                background: #fff;
-                box-shadow: 0 6px 34px 0 rgba(0,0,0,0.10);
-                margin: 0;
-              }}
-
-            .read-more {
-                margin-top: 8px;
-                font-size: 15px;
-                color: #9c9ba1;
-                font-weight: 700;
-                line-height: 22px;
-                border-bottom: 1px solid #9c9ba1;
-                text-decoration: none;
-                display: inline-block;
-                cursor: pointer;
-            }
-        }
+      &.active {
+          background: #fff;
+          box-shadow: 0 6px 34px 0 rgba(0,0,0,0.10);
+      }
     }
 
-    .skewed-backdrop {
-        background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
-        height: 816px;
-        width: 100%;
-        transform: skewY(-22deg);
-        position: absolute;
-        top: 1100px;
-        z-index: -1;
-        opacity: 0.4;
+    .read-more {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #9c9ba1;
+      font-weight: 700;
+      line-height: 22px;
+      border-bottom: 1px solid #9c9ba1;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
     }
+  }
+}
+
+.skewed-backdrop {
+  background-image: linear-gradient(-180deg, rgba(235,235,235,0.80) 0%, rgba(248,248,248,0.01) 86%, rgba(248,248,248,0.00) 87%);
+  height: 816px;
+  width: 100%;
+  transform: skewY(-22deg);
+  position: absolute;
+  top: 1100px;
+  z-index: -1;
+  opacity: 0.4;
+}
 </style>
