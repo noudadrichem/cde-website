@@ -60,6 +60,14 @@ export default {
         this.$set(this, 'hasVoted', false)
       }, 5000)
     })
+    this.$eventBus.$on('infoMessage', mess => {
+      this.$set(this, 'infoMessage', mess)
+      this.$set(this, 'hasVoted', true)
+
+      setTimeout(() => {
+        this.$set(this, 'hasVoted', false)
+      }, 5000)
+    })
   },
   methods: {
     selectRanking(id) {
@@ -82,6 +90,10 @@ export default {
         const splittedIng = ing.split(' ')
         if(splittedIng[1] == 'ml') {
           acuu = acuu + parseInt(splittedIng[0])
+        }
+
+        if(acuu > 700) {
+          this.$eventBus.$emit('infoMessage', 'Je kan niet meer dan 700ml')
         }
 
         return acuu
@@ -147,9 +159,9 @@ export default {
   transform: translateX(-50%);
   height: 40px;
   display: flex;
+  padding: 0 16px;
   align-items: center;
   justify-content: center;
-  width: 100%;
   background: #9FC7E3;
   border: 1px solid #1072B8;
   border-radius: 2px;
@@ -158,6 +170,5 @@ export default {
   letter-spacing: 0;
   text-align: center;
   z-index: 999;
-  max-width: 375px;
 }
 </style>
