@@ -37,18 +37,24 @@ export default {
           this.$http.put(`${conf.apiUrl}campaign/recipes/like/${this.id}`)
             .then(res => {console.log(res);})
         }
+        this.$eventBus.$emit('voted', this.id)
       }
     },
-    checkIfVoted() {
+    checkIfVoted(id = this.id) {
       const hasVoted = localStorage.getItem('isVoted')
 
-      if(hasVoted && hasVoted === this.id) {
+      if((hasVoted && hasVoted === this.id)) {
         this.$set(this, 'isVoted', true)
       }
     }
   },
   mounted() {
     this.checkIfVoted()
+  },
+  created() {
+    this.$eventBus.$on('voted', id => {
+      this.checkIfVoted()
+    })
   }
 }
 </script>

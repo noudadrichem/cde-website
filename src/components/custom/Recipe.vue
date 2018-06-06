@@ -96,7 +96,7 @@ export default {
 
   .not-filled-in-tooltip {
     position: absolute;
-    top: -56px;;
+    bottom: -232px;
     left: 0;
     height: 40px;
     display: flex;
