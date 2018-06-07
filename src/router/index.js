@@ -31,12 +31,7 @@ const router = new Router({
     component: Stylekit
   },
   {
-    path: '/campaign',
-    name: 'campaign',
-    component: Campaign
-  },
-  {
-    path: '/campaign/:recipeName',
+    path: '/campaign/:recipeName?',
     name: 'campaignRecipe',
     component: Campaign
   },
