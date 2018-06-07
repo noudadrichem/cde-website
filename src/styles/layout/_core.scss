@@ -9,13 +9,9 @@ body {
   box-sizing: border-box;
 }
 
-body.fixed {
+body.fixed-scroll {
   overflow-y: hidden;
 }
-
-// * {
-//   border: 1px solid rgba(255, 0, 0, .4) !important;
-// }
 
 a {
   cursor: pointer;

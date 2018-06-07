@@ -58,7 +58,7 @@
 
     <div class="content-container">
       <div class="grid">
-        <div class="col-8">
+        <div :class="['col-8', {full: !campaign}]">
 
           <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 32px; line-height: 38px;"/>
           <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
@@ -122,8 +122,6 @@ export default {
       const dividedWindow = (window.innerHeight / 4)
       const selectorY = selector.getBoundingClientRect().y
 
-      console.log(selector)
-
       if(item == 'video') {
         selector.querySelector('video').play()
       }
@@ -143,9 +141,9 @@ export default {
       const body = document.body
 
       if(this.mobileNavShow == true) {
-        body.classList.add('fixed')
+        body.classList.add('fixed-scroll')
       } else {
-        body.classList.remove('fixed')
+        body.classList.remove('fixed-scroll')
       }
     },
     iconsUrl(iconName) {
@@ -153,24 +151,27 @@ export default {
     },
     toggleStickyNav() {
       const navbar = this.$refs.nav
-      const sticky = navbar.offsetTop + 109
+      const page = document.querySelector('.campaign')
 
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add('stickey')
-        document.body.style.paddingTop = '109px'
+      if (navbar !== undefined) {
+        const sticky = navbar.offsetTop + 125
 
-        if(pageYOffset >= sticky + 300) {
+        console.log('Navbar: ', sticky, ' pageYOffset', pageYOffset)
+
+        if (window.pageYOffset >= sticky) {
+
           navbar.style.top = 0
-        }
-      } else {
-        navbar.classList.remove('stickey')
-        document.body.style.paddingTop = 0
-        navbar.style.background =  ''
-      }
+          navbar.classList.add('stickey')
+          page.style.paddingTop = '93px'
 
-      // if(!window.pageYOffset >= sticky) {
-      //   document.body.style.paddingTop = 0
-      // }
+        } else if(window.pageYOffset <= sticky) {
+
+          page.style.paddingTop = 0
+          navbar.classList.remove('stickey')
+          navbar.style.background =  ''
+
+        }
+      }
     }
   },
   mounted() {
@@ -198,6 +199,7 @@ img {
   top: 0;
   z-index: -1;
 }
+
 .container-sm {
   margin-left: auto;
   margin-right: auto;
@@ -213,13 +215,12 @@ img {
     z-index: 100;
     width: 100%;
     margin-top: 0;
-    padding: 16px 0;
-    top: -125px;
     left: 0;
     background: linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
 
     .nav-container {
       margin-top: 0;
+      margin: 16px auto;
 
       .logo {
         @include breakpoint(s) {
@@ -232,7 +233,7 @@ img {
 }
 
 .nav-container {
-  margin: 32px auto 0;
+  margin: 16px auto 0;
   display: flex;
   align-items: center;
 
@@ -444,7 +445,7 @@ img {
 .content-container {
   margin: 104px auto 0;
 
-  @media screen and (max-width: 414px) {
+  @include breakpoint(s) {
     margin-top: 32px;
   }
 
@@ -477,6 +478,26 @@ img {
       width: 50%;
       float: right;
       object-fit: contain
+    }
+  }
+
+  .col-8 {
+
+    @include breakpoint(m) {
+      &.full {
+        flex-basis: 80%!important;
+        max-width: 80%!important;
+      }
+    }
+
+    @include breakpoint(s) {
+      flex-basis: 100%!important;
+      max-width: 100%!important;
+
+      &.full {
+        flex-basis: 100%!important;
+        max-width: 100%!important;
+      }
     }
   }
 

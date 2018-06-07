@@ -87,27 +87,26 @@ export default {
       })
     },
     showLuikWhenInFold() {
-      const drieluikIsInScreen = this.$refs.drieluik.getBoundingClientRect().y - (window.innerHeight - 100)
+      if (this.$refs.drieluik !== undefined) {
+        const drieluikIsInScreen = this.$refs.drieluik.getBoundingClientRect().y - (window.innerHeight - 100)
 
-      if(drieluikIsInScreen < 0) {
-        this.$refs.luik.forEach((luikNode, idx) => {
-          setTimeout(() => {
-            luikNode.classList.add('fade-in-up')
-            luikNode.classList.remove('to-animate')
-          },idx * 220)
-        })
+        if(drieluikIsInScreen < 0) {
+          this.$refs.luik.forEach((luikNode, idx) => {
+            setTimeout(() => {
+              luikNode.classList.add('fade-in-up')
+              luikNode.classList.remove('to-animate')
+            },idx * 220)
+          })
+        }
       }
     },
     setSlideActive(slideIndex) {
-      const windowScreen = window.innerWidth
-
       this.$set(this, 'activeSlide', slideIndex)
-      this.$set(this, 'slideToRight', (slideIndex * windowScreen))
+      this.$set(this, 'slideToRight', (slideIndex * window.innerWidth))
     },
     checkIfNotMobile() {
-      const windowWidth = window.innerWidth
 
-      if(windowWidth > 767) {
+      if(window.innerWidth > 767) {
         this.$set(this, 'notMobile', true)
       }else {
         this.$set(this, 'notMobile', false)

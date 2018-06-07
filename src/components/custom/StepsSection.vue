@@ -70,15 +70,17 @@ export default {
       })
     },
     showLuikWhenInFold() {
-      const drieluikIsInScreen = this.$refs.steps.getBoundingClientRect().y - (window.innerHeight - 100)
+      if (this.$refs.steps !== undefined) {
+        const drieluikIsInScreen = this.$refs.steps.getBoundingClientRect().y - (window.innerHeight - 100)
 
-      if (drieluikIsInScreen < 0) {
-        this.$refs.step.forEach((luikNode, idx) => {
-          setTimeout(() => {
-            luikNode.classList.add('fade-in-up')
-            luikNode.classList.remove('to-animate')
-          }, idx * 220)
-        })
+        if (drieluikIsInScreen < 0) {
+          this.$refs.step.forEach((luikNode, idx) => {
+            setTimeout(() => {
+              luikNode.classList.add('fade-in-up')
+              luikNode.classList.remove('to-animate')
+            }, idx * 220)
+          })
+        }
       }
     },
     setSlideActive(slideIndex) {
