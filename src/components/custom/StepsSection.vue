@@ -17,12 +17,8 @@
         <div :class="['content', { active: luikShown[idx] }]">
           <h3>{{ step.title }}</h3>
 
-          <BodyText :text="step.text.substring(0, 84)" />
-
-          <div v-show="luikShown[idx]">
-            <br/>
-            <BodyText :text="step.text.substring(50, Infinity)" />
-          </div>
+          <BodyText v-if="luikShown[idx]" :text="step.text" />
+          <BodyText v-else :text="truncate(step.text, 22)" />
 
           <a @click.prevent="setLuikActive(idx)" class="read-more">{{ btnText[idx] }}</a>
         </div>
@@ -37,7 +33,11 @@
 import Heading from '@/components/common/Heading'
 import BodyText from '@/components/common/BodyText'
 
+//mixin
+import {truncate} from '@/mixins/truncate'
+
 export default {
+  mixins: [truncate],
   props: {
     data: {
       type: Object,
@@ -119,10 +119,14 @@ $animationTime: 420ms ease;
   }
 
   .steps {
-    margin-top: 80px;
+    margin: 60px 0;
+
+    @include breakpoint(m) {
+      margin: 60px 0 20px 0;
+    }
 
     @include breakpoint(s) {
-      margin-top: 40px;
+      margin: 16px 0 40px 0;
     }
   }
 
@@ -157,23 +161,20 @@ $animationTime: 420ms ease;
       position: relative;
       z-index: 3;
       max-width: 400px;
-      height: 222px;
+      height: auto;
       padding: 24px;
       transition: $animationTime;
       margin: 0 auto 0 0;
 
       @include breakpoint(m) {
-        height: 200px;
         max-width: 95%;
       }
 
       @include breakpoint(s) {
-        height: 222px;
         max-width: 80%;
       }
 
       @include breakpoint(xs) {
-        height: 222px;
         max-width: 100%;
       }
 

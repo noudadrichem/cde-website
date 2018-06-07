@@ -15,7 +15,7 @@
             <transition name="height">
               <BodyText v-if="luikShown[idx]" :text="luik.bodyText"/>
               <BodyText v-else-if="notMobile" :text="luik.bodyText"/>
-              <BodyText v-else-if="!notMobile" :text="truncateStr(luik.bodyText, 22)"/>
+              <BodyText v-else-if="!notMobile" :text="truncate(luik.bodyText, 22)"/>
             </transition>
 
             <div v-if="idx === 1">
@@ -40,7 +40,11 @@ import BodyText from '@/components/common/BodyText'
 import Button from '@/components/common/Button'
 import Slick from 'vue-slick';
 
+//mixin
+import {truncate} from '@/mixins/truncate'
+
 export default {
+  mixins: [truncate],
   props: {
     data: {
       type: Object,
@@ -99,9 +103,6 @@ export default {
 
       this.$set(this, 'activeSlide', slideIndex)
       this.$set(this, 'slideToRight', (slideIndex * windowScreen))
-    },
-    truncateStr(str, maxWords) {
-      return str.split(' ').splice(0,maxWords).join(' ') + '...';
     },
     checkIfNotMobile() {
       const windowWidth = window.innerWidth
