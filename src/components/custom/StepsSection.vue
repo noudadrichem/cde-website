@@ -119,10 +119,14 @@ $animationTime: 420ms ease;
   }
 
   .steps {
-    margin-top: 80px;
+    margin: 60px 0;
+
+    @include breakpoint(m) {
+      margin: 60px 0 20px 0;
+    }
 
     @include breakpoint(s) {
-      margin-top: 40px;
+      margin: 16px 0 40px 0;
     }
   }
 
