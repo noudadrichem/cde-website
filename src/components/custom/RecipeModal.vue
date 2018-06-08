@@ -98,7 +98,6 @@ h1 {
     font-size: $template-font-size-h1-s;
     line-height: $template-line-height-h1-s;
   }
-
 }
 
 h2 {
@@ -197,10 +196,16 @@ p {
       margin: 0;
       padding: 0;
 
-      .ingredients-list li:hover {
+      .ingredients-list li {
 
         .icon {
           visibility: hidden!important;
+        }
+
+        &:hover {
+          .icon {
+            visibility: hidden!important;
+          }
         }
       }
     }
