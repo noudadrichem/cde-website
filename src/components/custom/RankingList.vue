@@ -26,9 +26,9 @@
         <tr v-for="(rank, index) in orderedRanking" :key="index">
           <td>{{ index + 1 }}.</td>
           <td>
-            <span>{{ rank.cocktailName }}</span>
-            <span>{{ rank.makerName }}</span>
-            <span><a :href="rank.receiptUrl" target="_blank">Bekijk het recept</a></span>
+            <span>{{ rank.name }}</span>
+            <span>{{ rank.particepent.fullName }}</span>
+            <span><a :href="rank.receiptUrl" @click="$eventBus.$emit('showRanking', rank._id)" target="_blank">Bekijk het recept</a></span>
           </td>
           <VoteButton type="vote" :id="rank._id"/>
         </tr>
@@ -85,8 +85,13 @@ export default {
     max-width: 968px;
     margin: 0 auto 128px;
 
+    @include breakpoint(m) {
+      width: calc(100% - 64px);
+    }
+
     @media screen and (max-width: $bp-tablet-sm) {
       margin: 0;
+      width: 100%;
     }
 
     .mobile {
@@ -121,6 +126,8 @@ export default {
           &:first-child {
             color: rgba($template-color-black-lighter, .4);
             font-weight: bold;
+            min-width: 24px;
+            margin-right: 89p
           }
 
           &:nth-child(2) {
@@ -128,14 +135,14 @@ export default {
             align-items: flex-start;
             flex-direction: column;
             span {
-              margin-bottom: 16px;
+              margin-bottom: 8px;
 
               &:nth-child(1) {
                 font-weight: bold;
               }
 
               &:last-child {
-                margin-bottom: 40px;
+                margin-bottom: 0;
               }
 
               a {
@@ -156,7 +163,8 @@ export default {
     }
 
     .normal {
-      // display: block;
+
+      width: calc(100% - 32px);
 
       @media screen and (max-width: $bp-tablet-md) {
         display: none;
