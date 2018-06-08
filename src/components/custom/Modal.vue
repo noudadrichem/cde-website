@@ -29,10 +29,12 @@
           <ShareButton text="Deel op" iconName="facebook" action="facebook" :socialUrl="socialUrl"/>
           <ShareButton text="Deel op" iconName="twitter" action="twitter" :socialUrl="socialUrl"/>
         </div>
-        <div class="see-ranking">
+        <router-link to="/ranking">
+          <div class="see-ranking">
             Zie de ranglijst hier
             <Icon name="arrow" :width="16" :height="16" :active="true"/>
-        </div>
+          </div>
+        </router-link>
         <div class="visual"></div>
         <div class="background"></div>
       </div>
