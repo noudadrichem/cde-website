@@ -67,8 +67,6 @@ export default {
       this.$eventBus.$emit('cocktailNameInput', event.target.value)
     },
     openRecipeSubmitModal() {
-      console.log('open recipe modal');
-
       if(this.cocktailNameInput.length > 0) {
         this.$set(this, 'nameIsntFilledIn', false)
         this.$eventBus.$emit('openAddToModal', true)

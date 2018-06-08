@@ -1,9 +1,6 @@
 <template>
-<div class="campaign" v-if="!loading">
-  <Heading :data="heading" :campaign="true" :navigationData="footer.volgOns"/>
-  <StepsSection :data="howTo" />
-  <AppSection :data="app" :categories="categories" :getTotalMililiters="getTotalMililiters" />
-  <RankingList :ranking="recipes" :all="false"/>
+<div class="ranking" v-if="!loading">
+  <RankingList :ranking="recipes" :all="true"/>
   <Footing :data="footer"/>
   <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
 
@@ -14,16 +11,13 @@
 </template>
 
 <script>
-import Heading from '@/components/custom/Heading'
-import StepsSection from '@/components/custom/StepsSection'
-import AppSection from '@/components/custom/AppSection'
 import RankingList from '@/components/custom/RankingList'
 import Footing from '@/components/custom/Footing'
 import conf from '@/config'
 import RecipeModal from '@/components/custom/RecipeModal'
 
 export default {
-  name: 'Campaign',
+  name: 'Ranking',
   data: () => ({
     pageId: '5b0ac474bfb053002643a5a4',
     loading: true,
@@ -43,9 +37,6 @@ export default {
     infoMessage: ''
   }),
   components: {
-    Heading,
-    StepsSection,
-    AppSection,
     Footing,
     RankingList,
     RecipeModal
@@ -71,9 +62,10 @@ export default {
   },
   methods: {
     selectRanking(id) {
-      this.$router.push({ path: `/campaign/${id}` })
+      this.$router.push({ path: `/ranking/${id}` })
     },
     setSelectedRecipeToModal(urlRecipeId) {
+      console.log('set selected');
       this.$http.get(`${conf.apiUrl}campaign/recipes/${urlRecipeId}`)
         .then(({ body: recipeFromUrl }) => {
           this.$set(this, 'currentlySelectRankingRecipe', recipeFromUrl)
@@ -83,16 +75,16 @@ export default {
     closeRecipeModal() {
       this.$set(this, 'showUrlRecipeModal', false)
       this.$set(this, 'currentlySelectRankingRecipe', {})
-      this.$router.push({ path: '/campaign' })
+      this.$router.push({ path: '/ranking' })
     },
-    getTotalMililiters({ ingredients }, isRecipe) {
+    getTotalMililiters({ ingredients }) {
       const total = ingredients.reduce((acuu, ing) => {
         const splittedIng = ing.split(' ')
         if(splittedIng[1] == 'ml') {
           acuu = acuu + parseInt(splittedIng[0])
         }
 
-        if(acuu > 700 && isRecipe) {
+        if(acuu > 700) {
           this.$eventBus.$emit('infoMessage', 'Je kan niet meer dan 700ml')
         }
 
@@ -111,30 +103,17 @@ export default {
     }
   },
   mounted() {
-    this.$http.get(`${conf.apiUrl}content/${this.pageId}/sections`)
-      .then(data => {
-        const findSectionData = (sectionName, data) => data.body.sections.find(obj => obj.title === sectionName).contents
+    const findSectionData = (sectionName, data) => data.body.sections.find(obj => obj.title === sectionName).contents
 
-        this.$set(this, 'heading', findSectionData('heading', data))
-        this.$set(this, 'howTo', findSectionData('howTo', data))
-
-        this.$http.get(`${conf.apiUrl}content/5afc46024a04c38c80d4fca0/sections`)
-          .then(res => {
-            this.$set(this, 'footer', findSectionData('footer', res))
-            this.$set(this, 'loading', false)
-          })
-
-        this.$http.get(`${conf.apiUrl}campaign/recipes`)
-          .then(({ body: recipes }) => {
-            this.$set(this, 'recipes', recipes)
-          })
+    this.$http.get(`${conf.apiUrl}content/5afc46024a04c38c80d4fca0/sections`)
+      .then(res => {
+        this.$set(this, 'footer', findSectionData('footer', res))
+        this.$set(this, 'loading', false)
       })
 
-    this.$http.get(`${conf.apiUrl}campaign/categories`)
-      .then(data => {
-        this.$set(this, 'categories', data.body)
-
-        this.$set(this, 'loading', false)
+    this.$http.get(`${conf.apiUrl}campaign/recipes`)
+      .then(({ body: recipes }) => {
+        this.$set(this, 'recipes', recipes)
       })
 
     const { recipeName: urlRecipeId } = this.$route.params
@@ -148,8 +127,9 @@ export default {
 <style lang="scss">
 @import '~$styles/app';
 
-.campaign {
+.ranking {
   width: 100%;
+  padding-top: 128px;
 }
 
 .already-voted-tooltip {

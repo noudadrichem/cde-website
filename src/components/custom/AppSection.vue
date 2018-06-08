@@ -29,11 +29,11 @@
           </div>
         </div>
         <div class="col-6 recipe-column">
-          <Recipe :choosenIngredients="completeRecipe.ingredients" :counter="getTotalMililiters(completeRecipe)"/>
+          <Recipe :choosenIngredients="completeRecipe.ingredients" :counter="getTotalMililiters(completeRecipe, true)"/>
           <div class="about-the-cocktail">
             <Heading tag="h3" text="vertel iets over deze cocktail"/>
             <textarea v-model="completeRecipe.body" placeholder="Klik hier om wat te vertellen over jou zelf gemaakte cocktail."></textarea>
-	  </div>
+      	  </div>
 
         </div>
       </div>
