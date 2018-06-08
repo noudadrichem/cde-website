@@ -56,6 +56,10 @@ export default {
     &.active {
       background-color: rgba(#F8F8F8, 1);
       border-color: #1072B8;
+
+      label {
+        color: $template-color-black-default;
+      }
     }
 
     div {

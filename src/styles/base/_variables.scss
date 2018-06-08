@@ -19,8 +19,8 @@ $template-color-orange-default: #FD8E26;
 $template-color-orange-light: #FD9B40;
 $template-color-orange-lighter: #FEBB7D;
 
-$template-color-black-default: #363542;
-$template-color-black-light: #363542;
+$template-color-black-default: $template-color;
+$template-color-black-light: $template-color;
 $template-color-black-lighter: #9C9BA1;
 
 $template-color-white-default: #FFF;

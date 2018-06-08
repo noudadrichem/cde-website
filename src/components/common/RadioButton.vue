@@ -45,7 +45,7 @@ export default {
       background-position: center;
 
       + .label {
-        color: $template-color-black-light;
+        color: $template-color-black-default;
       }
     }
   }
