@@ -135,6 +135,10 @@ export default {
   width: 100%;
 }
 
+.ranking-list {
+  margin-top: 128px !important;
+}
+
 .already-voted-tooltip {
   position: fixed;
   bottom: 32px;

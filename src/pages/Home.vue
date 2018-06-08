@@ -240,28 +240,28 @@ export default {
           this.$set(this, 'showConfetties', true)
         }, 1200)
 
-        setTimeout(() => {
-          this.$set(this, 'curtainsOpen', true)
-        }, 2100)
-
-        setTimeout(() => {
-          document.body.style.overflow = ''
-        }, 4500)
-
-        setTimeout(() => this.$set(this, 'showPopup', true), 9000)
-
-        setTimeout(() => {
-          this.confetties.forEach(partial => {
-            partial.top = (Math.random() * window.innerHeight)
-            partial.left = (Math.random() * window.innerWidth)
-            partial.opacity = this.getRandomValue(Math.random())
-            partial.rotation = Math.floor(Math.random() * 360) + 1
-          })
-        }, 4800)
-
-        setTimeout(() => {
-          this.$set(this, 'introIsDone', true)
-        }, 4900)
+        // setTimeout(() => {
+        //   this.$set(this, 'curtainsOpen', true)
+        // }, 2100)
+        //
+        // setTimeout(() => this.$set(this, 'showPopup', true), 9000)
+        //
+        // setTimeout(() => {
+        //   this.confetties.forEach(partial => {
+        //     partial.top = (Math.random() * window.innerHeight)
+        //     partial.left = (Math.random() * window.innerWidth)
+        //     partial.opacity = this.getRandomValue(Math.random())
+        //     partial.rotation = Math.floor(Math.random() * 360) + 1
+        //   })
+        // }, 4800)
+        //
+        // setTimeout(() => {
+        //   this.$set(this, 'introIsDone', true)
+        // }, 4900)
+        //
+        // setTimeout(() => {
+        //   document.body.style.overflow = ''
+        // }, 4950)
 
       })
   }
@@ -290,7 +290,7 @@ export default {
         top: 0;
         background: #fafafa;
         transition: 1400ms ease-out;
-        box-shadow: 0 0 32px 0 rgba(196,196,196,0.50) !important;
+        box-shadow: 0 0 32px 0 rgba(196,196,196,0.3) !important;
 
         &.right {
             left: 50vw;
@@ -316,6 +316,10 @@ export default {
 
           &.left {
             right: 0;
+          }
+
+          &.right {
+            left: 0;
           }
         }
     }
