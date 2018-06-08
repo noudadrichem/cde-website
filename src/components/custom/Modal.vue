@@ -149,6 +149,21 @@ export default {
       position: relative;
       z-index: 1;
       width: 100%;
+      font-family: $template-font-family-h2;
+      font-weight: $template-font-weight-h2;
+      line-height: $template-line-height-h2;
+      font-size: $template-font-size-h2;
+      color: $template-color-black-lighter;
+      margin-bottom: 16px;
+
+      @include breakpoint(m) {
+        font-size: $template-font-size-h2-m;
+      }
+
+      @include breakpoint(s) {
+        font-size: $template-font-size-h2-s;
+        line-height: $template-line-height-h2-s;
+      }
     }
 
     .close-wrapper {
