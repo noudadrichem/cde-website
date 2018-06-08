@@ -142,12 +142,12 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
   .modal-container {
     max-width: 480px;
     width: 100%;
     height: auto;
-    margin: 0 auto;
     position: relative;
     align-self: center;
     background: $template-color-white-default;
@@ -162,6 +162,8 @@ p {
 
     @media screen and (max-width: $bp-tablet-sm) {
       padding: 20px;
+      margin: 16px;
+      width: auto;
     }
 
     .close-wrapper {
@@ -215,13 +217,26 @@ p {
     max-width: 480px;
     width: 100%;
     height: auto;
-    margin: 0 auto;
     background: $template-background;
     margin-top: 16px;
     border-radius: $template-border-radius;
     box-shadow: 0 6px 24px 0 rgba(#4E4D59, .45);
     padding: 24px;
-    z-index: 1
+    z-index: 1;
+
+    p {
+      width: 100%;
+    }
+
+    @include breakpoint(s) {
+      margin: 16px;
+      width: calc(100% - 32px);
+      max-width: 480px;
+    }
+
+    @include breakpoint(xs) {
+      margin: 0 16px;
+    }
   }
 }
 </style>
