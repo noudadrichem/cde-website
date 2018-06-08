@@ -34,12 +34,16 @@
         </tr>
       </tbody>
     </table>
+    <div class="go-to-ranking-button" v-if="$route.path === '/campaign'">
+      <Button type="button" styling="primary" @click.native="$router.push('/ranking')" text="Bekijk de complete ranglijst"/>
+    </div>
   </div>
 </template>
 
 <script>
 import VoteButton  from '@/components/custom/VoteButton'
 import Heading from '@/components/common/Heading'
+import Button from '@/components/common/Button'
 
 export default {
   computed: {
@@ -61,7 +65,11 @@ export default {
   },
   components: {
     VoteButton,
-    Heading
+    Heading,
+    Button
+  },
+  mounted() {
+    console.log('ranking route', this.$route);
   }
 }
 </script>
@@ -78,12 +86,17 @@ export default {
 .ranking-list {
   margin: 0 auto;
 
+  .go-to-ranking-button {
+    display: flex;
+    justify-content: center;
+  }
+
   table {
     border-collapse:  collapse;
     width: 100%;
     text-align: left;
     max-width: 968px;
-    margin: 0 auto 128px;
+    margin: 0 auto 64px;
 
     @media screen and (max-width: $bp-tablet-sm) {
       margin: 0;

@@ -17,7 +17,7 @@
           <router-link tag="li" to="/campaign" exact>
             <a>Creëer je eigen cocktail</a>
           </router-link>
-          <li> <a href="/#contact">Contact</a> </li>
+          <li> <a href="#contact">Contact</a> </li>
         </ul>
       </div>
 
