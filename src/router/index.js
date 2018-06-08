@@ -15,7 +15,13 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
-  routes: [{
+  routes: [
+  {
+    path: '*',
+    name: '404',
+    component: Home
+  },
+  {
     path: '/',
     name: 'home',
     component: Home
