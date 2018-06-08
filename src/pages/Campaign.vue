@@ -85,14 +85,14 @@ export default {
       this.$set(this, 'currentlySelectRankingRecipe', {})
       this.$router.push({ path: '/campaign' })
     },
-    getTotalMililiters({ ingredients }) {
+    getTotalMililiters({ ingredients }, isRecipe) {
       const total = ingredients.reduce((acuu, ing) => {
         const splittedIng = ing.split(' ')
         if(splittedIng[1] == 'ml') {
           acuu = acuu + parseInt(splittedIng[0])
         }
 
-        if(acuu > 700) {
+        if(acuu > 700 && isRecipe) {
           this.$eventBus.$emit('infoMessage', 'Je kan niet meer dan 700ml')
         }
 

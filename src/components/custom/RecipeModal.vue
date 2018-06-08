@@ -16,7 +16,7 @@
           <span class="title">De ingrediënten:</span>
           <div class="counter-container">
             <span class="counter"></span>
-            <span class="max-total">{{ getTotalMililiters(choosenRecipe) }}/ 700ml</span>
+            <span class="max-total">{{ getTotalMililiters(choosenRecipe, false) }}/ 700ml</span>
 
             <div class="info-container" @mouseover="infoHover = true" @mouseleave="infoHover = false">
               <Icon :width="16" :height="16" name="info" :active="infoHover" />
@@ -95,6 +95,7 @@ export default {
         position: relative !important;
         background: transparent;
         box-shadow: none;
+        margin: auto;
 
         .close-wrapper {
             position: absolute;
@@ -108,11 +109,13 @@ export default {
                 margin: 0 !important;
                 box-shadow: none;
                 padding-top: 56px;
+                background: white;
             }
 
             &.body {
                 margin-top: 32px;
                 width: 100%;
+                background: white;
             }
         }
     }
