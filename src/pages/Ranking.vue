@@ -1,5 +1,7 @@
 <template>
 <div class="ranking" v-if="!loading">
+  <Heading :data="heading" :navigationData="footer.volgOns" :isSubPage="true"/>
+
   <RankingList :ranking="recipes" :all="true"/>
   <Footing :data="footer"/>
   <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
@@ -15,6 +17,7 @@ import RankingList from '@/components/custom/RankingList'
 import Footing from '@/components/custom/Footing'
 import conf from '@/config'
 import RecipeModal from '@/components/custom/RecipeModal'
+import Heading from '@/components/custom/Heading'
 
 export default {
   name: 'Ranking',
@@ -39,7 +42,8 @@ export default {
   components: {
     Footing,
     RankingList,
-    RecipeModal
+    RecipeModal,
+    Heading
   },
   created() {
     this.$eventBus.$on('showRanking', this.selectRanking)
@@ -96,7 +100,6 @@ export default {
   },
   watch: {
     $route({ params: { recipeName }}, from ) {
-      console.log('ROUTE CHANGED', recipeName);
       if(recipeName !== undefined) {
         this.setSelectedRecipeToModal(recipeName)
       }
@@ -107,6 +110,7 @@ export default {
 
     this.$http.get(`${conf.apiUrl}content/5afc46024a04c38c80d4fca0/sections`)
       .then(res => {
+        this.$set(this, 'heading', findSectionData('heading', res))
         this.$set(this, 'footer', findSectionData('footer', res))
         this.$set(this, 'loading', false)
       })
@@ -129,7 +133,6 @@ export default {
 
 .ranking {
   width: 100%;
-  padding-top: 128px;
 }
 
 .already-voted-tooltip {
