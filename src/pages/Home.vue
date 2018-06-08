@@ -185,7 +185,7 @@ export default {
   },
   methods: {
     getRandomValue(value = 0.5) {
-      return value > 0.6 && value < 0.2 ? this.getRandomValue(Math.random()) : value
+      return value > 0.6 || value < 0.2 ? this.getRandomValue(Math.random()) : value
     },
     mouseParallax({ obj, left, top, mouseX, mouseY, speed }) {
       const parentObj = obj.parentNode
