@@ -111,6 +111,7 @@ export default {
     this.$eventBus.$on('participentInfo', this.addRecipeToRanglist)
     this.$eventBus.$on('cocktailNameInput', this.setCocktailNameValue)
     this.$eventBus.$on('deleteIngredient', this.deleteIngredient)
+    this.$eventBus.$on('reset', this.checkIfFull)
   },
   methods: {
     getCategoryItems() {
@@ -191,6 +192,12 @@ export default {
       const copy = [...this.completeRecipe.ingredients]
       copy.splice(indexToDelete, 1)
       this.$set(this.completeRecipe, 'ingredients', copy)
+    },
+    checkIfFull() {
+      const ml = this.getTotalMililiters(this.completeRecipe, false)
+      if (ml > 700) {
+        this.$set(this, 'hasChosenRecipe', true)
+      }
     }
   }
 }
