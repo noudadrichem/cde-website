@@ -54,7 +54,7 @@
     </nav>
   </div>
 
-  <header class="header container-md">
+  <header class="header container-md" v-if="!isSubPage">
 
     <div class="content-container">
       <div class="grid">
@@ -108,6 +108,11 @@ export default {
     navigationData: {
       type: Object,
       required: false
+    },
+    isSubPage: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   components: {
@@ -151,7 +156,7 @@ export default {
     },
     toggleStickyNav() {
       const navbar = this.$refs.nav
-      const page = document.querySelector('.campaign')
+      const page = document.body
 
       if (navbar !== undefined) {
         const sticky = navbar.offsetTop + 125

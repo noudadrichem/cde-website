@@ -6,20 +6,25 @@
   <Drieluik :data="drieluik" />
   <Footing :data="footer" />
 
-  <div class="intro-animation" :style="introIsDone ? {
-    zIndex: '-1',
-    position: 'absolute'
-    } : {}">
+  <div class="intro-animation" :style="introIsDone ? { zIndex: '-1', position: 'absolute' } : {}">
 
 
-    <div :class="['curtain', 'left', curtainsOpen ? 'done' : '']" v-if="!introIsDone"></div>
-    <div :class="['curtain', 'right', curtainsOpen ? 'done' : '']" v-if="!introIsDone"></div>
+    <div :class="['curtain', 'left', curtainsOpen ? 'done' : '']" v-if="!introIsDone">
+      <transition name="getIn">
+        <img class="logo toGetIn left" v-if="showLogo" src="@/assets/images/cde-logo-left.svg" draggable="false">
+      </transition>
+    </div>
+    <div :class="['curtain', 'right', curtainsOpen ? 'done' : '']" v-if="!introIsDone">
+      <transition name="getIn">
+        <img class="logo toGetIn right" v-if="showLogo" src="@/assets/images/cde-logo-right.svg" draggable="false">
+      </transition>
+    </div>
 
-    <transition name="getIn">
+    <!-- <transition name="getIn">
       <div class="logo toGetIn" v-if="showLogo">
         <img src="@/assets/images/crazy-dutch-experience-logo-white.svg" alt="logo">
       </div>
-    </transition>
+    </transition> -->
 
     <div class="confetti-container" v-if="showConfetties">
       <div v-for="(confetti, idx) in confetties" class="confetti" :key="idx" ref="confetti" :style="{
@@ -52,6 +57,9 @@ import Button from '@/components/common/Button'
 import Icon from '@/components/common/Icon'
 import conf from '@/config'
 
+const startPositionConfettiLeft = 0
+const startPositionConfettiTop = 0
+
 export default {
   name: 'Home',
   data: () => ({
@@ -69,98 +77,98 @@ export default {
     footer: {},
     totalConfetties: 5,
     confetties: [{
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'peper.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'paraplu.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'lompklomp.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'fles.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'peper.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'paraplu.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'lompklomp.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'fles.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'peper.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'paraplu.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'lompklomp.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'fles.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'peper.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'lompklomp.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'fles.svg',
       opacity: 0,
       rotation: 0
     }, {
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
+      left: startPositionConfettiLeft,
+      top: startPositionConfettiTop,
       img: 'peper.svg',
       opacity: 0,
       rotation: 0
@@ -177,7 +185,7 @@ export default {
   },
   methods: {
     getRandomValue(value = 0.5) {
-      return value > 0.6 ? this.getRandomValue(Math.random()) : value
+      return value > 0.6 || value < 0.2 ? this.getRandomValue(Math.random()) : value
     },
     mouseParallax({ obj, left, top, mouseX, mouseY, speed }) {
       const parentObj = obj.parentNode
@@ -190,7 +198,6 @@ export default {
   watch: {
     introIsDone(val) {
       if (val) {
-
         const confettiOffsetValues = [...this.$refs.confetti].map((confetti, idx) => ({ top: confetti.offsetTop, left: confetti.offsetLeft }))
 
         document.body.onmousemove = (e) => {
@@ -231,7 +238,13 @@ export default {
         setTimeout(() => {
           this.$set(this, 'showLogo', true)
           this.$set(this, 'showConfetties', true)
-        }, 400)
+        }, 1200)
+
+        setTimeout(() => {
+          this.$set(this, 'curtainsOpen', true)
+        }, 2100)
+
+        setTimeout(() => this.$set(this, 'showPopup', true), 9000)
 
         setTimeout(() => {
           this.confetties.forEach(partial => {
@@ -240,19 +253,15 @@ export default {
             partial.opacity = this.getRandomValue(Math.random())
             partial.rotation = Math.floor(Math.random() * 360) + 1
           })
-        }, 1400)
-
-        setTimeout(() => {
-          this.$set(this, 'curtainsOpen', true)
-          this.$set(this, 'showLogo', false)
-        }, 3100)
+        }, 4800)
 
         setTimeout(() => {
           this.$set(this, 'introIsDone', true)
-          document.body.style.overflow = ''
-        }, 4500)
+        }, 4900)
 
-        setTimeout(() => this.$set(this, 'showPopup', true), 9000)
+        setTimeout(() => {
+          document.body.style.overflow = ''
+        }, 4950)
 
       })
   }
@@ -281,7 +290,7 @@ export default {
         top: 0;
         background: #fafafa;
         transition: 1400ms ease-out;
-        box-shadow: 0 0 32px 0 rgba(196,196,196,0.50) !important;
+        box-shadow: 0 0 32px 0 rgba(196,196,196,0.3) !important;
 
         &.right {
             left: 50vw;
@@ -297,6 +306,21 @@ export default {
             &.done {
                 left: -50vw;
             }
+        }
+
+        .logo {
+          width: 136px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+
+          &.left {
+            right: 0;
+          }
+
+          &.right {
+            left: 0;
+          }
         }
     }
 
@@ -377,6 +401,5 @@ export default {
 .getIn-enter,
 .getIn-leave-to {
     opacity: 0;
-    transform: scale(0);
 }
 </style>
