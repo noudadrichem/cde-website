@@ -65,7 +65,7 @@ export default {
       this.$set(this, 'hasVoted', true)
 
       setTimeout(() => {
-        // this.$set(this, 'hasVoted', false)
+        this.$set(this, 'hasVoted', false)
       }, 5000)
     })
   },
