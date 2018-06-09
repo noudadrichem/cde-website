@@ -7,7 +7,7 @@
   <Footing :data="footer"/>
   <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
 
-  <div class="already-voted-tooltip" v-show="hasVoted">
+  <div class="already-voted-tooltip" v-show="hasVoted && infoMessage">
     {{ infoMessage }}
   </div>
 </div>
@@ -170,5 +170,12 @@ export default {
   letter-spacing: 0;
   text-align: center;
   z-index: 999;
+  width: calc(100% - 32px);
+  max-width: 420px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+
 }
 </style>

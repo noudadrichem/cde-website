@@ -1,9 +1,5 @@
 <template>
   <div class="recipe">
-    <div class="not-filled-in-tooltip" v-show="nameIsntFilledIn">
-      Vergeet je cocktail geen naam te geven.
-    </div>
-
     <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Naam cocktail" min="1" max="40"/>
 
     <div class="ingredients">
@@ -67,11 +63,12 @@ export default {
       this.$eventBus.$emit('cocktailNameInput', event.target.value)
     },
     openRecipeSubmitModal() {
+      console.log('hoi');
       if(this.cocktailNameInput.length > 0) {
-        this.$set(this, 'nameIsntFilledIn', false)
         this.$eventBus.$emit('openAddToModal', true)
+        this.$eventBus.$emit('infoMessage', '')
       } else {
-        this.$set(this, 'nameIsntFilledIn', true)
+        this.$eventBus.$emit('infoMessage', 'Vergeet je cocktail geen naam te geven.')
       }
     }
   }
