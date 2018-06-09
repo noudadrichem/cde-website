@@ -1,5 +1,5 @@
 <template>
-  <div class="ranking-list">
+  <div class="ranking-list" id="ranking-list">
     <div class="ranking-heading">
       <Heading tag="h1" text="De Crazy Dutch Cocktail ranglijst"/>
       <Heading tag="h2" text="Hieronder bevindt zich de gehele ranglijst van wie de top 10 beste cocktail smaak heeft bedacht."/>
