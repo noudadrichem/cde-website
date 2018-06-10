@@ -229,6 +229,7 @@ export default {
     .dropdown-section {
       max-width: 280px;
       max-height: 411px;
+      background: #fff;
 
       .dropdown.active {
         opacity: 0.6;
@@ -245,6 +246,7 @@ export default {
 
     .radio-list-section {
       margin-left: 32px;
+      background: #fff;
 
       .button {
         margin-top: 8px;
