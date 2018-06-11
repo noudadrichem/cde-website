@@ -208,7 +208,7 @@ export default {
   padding-bottom: 80px;
   background-image: url('../../assets/images/confetti@2x.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: top center;
 
   .item-selection {
