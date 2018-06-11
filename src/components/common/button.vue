@@ -49,6 +49,7 @@ export default {
     font-weight: 700;
     text-align: center;
     font-size: $template-font-size;
+    user-select: none;
     @media screen and (max-width: 768px) {
       font-size: 13px;
     };

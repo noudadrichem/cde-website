@@ -113,7 +113,9 @@ export default {
       const scrollContainer = this.$refs.scrollContainer
       scrollContainer.style.scrollBehavior = 'smooth'
       const stepSize = window.innerWidth
-      scrollContainer.scrollTo(stepToGo * stepSize, 0)
+      // scrollContainer.scrollTo(stepToGo * stepSize, 0)
+
+      scrollContainer.scrollLeft = (stepToGo * stepSize)
 
     }
   },
@@ -225,6 +227,7 @@ export default {
     },
     checkIfFull() {
       const ml = this.getTotalMililiters(this.completeRecipe, false)
+
       if (ml > 700) {
         this.$set(this, 'hasChosenRecipe', true)
       }
@@ -234,6 +237,15 @@ export default {
         this.$set(this, 'isOnStep', 0)
       } else {
         this.$set(this, 'isOnStep', this.isOnStep+1)
+      }
+    },
+    previousStep() {
+      if(this.isOnStep === 1) {
+        this.$set(this, 'isOnStep', 0)
+      } else if(this.isOnStep === 2){
+        this.$set(this, 'isOnStep', 1)
+      } else if(this.isOnStep === 0) {
+        this.$set(this, 'isOnStep', 2)
       }
     }
   }
@@ -260,9 +272,15 @@ export default {
     @media screen and (max-width: 767px) {
       width: 100vw;
       max-width: 100vw;
-      overflow-x: auto;
+      overflow-x: hidden;
       overflow-y: hidden;
       padding: 32px 0;
+
+      ::-webkit-scrollbar,
+      ::-webkit-scrollbar-track,
+      ::-webkit-scrollbar-thumb {
+        display: none !important;
+      }
     }
   }
 
@@ -270,7 +288,6 @@ export default {
     @media screen and (max-width: 767px) {
       padding: 32px 0;
       width: 300vw;
-      // width: 279vw;
       -webkit-overflow-scrolling: touch;
 
 
@@ -281,17 +298,14 @@ export default {
         padding: 0;
 
         .dropdown-section {
-          border: 1px solid lime;
           width: 100vw;
           max-width: 100vw;
           padding: 0 6%;
-          background: #fafafa;
         }
 
         .radio-list-section {
-          border: 1px solid red;
           width: 100vw;
-          padding: 0 16px;
+          padding: 0 6%;
           margin-left: 0;
 
           .radio-list {
