@@ -81,6 +81,11 @@ export default {
   text-align: center;
   max-width: 520px;
   margin: 0 auto 64px;
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
+    margin-left: 16px;
+  }
 }
 
 .ranking-list {
