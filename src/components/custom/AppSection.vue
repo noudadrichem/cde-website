@@ -2,39 +2,54 @@
   <div class="app" id="app-section">
     <div class="container-md">
       <div class="grid">
-        <div class="col-12-full">
+        <div class="col-12-full text">
           <div class="col-5">
             <Heading tag="h1" :text="data.title"/>
             <Heading tag="h2" :text="data.subTitle"/>
             <BodyText :text="data.bodyText"/>
           </div>
         </div>
-        <div class="col-6">
-          <div class="item-selection grid">
-            <div class="dropdown-section">
-              <Heading tag="h3" text="Welke ingrediënten?"/>
-              <div :class="['ingredient-block', hasChosenRecipe ? '' : 'active']">
-                <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
-                <div :class="{ dropdown: true, active: currentReceipt.name }">
-                  <Dropdown v-if="!searchQuery" :data="categories"/>
-                  <DropdownItems v-else :items="filteredItems"/>
+      </div>
+    </div>
+
+    <div class="container-md apppie">
+      <div class="scroll-container" ref="scrollContainer">
+        <div class="grid app-container">
+          <div class="col-6 ingredient-column">
+            <div class="item-selection grid">
+              <div class="dropdown-section">
+                <Heading tag="h3" text="Welke ingrediënten?"/>
+                <div :class="['ingredient-block', hasChosenRecipe ? '' : 'active']">
+                  <InputText placeholder="Zoek ingrediënten..." type="search" iconType="search" v-model="searchQuery" @input="getCategoryItems"/>
+                  <div :class="{ dropdown: true, active: currentReceipt.name }">
+                    <Dropdown v-if="!searchQuery" :data="categories"/>
+                    <DropdownItems v-else :items="filteredItems"/>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="radio-list-section">
-              <Heading tag="h3" text="Hoeveel?"/>
-              <RadioList :data="selectedIngredient"/>
-              <Button @click.native="setQuantityValue(currentSelectedQuantity)" type="button" styling="secondary" :disabled="quantityIsDisabled" text="Voeg toe"/>
+              <div class="radio-list-section">
+                <Heading tag="h3" text="Hoeveel?"/>
+                <RadioList :data="selectedIngredient"/>
+                <Button @click.native="setQuantityValue(currentSelectedQuantity)" type="button" styling="secondary" :disabled="quantityIsDisabled" text="Voeg toe"/>
+              </div>
             </div>
           </div>
+          <div class="col-6 recipe-column">
+            <Recipe :choosenIngredients="completeRecipe.ingredients" :counter="getTotalMililiters(completeRecipe, true)"/>
+            <div class="about-the-cocktail">
+              <Heading tag="h3" text="vertel iets over deze cocktail"/>
+              <textarea v-model="completeRecipe.body" placeholder="Klik hier om wat te vertellen over jou zelf gemaakte cocktail."></textarea>
+        	  </div>
+          </div>
         </div>
-        <div class="col-6 recipe-column">
-          <Recipe :choosenIngredients="completeRecipe.ingredients" :counter="getTotalMililiters(completeRecipe, true)"/>
-          <div class="about-the-cocktail">
-            <Heading tag="h3" text="vertel iets over deze cocktail"/>
-            <textarea v-model="completeRecipe.body" placeholder="Klik hier om wat te vertellen over jou zelf gemaakte cocktail."></textarea>
-      	  </div>
+      </div>
 
+      <div class="mobile-app-navigation" v-if="isMobile">
+        <div class="container-md">
+          <div class="grid between">
+              <Button @click.native="previousStep" text="Vorige stap" type="button" styling="secondary"/>
+              <Button @click.native="nextStep" :text="nextBtnText" type="button" styling="primary" class="right"/>
+          </div>
         </div>
       </div>
     </div>
@@ -88,8 +103,20 @@ export default {
       email: ''
     },
     newRecipeId: '',
-    hasChosenRecipe: false
+    hasChosenRecipe: false,
+    isMobile: false,
+    nextBtnText: 'Volgende stap',
+    isOnStep: 0
   }),
+  watch: {
+    isOnStep(stepToGo) {
+      const scrollContainer = this.$refs.scrollContainer
+      scrollContainer.style.scrollBehavior = 'smooth'
+      const stepSize = window.innerWidth
+      scrollContainer.scrollTo(stepToGo * stepSize, 0)
+
+    }
+  },
   components: {
     Heading,
     BodyText,
@@ -103,6 +130,9 @@ export default {
   },
   mounted() {
     this.$set(this, 'categoryItems', this.categories)
+    if(window.innerWidth < 768) {
+      this.$set(this, 'isMobile', true)
+    }
   },
   created() {
     this.$eventBus.$on('getSelectedValue', this.selectIngredient)
@@ -198,6 +228,13 @@ export default {
       if (ml > 700) {
         this.$set(this, 'hasChosenRecipe', true)
       }
+    },
+    nextStep() {
+      if(this.isOnStep === 2) {
+        this.$set(this, 'isOnStep', 0)
+      } else {
+        this.$set(this, 'isOnStep', this.isOnStep+1)
+      }
     }
   }
 }
@@ -211,8 +248,76 @@ export default {
   background-size: contain;
   background-position: top center;
 
+  .container-md {
+    @media screen and (max-width: 767px) {
+      &.apppie {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .scroll-container {
+    @media screen and (max-width: 767px) {
+      width: 100vw;
+      max-width: 100vw;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 32px 0;
+    }
+  }
+
+  .app-container {
+    @media screen and (max-width: 767px) {
+      padding: 32px 0;
+      width: 300vw;
+      // width: 279vw;
+      -webkit-overflow-scrolling: touch;
+
+
+      .ingredient-column {
+        flex-basis: auto !important;
+        width: 200vw !important;
+        display: inline-block !important;
+        padding: 0;
+
+        .dropdown-section {
+          border: 1px solid lime;
+          width: 100vw;
+          max-width: 100vw;
+          padding: 0 6%;
+          background: #fafafa;
+        }
+
+        .radio-list-section {
+          border: 1px solid red;
+          width: 100vw;
+          padding: 0 16px;
+          margin-left: 0;
+
+          .radio-list {
+            width: 100%;
+          }
+        }
+      }
+
+      .recipe-column {
+        flex-basis: auto !important;
+        width: 100vw !important;
+        display: inline-block !important;
+        padding: 0 !important;
+
+        .recipe {
+          width: 86% !important;
+        }
+      }
+    }
+  }
+
   .item-selection {
     margin-top: 48px;
+    @media screen and (max-width: 767px) {
+      margin-top: 0;
+    }
 
     .ingredient-block {
       overflow: hidden;
@@ -274,6 +379,10 @@ export default {
       border: 2px solid #F0F2F7;
       border-radius: 2px;
       margin-top: 32px;
+
+      @media screen and (max-width: 767px) {
+        display: none !important;
+      }
 
       textarea {
         border: none;

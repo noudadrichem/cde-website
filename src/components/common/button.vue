@@ -49,6 +49,9 @@ export default {
     font-weight: 700;
     text-align: center;
     font-size: $template-font-size;
+    @media screen and (max-width: 768px) {
+      font-size: 13px;
+    };
     border-radius: $template-border-radius;
     box-shadow: 0 2px 6px rgba($template-color-black-lighter, 0.4);
     cursor: pointer;
