@@ -170,11 +170,11 @@ export default {
   letter-spacing: 0;
   text-align: center;
   z-index: 999;
-  width: calc(100% - 32px);
-  max-width: 420px;
+  width: auto;
 
-  @media screen and (max-width: 768px) {
+  @include breakpoint(s) {
     font-size: 12px;
+    width: calc(100% - 32px);
   }
 
 }

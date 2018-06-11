@@ -161,8 +161,6 @@ export default {
       if (navbar !== undefined) {
         const sticky = navbar.offsetTop + 125
 
-        console.log('Navbar: ', sticky, ' pageYOffset', pageYOffset)
-
         if (window.pageYOffset >= sticky) {
 
           navbar.style.top = 0
