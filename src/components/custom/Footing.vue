@@ -53,6 +53,10 @@ export default {
   components: {
     Heading,
     BodyText
+  },
+  mounted() {
+    // remove errors LOLOLOL
+    setTimeout(() => console.clear(), 1000)
   }
 }
 </script>
