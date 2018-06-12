@@ -219,7 +219,7 @@ img {
     width: 100%;
     margin-top: 0;
     left: 0;
-    background: linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+    background: linear-gradient(rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
 
     .nav-container {
       margin-top: 0;

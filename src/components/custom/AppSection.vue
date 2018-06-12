@@ -219,6 +219,7 @@ export default {
       border-radius: 2px;
       border: 1px solid rgba(#EBEBEB, 1);
       pointer-events:none;
+      background: #fff;
 
       &.active {
         border-color: #1072B8;
@@ -229,7 +230,6 @@ export default {
     .dropdown-section {
       max-width: 280px;
       max-height: 411px;
-      background: #fff;
 
       .dropdown.active {
         opacity: 0.6;
@@ -246,7 +246,6 @@ export default {
 
     .radio-list-section {
       margin-left: 32px;
-      background: #fff;
 
       .button {
         margin-top: 8px;

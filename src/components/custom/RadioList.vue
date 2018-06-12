@@ -49,12 +49,12 @@ export default {
     border: 1px solid $template-color-white-light;
     border-radius: $template-border-radius;
     padding: 16px;
-    background-color: rgba(#F8F8F8, 0.3);
+    background-color: #fcfcfc;
     display: flex;
     flex-direction: column;
 
     &.active {
-      background-color: rgba(#F8F8F8, 1);
+      background-color: $template-color-white-lighter;
       border-color: #1072B8;
 
       label {
