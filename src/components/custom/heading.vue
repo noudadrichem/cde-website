@@ -60,9 +60,9 @@
       <div class="grid">
         <div :class="['col-8', {full: !campaign}]">
 
-          <Heading tag="h1" :text="data.title" className="heading-title to-animate"/>
-          <Heading tag="h2" :text="data.subTitle" className="heading-sub-title to-animate"/>
-          <BodyText :text="data.bodyText" className="to-animate"/>
+          <Heading tag="h1" :text="data.title" :className="['heading-title',]"/>
+          <Heading tag="h2" :text="data.subTitle" :className="['heading-sub-title', !campaign ? 'to-animate' : ''] "/>
+          <BodyText :text="data.bodyText" :className="[!campaign ? 'to-animate' : '']"/>
 
           <Button v-if="campaign" type="button" styling="primary" @click.native="scrollTo('app')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
           <Button v-else type="button" styling="primary" @click.native="scrollTo('video')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
@@ -178,13 +178,13 @@ export default {
     }
   },
   mounted() {
-
+    console.log('mounted');
   [...document.querySelectorAll('.to-animate')]
     .forEach((node, idx) => {
       setTimeout(() => {
         node.classList.add('fade-in-up')
         node.classList.remove('to-animate')
-      }, (idx * 180) + 5000)
+      }, (idx * 180) + 6000)
     })
 
     window.onscroll = e => {
