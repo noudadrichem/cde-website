@@ -60,9 +60,9 @@
       <div class="grid">
         <div :class="['col-8', {full: !campaign}]">
 
-          <Heading tag="h1" :text="data.title" className="heading-title" style="font-size: 32px; line-height: 38px;"/>
-          <Heading tag="h2" :text="data.subTitle" className="heading-sub-title"/>
-          <BodyText :text="data.bodyText"/>
+          <Heading tag="h1" :text="data.title" className="heading-title to-animate"/>
+          <Heading tag="h2" :text="data.subTitle" className="heading-sub-title to-animate"/>
+          <BodyText :text="data.bodyText" className="to-animate"/>
 
           <Button v-if="campaign" type="button" styling="primary" @click.native="scrollTo('app')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
           <Button v-else type="button" styling="primary" @click.native="scrollTo('video')" :text="data.buttonText" className="heading-cta-button" style="display: inline-flex;"/>
@@ -178,6 +178,14 @@ export default {
     }
   },
   mounted() {
+
+  [...document.querySelectorAll('.to-animate')]
+    .forEach((node, idx) => {
+      setTimeout(() => {
+        node.classList.add('fade-in-up')
+        node.classList.remove('to-animate')
+      }, (idx * 180) + 5000)
+    })
 
     window.onscroll = e => {
       this.toggleStickyNav();
@@ -454,6 +462,11 @@ img {
 
   .heading-title {
     margin-bottom: 16px;
+
+    @media screen and (min-width: 1180px) {
+      font-size: 56px;
+      line-height: 1.1;
+    }
   }
 
   .heading-cta-button {
@@ -563,4 +576,28 @@ img {
   opacity: 0;
   transform: scale(.9);
 }
+
+ .to-animate {
+    opacity: 0;
+    transform: translate3d(0, 64px, 0);
+  }
+
+  .fade-in-up {
+    animation-duration: 600ms;
+    animation-name: fadeInUp;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 64px, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
 </style>
