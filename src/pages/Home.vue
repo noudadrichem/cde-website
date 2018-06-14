@@ -247,7 +247,9 @@ export default {
         setTimeout(() => this.$set(this, 'showPopup', true), 9000)
 
         setTimeout(() => {
-          this.$refs.campaignPopup.classList.add('moooooefffff')
+          if(this.showPopup) {
+            this.$refs.campaignPopup.classList.add('moooooefffff')
+          }
         }, 15000)
 
         setTimeout(() => {
