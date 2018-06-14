@@ -1,5 +1,5 @@
 <template>
-  <p>{{ text }}</p>
+  <p :class="className">{{ text }}</p>
 </template>
 
 <script>
@@ -9,6 +9,10 @@ export default {
     text: {
       type: [String, Function],
       required: true
+    },
+    className: {
+      type: String,
+      required: false
     }
   }
 }
