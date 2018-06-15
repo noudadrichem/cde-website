@@ -3,6 +3,10 @@
   <Heading :data="heading" :navigationData="footer.volgOns" :isSubPage="true"/>
 
   <RankingList :ranking="recipes" :all="true"/>
+
+  <div class="grid center text-center">
+    <Button text="Maak je eigen cocktail" styling="primary" @click.native="$router.push('/campaign')"/>
+  </div>
   <Footing :data="footer"/>
   <RecipeModal v-if="showUrlRecipeModal" :choosenRecipe="currentlySelectRankingRecipe" :getTotalMililiters="getTotalMililiters" @close="closeRecipeModal"/>
 
@@ -18,6 +22,7 @@ import Footing from '@/components/custom/Footing'
 import conf from '@/config'
 import RecipeModal from '@/components/custom/RecipeModal'
 import Heading from '@/components/custom/Heading'
+import Button from '@/components/common/Button'
 
 export default {
   name: 'Ranking',
@@ -43,7 +48,8 @@ export default {
     Footing,
     RankingList,
     RecipeModal,
-    Heading
+    Heading,
+    Button
   },
   created() {
     this.$eventBus.$on('showRanking', this.selectRanking)

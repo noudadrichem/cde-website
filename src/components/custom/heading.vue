@@ -8,9 +8,6 @@
 
       <div class="nav-bar">
         <ul>
-          <!-- <li v-for="(item, idx) in data.navbarItems" :key="idx">
-            <a :href="item.link">{{ item.text }}</a>
-          </li> -->
           <router-link tag="li" to="/" exact>
             <a>De experience</a>
           </router-link>
@@ -178,7 +175,6 @@ export default {
     }
   },
   mounted() {
-    console.log('mounted');
   [...document.querySelectorAll('.to-animate')]
     .forEach((node, idx) => {
       setTimeout(() => {

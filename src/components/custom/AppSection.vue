@@ -210,10 +210,7 @@ export default {
     showAddToRankingModal(val) {
       this.$set(this, 'isAddingToRanking', val)
     },
-    setParticipentInfo({
-      name,
-      email
-    }) {
+    setParticipentInfo({ name, email }) {
       return new Promise(resolve => {
         this.$set(this.completeRecipe, 'userName', name)
         this.$set(this.completeRecipe, 'email', email)
@@ -223,12 +220,19 @@ export default {
     addRecipeToRanglist(eventPayload) {
       this.setParticipentInfo(eventPayload)
         .then(() => {
-          this.$http.post(`${conf.apiUrl}/campaign/recipes/create`, this.completeRecipe)
+          this.$http.post(`${conf.apiUrl}campaign/recipes/create`, this.completeRecipe)
             .then(res => {
-              console.log(res);
-              const newRecipeId = res.body.newRecipe._id
-              this.$set(this, 'newRecipeId', newRecipeId)
-              console.log(newRecipeId);
+              const { message, succes } = res.body
+
+              if(succes) {
+                const { newRecipeId } = res.body
+                this.$set(this, 'newRecipeId', newRecipeId)
+                this.$eventBus.$emit('publishToRanking', succes)
+                this.$eventBus.$emit('infoMessage', message)
+                console.log({ newRecipeId });
+              } else {
+                this.$eventBus.$emit('infoMessage', message)
+              }
             })
         })
     },
