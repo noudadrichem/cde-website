@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <div :class="['campaign-popup', showPopup ? 'show' : '']">
+  <div :class="['campaign-popup', showPopup ? 'show' : '']" ref="campaignPopup">
     <h2>Crazy Dutch Dry Gin</h2>
     <p>Ben jij in voor een moeilijke uitdaging om de karakteristieke Crazy Dutch dry gin te vermengen met een ander drankje? <br/>Pak dan nu je kans en win een net zo’n unieke belevenis als ons product.  </p>
     <Button type="button" styling="primary" @click.native="$router.push('/campaign')" text="Creëer je eigen cocktail"/>
@@ -247,6 +247,12 @@ export default {
         setTimeout(() => this.$set(this, 'showPopup', true), 9000)
 
         setTimeout(() => {
+          if(this.showPopup) {
+            this.$refs.campaignPopup.classList.add('moooooefffff')
+          }
+        }, 15000)
+
+        setTimeout(() => {
           this.confetties.forEach(partial => {
             partial.top = (Math.random() * window.innerHeight)
             partial.left = (Math.random() * window.innerWidth)
@@ -289,7 +295,7 @@ export default {
         position: absolute;
         top: 0;
         background: #fafafa;
-        transition: 1400ms ease-out;
+        transition: 2400ms ease-out;
         box-shadow: 0 0 32px 0 rgba(196,196,196,0.3) !important;
 
         &.right {
@@ -391,6 +397,14 @@ export default {
     .icon:hover {
       cursor: pointer;
     }
+
+    &.moooooefffff {
+      animation-duration: 500ms;
+      animation-fill-mode: both;
+      animation-timing-function: linear;
+      animation-iteration-count: 4;
+      animation-name: bounce;
+    }
 }
 
 .getIn-enter-active,
@@ -401,5 +415,18 @@ export default {
 .getIn-enter,
 .getIn-leave-to {
     opacity: 0;
+}
+
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateX(-16px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 </style>
