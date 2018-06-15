@@ -50,8 +50,9 @@ export default {
 
   .label {
     display: inline-block;
-    margin: 0 0 0 8px;
+    padding: 0 0 0 8px;
     cursor: pointer;
+    width: 100%;
   }
 }
 </style>

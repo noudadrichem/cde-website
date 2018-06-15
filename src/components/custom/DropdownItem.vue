@@ -115,6 +115,10 @@ li.category-item {
         border: none;
       }
     }
+
+    .checkbox-container {
+      width: 100%;
+    }
   }
 }
 

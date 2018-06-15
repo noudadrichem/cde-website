@@ -1,6 +1,6 @@
 <template>
   <div class="recipe">
-    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Naam cocktail" min="1" max="40"/>
+    <textarea @keyup="autoHeightTextArea" maxlength="80" class="recipe-heading" type="text" placeholder="Vul de cocktail naam in" min="1" max="40"/>
 
     <div class="ingredients">
       <span class="title">De ingrediënten:</span>
