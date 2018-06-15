@@ -30,6 +30,7 @@ export default {
     voteOnRecipe() {
       if(this.id !== undefined) {
         if(localStorage.getItem('isVoted')) {
+          this.$eventBus.$emit('infoMessage', 'Je hebt helaas al een keer eerder gestemd.')
         } else {
           this.$set(this, 'isVoted', !this.isVoted)
           localStorage.setItem('isVoted', this.id)
@@ -37,7 +38,6 @@ export default {
           this.$http.put(`${conf.apiUrl}campaign/recipes/like/${this.id}`)
             .then(res => {console.log(res);})
         }
-        this.$eventBus.$emit('voted', this.id)
       }
     },
     checkIfVoted(id = this.id) {

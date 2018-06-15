@@ -8,7 +8,6 @@
 
   <div class="intro-animation" :style="introIsDone ? { zIndex: '-1', position: 'absolute' } : {}">
 
-
     <div :class="['curtain', 'left', curtainsOpen ? 'done' : '']" v-if="!introIsDone">
       <transition name="getIn">
         <img class="logo toGetIn left" v-if="showLogo" src="@/assets/images/cde-logo-left.svg" draggable="false">
@@ -19,12 +18,6 @@
         <img class="logo toGetIn right" v-if="showLogo" src="@/assets/images/cde-logo-right.svg" draggable="false">
       </transition>
     </div>
-
-    <!-- <transition name="getIn">
-      <div class="logo toGetIn" v-if="showLogo">
-        <img src="@/assets/images/crazy-dutch-experience-logo-white.svg" alt="logo">
-      </div>
-    </transition> -->
 
     <div class="confetti-container" v-if="showConfetties">
       <div v-for="(confetti, idx) in confetties" class="confetti" :key="idx" ref="confetti" :style="{
@@ -295,7 +288,7 @@ export default {
         position: absolute;
         top: 0;
         background: #fafafa;
-        transition: 2400ms ease-out;
+        transition: 2400  ms ease-out;
         box-shadow: 0 0 32px 0 rgba(196,196,196,0.3) !important;
 
         &.right {

@@ -15,9 +15,9 @@
           </router-link>
         </div>
         <div class="logout">
-          <router-link tag="div" to="/logout">
+          <a @click.prevent="removeToken">
             <a>Uitloggen</a>
-          </router-link>
+          </a>
         </div>
     </div>
   </div>
@@ -175,6 +175,10 @@ export default {
     fileName2: 'Upload hier je afbeeling'
   }),
   methods: {
+    removeToken() {
+      window.localStorage.removeItem('token')
+      this.$router.push('/')
+    },
     choosePage(pageId) {
       this.$set(this, 'selectedPageId', pageId)
     },
@@ -309,6 +313,7 @@ export default {
 section {
   background: #F8F8F8;
   padding: 64px;
+  position: relative;
 
   &:nth-child(odd) {
     background-color: #EBEBEB;

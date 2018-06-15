@@ -91,10 +91,19 @@ export default {
           email: this.email,
           name: this.name
         })
-
-        this.$set(this, 'addedToRanking', !this.addedToRanking)
       }
     }
+  },
+  created() {
+    this.$eventBus.$on('publishToRanking', (isSucces) => {
+      if(isSucces) {
+        this.$set(this, 'addedToRanking', true)
+        this.$set(this, 'mailIconType', 'mail')
+      } else {
+        this.$set(this, 'mailIconType', 'error')
+        this.$eventBus.$emit('infoMessage', 'There has been a problem pushing your recipe')
+      }
+    })
   }
 }
 </script>

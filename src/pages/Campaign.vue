@@ -52,14 +52,6 @@ export default {
   },
   created() {
     this.$eventBus.$on('showRanking', this.selectRanking)
-    this.$eventBus.$on('voted', (id) => {
-      this.$set(this, 'infoMessage', 'Je hebt helaas al een keer eerder gestemd.')
-      this.$set(this, 'hasVoted', true)
-
-      setTimeout(() => {
-        this.$set(this, 'hasVoted', false)
-      }, 5000)
-    })
     this.$eventBus.$on('infoMessage', mess => {
       this.$set(this, 'infoMessage', mess)
       this.$set(this, 'hasVoted', true)

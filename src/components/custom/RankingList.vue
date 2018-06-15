@@ -4,6 +4,12 @@
       <Heading tag="h1" text="De Crazy Dutch Cocktail ranglijst"/>
       <Heading tag="h2" text="Hieronder bevindt zich de gehele ranglijst van wie de top 10 beste cocktail smaak heeft bedacht."/>
     </div>
+
+    <!-- Show button on top if list is longer than 10 -->
+    <div class="grid center text-center" v-if="all && orderedRanking.length > 10">
+      <Button text="Maak je eigen cocktail" styling="primary" @click.native="$router.push('/campaign')"/>
+    </div>
+
     <table class="table">
       <tbody class="normal">
         <tr>
