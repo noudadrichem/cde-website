@@ -193,10 +193,7 @@ export default {
       const copyChoosen = [...this.completeRecipe.ingredients, recipeString]
       this.$set(this.completeRecipe, 'ingredients', copyChoosen),
 
-        this.resetReceipt()
-
-
-
+      this.resetReceipt()
     },
     resetReceipt() {
       this.$set(this, 'searchQuery', '')

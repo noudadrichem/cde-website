@@ -83,9 +83,8 @@ export default {
       const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       this.$set(this, 'mailIconType', 'error')
 
-      if(emailReg.test(this.email)) {
+      if(emailReg.test(this.email) && this.name !== '') {
         this.$set(this, 'mailIconType', 'mail')
-
 
         this.$eventBus.$emit('participentInfo', {
           email: this.email,

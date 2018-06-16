@@ -33,7 +33,7 @@ export default {
       const maxScroll = (documentHeight - viewPortHeight)
       const scrollPercent = (windowTop / maxScroll) * 50
 
-      this.$refs.videoContainer.style.transform = `translate3d(0, -${scrollPercent * 5}px, 0)`
+      this.$refs.videoContainer.style.transform = `translate3d(0, -${scrollPercent * 9}px, 0)`
 
     })
   }

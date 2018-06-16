@@ -63,7 +63,6 @@ export default {
       this.$eventBus.$emit('cocktailNameInput', event.target.value)
     },
     openRecipeSubmitModal() {
-      console.log('hoi');
       if(this.cocktailNameInput.length > 0) {
         this.$eventBus.$emit('openAddToModal', true)
         this.$eventBus.$emit('infoMessage', '')

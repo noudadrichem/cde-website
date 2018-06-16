@@ -288,7 +288,7 @@ export default {
         position: absolute;
         top: 0;
         background: #fafafa;
-        transition: 2400  ms ease-out;
+        transition: 2400ms ease-out;
         box-shadow: 0 0 32px 0 rgba(196,196,196,0.3) !important;
 
         &.right {

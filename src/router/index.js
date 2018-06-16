@@ -61,7 +61,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
-  console.log(window);
+  document.body.style.paddingTop = 0
   if (to.meta.guarded) {
     if (!token || token === undefined) {
       next({ path: '/login' })
