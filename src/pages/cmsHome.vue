@@ -62,6 +62,7 @@
                 <input type="text" name="" v-model="video.videoId">
               </div>
           </div>
+          <button type="button" @click="updateSection('video')">Sectie 1 opslaan</button>
         </div>
       </section>
 
