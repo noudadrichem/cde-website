@@ -15,8 +15,7 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
-  routes: [
-  {
+  routes: [{
     path: '*',
     name: '404',
     component: Home
@@ -61,9 +60,15 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  console.log(window);
   if (to.meta.guarded) {
-    if (!localStorage.getItem('token')) {
+    if (!token || token === undefined) {
       next({ path: '/login' })
+    }
+  } else if (to.name === 'login') {
+    if (token) {
+      next({ path: '/cmsHome' })
     }
   }
   next()

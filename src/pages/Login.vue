@@ -2,6 +2,10 @@
   <div class="login-container">
 
     <div class="login">
+      <div class="logo">
+        <img src="@/assets/images/crazy-dutch-experience-logo.svg" alt="">
+      </div>
+
       <p class="intro">U wordt zometeen doorverwezen naar het CMS van de Crazy Dutch Experience website,
         nadat u heeft ingelogd, kunt u hier de content van de website veranderen.</p>
       <p class="warning"><strong>Let op:</strong> u kunt alleen de content veranderen, de structuur en elementen staan vast.</p>
@@ -34,8 +38,12 @@ export default {
         password: this.password
       })
       .then(({ body: { token }}) => {
-        localStorage.setItem('token', token)
-        this.$router.push('/cmsHome')
+        if(token) {
+          localStorage.setItem('token', token)
+          this.$router.push('/cmsHome')
+        } else {
+          console.log('hoi, mag lekker niet.');
+        }
       })
       .catch(error => console.error({ error }))
     }
@@ -53,6 +61,16 @@ export default {
   justify-content: center;
 
 }
+
+.logo {
+  width: 120px;
+  padding: 32px 0 0 0;
+  margin: auto;
+  img {
+    width: 100%;
+  }
+}
+
 .login {
   width: 574px;
   height: auto;
