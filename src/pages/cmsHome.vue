@@ -270,6 +270,7 @@ export default {
   display: inline-flex;
   align-items: center;
   cursor: default;
+  z-index: 1;
 
   .icon {
     margin-right: 8px;
