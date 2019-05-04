@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import DropdownItem from '@/components/custom/DropdownItem'
+import DropdownItem from './DropdownItem'
 
 export default {
   name: 'Dropdown',

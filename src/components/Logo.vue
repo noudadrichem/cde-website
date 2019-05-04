@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img src="@/assets/images/logo.png" alt="Crazy Dutch Experience">
+    <img src="../assets/images/logo.png" alt="Crazy Dutch Experience">
   </div>
 </template>
 

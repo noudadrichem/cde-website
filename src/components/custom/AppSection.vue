@@ -58,16 +58,16 @@
 </template>
 
 <script>
-import Heading from '@/components/common/Heading'
-import BodyText from '@/components/common/BodyText'
-import InputText from '@/components/common/InputText'
-import Dropdown from '@/components/custom/Dropdown'
-import RadioList from '@/components/custom/RadioList'
-import Recipe from '@/components/custom/Recipe'
-import Button from '@/components/common/Button'
-import DropdownItems from '@/components/custom/DropdownItems'
-import Modal from '@/components/custom/Modal'
-import conf from '@/config'
+import Heading from '../common/Heading'
+import BodyText from '../common/BodyText'
+import InputText from '../common/InputText'
+import Dropdown from './Dropdown'
+import RadioList from './RadioList'
+import Recipe from './Recipe'
+import Button from '../common/Button'
+import DropdownItems from './DropdownItems'
+import Modal from './/Modal'
+import conf from '../../../config'
 
 export default {
   props: {

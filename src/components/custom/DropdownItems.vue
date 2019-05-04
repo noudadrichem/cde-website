@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Checkbox from '@/components/common/Checkbox'
+import Checkbox from '../common/Checkbox'
 
 export default {
   props: {

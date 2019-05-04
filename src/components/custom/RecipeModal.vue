@@ -48,11 +48,11 @@
 </template>
 
 <script>
-import Icon from '@/components/common/Icon'
-import Heading from '@/components/common/Heading'
-import BodyText from '@/components/common/BodyText'
-import VoteButton from '@/components/custom/VoteButton'
-import Recipe from '@/components/custom/Recipe'
+import Icon from '../common/Icon'
+import Heading from '../common/Heading'
+import BodyText from '../common/BodyText'
+import VoteButton from '../custom/VoteButton'
+import Recipe from './Recipe'
 
 export default {
   name: 'recipeModal',

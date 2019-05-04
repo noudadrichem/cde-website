@@ -44,13 +44,13 @@
 </template>
 
 <script>
-import Heading from '@/components/common/Heading'
-import BodyText from '@/components/common/BodyText'
-import Icon from '@/components/common/Icon'
-import InputText from '@/components/common/InputText'
-import Button from '@/components/common/Button'
-import ShareButton from '@/components/common/ShareButton'
-import conf from '@/config'
+import Heading from '../common/Heading'
+import BodyText from '../common/BodyText'
+import Icon from '../common/Icon'
+import InputText from '../common/InputText'
+import Button from '../common/Button'
+import ShareButton from '../common/ShareButton'
+import conf from '../..//config'
 
 export default {
   data: () => ({

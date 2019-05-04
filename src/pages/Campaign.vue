@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import Heading from '@/components/custom/Heading'
-import StepsSection from '@/components/custom/StepsSection'
-import AppSection from '@/components/custom/AppSection'
-import RankingList from '@/components/custom/RankingList'
-import Footing from '@/components/custom/Footing'
-import conf from '@/config'
-import RecipeModal from '@/components/custom/RecipeModal'
+import Heading from '../components/custom/Heading'
+import StepsSection from '../components/custom/StepsSection'
+import AppSection from '../components/custom/AppSection'
+import RankingList from '../components/custom/RankingList'
+import Footing from '../components/custom/Footing'
+import conf from '../config'
+import RecipeModal from '../components/custom/RecipeModal'
 
 export default {
   name: 'Campaign',

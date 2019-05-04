@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import conf from '@/config'
-import Button from '@/components/common/Button'
+import conf from '../config'
+import Button from '../components/common/Button'
 
 export default {
   name: 'Login',

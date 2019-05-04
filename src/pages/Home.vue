@@ -41,14 +41,14 @@
 </template>
 
 <script>
-import Heading from '@/components/custom/Heading';
-import Video from '@/components/custom/Video';
-import InfoSection from '@/components/custom/InfoSection';
-import Drieluik from '@/components/custom/Drieluik';
-import Footing from '@/components/custom/Footing';
-import Button from '@/components/common/Button'
-import Icon from '@/components/common/Icon'
-import conf from '@/config'
+import Heading from '../components/custom/Heading';
+import Video from '../components/custom/Video';
+import InfoSection from '../components/custom/InfoSection';
+import Drieluik from '../components/custom/DrieLuik';
+import Footing from '../components/custom/Footing';
+import Button from '../components/common/Button'
+import Icon from '../components/common/Icon'
+import conf from '../config'
 
 const startPositionConfettiLeft = 0
 const startPositionConfettiTop = 0

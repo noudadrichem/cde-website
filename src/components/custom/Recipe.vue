@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import Heading from '@/components/common/Heading'
-import Icon from '@/components/common/Icon'
-import Button from '@/components/common/Button'
+import Heading from '../common/Heading'
+import Icon from '../common/Icon'
+import Button from '../common/Button'
 
 export default {
   data: () => ({

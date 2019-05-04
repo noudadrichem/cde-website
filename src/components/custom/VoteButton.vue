@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Icon from '@/components/common/Icon'
-import conf from '@/config'
+import Icon from '../common/Icon'
+import conf from '../../config'
 
 export default {
   name: 'VoteButton',

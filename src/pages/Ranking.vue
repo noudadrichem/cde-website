@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import RankingList from '@/components/custom/RankingList'
-import Footing from '@/components/custom/Footing'
-import conf from '@/config'
-import RecipeModal from '@/components/custom/RecipeModal'
-import Heading from '@/components/custom/Heading'
-import Button from '@/components/common/Button'
+import RankingList from '../components/custom/RankingList'
+import Footing from '../components/custom/Footing'
+import conf from '../config'
+import RecipeModal from '../components/custom/RecipeModal'
+import Heading from '../components/custom/Heading'
+import Button from '../components/common/Button'
 
 export default {
   name: 'Ranking',

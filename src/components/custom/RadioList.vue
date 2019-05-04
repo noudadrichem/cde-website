@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import RadioButton from '@/components/common/RadioButton'
+import RadioButton from '../common/RadioButton'
 
 export default {
   name: 'RadioList',

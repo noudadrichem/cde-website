@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import Heading from '@/components/common/Heading'
-import BodyText from '@/components/common/BodyText'
+import Heading from '../common/Heading'
+import BodyText from '../common/BodyText'
 
 export default {
   props: {

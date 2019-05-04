@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import Heading from '@/components/common/Heading'
-import BodyText from '@/components/common/BodyText'
-import Button from '@/components/common/Button'
+import Heading from '../common/Heading'
+import BodyText from '../common/BodyText'
+import Button from '../common/Button'
 import Slick from 'vue-slick';
 
 //mixin

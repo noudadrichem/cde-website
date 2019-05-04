@@ -47,9 +47,9 @@
 </template>
 
 <script>
-import VoteButton  from '@/components/custom/VoteButton'
-import Heading from '@/components/common/Heading'
-import Button from '@/components/common/Button'
+import VoteButton  from './VoteButton'
+import Heading from '../common/Heading'
+import Button from '../common/Button'
 
 export default {
   computed: {

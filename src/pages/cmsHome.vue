@@ -150,9 +150,9 @@
 </template>
 
 <script>
-import conf from '@/config'
+import conf from '../config'
 
-import Icon from '@/components/common/Icon'
+import Icon from '../components/common/Icon'
 
 export default {
   data: () => ({
